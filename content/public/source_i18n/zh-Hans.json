@@ -1,0 +1,69 @@
+{
+  "openai-announcement": {
+    "claims_supported": [
+      "OpenAI 发布了解析证明和 Lean 形式化",
+      "OpenAI 表示该结果建立了 Clay 官方表述中的 C、D 两个分支",
+      "OpenAI 描述了多智能体搜索与验证流程"
+    ]
+  },
+  "openai-paper": {
+    "claims_supported": [
+      "OpenAI 发布的解析构造与定理陈述"
+    ]
+  },
+  "openai-lean": {
+    "claims_supported": [
+      "与已发布结果配套的公开 Lean 证书代码库"
+    ]
+  },
+  "clay-ns": {
+    "claims_supported": [
+      "千禧年大奖问题官方页面"
+    ]
+  },
+  "clay-formulation": {
+    "claims_supported": [
+      "A/B/C/D 官方表述及可接受条件"
+    ]
+  },
+  "wcag22": {
+    "claims_supported": [
+      "本站的无障碍目标"
+    ]
+  },
+  "w3c-i18n-lang": {
+    "claims_supported": [
+      "文档语言声明实践"
+    ]
+  },
+  "w3c-i18n-dir": {
+    "claims_supported": [
+      "从右向左文档方向设置实践"
+    ]
+  },
+  "asme-vv20": {
+    "claims_supported": [
+      "计算流体力学与传热的公开验证与确认框架"
+    ]
+  },
+  "ecmwf-ifs": {
+    "claims_supported": [
+      "业务数值天气预报系统的公开技术文档"
+    ]
+  },
+  "lean-reference": {
+    "claims_supported": [
+      "Lean 定理证明与形式化证明检查的公开文档"
+    ]
+  },
+  "prove2me-public": {
+    "claims_supported": [
+      "面向智能体的公开定理协作工作区与文档"
+    ]
+  },
+  "taylor-vortex-exact": {
+    "claims_supported": [
+      "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
+    ]
+  }
+}

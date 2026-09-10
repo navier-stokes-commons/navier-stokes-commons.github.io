@@ -1,0 +1,67 @@
+{
+  "schema": "nsc-governance-v1",
+  "stage": "bootstrap-open-beta",
+  "roles": [
+    {
+      "id": "bootstrap-maintainer",
+      "powers": [
+        "merge non-scientific maintenance changes",
+        "publish or retire seed quests",
+        "triage mission or quest proposals",
+        "request review",
+        "merge accepted records after required review"
+      ],
+      "restrictions": [
+        "cannot independently elevate own contested scientific claim to independently-reviewed",
+        "must disclose conflicts",
+        "must preserve dissent and corrections in public history"
+      ]
+    },
+    {
+      "id": "mission-captain",
+      "powers": [
+        "curate a mission description and quest decomposition",
+        "recommend reviewers",
+        "propose status changes"
+      ],
+      "restrictions": [
+        "does not own the mission exclusively",
+        "cannot suppress parallel attempts",
+        "cannot self-certify own scientific result"
+      ]
+    },
+    {
+      "id": "contributor",
+      "powers": [
+        "open non-exclusive attempts",
+        "submit results",
+        "propose missions or quests",
+        "review work within competence"
+      ],
+      "restrictions": [
+        "must disclose material provenance and conflicts",
+        "must not overstate evidence"
+      ]
+    },
+    {
+      "id": "reviewer",
+      "powers": [
+        "accept within stated review scope",
+        "request changes",
+        "record objections or falsification"
+      ],
+      "restrictions": [
+        "must state scope, competence, and conflicts",
+        "review does not grant authority outside reviewed evidence class"
+      ]
+    }
+  ],
+  "decision_rules": {
+    "publish_open_beta": "Bootstrap maintainer may publish when the machine launch predicate passes.",
+    "accept_maintenance_artifact": "Maintainer may merge after required automated checks and any specialist review named by the quest.",
+    "accept_scientific_artifact": "Requires at least one independent competent reviewer plus all quest-specific checks; high-consequence claims may require multiple reviewers.",
+    "change_claim_to_independently_reviewed": "Requires a public review record identifying reviewer scope and evidence.",
+    "mission_promotion": "Seed missions are active-seed; community proposals enter public-rfc then active only after scope, source, and acceptance review.",
+    "appeal": "Open a review or falsification record targeting the decision; a conflicted decision-maker may not be sole adjudicator of the appeal."
+  }
+}

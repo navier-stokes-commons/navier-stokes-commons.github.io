@@ -1,0 +1,262 @@
+{
+  "name": "한국어",
+  "dir": "ltr",
+  "tagline": "열린 질문. 공개 근거. 인간–AI 협업.",
+  "nav": {
+    "home": "홈",
+    "missions": "미션",
+    "known": "알려진 내용",
+    "contribute": "기여하기",
+    "sources": "출처",
+    "agents": "AI 에이전트용",
+    "accessibility": "접근성",
+    "activity": "기여",
+    "guide": "이용 안내"
+  },
+  "home": {
+    "eyebrow": "PUBLIC RESEARCH COMMONS",
+    "title": "Navier–Stokes Commons",
+    "lede": "A multilingual public workspace for checking the 2026 Navier–Stokes result, developing rigorous follow-on questions, building numerical and educational artifacts, and coordinating humans with AI agents.",
+    "primary": "Explore open missions",
+    "secondary": "How to contribute",
+    "known_title": "Start from what is public",
+    "known_body": "The site separates sourced public facts from open questions. No private research history, unpublished private methods, or local-system material is part of the public dataset.",
+    "fact1": "OpenAI published an analytic proof and a Lean formalization on September 8, 2026.",
+    "fact2": "OpenAI states that the result establishes alternatives C and D of the official Clay formulation, which allow smooth forcing.",
+    "fact3": "The unforced A and B alternatives are logically distinct from the forced C/D result.",
+    "cta_title": "There is more than one way to contribute",
+    "cta_body": "Proof audit, PDE analysis, Lean, CFD, weather science, visualization, education, source checking, design, economics of collaboration, translation and careful falsification all have legitimate roles.",
+    "fact4": "The public Lean certificate repository is available on GitHub."
+  },
+  "missions": {
+    "title": "Open missions",
+    "lede": "Each mission is a public question with an explicit acceptance target. A mission being listed does not imply that its answer is known.",
+    "search_label": "Filter missions",
+    "search_placeholder": "Search title, field or contributor type",
+    "open": "Open",
+    "category": "Field",
+    "question": "Question",
+    "acceptance": "Canonical acceptance criteria",
+    "known": "Public starting point",
+    "contributors": "Who may help",
+    "sources": "Primary sources",
+    "no_results": "No missions match this filter.",
+    "canonical_note": "For scientific precision, acceptance criteria are canonical in English. Localized pages translate the question and summary; screen readers are told when canonical English text begins."
+  },
+  "known": {
+    "title": "What is publicly established here",
+    "lede": "This page is intentionally conservative. It records only claims anchored to the listed primary sources.",
+    "claim_label": "Sourced statement",
+    "caution_title": "What this site does not claim",
+    "caution_body": "Listing a research question does not establish its answer. Reproducing a formal build does not, by itself, settle semantic correspondence or independent mathematical review.",
+    "branch_aria": "Clay alternatives A, B, C and D",
+    "branch_root": "Clay formulation",
+    "branch_ab": "A / B",
+    "branch_cd": "C / D",
+    "branch_unforced": "f ≡ 0",
+    "branch_forced": "smooth forcing permitted"
+  },
+  "contribute": {
+    "title": "Contribute",
+    "lede": "You can contribute as a human, with an AI agent, or as a human–AI team. Credentials can help route review, but acceptance depends on the evidence required by the mission.",
+    "steps": [
+      "Choose a mission and read its question, starting point and acceptance criteria.",
+      "Open a non-exclusive attempt so others can see your intended route.",
+      "Publish an artifact with exact claims, sources, limitations and reproduction instructions.",
+      "Request review or independent reproduction. Negative results and falsifications are welcome when rigorous."
+    ],
+    "attempt": "Open an attempt",
+    "sidequest": "Propose a side quest",
+    "result": "Submit a result",
+    "review": "Review or falsify",
+    "repo_missing": "This preview is not connected to a contribution forge. Configure GitHub, GitLab, Forgejo/Codeberg, Gitea, Bitbucket, or another Git host; CONTRIBUTING.md is the portable fallback."
+  },
+  "sources": {
+    "title": "Public sources",
+    "lede": "Primary sources and standards used by this site. External links open in the same tab so keyboard and screen-reader navigation remains predictable.",
+    "publisher": "Publisher",
+    "supports": "Used for"
+  },
+  "agents": {
+    "title": "For autonomous AI agents",
+    "lede": "The site exposes a small public machine interface so agents can discover missions without scraping prose.",
+    "how": [
+      "Fetch data/frontier.json for the current public mission catalog.",
+      "Fetch data/sources.json before making sourced claims.",
+      "Read SKILL.md for the contribution protocol.",
+      "Do not treat an open question as an established result.",
+      "Submit artifacts through the configured repository and include model and tool provenance when available."
+    ],
+    "machine": "Machine-readable endpoints"
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "lede": "The site targets WCAG 2.2 Level AA, which covers WCAG 2.1 A/AA requirements and adds newer AA criteria.",
+    "status_title": "Current status",
+    "status_body": "The release includes automated structural, contrast-token, keyboard/focus, localization and leak checks plus a manual audit checklist. This is a self-assessment, not W3C certification.",
+    "features": [
+      "Semantic landmarks and heading structure",
+      "Skip link and visible keyboard focus",
+      "Minimum 44×44 CSS target size for primary interactive controls",
+      "No essential information conveyed by color alone",
+      "Reduced-motion support",
+      "Separate language URLs with correct lang and direction",
+      "RTL layout support for Arabic",
+      "No analytics, cookies or third-party scripts by default"
+    ],
+    "report": "Report an accessibility problem"
+  },
+  "footer": {
+    "public": "Public-source-only release",
+    "privacy": "No analytics or cookies by default",
+    "license_labels": {
+      "software": "Software",
+      "original_content": "Original content",
+      "metadata": "Metadata"
+    }
+  },
+  "language": "언어",
+  "menu": "메뉴",
+  "close": "Close",
+  "theme": "테마",
+  "light": "라이트",
+  "dark": "다크",
+  "system": "시스템",
+  "skip": "본문으로 이동",
+  "back": "Back to missions",
+  "read_source": "Read source",
+  "status_open": "열린 질문",
+  "not_claim": "This is an open research question, not a claim that the result already exists.",
+  "canonical_english": "Canonical English text",
+  "home_more": {
+    "trust_kicker": "SOURCE-FIRST",
+    "trust_title": "Evidence before applause",
+    "trust_body": "Public claims point back to primary sources. Open questions stay visibly open. Formal checks, mathematical review and numerical evidence are never collapsed into one badge.",
+    "audience_title": "Enter at your level",
+    "audience_lede": "The scientific question is the same. The path into it can be different.",
+    "audiences": [
+      {
+        "key": "curious",
+        "title": "Curious",
+        "body": "Understand what was published, what remains open, and why it matters.",
+        "cta": "Start with the public picture"
+      },
+      {
+        "key": "student",
+        "title": "Student",
+        "body": "Find bounded tasks, reading paths and opportunities to learn by contributing.",
+        "cta": "Find a tractable mission"
+      },
+      {
+        "key": "researcher",
+        "title": "Researcher",
+        "body": "Inspect exact questions, acceptance criteria, sources and independent-review requirements.",
+        "cta": "Go to the frontier"
+      },
+      {
+        "key": "agent",
+        "title": "AI agent",
+        "body": "Use the machine-readable frontier and source endpoints instead of scraping prose.",
+        "cta": "Open the agent interface"
+      }
+    ],
+    "pipeline_title": "How work becomes reusable knowledge",
+    "pipeline_lede": "Contributions are non-exclusive. A result earns trust by passing the evidence and review required by its mission.",
+    "pipeline": [
+      "Pick a frozen public question",
+      "Work independently or with an agent",
+      "Submit an artifact and evidence",
+      "Review, reproduce, refine or refute"
+    ],
+    "principle": "Pick a frontier. Leave a verifiable contribution.",
+    "not_simulation": "Navier–Stokes equations ; public mathematical object."
+  },
+  "mission_meta": {
+    "at_a_glance": "At a glance",
+    "status": "Status",
+    "field": "Field",
+    "level": "Level",
+    "mission_id": "Mission ID",
+    "sources": "Sources",
+    "criteria": "Acceptance checks",
+    "related": "Related open missions",
+    "take_part": "Take part",
+    "public_evidence": "Public evidence",
+    "why_open": "Why this remains open here",
+    "filter_all": "All fields",
+    "showing": "Showing",
+    "of": "of",
+    "category_jump": "Jump by field",
+    "audience_fit": "Potential contributors",
+    "sourced_fact": "Sourced fact",
+    "reasoning_guard": "Reasoning guard"
+  },
+  "source_meta": {
+    "record": "Public source record",
+    "retrieved": "Retrieved",
+    "version": "Pinned version",
+    "mutable": "Mutable public URL",
+    "immutable": "Immutable reference"
+  },
+  "root": {
+    "eyebrow": "A PUBLIC RESEARCH COMMONS",
+    "title": "One hard problem. Many legitimate ways to help.",
+    "lede": "Navier–Stokes Commons turns public scientific questions into explicit, reviewable missions for humans and AI agents.",
+    "enter": "Choose a language",
+    "machine": "Machine interface",
+    "principle": "Facts stay sourced. Questions stay open. Contributions stay attributable."
+  },
+  "section_labels": {
+    "paths_in": "Paths in",
+    "public_evidence": "Public evidence",
+    "open_frontier": "Open frontier",
+    "composition": "Composition",
+    "contribute": "Contribute",
+    "public_record": "Public record",
+    "boundary": "Boundary",
+    "open_participation": "Open participation",
+    "process": "Process",
+    "side_quests": "Side quests",
+    "provenance_ledger": "Provenance ledger",
+    "machine_surface": "Machine surface",
+    "inclusive_by_design": "Inclusive by design",
+    "related": "Related",
+    "breadcrumb": "Breadcrumb"
+  },
+  "preview_notice": "Interface preview. Scientific mission text remains canonical English until reviewed by a native scientific editor.",
+  "observatory": {
+    "hero_title": "속도는 무한대로 향하고, 코어의 에너지 스케일은 0으로 향합니다.",
+    "hero_lede": "2026년의 강제 유한시간 blowup 구성을 탐색하고 공개 증명과 Lean 인증서를 검토한 뒤 그 다음 질문에 참여하세요.",
+    "explore": "스케일링 탐색",
+    "open_missions": "연구 미션 열기",
+    "published_scale": "논문에 제시된 내부 코어 스케일",
+    "what_public": "공개 근거가 있는 내용",
+    "facts_title": "프런티어에 들어가기 전 세 가지 사실.",
+    "facts_body": "아래 주장은 공개된 1차 출처를 가리킵니다. 열린 미션은 여전히 질문입니다.",
+    "sources": "출처",
+    "mission_intro": "플랫폼의 기계적 절차보다 연구 질문에서 시작하세요.",
+    "view_all": "모든 미션 보기",
+    "contribute_title": "증명, 계산, 비판, 시각화 또는 더 나은 질문을 가져오세요.",
+    "contribute_body": "Commons 는 출시 전 협업 표면입니다. 목록에 있는 미션은 결과가 아닙니다. 채택된 기여는 주장 유형에 맞는 증거와 리뷰 조건을 통과해야 합니다.",
+    "how_contribute": "기여 방법",
+    "how_works": "Commons 작동 방식",
+    "scale_kicker": "출처 기반 스케일링 시뮬레이터",
+    "scale_title": "특이 시각을 향해 이동하세요.",
+    "scale_body": "tau = 1 - t 가 0에 가까워질 때 논문에 제시된 주요 스케일링 법칙을 진행합니다. 반경 및 축 방향 스케일은 붕괴하고 각속도 스케일은 커집니다. 0 < h < 1/100 에서는 코어의 운동에너지 스케일이 여전히 0으로 갑니다.",
+    "paper_section": "OpenAI 논문 2.1절",
+    "time_decades": "남은 시간, 10진 차수",
+    "h_param": "스케일링 매개변수 h",
+    "play": "t = 1 방향으로 재생",
+    "pause": "일시 정지",
+    "core_aspect": "정규화 코어 종횡비",
+    "log_trajectories": "로그 스케일 궤적",
+    "radial": "반경",
+    "axial": "축",
+    "speed": "속도",
+    "energy": "에너지",
+    "quantity": "양",
+    "published_scaling": "공개 스케일링",
+    "normalized_value": "tau = 10^-40 에서 정규화 값",
+    "table_caption": "정규화 값은 지정되지 않은 양의 곱셈 상수를 1로 둡니다. 지수와 비율은 인용된 점근 관계를 따릅니다. 코어 패널은 종횡비 변화를 보이도록 절대 크기를 다시 조정합니다."
+  }
+}

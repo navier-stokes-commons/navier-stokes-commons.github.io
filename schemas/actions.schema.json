@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:navier-stokes-commons:schema:actions:v1",
+  "title": "NSC collaboration action contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "protocol",
+    "principle",
+    "repository_authority",
+    "operations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nsc-actions-v1"
+    },
+    "protocol": {
+      "const": "forge-mediated-public-collaboration"
+    },
+    "principle": {
+      "type": "string",
+      "minLength": 40
+    },
+    "repository_authority": {
+      "type": "string",
+      "minLength": 10
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "effect",
+          "requires_auth"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]+$"
+          },
+          "effect": {
+            "type": "string",
+            "minLength": 5
+          },
+          "requires_auth": {
+            "type": "boolean"
+          },
+          "machine_entrypoint_key": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "github_template": {
+            "type": "string"
+          },
+          "gitlab_template": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "canonical_target": {
+            "type": "string"
+          },
+          "required_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "invariants": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}

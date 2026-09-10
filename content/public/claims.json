@@ -1,0 +1,74 @@
+{
+  "schema": "nsc-claim-evidence-v1",
+  "status_vocabulary": {
+    "source-reported": "A named source states the claim; the Commons has not independently established it.",
+    "primary-source-defined": "The claim records the wording or structure of an authoritative problem/standard source.",
+    "derived-unreviewed": "A derivation is public and reproducible but has not yet received independent domain review.",
+    "independently-reproduced": "An independent contributor reproduced the stated artifact/result within the recorded scope.",
+    "independently-reviewed": "A qualified independent reviewer accepted the stated claim within the recorded scope.",
+    "disputed": "A material unresolved objection is recorded.",
+    "superseded": "A later record replaces this one without deleting history."
+  },
+  "claims": [
+    {
+      "id": "NS-C001",
+      "statement": "OpenAI published an analytic Navier-Stokes proof and a Lean formalization on 2026-09-08.",
+      "type": "publication-fact",
+      "source_ids": [
+        "openai-announcement",
+        "openai-lean"
+      ],
+      "baseline_status": "source-reported"
+    },
+    {
+      "id": "NS-C002",
+      "statement": "OpenAI states that its result establishes alternatives C and D of the official Clay formulation.",
+      "type": "reported-theorem-claim",
+      "source_ids": [
+        "openai-announcement",
+        "openai-paper"
+      ],
+      "baseline_status": "source-reported"
+    },
+    {
+      "id": "NS-C003",
+      "statement": "The official Clay Navier-Stokes problem formulation contains alternatives A, B, C and D, and the C/D alternatives permit a smooth external force.",
+      "type": "problem-definition",
+      "source_ids": [
+        "clay-formulation"
+      ],
+      "baseline_status": "primary-source-defined"
+    },
+    {
+      "id": "NS-C004",
+      "statement": "The public Observatory represents leading-order inner-core scaling relations from Section 2.1 of the cited OpenAI paper and does not purport to reconstruct the full velocity field.",
+      "type": "commons-representation-claim",
+      "source_ids": [
+        "openai-paper"
+      ],
+      "baseline_status": "derived-unreviewed",
+      "review_requirement": {
+        "independent_accepts": 1,
+        "review_classes": [
+          "scientific-representation-review",
+          "PDE-mathematical-review"
+        ]
+      }
+    },
+    {
+      "id": "NS-C005",
+      "statement": "Under the recorded normalized scaling model, the core energy scale is proportional to tau^(1/2-3h) while the angular speed scale is proportional to tau^(-1/2-h), for 0 < h < 1/100.",
+      "type": "scaling-derivation",
+      "source_ids": [
+        "openai-paper"
+      ],
+      "baseline_status": "derived-unreviewed",
+      "review_requirement": {
+        "independent_accepts": 1,
+        "review_classes": [
+          "PDE-mathematical-review"
+        ]
+      }
+    }
+  ]
+}

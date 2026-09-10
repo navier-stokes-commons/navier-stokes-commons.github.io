@@ -1,0 +1,282 @@
+{
+  "schema": "nsc-authority-map-v1",
+  "principle": "Every release-critical fact has exactly one writable authority. Other copies are generated projections or deliberately independent test oracles.",
+  "classes": {
+    "canonical": "human-editable authority",
+    "derived": "computed projection; never manually edited",
+    "evidence-derived": "computed from canonical data plus exact-content evidence receipts",
+    "independent-oracle": "deliberately separately specified test expectation used to detect implementation/model errors"
+  },
+  "facts": [
+    {
+      "id": "project-identity",
+      "class": "canonical",
+      "authority": "content/public/project.json#/project_id,name,description",
+      "projections": [
+        "PUBLIC_SSOT.json",
+        "public/data/project.json",
+        "CITATION.cff",
+        "rendered titles/metadata"
+      ]
+    },
+    {
+      "id": "release-stage-participation",
+      "class": "canonical",
+      "authority": "content/public/project.json#/release_stage,participation_status",
+      "projections": [
+        "RELEASE.json",
+        "PUBLIC_SSOT.json",
+        "README.md"
+      ]
+    },
+    {
+      "id": "accessibility-target",
+      "class": "canonical",
+      "authority": "content/public/project.json#/accessibility_target",
+      "projections": [
+        "RELEASE.json",
+        "accessibility UI"
+      ]
+    },
+    {
+      "id": "sprint-identity",
+      "class": "canonical",
+      "authority": "content/public/founding_sprint.json#/id,title,status,purpose",
+      "projections": [
+        "README.md",
+        "sprint page"
+      ]
+    },
+    {
+      "id": "release-version",
+      "class": "canonical",
+      "authority": "VERSION",
+      "projections": [
+        "RELEASE.json",
+        "PUBLIC_SSOT.json",
+        "CITATION.cff",
+        "README.md",
+        "public/data/project.json",
+        "public/llms.txt"
+      ]
+    },
+    {
+      "id": "repository-url",
+      "class": "canonical",
+      "authority": "content/public/project.json#/repository_url",
+      "projections": [
+        "CITATION.cff",
+        "PUBLIC_SSOT.json"
+      ]
+    },
+    {
+      "id": "licenses",
+      "class": "canonical",
+      "authority": "content/public/project.json#/license",
+      "projections": [
+        "LICENSE",
+        "LICENSE_POLICY.md",
+        "CONTENT_LICENSE.md",
+        "README.md",
+        "RELEASE.json",
+        "rendered locale footers"
+      ]
+    },
+    {
+      "id": "locale-set-and-scope",
+      "class": "canonical",
+      "authority": "content/public/locale_registry.json",
+      "projections": [
+        "RELEASE.json",
+        "PUBLIC_SSOT.json",
+        "public/data/project.json",
+        "language switcher"
+      ]
+    },
+    {
+      "id": "locale-review-status",
+      "class": "evidence-derived",
+      "authority": "content/public/locale_registry.json + content/public/locale_reviews/*.json + exact locale content digest",
+      "projections": [
+        "RELEASE.json",
+        "public/data/project.json",
+        "locale badges/notices"
+      ]
+    },
+    {
+      "id": "task-ladder",
+      "class": "canonical",
+      "authority": "content/public/task_ladder.json",
+      "projections": [
+        "quest grouping",
+        "public/data/task-ladder.json",
+        "derived participation capabilities"
+      ]
+    },
+    {
+      "id": "taxonomy-order",
+      "class": "canonical",
+      "authority": "content/public/taxonomy.json#/category_order",
+      "projections": [
+        "mission grouping/filter order",
+        "public/data/taxonomy.json"
+      ]
+    },
+    {
+      "id": "mission-catalog",
+      "class": "canonical",
+      "authority": "content/public/missions.json",
+      "projections": [
+        "mission pages",
+        "public/data/frontier.json",
+        "public/data/quests.json reverse mission index"
+      ]
+    },
+    {
+      "id": "quest-catalog-and-mission-membership",
+      "class": "canonical",
+      "authority": "content/public/quests.json",
+      "projections": [
+        "quest pages",
+        "mission quest lists",
+        "claim reverse work links",
+        "public/data/quests.json"
+      ]
+    },
+    {
+      "id": "founding-sprint-membership",
+      "class": "canonical",
+      "authority": "content/public/founding_sprint.json#/quest_ids",
+      "projections": [
+        "quest sprint badges",
+        "sprint page",
+        "RELEASE.json counts",
+        "public/data/quests.json"
+      ]
+    },
+    {
+      "id": "claim-definitions-and-baselines",
+      "class": "canonical",
+      "authority": "content/public/claims.json",
+      "projections": [
+        "claim pages",
+        "public/data/claims.json"
+      ]
+    },
+    {
+      "id": "claim-review-status",
+      "class": "evidence-derived",
+      "authority": "content/public/claims.json + content/public/reviews.json",
+      "projections": [
+        "public/data/claims.json",
+        "claim status UI"
+      ]
+    },
+    {
+      "id": "collaboration-capabilities",
+      "class": "derived",
+      "authority": "quest catalog + task ladder + public registry",
+      "projections": [
+        "public/data/capabilities.json",
+        "docs/PRODUCT_GUIDE.md",
+        "rendered guide participation copy"
+      ]
+    },
+    {
+      "id": "machine-endpoints",
+      "class": "canonical",
+      "authority": "content/public/public_registry.json#/machine_endpoints",
+      "projections": [
+        "public/.well-known/commons.json",
+        "RELEASE.json"
+      ]
+    },
+    {
+      "id": "theme-labels",
+      "class": "canonical",
+      "authority": "content/public/locales/*.json#/theme",
+      "projections": [
+        "rendered DOM data attributes used by assets/site.js"
+      ]
+    },
+    {
+      "id": "scaling-model",
+      "class": "canonical",
+      "authority": "content/public/scaling_model.json",
+      "projections": [
+        "rendered data-exponents",
+        "public/data/scaling-model.json"
+      ]
+    },
+    {
+      "id": "exact-flow-model",
+      "class": "canonical",
+      "authority": "content/public/simulations.json",
+      "projections": [
+        "exact-flow chamber",
+        "public/data/simulations.json"
+      ]
+    },
+    {
+      "id": "exact-flow-residual",
+      "class": "independent-oracle",
+      "authority": "scripts/audit_flow_chamber.py analytic/numeric substitution",
+      "projections": []
+    },
+    {
+      "id": "reference-benchmark-corpus",
+      "class": "canonical",
+      "authority": "content/public/reference_benchmarks.json",
+      "projections": [
+        "public/data/reference-benchmarks.json",
+        "benchmark page",
+        "benchmark-linked quest metadata"
+      ]
+    },
+    {
+      "id": "collaboration-action-contract",
+      "class": "canonical",
+      "authority": "content/public/actions.json",
+      "projections": [
+        "public/data/actions.json",
+        "agent documentation",
+        "forge-mediated transaction semantics"
+      ]
+    },
+    {
+      "id": "founding-sprint-forge-index",
+      "class": "derived",
+      "authority": "content/public/founding_sprint.json + content/public/quests.json + content/public/project.json",
+      "projections": [
+        "GitHub sentinel-bearing Founding Sprint index issue"
+      ],
+      "reconciler": "scripts/sync_founding_sprint_issue.py"
+    }
+  ],
+  "forbidden_writable_reverse_fields": {
+    "content/public/missions.json": [
+      "quest_ids"
+    ],
+    "content/public/quests.json": [
+      "founding_sprint"
+    ],
+    "content/public/claims.json": [
+      "status",
+      "target_quest_ids"
+    ],
+    "content/public/project.json": [
+      "release",
+      "locales",
+      "locale_status",
+      "missions",
+      "quests",
+      "founding_sprint_quests",
+      "default_locale",
+      "public_content_policy",
+      "design_candidate",
+      "canonical_work_units",
+      "bootstrap_governance",
+      "launch_sprint"
+    ]
+  }
+}

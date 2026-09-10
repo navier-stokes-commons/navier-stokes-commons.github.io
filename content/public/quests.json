@@ -1,0 +1,1563 @@
+{
+  "schema": "nsc-quest-catalog-v1",
+  "ladder": "task_ladder.json",
+  "quests": [
+    {
+      "id": "NS-Q001",
+      "mission_id": "NS-M17",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "launch",
+      "title": "Verify the pinned OpenAI Lean source locator",
+      "summary": "Confirm that the Commons source record resolves to the intended immutable OpenAI repository commit and record the exact repository identity.",
+      "task": "Open the pinned source record, verify repository and commit identity, and report any mismatch or moved dependency reference.",
+      "deliverables": [
+        "A short public verification note with commit hash and retrieval date."
+      ],
+      "acceptance": [
+        "The exact commit hash is recorded.",
+        "Repository identity is confirmed against the source record.",
+        "Any discrepancy is quoted with a stable locator."
+      ],
+      "review": {
+        "class": "source-review",
+        "independence": "Different person or agent from the source-record author preferred.",
+        "required_expertise": "Git and source provenance literacy."
+      },
+      "contributors": [
+        "students",
+        "source auditors",
+        "AI agents"
+      ],
+      "source_ids": [
+        "openai-lean"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C001"
+      ],
+      "tags": [
+        "source",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q002",
+      "mission_id": "NS-M17",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "launch",
+      "title": "Check every public source URL and mutability label",
+      "summary": "Perform one full pass over the public source ledger for reachability and whether each mutability or version label remains accurate.",
+      "task": "Check each source URL, its declared reference_type, date or version fields, and whether a stronger immutable locator is available.",
+      "deliverables": [
+        "Machine-readable or Markdown table for all source records."
+      ],
+      "acceptance": [
+        "Every source ID is covered exactly once.",
+        "HTTP/result state and retrieval date are recorded.",
+        "Mutable sources are not silently reported as immutable."
+      ],
+      "review": {
+        "class": "source-review",
+        "independence": "Independent review is not required for initial submission; maintainer verifies merge.",
+        "required_expertise": "Source and provenance checking."
+      },
+      "contributors": [
+        "students",
+        "librarians",
+        "research editors",
+        "AI agents"
+      ],
+      "source_ids": [
+        "openai-announcement",
+        "openai-paper",
+        "openai-lean",
+        "clay-ns",
+        "clay-formulation",
+        "wcag22",
+        "w3c-i18n-lang",
+        "w3c-i18n-dir",
+        "asme-vv20",
+        "ecmwf-ifs",
+        "lean-reference",
+        "prove2me-public"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "source",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q003",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "launch",
+      "title": "Cold-start mission discovery test",
+      "summary": "Test whether a first-time visitor can locate one suitable mission or quest without hidden instructions.",
+      "task": "Use only the public site from its root URL. Record the first path taken, time to a suitable task, confusing terminology, and whether the task acceptance criteria were understood.",
+      "deliverables": [
+        "A task trace with viewport or device, chosen quest, elapsed time, and blockers."
+      ],
+      "acceptance": [
+        "No private instructions are used.",
+        "The trace identifies the exact pages and actions taken.",
+        "Failures are actionable rather than aesthetic-only comments."
+      ],
+      "review": {
+        "class": "usability-review",
+        "independence": "Participant should not have authored the tested flow.",
+        "required_expertise": "None; target is first-use behavior."
+      },
+      "contributors": [
+        "students",
+        "designers",
+        "independent researchers",
+        "AI-agent operators"
+      ],
+      "source_ids": [],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "ux",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q004",
+      "mission_id": "NS-M01",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L1",
+      "priority": "launch",
+      "title": "Reproduce repository metadata for the Lean certificate",
+      "summary": "Independently recover the pinned toolchain, dependency versions, and terminal entry points from the public Lean repository.",
+      "task": "From the immutable OpenAI repository commit, record Lean version, mathlib revision, build commands, comparator or checking commands, and terminal declarations without relying on Commons summaries.",
+      "deliverables": [
+        "Environment manifest.",
+        "Command transcript or exact repository locators.",
+        "Terminal-declaration inventory."
+      ],
+      "acceptance": [
+        "All version identifiers come from the pinned source.",
+        "Commands are copied or derived with locations noted.",
+        "No claim that compilation proves semantic correspondence is made."
+      ],
+      "review": {
+        "class": "formal-reproduction",
+        "independence": "Review by a second Lean-capable contributor before claim elevation.",
+        "required_expertise": "Lean, Lake, and Git."
+      },
+      "contributors": [
+        "Lean users",
+        "formal-methods researchers",
+        "AI coding agents"
+      ],
+      "source_ids": [
+        "openai-lean"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C001"
+      ],
+      "tags": [
+        "lean",
+        "reproduction"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q005",
+      "mission_id": "NS-M01",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "launch",
+      "title": "Build the Clay C/D to Lean terminal-statement comparison table",
+      "summary": "Create a line-by-line semantic comparison between the official C/D alternatives and the terminal public Lean theorem or theorems.",
+      "task": "Extract the quantifiers, domains, regularity assumptions, force conditions, initial data, solution behavior, and terminal conclusion from both sides. Mark exact matches, encodings, stronger or weaker conditions, and unresolved correspondence.",
+      "deliverables": [
+        "A claim-by-claim comparison matrix with stable locators."
+      ],
+      "acceptance": [
+        "Every material C/D hypothesis and conclusion appears in the matrix.",
+        "Formal and informal sides have stable source locations.",
+        "Unresolved semantic bridges are explicit.",
+        "A second Lean/PDE-capable reviewer is requested before any independently-reviewed status."
+      ],
+      "review": {
+        "class": "semantic-formal-review",
+        "independence": "Independent Lean/PDE review required for acceptance as scientific evidence.",
+        "required_expertise": "Lean theorem reading plus PDE statement semantics."
+      },
+      "contributors": [
+        "Lean experts",
+        "PDE mathematicians",
+        "formal-methods researchers"
+      ],
+      "source_ids": [
+        "openai-lean",
+        "clay-formulation",
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C002",
+        "NS-C003"
+      ],
+      "tags": [
+        "lean",
+        "clay",
+        "semantic"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q006",
+      "mission_id": "NS-M02",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "launch",
+      "title": "Index the analytic proof by dependency and source location",
+      "summary": "Produce a compact section, theorem, and lemma dependency inventory for the published analytic paper.",
+      "task": "Read the paper and map each named theorem, lemma, or proposition used by the terminal blowup theorem, with page or section locators and dependency edges. Do not certify correctness in this quest.",
+      "deliverables": [
+        "Machine-readable dependency graph.",
+        "Human-readable outline keyed to source locations."
+      ],
+      "acceptance": [
+        "Terminal theorem is included.",
+        "All direct named dependencies in the chosen scope are represented.",
+        "Edges cite source locations.",
+        "Correctness review is explicitly out of scope."
+      ],
+      "review": {
+        "class": "structure-review",
+        "independence": "Maintainer or second mapper checks a coverage sample.",
+        "required_expertise": "Graduate mathematical reading."
+      },
+      "contributors": [
+        "analysis graduate students",
+        "PDE researchers",
+        "mathematical editors",
+        "AI research agents"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C002"
+      ],
+      "tags": [
+        "proof-map",
+        "paper"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q007",
+      "mission_id": "NS-M14",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "launch",
+      "title": "Audit the public A/B/C/D explainer for branch leakage",
+      "summary": "Check that no public page implies the forced C/D claim settles the unforced A/B question.",
+      "task": "Search the generated site and source content for A/B/C/D wording. Classify each occurrence as correct, ambiguous, or misleading against the official Clay formulation.",
+      "deliverables": [
+        "Occurrence table with file or page, text, classification, and proposed correction where needed."
+      ],
+      "acceptance": [
+        "All generated HTML and canonical source text are searched.",
+        "The official Clay formulation is the comparison anchor.",
+        "No ambiguous occurrence is silently waived."
+      ],
+      "review": {
+        "class": "content-review",
+        "independence": "Maintainer can verify mechanical coverage; PDE reviewer needed for disputed semantics.",
+        "required_expertise": "Careful source reading."
+      },
+      "contributors": [
+        "students",
+        "science communicators",
+        "source auditors",
+        "AI agents"
+      ],
+      "source_ids": [
+        "clay-formulation",
+        "openai-announcement"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C002",
+        "NS-C003"
+      ],
+      "tags": [
+        "communication",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q008",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L1",
+      "priority": "launch",
+      "title": "Recompute every Observatory default value",
+      "summary": "Independently evaluate the normalized scaling formulas at the default tau and h and compare them with rendered values.",
+      "task": "Use an independent script, spreadsheet, or hand calculation to reproduce each displayed default quantity and trajectory endpoint from scaling_model.json.",
+      "deliverables": [
+        "Independent calculation artifact.",
+        "Difference table against rendered values."
+      ],
+      "acceptance": [
+        "Every displayed default quantity is covered.",
+        "Tolerance is declared before comparison.",
+        "Any discrepancy is reproducible."
+      ],
+      "review": {
+        "class": "numerical-reproduction",
+        "independence": "Different implementation from the website generator preferred.",
+        "required_expertise": "Basic scientific computing."
+      },
+      "contributors": [
+        "students",
+        "scientific programmers",
+        "numerical analysts",
+        "AI coding agents"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C004",
+        "NS-C005"
+      ],
+      "tags": [
+        "scaling",
+        "starter",
+        "numerics"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q009",
+      "mission_id": "NS-M03",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L4",
+      "priority": "launch",
+      "title": "Prove the spatial Lp scaling threshold for the published core model",
+      "summary": "Turn the characteristic core scales into a rigorous, explicitly scoped spatial Lp estimate or identify the missing profile hypotheses needed to do so.",
+      "task": "Starting from the cited inner-core scales, formulate the candidate Lp behavior, state the subregion or profile lower bounds required, and prove matching bounds where the paper supports them. If evidence is insufficient, publish the obstruction precisely.",
+      "deliverables": [
+        "Research note with theorem or proposition statements.",
+        "Source-to-assumption table.",
+        "Proof or exact gap statement."
+      ],
+      "acceptance": [
+        "Characteristic-scale heuristics are not presented as theorems.",
+        "All profile lower or upper bounds used have source locations or are stated as missing.",
+        "Critical exponent derivation is algebraically checked.",
+        "Independent PDE review is required for acceptance."
+      ],
+      "review": {
+        "class": "pde-mathematical-review",
+        "independence": "Qualified independent PDE reviewer required.",
+        "required_expertise": "PDE functional analysis and Lp scaling."
+      },
+      "contributors": [
+        "PDE analysts",
+        "harmonic analysts",
+        "graduate students"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C005"
+      ],
+      "tags": [
+        "pde",
+        "norms",
+        "research"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q010",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L3",
+      "priority": "launch",
+      "title": "Build a formula-driven A/B/C/D branch explorer",
+      "summary": "Add an accessible public branch explorer that makes the logical difference between A/B and C/D inspectable without relying on color or JavaScript.",
+      "task": "Implement a static-first branch representation driven by structured content. Add progressive interaction only if it improves comparison. Use the official Clay formulation as the canonical source.",
+      "deliverables": [
+        "Structured branch data.",
+        "Generated HTML, SVG, or equivalent.",
+        "No-JS fallback.",
+        "Accessibility and content tests."
+      ],
+      "acceptance": [
+        "All four alternatives are represented.",
+        "Forcing permissions are explicit.",
+        "No branch is labeled solved by Commons.",
+        "Keyboard and no-JS paths remain complete.",
+        "Automated tests plus source review pass."
+      ],
+      "review": {
+        "class": "software-content-review",
+        "independence": "Maintainer plus source reviewer.",
+        "required_expertise": "Frontend accessibility and careful mathematical source use."
+      },
+      "contributors": [
+        "frontend developers",
+        "information designers",
+        "students",
+        "AI coding agents"
+      ],
+      "source_ids": [
+        "clay-formulation"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "frontend",
+        "clay",
+        "visualization"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q011",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L1",
+      "priority": "launch",
+      "title": "Run the complete keyboard and no-JavaScript smoke test",
+      "summary": "Exercise the launch site with keyboard only and with JavaScript disabled on all unique page types.",
+      "task": "Test root, home, missions, quest board, one quest, one mission, guide, contribute, activity, sources, agents, governance, and accessibility pages. Record reachability, focus visibility, form or link behavior, and missing content.",
+      "deliverables": [
+        "Test matrix with browser and version, page type, JS state, outcome, and issue links."
+      ],
+      "acceptance": [
+        "Every unique page type is covered.",
+        "At least one narrow and one desktop viewport are used.",
+        "Any blocker is reproducible."
+      ],
+      "review": {
+        "class": "accessibility-engineering-review",
+        "independence": "Independent tester preferred; real AT review remains separate.",
+        "required_expertise": "Keyboard accessibility testing."
+      },
+      "contributors": [
+        "accessibility testers",
+        "students",
+        "web developers"
+      ],
+      "source_ids": [
+        "wcag22"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "accessibility",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q012",
+      "mission_id": "NS-M17",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "launch",
+      "title": "Check source claim wording against exact support",
+      "summary": "Pick five consequential public factual sentences and verify that the cited source supports the exact wording and confidence level.",
+      "task": "Sample at least one OpenAI claim, one Clay formulation claim, one scaling claim, one Lean-repository claim, and one standards claim. Record support, overreach, or ambiguity.",
+      "deliverables": [
+        "Five-row claim-to-source audit."
+      ],
+      "acceptance": [
+        "Each row includes public statement, source locator, support classification, and correction if needed.",
+        "Source-reported claims are not upgraded to independently established facts."
+      ],
+      "review": {
+        "class": "source-review",
+        "independence": "Different reviewer from original copy author preferred.",
+        "required_expertise": "Source criticism."
+      },
+      "contributors": [
+        "students",
+        "research editors",
+        "librarians",
+        "AI research agents"
+      ],
+      "source_ids": [
+        "openai-announcement",
+        "openai-paper",
+        "openai-lean",
+        "clay-formulation",
+        "wcag22"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "source",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q013",
+      "mission_id": "NS-M12",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "standard",
+      "title": "Create the first five glossary flash checks",
+      "summary": "Turn five core terms into short learner checks that distinguish definitions from claims.",
+      "task": "Use the existing glossary and primary sources to create five question-answer pairs covering force, incompressibility, blowup, formal certificate, and open mission.",
+      "deliverables": [
+        "Five public learner checks with answers and source links where factual."
+      ],
+      "acceptance": [
+        "No answer overstates the 2026 result.",
+        "Each technical term has a source or clearly marked project definition.",
+        "A second reader can complete the set in under 15 minutes."
+      ],
+      "review": {
+        "class": "education-review",
+        "independence": "Educator or knowledgeable maintainer review.",
+        "required_expertise": "Technical communication."
+      },
+      "contributors": [
+        "first-year students",
+        "educators",
+        "science communicators"
+      ],
+      "source_ids": [
+        "clay-formulation",
+        "openai-announcement",
+        "lean-reference"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "education",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q014",
+      "mission_id": "NS-M12",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L1",
+      "priority": "standard",
+      "title": "Reproduce one Lean declaration locally without proving new mathematics",
+      "summary": "Select one small declaration or environment check from the pinned public certificate and produce a clean reproducibility note.",
+      "task": "Use the source-pinned Lean environment. Compile or inspect one bounded target that does not require solving an open theorem. Record exact commands and output.",
+      "deliverables": [
+        "Reproduction note with source commit, toolchain, commands, and output."
+      ],
+      "acceptance": [
+        "The target is named and bounded.",
+        "No proof hole is passed off as a new proof.",
+        "Environment identifiers are exact."
+      ],
+      "review": {
+        "class": "formal-reproduction",
+        "independence": "Maintainer verification sufficient for learner artifact.",
+        "required_expertise": "Basic Lean and Lake."
+      },
+      "contributors": [
+        "Lean learners",
+        "students",
+        "AI coding agents"
+      ],
+      "source_ids": [
+        "openai-lean",
+        "lean-reference"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "lean",
+        "education"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q015",
+      "mission_id": "NS-M11",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "standard",
+      "title": "Map ten Lean declarations to analytic-paper concepts",
+      "summary": "Choose ten nontrivial declarations and map each to the paper concept or lemma it formalizes, or explicitly mark no direct correspondence.",
+      "task": "Use stable declaration names and source locations. Explain the semantic role without claiming complete proof correspondence.",
+      "deliverables": [
+        "Ten-row paper-to-Lean mapping."
+      ],
+      "acceptance": [
+        "Each declaration has an immutable code locator.",
+        "Each paper link has section, page, or theorem locator.",
+        "Unclear correspondences remain marked unclear."
+      ],
+      "review": {
+        "class": "formal-semantic-review",
+        "independence": "Sample review by Lean or PDE contributor.",
+        "required_expertise": "Lean plus mathematical reading."
+      },
+      "contributors": [
+        "Lean users",
+        "graduate students",
+        "technical writers"
+      ],
+      "source_ids": [
+        "openai-lean",
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "lean",
+        "proof-map"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q016",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L3",
+      "priority": "standard",
+      "title": "Generate the Lean declaration dependency graph",
+      "summary": "Build a reproducible extractor or static analysis that emits a dependency graph for the relevant public Lean certificate slice.",
+      "task": "Choose an explicitly documented root declaration set. Produce nodes and edges and preserve declaration or module names. Separate kernel dependencies from conceptual grouping.",
+      "deliverables": [
+        "Source code.",
+        "Machine-readable graph.",
+        "Reproduction command.",
+        "Sample rendered view."
+      ],
+      "acceptance": [
+        "Root set is documented.",
+        "Graph generation is deterministic for the pinned commit.",
+        "No private source is required.",
+        "At least one independent run or fixture verifies output shape."
+      ],
+      "review": {
+        "class": "software-formal-review",
+        "independence": "Second run preferred.",
+        "required_expertise": "Lean tooling or source analysis."
+      },
+      "contributors": [
+        "Lean toolsmiths",
+        "software engineers",
+        "AI coding agents"
+      ],
+      "source_ids": [
+        "openai-lean"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "lean",
+        "tooling",
+        "graph"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q017",
+      "mission_id": "NS-M08",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "standard",
+      "title": "Specify the minimum computable manufactured-solution interface",
+      "summary": "Determine exactly which published fields or formulas would be needed to turn the construction into a numerical verification benchmark, and which are not yet extractable from the paper.",
+      "task": "Produce an interface specification for u, p, f, domain, time interval, parameters, norms, and reference outputs. Mark unavailable or non-explicit components instead of inventing them.",
+      "deliverables": [
+        "Benchmark interface specification.",
+        "Availability and gap table keyed to paper sections."
+      ],
+      "acceptance": [
+        "Every required solver input or output field is represented.",
+        "Unavailable data are explicit blockers, not guessed.",
+        "At least one CFD or numerical reviewer checks the interface before benchmark implementation."
+      ],
+      "review": {
+        "class": "numerical-design-review",
+        "independence": "CFD or numerical reviewer required.",
+        "required_expertise": "Incompressible CFD verification."
+      },
+      "contributors": [
+        "CFD researchers",
+        "numerical analysts",
+        "scientific programmers"
+      ],
+      "source_ids": [
+        "openai-paper",
+        "asme-vv20"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "cfd",
+        "benchmark"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q018",
+      "mission_id": "NS-M08",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L5",
+      "priority": "standard",
+      "title": "Implement a first singular manufactured-solution benchmark prototype",
+      "summary": "If Q017 identifies a computable faithful subset, implement a solver-independent benchmark package and a first refinement study; otherwise publish the blocked state with exact missing ingredients.",
+      "task": "Create executable benchmark definitions, residual checks, and a minimal spatial or time refinement protocol. Do not call it validated until independent implementation exists.",
+      "deliverables": [
+        "Benchmark code.",
+        "Residual verification.",
+        "Refinement study.",
+        "Environment lock.",
+        "Blocked-state report if prerequisites fail."
+      ],
+      "acceptance": [
+        "Depends on Q017.",
+        "Divergence and residual conventions are independently checked.",
+        "Observed order is reported with the selected norms.",
+        "Independent implementation is required before benchmark-release status."
+      ],
+      "review": {
+        "class": "numerical-research-review",
+        "independence": "Independent CFD implementation or reviewer required for accepted benchmark status.",
+        "required_expertise": "CFD V&V."
+      },
+      "contributors": [
+        "CFD researchers",
+        "numerical analysts",
+        "HPC engineers"
+      ],
+      "source_ids": [
+        "openai-paper",
+        "asme-vv20"
+      ],
+      "dependencies": [
+        "NS-Q017"
+      ],
+      "claim_ids": [],
+      "tags": [
+        "cfd",
+        "benchmark",
+        "research"
+      ],
+      "parallel_safe": false,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q019",
+      "mission_id": "NS-M14",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L3",
+      "priority": "standard",
+      "title": "Build the finite-energy, unbounded-speed public explainer",
+      "summary": "Create a source-faithful explainer showing how shrinking volume and growing speed can coexist with a decaying core energy scale.",
+      "task": "Use the canonical scaling model to build one static and one interactive representation. Explicitly distinguish normalized asymptotic scaling from a literal physical movie.",
+      "deliverables": [
+        "Public explainer artifact.",
+        "Accessible text equivalent.",
+        "Source mapping.",
+        "Comprehension test script."
+      ],
+      "acceptance": [
+        "Displayed exponents come from canonical model data.",
+        "No implication about ordinary fluids or weather is made without a bridge.",
+        "Reduced-motion and no-JS representation is complete."
+      ],
+      "review": {
+        "class": "science-communication-review",
+        "independence": "Mathematical source reviewer plus non-specialist comprehension tester.",
+        "required_expertise": "Science communication with quantitative literacy."
+      },
+      "contributors": [
+        "science communicators",
+        "designers",
+        "educators",
+        "frontend developers"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "public-science",
+        "visualization"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q020",
+      "mission_id": "NS-M14",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L1",
+      "priority": "standard",
+      "title": "Run five-person comprehension checks on the public explainer",
+      "summary": "Test whether readers can distinguish finite energy, unbounded velocity, external forcing, and the A/B versus C/D distinction.",
+      "task": "Use the provided or contributed explainer. Ask fixed comprehension questions before giving corrections. Record anonymized aggregate outcomes only.",
+      "deliverables": [
+        "Protocol.",
+        "Anonymized response summary.",
+        "Observed misconceptions and proposed changes."
+      ],
+      "acceptance": [
+        "At least five participants complete the same core questions.",
+        "No sensitive personal data are collected.",
+        "Results separate comprehension failures from preferences."
+      ],
+      "review": {
+        "class": "human-study",
+        "independence": "Participants must not have authored the explainer.",
+        "required_expertise": "Basic study protocol with minimal non-sensitive data collection."
+      },
+      "contributors": [
+        "educators",
+        "UX researchers",
+        "science communicators"
+      ],
+      "source_ids": [
+        "clay-formulation",
+        "openai-paper"
+      ],
+      "dependencies": [
+        "NS-Q019"
+      ],
+      "claim_ids": [],
+      "tags": [
+        "usability",
+        "education"
+      ],
+      "parallel_safe": false,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q021",
+      "mission_id": "NS-M03",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "standard",
+      "title": "Independently derive the normalized energy exponent",
+      "summary": "Check the algebra that combines the characteristic speed and core-volume exponents into the energy-scale exponent used by the Observatory.",
+      "task": "Starting from the source-recorded speed and geometry exponents, derive the normalized kinetic-energy exponent, state exactly what is algebraic versus source-reported, and compare with the paper statement.",
+      "deliverables": [
+        "One-page derivation or notebook or script."
+      ],
+      "acceptance": [
+        "All exponents are displayed symbolically.",
+        "The source-reported relation and derived multiplication are distinguished.",
+        "Result is checked by an independent algebraic method or reviewer."
+      ],
+      "review": {
+        "class": "mathematical-derivation-review",
+        "independence": "Second checker or independent script.",
+        "required_expertise": "Algebra and asymptotic notation."
+      },
+      "contributors": [
+        "students",
+        "PDE graduate students",
+        "AI math agents"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [
+        "NS-C005"
+      ],
+      "tags": [
+        "math",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q022",
+      "mission_id": "NS-M10",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "standard",
+      "title": "Map one operational NWP system to theorem-level model differences",
+      "summary": "Produce a disciplined comparison between the incompressible forced Navier-Stokes system discussed here and one documented operational or research NWP governing-equation stack.",
+      "task": "Choose one ECMWF IFS documentation version or scope. List rotation, stratification, compressibility or anelastic assumptions, thermodynamics, moisture, boundaries, parameterizations, and discretization elements relevant to why direct theorem transfer is not automatic.",
+      "deliverables": [
+        "Model-difference matrix with authoritative citations."
+      ],
+      "acceptance": [
+        "One NWP model or version is fixed.",
+        "The comparison separates equation differences from numerical implementation differences.",
+        "No claim of practical forecast failure follows solely from the blowup theorem."
+      ],
+      "review": {
+        "class": "geophysical-review",
+        "independence": "Meteorology or NWP reviewer required for scientific acceptance.",
+        "required_expertise": "NWP or geophysical fluid dynamics."
+      },
+      "contributors": [
+        "meteorologists",
+        "NWP engineers",
+        "atmospheric science students"
+      ],
+      "source_ids": [
+        "ecmwf-ifs",
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "weather",
+        "nwp"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q023",
+      "mission_id": "NS-M15",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Operationalize the Commons proof-evidence taxonomy",
+      "summary": "Define and test the distinction between kernel-checked derivation, correct terminal statement, semantic correspondence, reproducibility, expert review, and scientific acceptance.",
+      "task": "Apply the taxonomy to at least three concrete claims from the 2026 Navier-Stokes episode and show which evidence can and cannot upgrade each status.",
+      "deliverables": [
+        "Research note.",
+        "Machine-readable status transition examples."
+      ],
+      "acceptance": [
+        "Definitions are non-circular.",
+        "Examples include a formal build claim and a paper-to-formal correspondence claim.",
+        "Automation limits are explicit.",
+        "Independent formal-methods or philosophy-of-science review is requested."
+      ],
+      "review": {
+        "class": "methodology-review",
+        "independence": "Independent domain reviewer required for accepted research status.",
+        "required_expertise": "Formal-methods epistemology or research integrity."
+      },
+      "contributors": [
+        "formal-methods researchers",
+        "philosophers of science",
+        "research-integrity scholars"
+      ],
+      "source_ids": [
+        "openai-lean",
+        "openai-paper",
+        "clay-formulation"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "epistemology",
+        "research"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q024",
+      "mission_id": "NS-M16",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L3",
+      "priority": "launch",
+      "title": "Run an agent cold-start quest selection benchmark",
+      "summary": "Measure whether different agents can discover the Commons, identify a suitable quest, and produce a compliant attempt draft using only public machine interfaces.",
+      "task": "Test at least three materially different agent or harness configurations. Give each only the public root URL or repository. Record discovery path, selected quest, protocol violations, tool calls, and result quality.",
+      "deliverables": [
+        "Benchmark protocol.",
+        "Raw non-secret traces or structured summaries.",
+        "Scored compliance table."
+      ],
+      "acceptance": [
+        "All agents receive equivalent public starting information.",
+        "Hidden project context is not supplied.",
+        "Failures such as treating open questions as facts are scored explicitly.",
+        "Model and tool provenance is recorded."
+      ],
+      "review": {
+        "class": "agent-evaluation",
+        "independence": "Benchmark author may run agents; scoring rubric should be independently checked.",
+        "required_expertise": "Agent evaluation and reproducibility."
+      },
+      "contributors": [
+        "AI researchers",
+        "agent operators",
+        "software engineers"
+      ],
+      "source_ids": [
+        "prove2me-public"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "agents",
+        "benchmark"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q025",
+      "mission_id": "NS-M16",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Compare parallel-independent versus shared-context agent work",
+      "summary": "Test whether independent agent attempts reduce correlated errors or merely duplicate work on one bounded Commons quest.",
+      "task": "Choose one reproducible quest suitable for agents. Run matched independent and shared-context conditions with fixed budgets, then compare accepted-progress proxy, duplication, error overlap, and review burden.",
+      "deliverables": [
+        "Predeclared protocol.",
+        "Condition logs.",
+        "Analysis with uncertainty.",
+        "Negative results accepted."
+      ],
+      "acceptance": [
+        "Budgets and target are fixed before runs.",
+        "Outcome variables are not raw token count.",
+        "Correlated-error analysis is included.",
+        "No broad claim is made from one quest."
+      ],
+      "review": {
+        "class": "experimental-review",
+        "independence": "Analysis or protocol review by a second evaluator.",
+        "required_expertise": "LLM evaluation and experimental design."
+      },
+      "contributors": [
+        "AI evaluation researchers",
+        "statisticians",
+        "agent operators"
+      ],
+      "source_ids": [
+        "prove2me-public"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "agents",
+        "experiment"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q026",
+      "mission_id": "NS-M18",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L0",
+      "priority": "standard",
+      "title": "Audit one mission for well-posedness before proposing a side quest",
+      "summary": "Use the mission-authoring rubric to find one ambiguity, missing acceptance condition, or hidden dependency in an existing mission, or record that the sampled mission passes.",
+      "task": "Select one mission randomly or by declared rule. Check exact question, sources, acceptance, contributor fit, dependencies, and claim boundary.",
+      "deliverables": [
+        "Mission audit checklist with findings."
+      ],
+      "acceptance": [
+        "Sampling rule is stated.",
+        "Every rubric item has pass, fail, or not-applicable evidence.",
+        "Any proposed fix preserves the original scientific scope."
+      ],
+      "review": {
+        "class": "mission-governance-review",
+        "independence": "Maintainer verifies scope changes.",
+        "required_expertise": "Careful research-method reading."
+      },
+      "contributors": [
+        "students",
+        "research editors",
+        "AI agents",
+        "independent researchers"
+      ],
+      "source_ids": [],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "community",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q027",
+      "mission_id": "NS-M18",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L1",
+      "priority": "standard",
+      "title": "Propose one evidence-backed side quest",
+      "summary": "Create a new bounded question that is not already covered, with public prior-art check and acceptance path.",
+      "task": "Use the public side-quest template. Search the existing mission and quest catalog first, then provide sources, exact question, artifact type, reviewer class, and why it is not duplicate work.",
+      "deliverables": [
+        "Completed side-quest proposal."
+      ],
+      "acceptance": [
+        "Existing catalog was checked.",
+        "At least one authoritative or primary source anchors the context when factual.",
+        "Acceptance is falsifiable.",
+        "Proposer does not claim the answer is open without evidence."
+      ],
+      "review": {
+        "class": "mission-governance-review",
+        "independence": "Bootstrap maintainer triage; domain reviewer required before promotion to research mission if needed.",
+        "required_expertise": "Topic-dependent."
+      },
+      "contributors": [
+        "everyone",
+        "students",
+        "professors",
+        "AI agents"
+      ],
+      "source_ids": [],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "community",
+        "starter"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q028",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L3",
+      "priority": "launch",
+      "title": "Cross-browser launch audit in Firefox and WebKit",
+      "summary": "Run the unique page-type and critical interaction matrix in Firefox and WebKit or Safari-class engines and record divergences from Chromium.",
+      "task": "Cover root, home, missions, quests, mission detail, quest detail, contribute, agents, governance, scaling controls, no-JS, reduced motion, and one RTL page.",
+      "deliverables": [
+        "Browser and version matrix.",
+        "Screenshots or traces for failures.",
+        "Issue list with severity."
+      ],
+      "acceptance": [
+        "Firefox and a WebKit or Safari-class engine are both represented.",
+        "Critical states are covered.",
+        "Failures have reproduction steps."
+      ],
+      "review": {
+        "class": "browser-compat-review",
+        "independence": "Tester need not be independent from code author, but blockers require re-test after fix.",
+        "required_expertise": "Web platform testing."
+      },
+      "contributors": [
+        "web developers",
+        "QA engineers",
+        "accessibility engineers"
+      ],
+      "source_ids": [
+        "wcag22"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "browser",
+        "frontend"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q029",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "launch",
+      "title": "Assistive-technology review of the launch workflow",
+      "summary": "Test mission and quest discovery plus contribution instructions with at least one real screen reader and browser combination.",
+      "task": "Use NVDA, JAWS, VoiceOver, or TalkBack on the public site. Follow root to a quest, inspect source and acceptance information, and reach the contribution action.",
+      "deliverables": [
+        "AT, browser, and version test log.",
+        "Blockers and severity."
+      ],
+      "acceptance": [
+        "A real assistive technology is used.",
+        "The exact workflow is recorded.",
+        "Language boundary behavior is included for at least one non-English surface when feasible."
+      ],
+      "review": {
+        "class": "assistive-technology-review",
+        "independence": "Prefer disabled-user or specialist participation.",
+        "required_expertise": "Screen-reader testing."
+      },
+      "contributors": [
+        "accessibility specialists",
+        "screen-reader users"
+      ],
+      "source_ids": [
+        "wcag22",
+        "w3c-i18n-lang",
+        "w3c-i18n-dir"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "accessibility",
+        "at"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q030",
+      "mission_id": "NS-M18",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "launch",
+      "title": "Review bootstrap governance for capture, conflicts, and appeals",
+      "summary": "Adversarially review whether a single bootstrap maintainer can transparently open the project without being able to self-certify contested scientific claims.",
+      "task": "Read GOVERNANCE.md, REVIEW_POLICY.md, MISSION_POLICY.md, and contribution templates. Identify unilateral powers, required disclosures, appeal paths, and status transitions. Propose minimal corrections.",
+      "deliverables": [
+        "Governance threat model and concrete findings."
+      ],
+      "acceptance": [
+        "Scientific claim elevation rules are checked.",
+        "Conflict-of-interest handling is checked.",
+        "Correction and appeal path is checked.",
+        "The review distinguishes launch governance from mature-institution governance."
+      ],
+      "review": {
+        "class": "governance-review",
+        "independence": "Reviewer should not be the bootstrap maintainer for acceptance.",
+        "required_expertise": "Research governance, open-source governance, or mechanism design."
+      },
+      "contributors": [
+        "research-governance specialists",
+        "open-source maintainers",
+        "economists",
+        "administrators"
+      ],
+      "source_ids": [],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "governance",
+        "community"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q031",
+      "mission_id": "NS-M04",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Classify stronger forcing constraints one at a time",
+      "summary": "Turn the broad stronger-forcing mission into a precise constraint matrix before attempting constructions.",
+      "task": "Choose divergence-free forcing, prescribed forcing class, small critical norm, Gevrey regularity, or temporal support as separate rows. For each row, state the exact function space, whether the published construction already satisfies it, what would need to change, and what theorem or obstruction would count.",
+      "deliverables": [
+        "Constraint matrix with source locations and one recommended first target."
+      ],
+      "acceptance": [
+        "Every row has an exact mathematical formulation.",
+        "Current evidence and conjecture are separated.",
+        "No row is claimed feasible solely by analogy.",
+        "A PDE reviewer checks the recommended target before research-status promotion."
+      ],
+      "review": {
+        "class": "pde-scope-review",
+        "independence": "Independent PDE reviewer required for scientific acceptance.",
+        "required_expertise": "Forced Navier-Stokes and function-space analysis."
+      },
+      "contributors": [
+        "PDE analysts",
+        "control theorists",
+        "graduate students"
+      ],
+      "source_ids": [
+        "openai-paper",
+        "clay-formulation"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "forcing",
+        "pde"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q032",
+      "mission_id": "NS-M05",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L5",
+      "priority": "standard",
+      "title": "Build a forced-to-unforced route and obstruction ledger",
+      "summary": "Enumerate concrete mechanisms that could remove or terminate forcing and specify exact failure tests for each.",
+      "task": "Study restart, gluing, limiting, localization in time, self-sustaining amplification, and related routes only to the extent justified by sources. For each route, state the required bridge to the official A/B target and the earliest rigorous kill criterion.",
+      "deliverables": [
+        "Route ledger with assumptions, target implication, known obstruction, and testable next lemma for each route."
+      ],
+      "acceptance": [
+        "The official unforced target is written exactly enough to prevent objective drift.",
+        "Every route has a falsifiable bridge condition.",
+        "Known no-go results are sourced.",
+        "No route is ranked promising without stated evidence."
+      ],
+      "review": {
+        "class": "frontier-pde-review",
+        "independence": "Independent senior PDE review required.",
+        "required_expertise": "3D Navier-Stokes regularity and singularity theory."
+      },
+      "contributors": [
+        "PDE researchers",
+        "geometric analysts",
+        "control theorists"
+      ],
+      "source_ids": [
+        "openai-paper",
+        "clay-formulation"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "frontier",
+        "unforced"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q033",
+      "mission_id": "NS-M06",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Specify perturbation topologies for a stability test",
+      "summary": "Replace the word stability with a finite list of mathematically distinct perturbation questions.",
+      "task": "Define perturbations of initial data, force, constructed profiles, parameters, and numerical discretization separately. For each, specify topology, observable, time horizon, and what positive or negative result would mean.",
+      "deliverables": [
+        "Typed stability-question matrix."
+      ],
+      "acceptance": [
+        "At least four perturbation classes are separated.",
+        "Each topology and outcome metric is explicit.",
+        "Algebraic robustness, PDE stability, and numerical robustness are not conflated.",
+        "PDE or dynamical-systems review checks the taxonomy."
+      ],
+      "review": {
+        "class": "stability-scope-review",
+        "independence": "Independent PDE or dynamical-systems reviewer required for scientific acceptance.",
+        "required_expertise": "Nonlinear PDE stability."
+      },
+      "contributors": [
+        "PDE analysts",
+        "dynamical-systems researchers",
+        "numerical analysts"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "stability",
+        "pde"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q034",
+      "mission_id": "NS-M07",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Write the inverse-design construction as a control problem",
+      "summary": "Produce a precise control-theoretic formulation of the published forced construction without implying controllability results that have not been proved.",
+      "task": "Identify state, control, dynamics, admissible control class, terminal singular behavior, candidate costs, and constraints. Map each element to the published construction and mark which optimization or controllability questions are genuinely open versus merely unstudied here.",
+      "deliverables": [
+        "Control-problem specification with source mapping and open-question status labels."
+      ],
+      "acceptance": [
+        "All state/control spaces are stated.",
+        "Published facts are separated from proposed research questions.",
+        "The formulation does not assert reachability or optimality without proof.",
+        "A PDE-control reviewer checks the final specification."
+      ],
+      "review": {
+        "class": "pde-control-review",
+        "independence": "Independent PDE-control reviewer required.",
+        "required_expertise": "Controllability or optimization for nonlinear PDE."
+      },
+      "contributors": [
+        "control theorists",
+        "PDE researchers",
+        "optimization researchers"
+      ],
+      "source_ids": [
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "control",
+        "inverse-design"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q035",
+      "mission_id": "NS-M09",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L5",
+      "priority": "standard",
+      "title": "Derive the first rotating or stratified residual modification",
+      "summary": "Choose one precisely stated geophysical extension and derive the additional terms that the inverse-design residual would have to absorb.",
+      "task": "Select either rotating incompressible Navier-Stokes or a specified Boussinesq model. Write the governing equations, nondimensional parameters, and residual after substituting the relevant published-style velocity/force design at the formal level available from sources. Do not claim the blowup mechanism survives.",
+      "deliverables": [
+        "Derivation note with governing model, residual terms, and explicit unresolved cancellation conditions."
+      ],
+      "acceptance": [
+        "One model and parameter regime are fixed.",
+        "Additional terms are derived symbolically.",
+        "Survival of the singular construction is not assumed.",
+        "Independent geophysical-fluid and PDE review is required."
+      ],
+      "review": {
+        "class": "geophysical-pde-review",
+        "independence": "Independent geophysical-fluid or PDE reviewer required.",
+        "required_expertise": "Rotating or stratified fluid dynamics and PDE."
+      },
+      "contributors": [
+        "geophysical fluid dynamicists",
+        "PDE researchers",
+        "atmospheric scientists"
+      ],
+      "source_ids": [
+        "openai-paper",
+        "ecmwf-ifs"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "geophysical",
+        "research"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q036",
+      "mission_id": "NS-M13",
+      "status": "open",
+      "origin": "maintainer-seed",
+      "rung": "L2",
+      "priority": "launch",
+      "title": "Run a blinded comparative visual and interaction review",
+      "summary": "Test whether the Commons feels distinctive, academically credible, inviting, and useful against strong contemporary research, agent, and simulation interfaces without turning taste into a machine-generated score.",
+      "task": "Recruit at least three independent reviewers who have not seen the design rationale. Randomize or otherwise blind product identity where practical. Have them complete the same short tasks across the Commons and a pre-registered reference set: find a starting task, understand what is known versus open, inspect one scientific interaction, and locate how to contribute. Collect forced-choice and defect-first judgments on visual identity, scientific honesty, information hierarchy, interaction purpose, memorability, accessibility cues, and perceived generative-template artifacts. Preserve disagreements rather than averaging away vetoes.",
+      "deliverables": [
+        "Pre-registered comparison protocol and reference-set hash.",
+        "Raw anonymized ratings and qualitative defect reports.",
+        "Decision memo separating convergent defects, disputed taste, and project-specific strengths."
+      ],
+      "acceptance": [
+        "The exact pre-registered reference set ID and current registry digest are recorded before review execution.",
+        "At least three independent reviewers complete the same task script.",
+        "Reference order and reviewer exposure are controlled or disclosed.",
+        "No weighted average can compensate for a veto-level failure in scientific honesty, legibility, or task completion.",
+        "The report distinguishes aesthetic preference from measurable usability and scientific-integrity failures."
+      ],
+      "review": {
+        "class": "comparative-design-review",
+        "independence": "Reviewers must not be authors of the evaluated release; the benchmark protocol may be authored by a maintainer but its execution must preserve raw individual judgments.",
+        "required_expertise": "Editorial or information design, interactive scientific communication, UX research, or adjacent demonstrated practice."
+      },
+      "contributors": [
+        "designers",
+        "UX researchers",
+        "science communicators",
+        "students"
+      ],
+      "source_ids": [],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "design",
+        "usability",
+        "benchmark",
+        "interaction"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true,
+      "benchmark_set_id": "NSC-BM-2026-09-10"
+    }
+  ]
+}

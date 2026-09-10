@@ -1,0 +1,121 @@
+{
+  "schema": "nsc-actions-v1",
+  "protocol": "forge-mediated-public-collaboration",
+  "principle": "The Commons defines logical collaboration transactions independently of a specific forge. A forge adapter supplies the concrete issue or pull-request URL. Canonical scientific state changes only through reviewed public data commits.",
+  "repository_authority": "content/public/project.json#/repository_url",
+  "operations": [
+    {
+      "id": "discover",
+      "effect": "read-only",
+      "requires_auth": false,
+      "machine_entrypoint_key": "discovery",
+      "description": "Discover canonical public endpoints and collaboration capabilities."
+    },
+    {
+      "id": "claim_quest",
+      "effect": "creates-non-exclusive-attempt-record",
+      "requires_auth": true,
+      "github_template": ".github/ISSUE_TEMPLATE/claim_quest.yml",
+      "gitlab_template": ".gitlab/issue_templates/attempt.md",
+      "required_fields": [
+        "quest_id",
+        "mission_id",
+        "approach",
+        "provenance"
+      ],
+      "invariants": [
+        "never grants exclusivity",
+        "does not alter claim status"
+      ]
+    },
+    {
+      "id": "open_mission_attempt",
+      "effect": "creates-non-exclusive-attempt-record",
+      "requires_auth": true,
+      "github_template": ".github/ISSUE_TEMPLATE/open_attempt.yml",
+      "gitlab_template": ".gitlab/issue_templates/attempt.md",
+      "required_fields": [
+        "mission_id",
+        "approach",
+        "provenance"
+      ],
+      "invariants": [
+        "never grants exclusivity",
+        "does not alter claim status"
+      ]
+    },
+    {
+      "id": "submit_result",
+      "effect": "creates-result-review-candidate",
+      "requires_auth": true,
+      "github_template": ".github/ISSUE_TEMPLATE/submit_result.yml",
+      "gitlab_template": ".gitlab/issue_templates/result.md",
+      "required_fields": [
+        "mission_or_quest_id",
+        "exact_claim_or_negative_result",
+        "artifact_locator",
+        "evidence",
+        "limitations",
+        "reproduction",
+        "provenance"
+      ],
+      "invariants": [
+        "submission is not acceptance",
+        "submission does not elevate scientific claims"
+      ]
+    },
+    {
+      "id": "request_review",
+      "effect": "creates-scoped-review-request",
+      "requires_auth": true,
+      "github_template": ".github/ISSUE_TEMPLATE/review.yml",
+      "gitlab_template": ".gitlab/issue_templates/review.md",
+      "required_fields": [
+        "target",
+        "review_class",
+        "scope",
+        "independence_disclosure"
+      ],
+      "invariants": [
+        "review scope must match claimed status transition"
+      ]
+    },
+    {
+      "id": "propose_side_quest",
+      "effect": "creates-quest-proposal",
+      "requires_auth": true,
+      "github_template": ".github/ISSUE_TEMPLATE/side_quest.yml",
+      "gitlab_template": ".gitlab/issue_templates/side_quest.md",
+      "required_fields": [
+        "parent_mission_or_new_mission_case",
+        "question",
+        "deliverable",
+        "acceptance",
+        "sources"
+      ],
+      "invariants": [
+        "proposal is not catalog admission",
+        "mission policy governs admission"
+      ]
+    },
+    {
+      "id": "accept_record",
+      "effect": "changes-canonical-public-state",
+      "requires_auth": true,
+      "channel": "reviewed-pull-request",
+      "canonical_target": "typed canonical public ledger",
+      "required_fields": [
+        "artifact",
+        "evidence",
+        "review_records",
+        "status_transition"
+      ],
+      "invariants": [
+        "required review class satisfied",
+        "conflicts disclosed",
+        "all release gates pass",
+        "generated HTML is never manually authoritative"
+      ]
+    }
+  ]
+}

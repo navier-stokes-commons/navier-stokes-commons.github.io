@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSC Mission",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "slug",
+    "status",
+    "category",
+    "level",
+    "title",
+    "summary",
+    "question",
+    "acceptance",
+    "contributors",
+    "source_ids"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^NS-M[0-9]{2}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "resolved",
+        "retired"
+      ]
+    },
+    "question": {
+      "type": "string",
+      "minLength": 20
+    },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

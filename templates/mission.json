@@ -1,0 +1,21 @@
+{
+  "id": "NS-M00",
+  "slug": "replace-me",
+  "status": "open",
+  "category": "community",
+  "level": "entry",
+  "title": "REPLACE",
+  "summary": "REPLACE",
+  "question": "REPLACE",
+  "starting_points": [],
+  "acceptance": [
+    "REPLACE"
+  ],
+  "contributors": [
+    "REPLACE"
+  ],
+  "source_ids": [],
+  "origin": "community-proposal",
+  "governance_status": "public-rfc",
+  "captain_role": "bootstrap-maintainer"
+}

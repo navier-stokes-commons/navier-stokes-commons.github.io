@@ -1,0 +1,31 @@
+{
+  "id": "NS-Q000",
+  "mission_id": "NS-M00",
+  "status": "open",
+  "origin": "maintainer-or-community",
+  "rung": "L1",
+  "priority": "normal",
+  "title": "REPLACE",
+  "summary": "REPLACE",
+  "task": "REPLACE",
+  "deliverables": [
+    "REPLACE"
+  ],
+  "acceptance": [
+    "REPLACE"
+  ],
+  "review": {
+    "class": "REPLACE",
+    "independence": "REPLACE",
+    "required_expertise": "REPLACE"
+  },
+  "contributors": [
+    "REPLACE"
+  ],
+  "source_ids": [],
+  "dependencies": [],
+  "claim_ids": [],
+  "tags": [],
+  "parallel_safe": true,
+  "non_exclusive": true
+}

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "openai-announcement",
+    "kind": "primary",
+    "title": "On the Navier–Stokes Millennium Prize Problem",
+    "publisher": "OpenAI",
+    "date": "2026-09-08",
+    "url": "https://openai.com/index/navier-stokes-solution/",
+    "claims_supported": [
+      "OpenAI published an analytic proof and Lean formalization",
+      "OpenAI states the result establishes alternatives C and D of the official Clay formulation",
+      "OpenAI describes a multi-agent search and verification process"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "openai-paper",
+    "kind": "primary",
+    "title": "Finite time blowup for Navier–Stokes",
+    "publisher": "OpenAI",
+    "date": "2026-09-08",
+    "url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+    "claims_supported": [
+      "Analytic construction and theorem statements published by OpenAI",
+      "Section 2.1 inner-core scaling relations used by the public scaling simulator: tau = 1 - t, radial scale asymptotic to tau^(1/2), axial scale asymptotic to tau^(1/2-h), angular-speed scale asymptotic to tau^(-1/2-h), core kinetic-energy scale of order tau^(1/2-3h), and angular Reynolds-number scale asymptotic to tau^(-h), with 0 < h < 1/100"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "versioned-or-content-address-like-url"
+  },
+  {
+    "id": "openai-lean",
+    "kind": "primary",
+    "title": "openai/NavierStokesAndEuler",
+    "publisher": "OpenAI / GitHub",
+    "date": "2026-09-08",
+    "url": "https://github.com/openai/NavierStokesAndEuler/tree/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+    "claims_supported": [
+      "Public Lean certificate repository accompanying the published results"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "immutable-git-commit",
+    "version": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538"
+  },
+  {
+    "id": "clay-ns",
+    "kind": "primary",
+    "title": "Navier–Stokes Equation",
+    "publisher": "Clay Mathematics Institute",
+    "url": "https://www.claymath.org/millennium/navier-stokes-equation/",
+    "claims_supported": [
+      "Official Millennium Prize problem landing page"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "clay-formulation",
+    "kind": "primary",
+    "title": "Existence and Smoothness of the Navier–Stokes Equation",
+    "publisher": "Clay Mathematics Institute",
+    "url": "https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf",
+    "claims_supported": [
+      "Official A/B/C/D formulation and admissibility conditions"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "versioned-or-content-address-like-url"
+  },
+  {
+    "id": "wcag22",
+    "kind": "standard",
+    "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+    "publisher": "W3C",
+    "url": "https://www.w3.org/TR/WCAG22/",
+    "claims_supported": [
+      "Accessibility target for this public website"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "versioned-or-content-address-like-url"
+  },
+  {
+    "id": "w3c-i18n-lang",
+    "kind": "standard",
+    "title": "Declaring language in HTML",
+    "publisher": "W3C Internationalization",
+    "url": "https://www.w3.org/International/questions/qa-html-language-declarations.html",
+    "claims_supported": [
+      "Language declaration practice"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "w3c-i18n-dir",
+    "kind": "standard",
+    "title": "Structural markup and right-to-left text in HTML",
+    "publisher": "W3C Internationalization",
+    "url": "https://www.w3.org/International/questions/qa-html-dir",
+    "claims_supported": [
+      "Right-to-left document direction practice"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "asme-vv20",
+    "kind": "standard",
+    "title": "Standard for Verification and Validation in Computational Fluid Dynamics and Heat Transfer",
+    "publisher": "ASME",
+    "url": "https://www.asme.org/codes-standards/find-codes-standards/standard-for-verification-and-validation-in-computational-fluid-dynamics-and-heat-transfer/2009",
+    "claims_supported": [
+      "Public verification/validation framework for computational fluid dynamics and heat transfer"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "ecmwf-ifs",
+    "kind": "primary",
+    "title": "Integrated Forecasting System documentation",
+    "publisher": "ECMWF",
+    "url": "https://www.ecmwf.int/en/publications/ifs-documentation",
+    "claims_supported": [
+      "Public technical documentation for an operational numerical weather prediction system"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "lean-reference",
+    "kind": "primary",
+    "title": "Theorem Proving in Lean 4",
+    "publisher": "Lean",
+    "url": "https://lean-lang.org/theorem_proving_in_lean4/",
+    "claims_supported": [
+      "Public documentation of Lean theorem proving and formal proof checking"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "mutable-public-url"
+  },
+  {
+    "id": "prove2me-public",
+    "kind": "primary",
+    "title": "Prove2Me public workspace",
+    "publisher": "Prove2Me",
+    "url": "https://github.com/prove2me/prove2me_workspace/tree/6b46503a65c3a4252170ed5ca984a796b5a5b6b4",
+    "claims_supported": [
+      "Public agent-oriented theorem collaboration workspace and documentation"
+    ],
+    "retrieved_at": "2026-09-09",
+    "reference_type": "immutable-git-commit",
+    "version": "6b46503a65c3a4252170ed5ca984a796b5a5b6b4"
+  },
+  {
+    "id": "taylor-vortex-exact",
+    "kind": "primary",
+    "title": "Nonlinear stability of Taylor's vortex array",
+    "publisher": "NASA Technical Reports Server / Physics of Fluids",
+    "date": "1987-02-01",
+    "url": "https://ntrs.nasa.gov/citations/19870044293",
+    "claims_supported": [
+      "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
+    ],
+    "retrieved_at": "2026-09-10",
+    "reference_type": "mutable-public-url"
+  }
+]

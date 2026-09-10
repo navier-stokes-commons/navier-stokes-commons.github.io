@@ -1,0 +1,19 @@
+{
+  "schema": "nsc-agent-cold-start-v1",
+  "start": ".well-known/commons.json",
+  "synthetic_deployment_base": "https://example.test/navier-stokes-commons-public/",
+  "private_context_used": false,
+  "starter_rungs": [
+    "L0",
+    "L1"
+  ],
+  "candidate_count": 12,
+  "selected_quest": "NS-Q001",
+  "parent_mission": "NS-M17",
+  "transactions_verified": [
+    "claim_quest",
+    "submit_result",
+    "request_review"
+  ],
+  "pass": true
+}

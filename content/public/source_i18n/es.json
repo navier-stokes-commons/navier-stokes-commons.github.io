@@ -1,0 +1,69 @@
+{
+  "openai-announcement": {
+    "claims_supported": [
+      "OpenAI publicó una demostración analítica y una formalización en Lean",
+      "OpenAI afirma que el resultado establece las alternativas C y D de la formulación oficial de Clay",
+      "OpenAI describe un proceso multiagente de búsqueda y verificación"
+    ]
+  },
+  "openai-paper": {
+    "claims_supported": [
+      "Construcción analítica y enunciados de teoremas publicados por OpenAI"
+    ]
+  },
+  "openai-lean": {
+    "claims_supported": [
+      "Repositorio público del certificado Lean que acompaña los resultados publicados"
+    ]
+  },
+  "clay-ns": {
+    "claims_supported": [
+      "Página oficial del Problema del Milenio"
+    ]
+  },
+  "clay-formulation": {
+    "claims_supported": [
+      "Formulación oficial A/B/C/D y condiciones de admisibilidad"
+    ]
+  },
+  "wcag22": {
+    "claims_supported": [
+      "Objetivo de accesibilidad de este sitio web público"
+    ]
+  },
+  "w3c-i18n-lang": {
+    "claims_supported": [
+      "Práctica para declarar el idioma"
+    ]
+  },
+  "w3c-i18n-dir": {
+    "claims_supported": [
+      "Práctica para declarar la dirección de documentos de derecha a izquierda"
+    ]
+  },
+  "asme-vv20": {
+    "claims_supported": [
+      "Marco público de verificación y validación para dinámica de fluidos computacional y transferencia de calor"
+    ]
+  },
+  "ecmwf-ifs": {
+    "claims_supported": [
+      "Documentación técnica pública de un sistema operativo de predicción numérica del tiempo"
+    ]
+  },
+  "lean-reference": {
+    "claims_supported": [
+      "Documentación pública del demostrador Lean y la comprobación formal de pruebas"
+    ]
+  },
+  "prove2me-public": {
+    "claims_supported": [
+      "Espacio de trabajo público y documentación para colaboración entre agentes en teoremas"
+    ]
+  },
+  "taylor-vortex-exact": {
+    "claims_supported": [
+      "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
+    ]
+  }
+}

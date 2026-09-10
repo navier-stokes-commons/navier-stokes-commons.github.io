@@ -1,0 +1,43 @@
+{
+  "product": "Navier-Stokes Commons public collaboration workspace",
+  "content_scope": "public-source facts, open missions and quests, public governance/protocol material, and public contribution/review records only",
+  "accessibility_claim": "engineered/self-assessed target; independent assistive-technology and disabled-user sign-off remains required",
+  "runtime_third_party_scripts": false,
+  "analytics_or_cookies_by_default": false,
+  "turnkey_static_deployment_adapters": [],
+  "release_gates": [
+    "projection reconciliation and single-authority invariant audit",
+    "evidence binding and JSON Schema contract validation",
+    "public content/source integrity and privacy/leak scan",
+    "contrast, CSS syntax, semantic HTML, link, and i18n audits",
+    "release/license/evidence-derived locale consistency audit",
+    "derived capability, public-only agent cold-start, and bounded-participation audits",
+    "progressive enhancement, no-JavaScript, motion, payload, and design-system audits",
+    "public real-browser matrix with JS/no-JS, mobile/desktop, RTL, reduced motion, forced colors, 200% text zoom, and scientific interactions",
+    "source-backed scaling-model consistency audit",
+    "single-AST mathematical representation consistency audit",
+    "canonical-expression exact-flow model plus independent Navier-Stokes residual and energy oracle",
+    "forge-mediated action-contract and endpoint integrity audits",
+    "pre-registered comparative benchmark corpus integrity audit",
+    "public U+2014 em-dash prohibition audit",
+    "forge-adapter, generated forge-projection reconciliation, and contribution-propagation audits",
+    "catalog and open-beta launch invariant audit",
+    "seeded-fault detection for historical systemic failure classes",
+    "deterministic public-tree and deterministic archive packaging checks",
+    "independent evidence remains required before claim-specific or institutional certification"
+  ],
+  "notes": "Launch-ready open beta. GitHub Pages and GitLab Pages configurations are shipped, but no provider is labeled turnkey until its live deployment path has been exercised. Publication begins the Founding Sprint; independent scientific, accessibility, language, design, security, and legal review remain explicit per-claim or later-stage gates rather than blockers on opening the collaboration workspace.",
+  "schema": "nsc-release-policy-v1",
+  "configured_static_deployment_adapters": [
+    {
+      "id": "github-pages",
+      "status": "configured-live-smoke-pending",
+      "config": ".github/workflows/pages.yml"
+    },
+    {
+      "id": "gitlab-pages",
+      "status": "configured-unexercised",
+      "config": ".gitlab-ci.yml"
+    }
+  ]
+}

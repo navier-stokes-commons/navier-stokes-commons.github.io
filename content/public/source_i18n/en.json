@@ -1,0 +1,69 @@
+{
+  "openai-announcement": {
+    "claims_supported": [
+      "OpenAI published an analytic proof and Lean formalization",
+      "OpenAI states the result establishes alternatives C and D of the official Clay formulation",
+      "OpenAI describes a multi-agent search and verification process"
+    ]
+  },
+  "openai-paper": {
+    "claims_supported": [
+      "Analytic construction and theorem statements published by OpenAI"
+    ]
+  },
+  "openai-lean": {
+    "claims_supported": [
+      "Public Lean certificate repository accompanying the published results"
+    ]
+  },
+  "clay-ns": {
+    "claims_supported": [
+      "Official Millennium Prize problem landing page"
+    ]
+  },
+  "clay-formulation": {
+    "claims_supported": [
+      "Official A/B/C/D formulation and admissibility conditions"
+    ]
+  },
+  "wcag22": {
+    "claims_supported": [
+      "Accessibility target for this public website"
+    ]
+  },
+  "w3c-i18n-lang": {
+    "claims_supported": [
+      "Language declaration practice"
+    ]
+  },
+  "w3c-i18n-dir": {
+    "claims_supported": [
+      "Right-to-left document direction practice"
+    ]
+  },
+  "asme-vv20": {
+    "claims_supported": [
+      "Public verification/validation framework for computational fluid dynamics and heat transfer"
+    ]
+  },
+  "ecmwf-ifs": {
+    "claims_supported": [
+      "Public technical documentation for an operational numerical weather prediction system"
+    ]
+  },
+  "lean-reference": {
+    "claims_supported": [
+      "Public documentation of Lean theorem proving and formal proof checking"
+    ]
+  },
+  "prove2me-public": {
+    "claims_supported": [
+      "Public agent-oriented theorem collaboration workspace and documentation"
+    ]
+  },
+  "taylor-vortex-exact": {
+    "claims_supported": [
+      "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "openai-announcement": {
+    "claims_supported": [
+      "OpenAI a publié une preuve analytique et une formalisation Lean",
+      "OpenAI affirme que le résultat établit les alternatives C et D de la formulation officielle de Clay",
+      "OpenAI décrit un processus multi-agent de recherche et de vérification"
+    ]
+  },
+  "openai-paper": {
+    "claims_supported": [
+      "Construction analytique et énoncés de théorèmes publiés par OpenAI"
+    ]
+  },
+  "openai-lean": {
+    "claims_supported": [
+      "Dépôt public du certificat Lean accompagnant les résultats publiés"
+    ]
+  },
+  "clay-ns": {
+    "claims_supported": [
+      "Page officielle du problème du prix du Millénaire"
+    ]
+  },
+  "clay-formulation": {
+    "claims_supported": [
+      "Formulation officielle A/B/C/D et conditions d’admissibilité"
+    ]
+  },
+  "wcag22": {
+    "claims_supported": [
+      "Objectif d’accessibilité de ce site public"
+    ]
+  },
+  "w3c-i18n-lang": {
+    "claims_supported": [
+      "Pratique de déclaration de langue"
+    ]
+  },
+  "w3c-i18n-dir": {
+    "claims_supported": [
+      "Pratique de direction des documents de droite à gauche"
+    ]
+  },
+  "asme-vv20": {
+    "claims_supported": [
+      "Cadre public de vérification et validation pour la mécanique des fluides numérique et le transfert thermique"
+    ]
+  },
+  "ecmwf-ifs": {
+    "claims_supported": [
+      "Documentation technique publique d’un système opérationnel de prévision numérique du temps"
+    ]
+  },
+  "lean-reference": {
+    "claims_supported": [
+      "Documentation publique de Lean et de la vérification formelle des preuves"
+    ]
+  },
+  "prove2me-public": {
+    "claims_supported": [
+      "Espace de travail public et documentation pour la collaboration d’agents sur des théorèmes"
+    ]
+  },
+  "taylor-vortex-exact": {
+    "claims_supported": [
+      "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
+    ]
+  }
+}

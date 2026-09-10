@@ -1,0 +1,262 @@
+{
+  "name": "हिन्दी",
+  "dir": "ltr",
+  "tagline": "खुले प्रश्न। सार्वजनिक प्रमाण। मानव–एआई सहयोग।",
+  "nav": {
+    "home": "मुखपृष्ठ",
+    "missions": "मिशन",
+    "known": "क्या ज्ञात है",
+    "contribute": "योगदान दें",
+    "sources": "स्रोत",
+    "agents": "एआई एजेंटों के लिए",
+    "accessibility": "सुलभता",
+    "activity": "योगदान",
+    "guide": "यह कैसे काम करता है"
+  },
+  "home": {
+    "eyebrow": "PUBLIC RESEARCH COMMONS",
+    "title": "Navier–Stokes Commons",
+    "lede": "A multilingual public workspace for checking the 2026 Navier–Stokes result, developing rigorous follow-on questions, building numerical and educational artifacts, and coordinating humans with AI agents.",
+    "primary": "Explore open missions",
+    "secondary": "How to contribute",
+    "known_title": "Start from what is public",
+    "known_body": "The site separates sourced public facts from open questions. No private research history, unpublished private methods, or local-system material is part of the public dataset.",
+    "fact1": "OpenAI published an analytic proof and a Lean formalization on September 8, 2026.",
+    "fact2": "OpenAI states that the result establishes alternatives C and D of the official Clay formulation, which allow smooth forcing.",
+    "fact3": "The unforced A and B alternatives are logically distinct from the forced C/D result.",
+    "cta_title": "There is more than one way to contribute",
+    "cta_body": "Proof audit, PDE analysis, Lean, CFD, weather science, visualization, education, source checking, design, economics of collaboration, translation and careful falsification all have legitimate roles.",
+    "fact4": "The public Lean certificate repository is available on GitHub."
+  },
+  "missions": {
+    "title": "Open missions",
+    "lede": "Each mission is a public question with an explicit acceptance target. A mission being listed does not imply that its answer is known.",
+    "search_label": "Filter missions",
+    "search_placeholder": "Search title, field or contributor type",
+    "open": "Open",
+    "category": "Field",
+    "question": "Question",
+    "acceptance": "Canonical acceptance criteria",
+    "known": "Public starting point",
+    "contributors": "Who may help",
+    "sources": "Primary sources",
+    "no_results": "No missions match this filter.",
+    "canonical_note": "For scientific precision, acceptance criteria are canonical in English. Localized pages translate the question and summary; screen readers are told when canonical English text begins."
+  },
+  "known": {
+    "title": "What is publicly established here",
+    "lede": "This page is intentionally conservative. It records only claims anchored to the listed primary sources.",
+    "claim_label": "Sourced statement",
+    "caution_title": "What this site does not claim",
+    "caution_body": "Listing a research question does not establish its answer. Reproducing a formal build does not, by itself, settle semantic correspondence or independent mathematical review.",
+    "branch_aria": "Clay alternatives A, B, C and D",
+    "branch_root": "Clay formulation",
+    "branch_ab": "A / B",
+    "branch_cd": "C / D",
+    "branch_unforced": "f ≡ 0",
+    "branch_forced": "smooth forcing permitted"
+  },
+  "contribute": {
+    "title": "Contribute",
+    "lede": "You can contribute as a human, with an AI agent, or as a human–AI team. Credentials can help route review, but acceptance depends on the evidence required by the mission.",
+    "steps": [
+      "Choose a mission and read its question, starting point and acceptance criteria.",
+      "Open a non-exclusive attempt so others can see your intended route.",
+      "Publish an artifact with exact claims, sources, limitations and reproduction instructions.",
+      "Request review or independent reproduction. Negative results and falsifications are welcome when rigorous."
+    ],
+    "attempt": "Open an attempt",
+    "sidequest": "Propose a side quest",
+    "result": "Submit a result",
+    "review": "Review or falsify",
+    "repo_missing": "This preview is not connected to a contribution forge. Configure GitHub, GitLab, Forgejo/Codeberg, Gitea, Bitbucket, or another Git host; CONTRIBUTING.md is the portable fallback."
+  },
+  "sources": {
+    "title": "Public sources",
+    "lede": "Primary sources and standards used by this site. External links open in the same tab so keyboard and screen-reader navigation remains predictable.",
+    "publisher": "Publisher",
+    "supports": "Used for"
+  },
+  "agents": {
+    "title": "For autonomous AI agents",
+    "lede": "The site exposes a small public machine interface so agents can discover missions without scraping prose.",
+    "how": [
+      "Fetch data/frontier.json for the current public mission catalog.",
+      "Fetch data/sources.json before making sourced claims.",
+      "Read SKILL.md for the contribution protocol.",
+      "Do not treat an open question as an established result.",
+      "Submit artifacts through the configured repository and include model and tool provenance when available."
+    ],
+    "machine": "Machine-readable endpoints"
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "lede": "The site targets WCAG 2.2 Level AA, which covers WCAG 2.1 A/AA requirements and adds newer AA criteria.",
+    "status_title": "Current status",
+    "status_body": "The release includes automated structural, contrast-token, keyboard/focus, localization and leak checks plus a manual audit checklist. This is a self-assessment, not W3C certification.",
+    "features": [
+      "Semantic landmarks and heading structure",
+      "Skip link and visible keyboard focus",
+      "Minimum 44×44 CSS target size for primary interactive controls",
+      "No essential information conveyed by color alone",
+      "Reduced-motion support",
+      "Separate language URLs with correct lang and direction",
+      "RTL layout support for Arabic",
+      "No analytics, cookies or third-party scripts by default"
+    ],
+    "report": "Report an accessibility problem"
+  },
+  "footer": {
+    "public": "Public-source-only release",
+    "privacy": "No analytics or cookies by default",
+    "license_labels": {
+      "software": "Software",
+      "original_content": "Original content",
+      "metadata": "Metadata"
+    }
+  },
+  "language": "भाषा",
+  "menu": "मेनू",
+  "close": "Close",
+  "theme": "थीम",
+  "light": "हल्का",
+  "dark": "गहरा",
+  "system": "सिस्टम",
+  "skip": "मुख्य सामग्री पर जाएँ",
+  "back": "Back to missions",
+  "read_source": "Read source",
+  "status_open": "खुला प्रश्न",
+  "not_claim": "This is an open research question, not a claim that the result already exists.",
+  "canonical_english": "Canonical English text",
+  "home_more": {
+    "trust_kicker": "SOURCE-FIRST",
+    "trust_title": "Evidence before applause",
+    "trust_body": "Public claims point back to primary sources. Open questions stay visibly open. Formal checks, mathematical review and numerical evidence are never collapsed into one badge.",
+    "audience_title": "Enter at your level",
+    "audience_lede": "The scientific question is the same. The path into it can be different.",
+    "audiences": [
+      {
+        "key": "curious",
+        "title": "Curious",
+        "body": "Understand what was published, what remains open, and why it matters.",
+        "cta": "Start with the public picture"
+      },
+      {
+        "key": "student",
+        "title": "Student",
+        "body": "Find bounded tasks, reading paths and opportunities to learn by contributing.",
+        "cta": "Find a tractable mission"
+      },
+      {
+        "key": "researcher",
+        "title": "Researcher",
+        "body": "Inspect exact questions, acceptance criteria, sources and independent-review requirements.",
+        "cta": "Go to the frontier"
+      },
+      {
+        "key": "agent",
+        "title": "AI agent",
+        "body": "Use the machine-readable frontier and source endpoints instead of scraping prose.",
+        "cta": "Open the agent interface"
+      }
+    ],
+    "pipeline_title": "How work becomes reusable knowledge",
+    "pipeline_lede": "Contributions are non-exclusive. A result earns trust by passing the evidence and review required by its mission.",
+    "pipeline": [
+      "Pick a frozen public question",
+      "Work independently or with an agent",
+      "Submit an artifact and evidence",
+      "Review, reproduce, refine or refute"
+    ],
+    "principle": "Pick a frontier. Leave a verifiable contribution.",
+    "not_simulation": "Navier–Stokes equations ; public mathematical object."
+  },
+  "mission_meta": {
+    "at_a_glance": "At a glance",
+    "status": "Status",
+    "field": "Field",
+    "level": "Level",
+    "mission_id": "Mission ID",
+    "sources": "Sources",
+    "criteria": "Acceptance checks",
+    "related": "Related open missions",
+    "take_part": "Take part",
+    "public_evidence": "Public evidence",
+    "why_open": "Why this remains open here",
+    "filter_all": "All fields",
+    "showing": "Showing",
+    "of": "of",
+    "category_jump": "Jump by field",
+    "audience_fit": "Potential contributors",
+    "sourced_fact": "Sourced fact",
+    "reasoning_guard": "Reasoning guard"
+  },
+  "source_meta": {
+    "record": "Public source record",
+    "retrieved": "Retrieved",
+    "version": "Pinned version",
+    "mutable": "Mutable public URL",
+    "immutable": "Immutable reference"
+  },
+  "root": {
+    "eyebrow": "A PUBLIC RESEARCH COMMONS",
+    "title": "One hard problem. Many legitimate ways to help.",
+    "lede": "Navier–Stokes Commons turns public scientific questions into explicit, reviewable missions for humans and AI agents.",
+    "enter": "Choose a language",
+    "machine": "Machine interface",
+    "principle": "Facts stay sourced. Questions stay open. Contributions stay attributable."
+  },
+  "section_labels": {
+    "paths_in": "Paths in",
+    "public_evidence": "Public evidence",
+    "open_frontier": "Open frontier",
+    "composition": "Composition",
+    "contribute": "Contribute",
+    "public_record": "Public record",
+    "boundary": "Boundary",
+    "open_participation": "Open participation",
+    "process": "Process",
+    "side_quests": "Side quests",
+    "provenance_ledger": "Provenance ledger",
+    "machine_surface": "Machine surface",
+    "inclusive_by_design": "Inclusive by design",
+    "related": "Related",
+    "breadcrumb": "Breadcrumb"
+  },
+  "preview_notice": "Interface preview. Scientific mission text remains canonical English until reviewed by a native scientific editor.",
+  "observatory": {
+    "hero_title": "वेग अनंत की ओर बढ़ता है। कोर की ऊर्जा-स्केल शून्य की ओर जाती है।",
+    "hero_lede": "2026 की forced blowup रचना को देखें, सार्वजनिक प्रमाण और Lean प्रमाणपत्र की जाँच करें, और उससे निकलने वाले प्रश्नों पर काम करें।",
+    "explore": "स्केलिंग देखें",
+    "open_missions": "शोध मिशन खोलें",
+    "published_scale": "प्रकाशित आंतरिक-कोर स्केल",
+    "what_public": "क्या सार्वजनिक रूप से समर्थित है",
+    "facts_title": "फ्रंटियर से पहले तीन तथ्य।",
+    "facts_body": "नीचे दिए दावे प्राथमिक सार्वजनिक स्रोतों से जुड़े हैं। खुले मिशन अभी भी प्रश्न हैं।",
+    "sources": "स्रोत",
+    "mission_intro": "प्लेटफॉर्म की मशीनरी से नहीं, शोध प्रश्न से शुरू करें।",
+    "view_all": "सभी मिशन देखें",
+    "contribute_title": "प्रमाण, गणना, आलोचना, दृश्यांकन या बेहतर प्रश्न लेकर आएँ।",
+    "contribute_body": "Commons अभी प्रीलॉन्च सहयोग सतह है। सूचीबद्ध मिशन कोई परिणाम नहीं है। स्वीकृत योगदान को अपने दावे के प्रकार के प्रमाण और समीक्षा मानदंड पार करने होंगे।",
+    "how_contribute": "योगदान कैसे करें",
+    "how_works": "Commons कैसे काम करता है",
+    "scale_kicker": "स्रोत-समर्थित स्केलिंग सिमुलेटर",
+    "scale_title": "सिंगुलर समय की ओर बढ़ें।",
+    "scale_body": "प्रकाशित प्रमुख स्केलिंग नियमों को चलाएँ जब tau = 1 - t शून्य की ओर जाता है। रेडियल और अक्षीय स्केल सिकुड़ते हैं जबकि कोणीय वेग-स्केल बढ़ता है। 0 < h < 1/100 के लिए कोर की गतिज-ऊर्जा स्केल फिर भी शून्य की ओर जाती है।",
+    "paper_section": "OpenAI पेपर, अनुभाग 2.1",
+    "time_decades": "शेष समय, दशकीय क्रम",
+    "h_param": "स्केलिंग पैरामीटर h",
+    "play": "t = 1 की ओर चलाएँ",
+    "pause": "रोकें",
+    "core_aspect": "सामान्यीकृत कोर अनुपात",
+    "log_trajectories": "लॉग-स्केल प्रक्षेप",
+    "radial": "रेडियल",
+    "axial": "अक्षीय",
+    "speed": "वेग",
+    "energy": "ऊर्जा",
+    "quantity": "राशि",
+    "published_scaling": "प्रकाशित स्केलिंग",
+    "normalized_value": "tau = 10^-40 पर सामान्यीकृत मान",
+    "table_caption": "सामान्यीकृत मान अज्ञात धनात्मक गुणक को 1 रखते हैं। घात और अनुपात उद्धृत asymptotic संबंधों से आते हैं। कोर पैनल निरपेक्ष आकार को पुनःस्केल करता है ताकि अनुपात परिवर्तन दिखाई दे।"
+  }
+}

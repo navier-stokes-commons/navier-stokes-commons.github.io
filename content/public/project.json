@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "project_id": "navier-stokes",
+  "name": "Navier–Stokes Commons",
+  "description": "Open human-AI collaboration on public Navier-Stokes research through source-linked missions, bounded quests, reproducible artifacts, and scoped independent review.",
+  "accessibility_target": "WCAG 2.2 Level AA",
+  "license": {
+    "software": "Apache-2.0",
+    "original_content": "CC-BY-4.0",
+    "metadata": "CC0-1.0"
+  },
+  "release_stage": "open-beta",
+  "participation_status": "open",
+  "repository_url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public"
+}

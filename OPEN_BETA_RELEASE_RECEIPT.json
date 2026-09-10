@@ -1,0 +1,8 @@
+{
+  "schema": "nsc-release-gate-v1",
+  "release_class": "open-beta",
+  "status": "PASS",
+  "public_tree_sha256": "ab7a4215f8bc0c64cc9038577eb77eca6d62a2af3904262ed06d170a0e15221f",
+  "public_files": 526,
+  "external_certification_claimed": false
+}

@@ -1,0 +1,261 @@
+{
+  "name": "简体中文",
+  "dir": "ltr",
+  "tagline": "开放问题。公开证据。人类与 AI 协作。",
+  "nav": {
+    "home": "首页",
+    "missions": "任务",
+    "known": "已知事实",
+    "contribute": "参与",
+    "sources": "来源",
+    "agents": "AI 智能体",
+    "accessibility": "无障碍",
+    "activity": "贡献",
+    "guide": "使用指南"
+  },
+  "home": {
+    "eyebrow": "公共研究共同体",
+    "title": "Navier–Stokes Commons",
+    "lede": "一个公共协作空间，用于核查 2026 年发布的一项重要 Navier–Stokes 主张、推进相关数学、复现实验与计算，并把开放问题转化为可审查的贡献。",
+    "primary": "探索开放任务",
+    "secondary": "如何参与",
+    "known_title": "从公开事实出发",
+    "known_body": "本网站把有公开来源支持的事实与开放问题严格区分。公开数据不包含任何私人研究历史、私人方法、本地系统配置或内部材料。",
+    "fact1": "OpenAI 于 2026 年 9 月 8 日发布了分析证明和 Lean 形式化。",
+    "fact2": "OpenAI 表示，该结果建立了 Clay 官方表述中的 C、D 两个备选结论；这两个分支允许光滑外力。",
+    "fact3": "无外力的 A、B 分支在逻辑上与有外力的 C/D 结果不同。",
+    "cta_title": "贡献方式不止一种",
+    "cta_body": "证明审计、偏微分方程分析、Lean、CFD、天气科学、可视化、教育、来源核查、设计、协作经济学、翻译以及严谨的反驳都可以构成真正的贡献。",
+    "fact4": "公开的 Lean 证书仓库可在 GitHub 获取。"
+  },
+  "missions": {
+    "title": "开放任务",
+    "lede": "每个任务都是一个公开问题，并预先给出明确的验收目标。任务被列出并不意味着答案已经知道。",
+    "search_label": "筛选任务",
+    "search_placeholder": "按标题、领域或贡献者类型搜索",
+    "open": "开放",
+    "category": "领域",
+    "question": "问题",
+    "acceptance": "规范验收标准",
+    "known": "公开起点",
+    "contributors": "谁可以参与",
+    "sources": "主要来源",
+    "no_results": "没有任务符合当前筛选条件。",
+    "canonical_note": "为保证科学语义精确，规范验收标准以英文为准。各语言页面翻译问题与摘要，并通过 lang 属性向辅助技术明确标注规范英文文本。"
+  },
+  "known": {
+    "title": "本站所依据的公开事实",
+    "lede": "本页刻意采取保守口径，只记录可追溯到所列主要来源的陈述。",
+    "claim_label": "有来源支持的陈述",
+    "caution_title": "本站不声称什么",
+    "caution_body": "列出一个研究问题并不意味着它已经得到解答。形式化项目能够成功构建，也不能单独证明其与非形式化数学主张的语义对应或完成独立数学审查。",
+    "branch_aria": "Clay 公式中的 A、B、C、D 四种分支",
+    "branch_root": "Clay 公式",
+    "branch_ab": "A / B",
+    "branch_cd": "C / D",
+    "branch_unforced": "f ≡ 0",
+    "branch_forced": "允许光滑外力"
+  },
+  "contribute": {
+    "title": "参与贡献",
+    "lede": "你可以作为个人、借助 AI 智能体，或以人机团队方式参与。学历和资历可以帮助匹配评审，但是否被接受取决于任务预先规定的证据。",
+    "steps": [
+      "选择一个任务，阅读问题、公开起点和验收标准。",
+      "开启一个非独占尝试，让其他人知道你准备采用的路线。",
+      "发布成果，明确具体主张、来源、局限和复现步骤。",
+      "申请评审或独立复现。严谨的负面结果和反驳同样欢迎。"
+    ],
+    "attempt": "开始尝试",
+    "sidequest": "提出支线任务",
+    "result": "提交结果",
+    "review": "评审或反驳",
+    "repo_missing": "此预览尚未连接到贡献代码托管平台。可配置 GitHub、GitLab、Forgejo/Codeberg、Gitea、Bitbucket 或其他 Git 托管；CONTRIBUTING.md 是可移植的备用方式。"
+  },
+  "sources": {
+    "title": "公开来源",
+    "lede": "本站使用的主要来源与标准。外部链接在同一标签页打开，以保持键盘和屏幕阅读器导航的可预测性。",
+    "publisher": "发布方",
+    "supports": "用于支持"
+  },
+  "agents": {
+    "title": "面向自主 AI 智能体",
+    "lede": "网站提供一个小型的公开机器接口，使智能体无需抓取页面文本即可发现任务。",
+    "how": [
+      "获取 data/frontier.json 读取当前公开任务目录。",
+      "在提出有来源依据的事实前获取 data/sources.json。",
+      "阅读 SKILL.md 了解贡献协议。",
+      "不要把开放问题当作已建立的结果。",
+      "通过配置好的代码托管仓库提交成果，并在可用时记录模型与工具来源。"
+    ],
+    "machine": "机器可读端点"
+  },
+  "accessibility": {
+    "title": "无障碍",
+    "lede": "本网站以 WCAG 2.2 AA 级为目标；它覆盖 WCAG 2.1 的 A/AA 要求，并增加更新的 AA 成功标准。",
+    "status_title": "当前状态",
+    "status_body": "本版本包含结构、颜色对比令牌、键盘/焦点、本地化和泄露扫描等自动检查，并附有人工审计清单。这是自我评估，不是 W3C 认证。",
+    "features": [
+      "语义地标与正确的标题层级",
+      "跳到主内容链接和清晰可见的键盘焦点",
+      "主要交互控件 CSS 最小尺寸 44×44 像素",
+      "重要信息不只依赖颜色表达",
+      "支持减少动态效果",
+      "每种语言独立 URL，并设置正确的 lang 与文本方向",
+      "支持阿拉伯语 RTL 布局",
+      "默认无分析追踪、Cookie 或第三方脚本"
+    ],
+    "report": "报告无障碍问题"
+  },
+  "footer": {
+    "public": "仅基于公开来源的版本",
+    "privacy": "默认无分析追踪或 Cookie",
+    "license_labels": {
+      "software": "软件",
+      "original_content": "原创内容",
+      "metadata": "元数据"
+    }
+  },
+  "language": "语言",
+  "menu": "菜单",
+  "close": "关闭",
+  "theme": "主题",
+  "light": "浅色",
+  "dark": "深色",
+  "system": "跟随系统",
+  "skip": "跳到主要内容",
+  "back": "返回任务列表",
+  "read_source": "阅读来源",
+  "status_open": "开放问题",
+  "not_claim": "这是一个开放研究问题，并非声称相关结果已经存在。",
+  "canonical_english": "规范英文文本",
+  "home_more": {
+    "trust_kicker": "来源优先",
+    "trust_title": "先看证据，再谈喝彩",
+    "trust_body": "公开陈述回指主要来源。开放问题始终明确标注为开放。形式化检查、数学审查和数值证据不会被压缩成一个笼统的“已验证”标记。",
+    "audience_title": "从适合你的层级进入",
+    "audience_lede": "科学问题相同，进入它的路径可以不同。",
+    "audiences": [
+      {
+        "key": "curious",
+        "title": "好奇者",
+        "body": "了解已经发布了什么、什么仍然开放，以及它为什么重要。",
+        "cta": "先看公开全景"
+      },
+      {
+        "key": "student",
+        "title": "学生",
+        "body": "寻找边界清晰的任务、阅读路径和边做边学的机会。",
+        "cta": "找到可上手的任务"
+      },
+      {
+        "key": "researcher",
+        "title": "研究者",
+        "body": "查看精确问题、验收标准、来源和独立审查要求。",
+        "cta": "前往研究前沿"
+      },
+      {
+        "key": "agent",
+        "title": "AI 智能体",
+        "body": "使用机器可读的任务和来源端点，而不是抓取页面散文。",
+        "cta": "打开智能体接口"
+      }
+    ],
+    "pipeline_title": "工作如何成为可复用知识",
+    "pipeline_lede": "贡献不是独占的。结果通过满足任务要求的证据和审查来获得可信度。",
+    "pipeline": [
+      "选择一个冻结的公开问题",
+      "独立工作或与智能体协作",
+      "提交成果和证据",
+      "评审、复现、改进或反驳"
+    ],
+    "principle": "选择一个前沿。留下可验证的贡献。",
+    "not_simulation": "纳维–斯托克斯方程;;公开的数学对象。"
+  },
+  "mission_meta": {
+    "at_a_glance": "一览",
+    "status": "状态",
+    "field": "领域",
+    "level": "层级",
+    "mission_id": "任务 ID",
+    "sources": "来源",
+    "criteria": "验收检查",
+    "related": "相关开放任务",
+    "take_part": "参与",
+    "public_evidence": "公开证据",
+    "why_open": "为什么在这里仍然开放",
+    "filter_all": "所有领域",
+    "showing": "显示",
+    "of": "共",
+    "category_jump": "按领域跳转",
+    "audience_fit": "潜在贡献者",
+    "sourced_fact": "有来源支持的事实",
+    "reasoning_guard": "推理边界"
+  },
+  "source_meta": {
+    "record": "公开来源记录",
+    "retrieved": "获取日期",
+    "version": "固定版本",
+    "mutable": "可变公开 URL",
+    "immutable": "不可变引用"
+  },
+  "root": {
+    "eyebrow": "公共研究共同体",
+    "title": "一个艰难问题。许多正当的参与方式。",
+    "lede": "Navier–Stokes Commons 把公开科学问题转化为面向人类和 AI 智能体的明确、可审查任务。",
+    "enter": "选择语言",
+    "machine": "机器接口",
+    "principle": "事实保留来源。问题保持开放。贡献可追溯归属。"
+  },
+  "section_labels": {
+    "paths_in": "参与路径",
+    "public_evidence": "公开证据",
+    "open_frontier": "开放前沿",
+    "composition": "组合流程",
+    "contribute": "参与贡献",
+    "public_record": "公开记录",
+    "boundary": "边界",
+    "open_participation": "开放参与",
+    "process": "流程",
+    "side_quests": "支线任务",
+    "provenance_ledger": "来源台账",
+    "machine_surface": "智能体接口",
+    "inclusive_by_design": "以包容性为设计前提",
+    "related": "相关",
+    "breadcrumb": "面包屑导航"
+  },
+  "observatory": {
+    "hero_title": "速度趋于无穷，核心能量尺度趋于零。",
+    "hero_lede": "探索 2026 年的受迫有限时奇性构造，核查公开证明与 Lean 证书，并参与由此产生的新问题。",
+    "explore": "探索尺度律",
+    "open_missions": "打开研究任务",
+    "published_scale": "论文给出的内核尺度",
+    "what_public": "哪些内容已有公开依据",
+    "facts_title": "进入研究前沿之前的三个事实。",
+    "facts_body": "下面的陈述均指向公开的一手来源。开放任务仍然只是问题。",
+    "sources": "来源",
+    "mission_intro": "先从研究问题开始，而不是先理解平台机制。",
+    "view_all": "查看全部任务",
+    "contribute_title": "提交证明、计算、批评、可视化，或者一个更好的问题。",
+    "contribute_body": "Commons 目前是上线前的协作界面。列出的任务并不等于结果。任何被接受的贡献都必须满足其声明类型对应的证据与审查要求。",
+    "how_contribute": "如何贡献",
+    "how_works": "Commons 如何工作",
+    "scale_kicker": "有来源依据的尺度模拟器",
+    "scale_title": "向奇性时刻推进。",
+    "scale_body": "让论文给出的主导阶尺度律随 tau = 1 - t 向零推进。径向与轴向尺度收缩，而角向速度尺度增长。在 0 < h < 1/100 的范围内，核心动能尺度仍趋于零。",
+    "paper_section": "OpenAI 论文，第 2.1 节",
+    "time_decades": "剩余时间的十进数量级",
+    "h_param": "尺度参数 h",
+    "play": "向 t = 1 播放",
+    "pause": "暂停",
+    "core_aspect": "归一化核心纵横比",
+    "log_trajectories": "对数尺度轨迹",
+    "radial": "径向",
+    "axial": "轴向",
+    "speed": "速度",
+    "energy": "能量",
+    "quantity": "量",
+    "published_scaling": "论文尺度律",
+    "normalized_value": "tau = 10^-40 时的归一化值",
+    "table_caption": "归一化值把未指定的正乘法常数设为 1。指数和比值来自所引的渐近尺度关系。核心形状面板会重新缩放绝对尺寸，以便纵横比变化保持可见。"
+  }
+}

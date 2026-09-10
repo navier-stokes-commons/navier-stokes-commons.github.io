@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:navier-stokes-commons:schema:locale-review:v2",
+  "title": "Navier-Stokes Commons locale review receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "review_id",
+    "locale",
+    "review_role",
+    "reviewer",
+    "reviewed_at",
+    "content_digest_sha256",
+    "review_artifact_url",
+    "independence_statement",
+    "verdict"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nsc-locale-review-v2"
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 2
+    },
+    "review_role": {
+      "enum": [
+        "native-language",
+        "subject-domain"
+      ]
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "display_name",
+        "profile_url"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 2
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "profile_url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "content_digest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "review_artifact_url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "independence_statement": {
+      "type": "string",
+      "minLength": 20
+    },
+    "verdict": {
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

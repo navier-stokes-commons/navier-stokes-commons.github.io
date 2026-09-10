@@ -1,0 +1,24 @@
+{
+  "id": "NS-R000",
+  "status": "accepted",
+  "mission_id": "NS-M00",
+  "quest_id": "NS-Q000",
+  "artifact": {
+    "url": "https://",
+    "version": "REPLACE"
+  },
+  "claim": "REPLACE",
+  "evidence": [
+    "REPLACE"
+  ],
+  "limitations": [
+    "REPLACE"
+  ],
+  "provenance": {
+    "contributors": [],
+    "tools": []
+  },
+  "review_ids": [
+    "NS-V000"
+  ]
+}

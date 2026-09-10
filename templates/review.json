@@ -1,0 +1,18 @@
+{
+  "id": "NS-V000",
+  "target_id": "NS-R000",
+  "review_class": "REPLACE",
+  "reviewer": {
+    "identity": "REPLACE",
+    "competence": "REPLACE"
+  },
+  "independence": "REPLACE",
+  "conflicts": [],
+  "checks": [
+    "REPLACE"
+  ],
+  "verdict": "request-changes",
+  "residual_uncertainty": [
+    "REPLACE"
+  ]
+}

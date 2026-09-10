@@ -1,0 +1,35 @@
+{
+  "schema": "nsc-formula-ast-v1",
+  "formulas": [
+    {
+      "id": "incompressible-navier-stokes-forced",
+      "source_ids": ["clay-formulation", "openai-paper"],
+      "ast": {
+        "type": "row",
+        "children": [
+          {"type":"subscript","base":{"type":"operator","value":"∂"},"sub":{"type":"identifier","value":"t"}},
+          {"type":"identifier","value":"u"},
+          {"type":"operator","value":"+"},
+          {"type":"group","children":[{"type":"identifier","value":"u"},{"type":"operator","value":"·"},{"type":"operator","value":"∇"}]},
+          {"type":"identifier","value":"u"},
+          {"type":"operator","value":"−"},
+          {"type":"identifier","value":"ν"},
+          {"type":"operator","value":"Δ"},
+          {"type":"identifier","value":"u"},
+          {"type":"operator","value":"+"},
+          {"type":"operator","value":"∇"},
+          {"type":"identifier","value":"p"},
+          {"type":"operator","value":"="},
+          {"type":"identifier","value":"f"},
+          {"type":"operator","value":","},
+          {"type":"space","em":1.2},
+          {"type":"operator","value":"∇"},
+          {"type":"operator","value":"·"},
+          {"type":"identifier","value":"u"},
+          {"type":"operator","value":"="},
+          {"type":"number","value":"0"}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "schema": "nsc-simulations-v1",
+  "simulations": [
+    {
+      "id": "taylor-vortex-array-2d",
+      "title": "Exact 2D Taylor vortex array",
+      "kind": "analytic-reference-solution",
+      "scope": "A periodic two-dimensional exact incompressible Navier-Stokes solution used as an interactive reference flow. It is not the 2026 three-dimensional blowup construction.",
+      "source_ids": [
+        "taylor-vortex-exact"
+      ],
+      "domain": {
+        "x": [
+          0,
+          "2*pi"
+        ],
+        "y": [
+          0,
+          "2*pi"
+        ],
+        "boundary": "periodic"
+      },
+      "parameters": {
+        "A": {
+          "default": 1.0,
+          "min": 0.25,
+          "max": 1.5,
+          "step": 0.05
+        },
+        "nu": {
+          "default": 0.035,
+          "min": 0.005,
+          "max": 0.12,
+          "step": 0.005
+        },
+        "t": {
+          "default": 0.0,
+          "min": 0.0,
+          "max": 8.0,
+          "step": 0.02
+        }
+      },
+      "fields": {
+        "u_x": {
+          "type": "op",
+          "op": "mul",
+          "args": [
+            {
+              "type": "param",
+              "name": "A"
+            },
+            {
+              "type": "op",
+              "op": "exp",
+              "args": [
+                {
+                  "type": "op",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "type": "number",
+                          "value": 2
+                        },
+                        {
+                          "type": "param",
+                          "name": "nu"
+                        },
+                        {
+                          "type": "var",
+                          "name": "t"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "sin",
+              "args": [
+                {
+                  "type": "var",
+                  "name": "x"
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "cos",
+              "args": [
+                {
+                  "type": "var",
+                  "name": "y"
+                }
+              ]
+            }
+          ]
+        },
+        "u_y": {
+          "type": "op",
+          "op": "neg",
+          "args": [
+            {
+              "type": "op",
+              "op": "mul",
+              "args": [
+                {
+                  "type": "param",
+                  "name": "A"
+                },
+                {
+                  "type": "op",
+                  "op": "exp",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "neg",
+                      "args": [
+                        {
+                          "type": "op",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "type": "number",
+                              "value": 2
+                            },
+                            {
+                              "type": "param",
+                              "name": "nu"
+                            },
+                            {
+                              "type": "var",
+                              "name": "t"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "op",
+                  "op": "cos",
+                  "args": [
+                    {
+                      "type": "var",
+                      "name": "x"
+                    }
+                  ]
+                },
+                {
+                  "type": "op",
+                  "op": "sin",
+                  "args": [
+                    {
+                      "type": "var",
+                      "name": "y"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "p": {
+          "type": "op",
+          "op": "mul",
+          "args": [
+            {
+              "type": "number",
+              "value": 0.25
+            },
+            {
+              "type": "op",
+              "op": "pow",
+              "args": [
+                {
+                  "type": "param",
+                  "name": "A"
+                },
+                {
+                  "type": "number",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "exp",
+              "args": [
+                {
+                  "type": "op",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "type": "number",
+                          "value": 4
+                        },
+                        {
+                          "type": "param",
+                          "name": "nu"
+                        },
+                        {
+                          "type": "var",
+                          "name": "t"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "add",
+              "args": [
+                {
+                  "type": "op",
+                  "op": "cos",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "type": "number",
+                          "value": 2
+                        },
+                        {
+                          "type": "var",
+                          "name": "x"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "op",
+                  "op": "cos",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "type": "number",
+                          "value": 2
+                        },
+                        {
+                          "type": "var",
+                          "name": "y"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "vorticity": {
+          "type": "op",
+          "op": "mul",
+          "args": [
+            {
+              "type": "number",
+              "value": 2
+            },
+            {
+              "type": "param",
+              "name": "A"
+            },
+            {
+              "type": "op",
+              "op": "exp",
+              "args": [
+                {
+                  "type": "op",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "type": "number",
+                          "value": 2
+                        },
+                        {
+                          "type": "param",
+                          "name": "nu"
+                        },
+                        {
+                          "type": "var",
+                          "name": "t"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "sin",
+              "args": [
+                {
+                  "type": "var",
+                  "name": "x"
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "sin",
+              "args": [
+                {
+                  "type": "var",
+                  "name": "y"
+                }
+              ]
+            }
+          ]
+        },
+        "mean_kinetic_energy": {
+          "type": "op",
+          "op": "mul",
+          "args": [
+            {
+              "type": "number",
+              "value": 0.25
+            },
+            {
+              "type": "op",
+              "op": "pow",
+              "args": [
+                {
+                  "type": "param",
+                  "name": "A"
+                },
+                {
+                  "type": "number",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "type": "op",
+              "op": "exp",
+              "args": [
+                {
+                  "type": "op",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "type": "op",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "type": "number",
+                          "value": 4
+                        },
+                        {
+                          "type": "param",
+                          "name": "nu"
+                        },
+                        {
+                          "type": "var",
+                          "name": "t"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "invariants": [
+        "divergence is identically zero",
+        "the momentum residual is identically zero",
+        "mean kinetic energy decays as exp(-4*nu*t)"
+      ],
+      "rendering": {
+        "canvas": "progressive enhancement only",
+        "static_fallback": "server-rendered ASCII velocity field plus formulas and state",
+        "accessible_state": "parallel textual state updated by controls",
+        "autoplay": false
+      },
+      "expression_language": "nsc-expr-v1",
+      "qualitative_default": "four counter-rotating cells"
+    }
+  ]
+}

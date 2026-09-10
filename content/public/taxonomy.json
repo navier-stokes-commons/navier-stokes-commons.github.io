@@ -1,0 +1,17 @@
+{
+  "schema": "nsc-taxonomy-v1",
+  "category_order": [
+    "verification",
+    "analysis",
+    "formalization",
+    "numerics",
+    "physics",
+    "frontier",
+    "education",
+    "communication",
+    "public-science",
+    "community",
+    "meta"
+  ],
+  "note": "Categories are stable identifiers; localized labels live in taxonomy_i18n/*.json. Rendering order is canonical data, not a build-script constant."
+}

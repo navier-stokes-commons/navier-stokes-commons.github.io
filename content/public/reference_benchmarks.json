@@ -1,0 +1,275 @@
+{
+  "schema": "nsc-reference-benchmarks-v1",
+  "id": "NSC-BM-2026-09-10",
+  "observed_at": "2026-09-10",
+  "purpose": "Pre-register comparison references for visual craft, research collaboration UX, agent legibility, simulation pedagogy, scientific honesty, accessibility, and resource efficiency. The corpus is evidence for comparative review design, not a declaration of superiority.",
+  "claim_policy": {
+    "universal_superiority_forbidden": true,
+    "comparative_claim_requires": [
+      "named reference set",
+      "release identifier",
+      "test date",
+      "same task script",
+      "raw per-reviewer judgments",
+      "disclosed reviewer independence and prior exposure"
+    ],
+    "veto_dimensions": [
+      "scientific honesty",
+      "task completion",
+      "legibility and accessibility"
+    ],
+    "aggregation": "Report per-dimension outcomes and disagreements. Do not let a weighted average cancel a veto-level failure."
+  },
+  "dimensions": [
+    {
+      "id": "research-collaboration",
+      "question": "Can a new human or agent identify bounded useful work, act, submit evidence, and understand review state with minimal hidden context?"
+    },
+    {
+      "id": "visual-craft",
+      "question": "Does the interface have a distinctive, coherent, memorable visual identity without generic AI-product decoration?"
+    },
+    {
+      "id": "scientific-interaction",
+      "question": "Does interaction expose a real mathematical or physical object with explicit scope, parameters, provenance, and non-JavaScript fallback?"
+    },
+    {
+      "id": "information-hierarchy",
+      "question": "Can users separate established source facts, derived observations, open questions, attempts, reviews, and accepted records?"
+    },
+    {
+      "id": "accessibility-resilience",
+      "question": "Do core tasks remain understandable with JavaScript disabled, reduced motion, narrow viewports, zoom, keyboard use, and assistive technology?"
+    },
+    {
+      "id": "resource-efficiency",
+      "question": "Is the useful scientific and collaboration surface delivered with bounded payload, no mandatory framework, and no ambient compute-heavy decoration?"
+    }
+  ],
+  "references": [
+    {
+      "id": "prove2me",
+      "url": "https://github.com/prove2me/prove2me_workspace",
+      "roles": [
+        "research-collaboration",
+        "agent-legibility",
+        "formal-verification-workflow"
+      ],
+      "verification": "official-public-repository-checked-2026-09-10"
+    },
+    {
+      "id": "openai",
+      "url": "https://openai.com/",
+      "roles": [
+        "visual-craft",
+        "research-information-hierarchy"
+      ],
+      "verification": "official-site-checked-2026-09-10"
+    },
+    {
+      "id": "anthropic",
+      "url": "https://www.anthropic.com/",
+      "roles": [
+        "visual-craft",
+        "research-information-hierarchy"
+      ],
+      "verification": "official-site-reference"
+    },
+    {
+      "id": "hermes-agent",
+      "url": "https://hermes-agent.nousresearch.com/",
+      "roles": [
+        "agent-legibility",
+        "visual-craft",
+        "progressive-feature-explanation"
+      ],
+      "verification": "official-site-checked-2026-09-10"
+    },
+    {
+      "id": "amp",
+      "url": "https://ampcode.com/",
+      "roles": [
+        "agent-legibility",
+        "visual-craft",
+        "developer-workflow"
+      ],
+      "verification": "official-site-reference"
+    },
+    {
+      "id": "motioncanvas-online",
+      "url": "https://www.motioncanvas.online/",
+      "roles": [
+        "visual-craft",
+        "motion-craft",
+        "resource-efficiency"
+      ],
+      "verification": "official-site-checked-2026-09-10"
+    },
+    {
+      "id": "greyparrot",
+      "url": "https://www.greyparrot.ai/",
+      "roles": [
+        "visual-craft",
+        "information-hierarchy"
+      ],
+      "verification": "official-site-reference"
+    },
+    {
+      "id": "cohere",
+      "url": "https://cohere.com/",
+      "roles": [
+        "visual-craft",
+        "information-hierarchy"
+      ],
+      "verification": "official-site-checked-2026-09-10"
+    },
+    {
+      "id": "xponder",
+      "url": "https://xponder.tech/",
+      "roles": [
+        "visual-craft",
+        "interaction-craft"
+      ],
+      "verification": "user-specified-reference-verify-at-execution"
+    },
+    {
+      "id": "edinformatics-html5-physics",
+      "url": "https://www.edinformatics.com/HTML5/html5-physics-simulations.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "user-specified-reference-verify-at-execution"
+    },
+    {
+      "id": "bu-duffy-sims",
+      "url": "https://physics.bu.edu/~duffy/sims.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "problemsphysics-interactive",
+      "url": "https://www.problemsphysics.com/interactive.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "user-specified-reference-verify-at-execution"
+    },
+    {
+      "id": "schroeder-examples",
+      "url": "https://physics.weber.edu/schroeder/html5/examples.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy",
+        "resource-efficiency"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "sahyun-html5",
+      "url": "https://sahyun.net/html5.php",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "user-specified-reference-verify-at-execution"
+    },
+    {
+      "id": "schroeder-inventory-blog",
+      "url": "https://dvschroeder.blogspot.com/2013/10/inventory-of-physics-simulations-in.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "public-reference"
+    },
+    {
+      "id": "compadre-osp-15088",
+      "url": "https://www.compadre.org/osp/items/detail.cfm?ID=15088",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "physics-classroom-interactives",
+      "url": "https://www.physicsclassroom.com/interactive",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "schroeder-tutorial-packet",
+      "url": "https://physics.weber.edu/schroeder/html5/tutorialpacket.pdf",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy",
+        "implementation-method"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "bu-duffy-html5",
+      "url": "https://physics.bu.edu/~duffy/HTML5/index.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "phet",
+      "url": "https://phet.colorado.edu/",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy",
+        "accessibility-resilience"
+      ],
+      "verification": "official-site-checked-2026-09-10"
+    },
+    {
+      "id": "psrc-aapt-15088",
+      "url": "https://psrc.aapt.org/items/detail.cfm?ID=15088",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "user-specified-reference-verify-at-execution"
+    },
+    {
+      "id": "excel-schools-simulations",
+      "url": "https://excelschools.net/en/simulations/category/html.html",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy"
+      ],
+      "verification": "user-specified-reference-verify-at-execution"
+    },
+    {
+      "id": "walter-fendt",
+      "url": "https://www.walter-fendt.de/html5/phen/",
+      "roles": [
+        "scientific-interaction",
+        "simulation-pedagogy",
+        "resource-efficiency"
+      ],
+      "verification": "public-educational-reference"
+    },
+    {
+      "id": "html5-physics-book",
+      "url": "https://link.springer.com/book/10.1007/978-1-4302-6338-8",
+      "roles": [
+        "scientific-interaction",
+        "implementation-method"
+      ],
+      "verification": "publisher-reference"
+    }
+  ]
+}

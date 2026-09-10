@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "default": "generic",
+  "adapters": [
+    {
+      "id": "github",
+      "label": "GitHub",
+      "issue_mode": "template-query"
+    },
+    {
+      "id": "gitlab",
+      "label": "GitLab",
+      "issue_mode": "description-template"
+    },
+    {
+      "id": "forgejo",
+      "label": "Forgejo",
+      "issue_mode": "title-body-query"
+    },
+    {
+      "id": "codeberg",
+      "label": "Codeberg",
+      "issue_mode": "title-body-query"
+    },
+    {
+      "id": "gitea",
+      "label": "Gitea",
+      "issue_mode": "title-body-query"
+    },
+    {
+      "id": "bitbucket",
+      "label": "Bitbucket",
+      "issue_mode": "generic-repository"
+    },
+    {
+      "id": "generic",
+      "label": "Any Git forge",
+      "issue_mode": "manifest-fallback"
+    }
+  ]
+}

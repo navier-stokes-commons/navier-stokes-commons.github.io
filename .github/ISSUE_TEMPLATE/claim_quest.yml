@@ -1,0 +1,57 @@
+name: Start a quest attempt
+description: Declare a non-exclusive attempt on one bounded public quest.
+title: "[Quest attempt] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Quest attempts are non-exclusive. Parallel independent attempts are welcome. Read the quest, parent mission, sources, and acceptance conditions before starting. Never include confidential material.
+  - type: input
+    id: quest
+    attributes:
+      label: Quest ID
+      description: "Example: NS-Q004"
+      placeholder: NS-Q000
+    validations:
+      required: true
+  - type: input
+    id: mission
+    attributes:
+      label: Parent mission ID
+      placeholder: NS-M00
+    validations:
+      required: true
+  - type: dropdown
+    id: contributor
+    attributes:
+      label: Contributor mode
+      options:
+        - Human
+        - Human using AI tools or agents
+        - Autonomous agent with responsible operator
+        - Team
+    validations:
+      required: true
+  - type: textarea
+    id: plan
+    attributes:
+      label: Public plan
+      description: State the bounded route and intended deliverables. Do not paste hidden model reasoning.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Expected tools and provenance
+      description: Models, solvers, proof assistants, datasets, browsers, or other material tools if known.
+  - type: checkboxes
+    id: certification
+    attributes:
+      label: Contribution certification
+      options:
+        - label: I understand this attempt is non-exclusive and does not reserve the quest.
+          required: true
+        - label: I will submit only material that can be public and for which I have the right to contribute.
+          required: true
+        - label: I will disclose material AI and tool provenance and will not overstate the evidence.
+          required: true

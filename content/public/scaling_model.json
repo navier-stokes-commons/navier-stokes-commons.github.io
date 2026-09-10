@@ -1,0 +1,116 @@
+{
+  "schema": "nsc-scaling-model-v1",
+  "title": "Inner-core asymptotic scaling model",
+  "source_id": "openai-paper",
+  "source_location": "Section 2.1, page 4 of the PDF",
+  "scope": "Leading-order characteristic scales reported for the inner core as tau = 1 - t approaches 0.",
+  "normalization": "Interactive normalized values set unspecified positive multiplicative constants to 1. Exponents and ratios come from the source relations; absolute physical values are not inferred.",
+  "parameters": {
+    "tau": {
+      "definition": "1 - t",
+      "range_open": [
+        0,
+        1
+      ]
+    },
+    "h": {
+      "range_open": [
+        0,
+        0.01
+      ],
+      "default": 0.005
+    }
+  },
+  "quantities": [
+    {
+      "id": "ell_r",
+      "label": "radial scale",
+      "relation": "asymp",
+      "formula": "tau^(1/2)",
+      "exponent": {
+        "constant": 0.5,
+        "h": 0
+      }
+    },
+    {
+      "id": "ell_z",
+      "label": "axial scale",
+      "relation": "asymp",
+      "formula": "tau^(1/2-h)",
+      "exponent": {
+        "constant": 0.5,
+        "h": -1
+      }
+    },
+    {
+      "id": "u_theta",
+      "label": "angular speed scale",
+      "relation": "asymp",
+      "formula": "tau^(-1/2-h)",
+      "exponent": {
+        "constant": -0.5,
+        "h": -1
+      }
+    },
+    {
+      "id": "u_z",
+      "label": "axial speed scale",
+      "relation": "asymp",
+      "formula": "tau^(-1/2-h)",
+      "exponent": {
+        "constant": -0.5,
+        "h": -1
+      }
+    },
+    {
+      "id": "u_r",
+      "label": "radial speed scale",
+      "relation": "O",
+      "formula": "tau^(-1/2)",
+      "exponent": {
+        "constant": -0.5,
+        "h": 0
+      }
+    },
+    {
+      "id": "volume",
+      "label": "core volume scale",
+      "relation": "order",
+      "formula": "tau^(3/2-h)",
+      "exponent": {
+        "constant": 1.5,
+        "h": -1
+      }
+    },
+    {
+      "id": "energy",
+      "label": "core kinetic-energy scale",
+      "relation": "order",
+      "formula": "tau^(1/2-3h)",
+      "exponent": {
+        "constant": 0.5,
+        "h": -3
+      }
+    },
+    {
+      "id": "re_theta",
+      "label": "angular Reynolds number scale",
+      "relation": "asymp",
+      "formula": "tau^(-h)",
+      "exponent": {
+        "constant": 0,
+        "h": -1
+      }
+    },
+    {
+      "id": "aspect",
+      "label": "axial-to-radial aspect ratio",
+      "relation": "asymp",
+      "formula": "tau^(-h)",
+      "exponent": {
+        "constant": 0,
+        "h": -1
+      }
+    }
+  ]
+}

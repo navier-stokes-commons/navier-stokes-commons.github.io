@@ -1,0 +1,938 @@
+{
+  "schema": "nsc-open-beta-browser-audit-v1",
+  "browser": "system Chromium",
+  "paths": 22,
+  "configs": [
+    "mobile-nojs",
+    "mobile-js",
+    "desktop-js"
+  ],
+  "states": 66,
+  "failures": [],
+  "records": [
+    {
+      "path": "en/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5724,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "es/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 6240,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "pt-BR/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 6030,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "fr/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 6272,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ar/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5447,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "zh-Hans/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 3687,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "de/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 6225,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "it/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 6126,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ru/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 6095,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "hi/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5727,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "bn/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5739,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ja/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5032,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ko/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5066,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "sw/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5979,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "tr/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5877,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "id/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5902,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 856,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/quests/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 10676,
+        "questLinks": 35,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/sprint/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 5528,
+        "questLinks": 16,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/quests/ns-q004/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 1828,
+        "questLinks": 0,
+        "startLinks": 1
+      },
+      "failures": []
+    },
+    {
+      "path": "en/governance/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 2499,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/claims/index.html",
+      "config": "mobile-nojs",
+      "metrics": {
+        "sw": 320,
+        "cw": 320,
+        "h1": 1,
+        "main": true,
+        "text": 2464,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5649,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "es/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 6174,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "pt-BR/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5970,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "fr/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 6199,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ar/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5373,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "zh-Hans/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 3577,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "de/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 6163,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "it/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 6057,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ru/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 6026,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "hi/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5648,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "bn/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5672,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ja/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 4927,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ko/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 4966,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "sw/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5905,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "tr/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5811,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "id/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5824,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 856,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/quests/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 10676,
+        "questLinks": 35,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/sprint/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 5528,
+        "questLinks": 16,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/quests/ns-q004/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 1828,
+        "questLinks": 0,
+        "startLinks": 1
+      },
+      "failures": []
+    },
+    {
+      "path": "en/governance/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 2499,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/claims/index.html",
+      "config": "mobile-js",
+      "metrics": {
+        "sw": 390,
+        "cw": 390,
+        "h1": 1,
+        "main": true,
+        "text": 2464,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5649,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "es/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 6174,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "pt-BR/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5970,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "fr/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 6199,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ar/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5373,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "zh-Hans/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 3577,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "de/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 6163,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "it/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 6057,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ru/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 6026,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "hi/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5648,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "bn/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5672,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ja/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 4927,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "ko/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 4966,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "sw/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5905,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "tr/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5811,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "id/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5824,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 856,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/quests/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 10676,
+        "questLinks": 35,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/sprint/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 5528,
+        "questLinks": 16,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/quests/ns-q004/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 1828,
+        "questLinks": 0,
+        "startLinks": 1
+      },
+      "failures": []
+    },
+    {
+      "path": "en/governance/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 2499,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "en/claims/index.html",
+      "config": "desktop-js",
+      "metrics": {
+        "sw": 1440,
+        "cw": 1440,
+        "h1": 1,
+        "main": true,
+        "text": 2464,
+        "questLinks": 0,
+        "startLinks": 0
+      },
+      "failures": []
+    }
+  ]
+}

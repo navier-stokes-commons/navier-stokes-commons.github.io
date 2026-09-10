@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:navier-stokes-commons:schema:reference-benchmarks:v1",
+  "title": "NSC reference benchmark corpus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "observed_at",
+    "purpose",
+    "claim_policy",
+    "dimensions",
+    "references"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nsc-reference-benchmarks-v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^NSC-BM-[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 40
+    },
+    "claim_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "universal_superiority_forbidden",
+        "comparative_claim_requires",
+        "veto_dimensions",
+        "aggregation"
+      ],
+      "properties": {
+        "universal_superiority_forbidden": {
+          "const": true
+        },
+        "comparative_claim_requires": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "string"
+          }
+        },
+        "veto_dimensions": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "aggregation": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "question"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 20
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "url",
+          "roles",
+          "verification"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    }
+  }
+}

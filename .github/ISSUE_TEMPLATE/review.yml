@@ -1,0 +1,41 @@
+name: Review, reproduce, or falsify
+description: Record a scoped independent evaluation of a result, claim, mission, quest, or platform decision.
+title: "[Review] "
+body:
+  - type: input
+    id: target
+    attributes: {label: Target ID and exact artifact version, description: "Issue, contribution, quest, claim, commit, or URL."}
+    validations: {required: true}
+  - type: input
+    id: review_class
+    attributes: {label: Review class, description: "Use the class required by the quest when applicable."}
+    validations: {required: true}
+  - type: textarea
+    id: competence
+    attributes: {label: Relevant competence, description: "Evidence of competence for this exact review scope. Credentials are optional when artifacts demonstrate competence."}
+    validations: {required: true}
+  - type: textarea
+    id: independence
+    attributes: {label: Independence and conflicts, description: "State relationship to authors, tools, sponsors, and maintainers; state none known if none."}
+    validations: {required: true}
+  - type: textarea
+    id: checks
+    attributes: {label: Checks performed, description: "List acceptance conditions and exact evidence checked."}
+    validations: {required: true}
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Verdict
+      options: [Accept, Request changes, Reject, Unable to assess]
+    validations: {required: true}
+  - type: textarea
+    id: uncertainty
+    attributes: {label: Residual uncertainty and unreviewed surfaces}
+    validations: {required: true}
+  - type: checkboxes
+    id: certification
+    attributes:
+      label: Public review certification
+      options:
+        - label: This review may be public and I have stated material conflicts and limitations.
+          required: true

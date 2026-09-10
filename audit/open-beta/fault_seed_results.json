@@ -1,0 +1,65 @@
+{
+  "schema": "nsc-fault-seed-audit-v1",
+  "scratch_policy": "ephemeral-approved",
+  "cases": [
+    {
+      "case": "projection-drift",
+      "auditor": "scripts/reconcile.py --check",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "PROJECTION_RECONCILIATION_FAILED stale=README.md"
+    },
+    {
+      "case": "writable-reverse-relation",
+      "auditor": "scripts/audit_authority.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "AUTHORITY_INVARIANT_AUDIT_FAILED\n - NS-Q001: illegal reverse field founding_sprint"
+    },
+    {
+      "case": "duplicated-license-state",
+      "auditor": "scripts/audit_authority.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "AUTHORITY_INVARIANT_AUDIT_FAILED\n - en.json: writable license tuple duplicated"
+    },
+    {
+      "case": "manual-claim-elevation",
+      "auditor": "scripts/audit_authority.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "AUTHORITY_INVARIANT_AUDIT_FAILED\n - NS-C001: illegal writable derived field status"
+    },
+    {
+      "case": "schema-contract-drift",
+      "auditor": "scripts/audit_schemas.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "SCHEMA_AUDIT_FAILED\n - quest:NS-Q001:<root>: Additional properties are not allowed ('unexpected_contract_field' was unexpected)"
+    },
+    {
+      "case": "route-projection-drift",
+      "auditor": "scripts/audit_agent_endpoints.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "AGENT_ENDPOINT_AUDIT_FAILED\n - discovery projection differs from registry for actions"
+    },
+    {
+      "case": "simulation-semantic-drift",
+      "auditor": "scripts/audit_flow_chamber.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "FLOW_CHAMBER_AUDIT_FAILED\n - canonical expression AST differs from independent Taylor-vortex oracle\n - canonical expression AST differs from independent Taylor-vortex oracle\n - canonical expression AST differs from independent Taylor-vortex oracle\n - canonical expression AST differs from independent Taylor-vortex oracle\n - canonical expression AST differs from independent Taylor-vortex oracle\n - canonical expression AST differs from independent Taylor-vortex oracle\n - divergence residual too large: 0.09869462540071378"
+    },
+    {
+      "case": "benchmark-unbound",
+      "auditor": "scripts/audit_benchmarks.py",
+      "detected": true,
+      "returncode": 1,
+      "excerpt": "BENCHMARK_AUDIT_FAILED\n - NS-Q036 not bound to canonical benchmark set"
+    }
+  ],
+  "detected": 8,
+  "total": 8,
+  "pass": true
+}

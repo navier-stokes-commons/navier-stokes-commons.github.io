@@ -1,0 +1,41 @@
+name: Propose a mission or quest
+description: Propose a new bounded quest or a durable mission through public RFC.
+title: "[Proposal] "
+body:
+  - type: dropdown
+    id: kind
+    attributes: {label: Proposal type, options: [Quest under an existing mission, New mission]}
+    validations: {required: true}
+  - type: input
+    id: parent
+    attributes: {label: Parent mission ID, description: "Required for a quest proposal."}
+  - type: textarea
+    id: question
+    attributes: {label: Precise task or research question}
+    validations: {required: true}
+  - type: textarea
+    id: novelty
+    attributes: {label: Why this is not already covered, description: "Point to overlapping missions or quests and explain the distinction."}
+    validations: {required: true}
+  - type: textarea
+    id: sources
+    attributes: {label: Public starting evidence and sources}
+    validations: {required: true}
+  - type: textarea
+    id: deliverables
+    attributes: {label: Deliverables and acceptance conditions}
+    validations: {required: true}
+  - type: textarea
+    id: review
+    attributes: {label: Required reviewer competence and independence}
+    validations: {required: true}
+  - type: input
+    id: rung
+    attributes: {label: Proposed ladder rung, description: "L0 through L5 if this is a quest."}
+  - type: checkboxes
+    id: certification
+    attributes:
+      label: Public contribution certification
+      options:
+        - label: I will submit only public material I have the right to contribute and will disclose material provenance.
+          required: true

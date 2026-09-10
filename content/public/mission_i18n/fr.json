@@ -1,0 +1,92 @@
+{
+  "NS-M01": {
+    "title": "Audit indépendant du certificat",
+    "summary": "Reproduire et examiner le certificat Lean public sans confondre compilation et audit sémantique.",
+    "question": "Qu’établit exactement l’artefact Lean publié, avec quels axiomes et versions de dépendances, et dans quelle mesure son énoncé terminal correspond-il aux alternatives officielles du Clay Mathematics Institute ?"
+  },
+  "NS-M02": {
+    "title": "Audit indépendant de la preuve analytique",
+    "summary": "Examiner l’argument analytique publié section par section, indépendamment du certificat formel.",
+    "question": "Des experts EDP indépendants peuvent-ils valider chaque implication analytique majeure, transfert d’hypothèses, étape de localisation et comparaison terminale de la preuve publiée ?"
+  },
+  "NS-M03": {
+    "title": "Spectre de normes et criticité",
+    "summary": "Établir des asymptotiques rigoureuses pour les normes pertinentes près du temps singulier et les comparer aux critères de régularité applicables.",
+    "question": "Pour quelles normes spatiales et mixtes espace–temps peut-on prouver des asymptotiques supérieures et inférieures précises près du temps singulier, et comment se comparent-elles aux critères de régularité connus ?"
+  },
+  "NS-M04": {
+    "title": "Contraintes plus fortes sur le forçage",
+    "summary": "Étudier séparément des classes de forçage plus restrictives que celles de la construction publiée.",
+    "question": "Peut-on encore construire une explosion en temps fini sous des contraintes telles qu’un forçage sans divergence, une classe prescrite, de petites normes critiques, une régularité de Gevrey ou des restrictions de support temporel ?"
+  },
+  "NS-M05": {
+    "title": "Du cas forcé au cas non forcé",
+    "summary": "Tester rigoureusement les mécanismes susceptibles de relier la singularité forcée aux alternatives A/B non forcées.",
+    "question": "Une modification contrôlée, un redémarrage, un collage ou un argument limite peut-il convertir le comportement singulier forcé en résultat A/B non forcé ; ou montrer rigoureusement pourquoi ces voies échouent ?"
+  },
+  "NS-M06": {
+    "title": "Stabilité et généricité",
+    "summary": "Déterminer sous quelles perturbations le mécanisme singulier persiste, se détruit ou demeure exceptionnel.",
+    "question": "Dans quelles topologies et classes de perturbations le mécanisme singulier est-il stable, instable, structurellement robuste ou non générique ?"
+  },
+  "NS-M07": {
+    "title": "Explosion comme conception inverse et contrôle",
+    "summary": "Étudier la construction comme un problème de contrôle : coût du forçage, atteignabilité et contraintes structurelles.",
+    "question": "Quels coûts de contrôle, propriétés de contrôlabilité, restrictions structurelles ou principes d’optimisation gouvernent les trajectoires conduisant des données lisses vers un comportement singulier ?"
+  },
+  "NS-M08": {
+    "title": "Banc d’essai singulier par solution manufacturée",
+    "summary": "Transformer les champs publiés en benchmark reproductible pour les solveurs Navier–Stokes.",
+    "question": "Les champs exacts ou fidèlement calculables peuvent-ils mesurer le comportement des discrétisations, intégrateurs temporels, filtres et maillages adaptatifs lorsque l’échelle singulière s’effondre ?"
+  },
+  "NS-M09": {
+    "title": "Extensions en rotation et stratification",
+    "summary": "Tester le mécanisme dans des modèles géophysiques précisément spécifiés.",
+    "question": "Que devient la construction lorsque l’on ajoute, dans des régimes précisément définis, Coriolis, flottabilité, stratification, Boussinesq ou les termes des équations primitives ?"
+  },
+  "NS-M10": {
+    "title": "Implications pour la météo et la prévision numérique",
+    "summary": "Établir ce que la construction peut réellement apprendre aux méthodes de prévision sans extrapoler abusivement le théorème.",
+    "question": "La construction singulière peut-elle fournir des cas de stress utiles pour des méthodes utilisées en prévision numérique du temps tout en évitant d’affirmer que les modèles opérationnels héritent directement du théorème ?"
+  },
+  "NS-M11": {
+    "title": "Compression de preuve et squelette conceptuel",
+    "summary": "Produire la plus petite carte fidèle permettant à un mathématicien de comprendre le mécanisme et ses dépendances.",
+    "question": "Quel est le plus petit graphe de dépendances fidèle permettant de comprendre le mécanisme sans masquer d’obligations indispensables ?"
+  },
+  "NS-M12": {
+    "title": "Cours Lean et ensemble de défis",
+    "summary": "Transformer le certificat public en parcours d’apprentissage mécaniquement vérifiable.",
+    "question": "Étudiants et agents peuvent-ils apprendre la mathématique et la formalisation en résolvant des défis bien délimités dont la réussite est vérifiable mécaniquement ?"
+  },
+  "NS-M13": {
+    "title": "Atlas interactif Navier–Stokes",
+    "summary": "Construire une interface publique reliant logique A/B/C/D, mécanisme, preuve, échelles, questions ouvertes et état des preuves.",
+    "question": "Une seule interface peut-elle présenter la logique C/D contre A/B, le mécanisme, la carte de preuve, les échelles, les questions ouvertes et l’état des preuves sans aplatir l’incertitude ?"
+  },
+  "NS-M14": {
+    "title": "Explication publique : énergie finie, vitesse non bornée",
+    "summary": "Expliquer fidèlement la singularité rapportée et la distinction forcé/non forcé à des non-spécialistes.",
+    "question": "Comment expliquer au public le comportement singulier rapporté, le forçage lisse et la distinction A/B/C/D sans lui faire croire que toutes les équations de fluide sont invalidées ?"
+  },
+  "NS-M15": {
+    "title": "Étude de cas d’épistémologie de la preuve formelle",
+    "summary": "Distinguer les différentes dimensions de validité et de confiance autour d’une preuve formalisée.",
+    "question": "Comment distinguer dérivation valide pour le noyau, cible formelle correcte, traduction fidèle papier–formel, reproductibilité, compréhension experte et acceptation scientifique plus large ?"
+  },
+  "NS-M16": {
+    "title": "Expériences de collaboration humain–IA",
+    "summary": "Mesurer quelles structures de collaboration améliorent réellement les progrès acceptés et réduisent les erreurs corrélées.",
+    "question": "Quand les agents doivent-ils travailler indépendamment, partager des résultats intermédiaires, synthétiser plusieurs voies, se reproduire mutuellement ou s’en remettre à des experts humains ?"
+  },
+  "NS-M17": {
+    "title": "Veille des sources, revues et errata",
+    "summary": "Maintenir un registre public des nouvelles preuves, critiques, reproductions et corrections pertinentes.",
+    "question": "Quelles nouvelles données publiques modifient le niveau de confiance justifié dans la preuve analytique, le certificat formel ou les questions de recherche dérivées ?"
+  },
+  "NS-M18": {
+    "title": "Quêtes annexes de la communauté",
+    "summary": "Permettre à la communauté de proposer de nouvelles questions bien posées sans confondre popularité et vérité.",
+    "question": "Quelles questions mathématiques, numériques, physiques, pédagogiques, historiques, de design ou de collaboration, correctement formulées, devraient être ajoutées ensuite ?"
+  }
+}

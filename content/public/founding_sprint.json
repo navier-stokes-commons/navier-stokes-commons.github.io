@@ -1,0 +1,34 @@
+{
+  "schema": "nsc-sprint-v1",
+  "id": "NSC-FS1",
+  "title": "Founding Sprint",
+  "status": "open",
+  "purpose": "Turn the public Commons into a body of independently reviewable Navier-Stokes work while simultaneously stress-testing the collaboration protocol.",
+  "launch_rule": "The workspace may be published before these quests are complete. Completion changes the evidence state of the project; it does not retroactively authorize publication.",
+  "quest_ids": [
+    "NS-Q001",
+    "NS-Q002",
+    "NS-Q003",
+    "NS-Q004",
+    "NS-Q005",
+    "NS-Q006",
+    "NS-Q007",
+    "NS-Q008",
+    "NS-Q009",
+    "NS-Q010",
+    "NS-Q011",
+    "NS-Q012",
+    "NS-Q024",
+    "NS-Q028",
+    "NS-Q029",
+    "NS-Q030",
+    "NS-Q036"
+  ],
+  "success_conditions": [
+    "At least one independent source or formal reproduction is submitted.",
+    "At least one mathematically substantive or semantic review artifact is submitted.",
+    "At least one public-science, visualization, accessibility, browser, or agent-evaluation artifact is submitted.",
+    "Every accepted artifact records exact scope, evidence, limitations, provenance, and reviewer class.",
+    "No accepted scientific claim is elevated solely by the contributor who authored it."
+  ]
+}

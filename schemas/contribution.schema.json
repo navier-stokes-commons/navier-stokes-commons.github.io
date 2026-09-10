@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSC Accepted Contribution",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "status",
+    "mission_id",
+    "artifact",
+    "claim",
+    "evidence",
+    "limitations",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "const": "accepted"
+    },
+    "mission_id": {
+      "type": "string"
+    },
+    "quest_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact": {
+      "type": "object"
+    },
+    "claim": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  }
+}

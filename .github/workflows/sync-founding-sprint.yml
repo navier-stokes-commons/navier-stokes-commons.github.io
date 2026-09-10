@@ -1,0 +1,29 @@
+name: Sync Founding Sprint index
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "content/public/founding_sprint.json"
+      - "content/public/quests.json"
+      - "content/public/project.json"
+      - "scripts/sync_founding_sprint_issue.py"
+      - ".github/workflows/sync-founding-sprint.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+      - name: Reconcile generated Founding Sprint issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync_founding_sprint_issue.py --apply

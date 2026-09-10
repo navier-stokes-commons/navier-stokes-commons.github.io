@@ -1,0 +1,92 @@
+{
+  "NS-M01": {
+    "title": "Auditoria independente do certificado",
+    "summary": "Reproduzir e inspecionar o certificado público em Lean sem tratar compilação como auditoria semântica.",
+    "question": "O que exatamente o artefato Lean publicado estabelece, sob quais axiomas e versões de dependências, e quão fielmente seu enunciado terminal corresponde às alternativas oficiais de Clay?"
+  },
+  "NS-M02": {
+    "title": "Auditoria independente da prova analítica",
+    "summary": "Revisar o argumento analítico publicado seção por seção, independentemente do certificado formal.",
+    "question": "Especialistas independentes em EDP conseguem validar cada implicação analítica principal, transferência de hipóteses, etapa de localização e comparação terminal da prova publicada?"
+  },
+  "NS-M03": {
+    "title": "Espectro de normas e criticidade",
+    "summary": "Converter observações de escala em estimativas rigorosas de normas para a construção publicada.",
+    "question": "Para quais normas espaciais e mistas espaço-tempo é possível provar assintóticas precisas perto do tempo singular, e como elas se comparam a critérios conhecidos de regularidade?"
+  },
+  "NS-M04": {
+    "title": "Restrições mais fortes sobre a força",
+    "summary": "Perguntar quais restrições adicionais sobre a força suave permanecem compatíveis com o mecanismo de blowup publicado.",
+    "question": "É possível construir blowup em tempo finito com força livre de divergência, classes prescritas, normas críticas pequenas, regularidade Gevrey ou restrições de suporte temporal?"
+  },
+  "NS-M05": {
+    "title": "Do forçado ao não forçado",
+    "summary": "Usar a nova construção como fonte de mecanismos e obstáculos sem afirmar que C/D já resolvem A/B.",
+    "question": "Alguma modificação controlada, reinício, colagem ou argumento limite pode converter o comportamento singular forçado em resultado A/B sem força, ou provar rigorosamente por que certas rotas falham?"
+  },
+  "NS-M06": {
+    "title": "Estabilidade e genericidade",
+    "summary": "Determinar se a construção sobrevive a perturbações especificadas ou depende de ajuste delicado.",
+    "question": "Sob quais topologias e classes de perturbação o mecanismo singular é estável, instável, estruturalmente robusto ou não genérico?"
+  },
+  "NS-M07": {
+    "title": "Blowup como projeto inverso e controle",
+    "summary": "Estudar a construção como trajetória controlada, não apenas como contraexemplo.",
+    "question": "Que custo de controle, controlabilidade, restrições estruturais ou princípios de otimização governam trajetórias que levam dados suaves a comportamento singular?"
+  },
+  "NS-M08": {
+    "title": "Benchmark singular de solução manufaturada",
+    "summary": "Converter a construção publicada em benchmark reproduzível para verificar solvers de Navier–Stokes incompressível.",
+    "question": "Os campos exatos ou fielmente computáveis podem medir como discretizações, passos de tempo, filtros e malha adaptativa se comportam quando a escala singular colapsa?"
+  },
+  "NS-M09": {
+    "title": "Extensões rotacionais e estratificadas",
+    "summary": "Testar quais partes do mecanismo de concentração e cancelamento sobrevivem em modelos geofísicos de fluidos.",
+    "question": "O que muda ao incluir Coriolis, flutuabilidade, estratificação, Boussinesq ou equações primitivas em regimes precisamente especificados?"
+  },
+  "NS-M10": {
+    "title": "Implicações para tempo e NWP",
+    "summary": "Explicar e testar o que o resultado matemático implica ; e não implica ; para previsão numérica do tempo.",
+    "question": "A construção singular pode fornecer testes de estresse úteis para métodos de NWP sem afirmar que modelos meteorológicos operacionais herdam o teorema diretamente?"
+  },
+  "NS-M11": {
+    "title": "Compressão da prova e esqueleto conceitual",
+    "summary": "Extrair uma espinha dorsal matemática inteligível conectando o artigo analítico ao certificado formal.",
+    "question": "Qual é o menor grafo de dependências fiel que permite entender o mecanismo sem esconder obrigações indispensáveis?"
+  },
+  "NS-M12": {
+    "title": "Curso de leitura Lean e conjunto de desafios",
+    "summary": "Converter o corpus formal público em percurso graduado de pré-requisitos a tarefas de reconstrução significativa.",
+    "question": "Estudantes e agentes podem aprender matemática e formalização resolvendo desafios bem delimitados e mecanicamente verificáveis?"
+  },
+  "NS-M13": {
+    "title": "Atlas interativo de Navier–Stokes",
+    "summary": "Construir interface multilíngue e ligada a evidências para pesquisadores, estudantes e público.",
+    "question": "Uma única interface pode mostrar lógica C/D versus A/B, mecanismo, mapa da prova, escalas, perguntas abertas e estado de evidência sem apagar incerteza?"
+  },
+  "NS-M14": {
+    "title": "Explicação pública: energia finita, velocidade ilimitada",
+    "summary": "Criar explicação visual matematicamente fiel de como concentração pode coexistir com energia finita.",
+    "question": "Como o público pode entender o comportamento singular relatado, a força suave e a distinção A/B/C/D sem concluir que todas as equações de fluidos quebraram?"
+  },
+  "NS-M15": {
+    "title": "Estudo de caso em epistemologia da prova formal",
+    "summary": "Usar este episódio público para separar diferentes tipos de garantia científica.",
+    "question": "Como distinguir derivação válida no kernel, alvo formal correto, tradução fiel artigo↔formal, reprodutibilidade, entendimento especialista e aceitação científica ampla?"
+  },
+  "NS-M16": {
+    "title": "Experimentos de colaboração humano–IA",
+    "summary": "Estudar quais estruturas de colaboração realmente melhoram a produção científica rigorosa.",
+    "question": "Quando agentes devem trabalhar independentemente, compartilhar resultados intermediários, sintetizar rotas, reproduzir uns aos outros ou deferir a especialistas humanos?"
+  },
+  "NS-M17": {
+    "title": "Monitoramento de fontes, revisões e erratas",
+    "summary": "Manter índice público transparente de fontes primárias, revisões independentes, correções e mudanças de status.",
+    "question": "Que nova evidência pública altera a confiança justificada na prova analítica, no certificado formal ou nas perguntas derivadas?"
+  },
+  "NS-M18": {
+    "title": "Missões laterais da comunidade",
+    "summary": "Descobrir continuamente perguntas valiosas sobre Navier–Stokes que o catálogo inicial não incluiu.",
+    "question": "Que perguntas matemáticas, numéricas, físicas, educacionais, históricas, de design ou colaboração bem formuladas devem ser adicionadas?"
+  }
+}

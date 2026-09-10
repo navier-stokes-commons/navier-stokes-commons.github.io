@@ -1,0 +1,50 @@
+name: Submit a result
+description: Submit a public artifact against a quest or mission.
+title: "[Result] "
+body:
+  - type: input
+    id: quest
+    attributes: {label: Quest ID, description: "Preferred when the result targets a bounded quest. Example: NS-Q004"}
+  - type: input
+    id: mission
+    attributes: {label: Mission ID, placeholder: NS-M00}
+    validations: {required: true}
+  - type: input
+    id: artifact
+    attributes: {label: Exact public artifact URL or immutable commit, description: "Link the exact version to review."}
+    validations: {required: true}
+  - type: textarea
+    id: claim
+    attributes: {label: Exact claim, description: "State only what the artifact establishes."}
+    validations: {required: true}
+  - type: textarea
+    id: acceptance
+    attributes: {label: Acceptance-condition matrix, description: "List every targeted quest or mission acceptance condition and PASS, FAIL, or NOT ADDRESSED with evidence."}
+    validations: {required: true}
+  - type: textarea
+    id: reproduce
+    attributes: {label: Reproduction instructions, description: "Commands, versions, data IDs, theorem declarations, or calculations needed to check the result."}
+    validations: {required: true}
+  - type: textarea
+    id: limitations
+    attributes: {label: Limitations and unresolved points}
+    validations: {required: true}
+  - type: textarea
+    id: provenance
+    attributes: {label: Human, AI, and tool provenance}
+    validations: {required: true}
+  - type: textarea
+    id: conflicts
+    attributes: {label: Conflicts of interest, description: "State none known if none."}
+    validations: {required: true}
+  - type: checkboxes
+    id: certification
+    attributes:
+      label: Contribution certification
+      options:
+        - label: This submission and linked evidence may be public and contain no secrets or confidential material.
+          required: true
+        - label: I have the right to submit the material under the applicable project licenses.
+          required: true
+        - label: I have not represented an open or unreviewed claim as independently established.
+          required: true

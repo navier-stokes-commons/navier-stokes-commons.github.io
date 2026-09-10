@@ -1,0 +1,92 @@
+{
+  "NS-M01": {
+    "title": "Independent certificate audit",
+    "summary": "Reproduce and inspect the public Lean certificate without treating compilation alone as a semantic audit.",
+    "question": "What exactly does the published Lean artifact establish, under which axioms and dependency versions, and how faithfully does its terminal statement match the official Clay alternatives?"
+  },
+  "NS-M02": {
+    "title": "Independent analytic proof audit",
+    "summary": "Review the published analytic argument section by section, independently of the formal certificate.",
+    "question": "Can independent PDE experts validate every major analytical implication, hypothesis transfer, localization step and terminal comparison in the published proof?"
+  },
+  "NS-M03": {
+    "title": "Norm spectrum and criticality",
+    "summary": "Turn scaling observations into rigorous norm estimates for the published construction.",
+    "question": "For which spatial and mixed space–time norms can one prove precise upper/lower asymptotics near the singular time, and how do these compare with known regularity criteria?"
+  },
+  "NS-M04": {
+    "title": "Stronger forcing constraints",
+    "summary": "Ask which additional restrictions on the smooth forcing remain compatible with the published blowup mechanism.",
+    "question": "Can finite-time blowup still be constructed under constraints such as divergence-free forcing, prescribed forcing classes, small critical norms, Gevrey regularity, or temporal support restrictions?"
+  },
+  "NS-M05": {
+    "title": "From forced to unforced",
+    "summary": "Use the new construction as a source of mechanisms and obstructions without claiming that C/D already settle A/B.",
+    "question": "Can any rigorously controlled modification, restart, gluing mechanism or limiting argument convert the forced singular behavior into an unforced A/B result;or prove why such routes fail?"
+  },
+  "NS-M06": {
+    "title": "Stability and genericity",
+    "summary": "Determine whether the construction survives specified perturbations or depends on delicate tuning.",
+    "question": "Under which topologies and perturbation classes is the singular mechanism stable, unstable, structurally robust or non-generic?"
+  },
+  "NS-M07": {
+    "title": "Blowup as inverse design and control",
+    "summary": "Study the construction as a controlled trajectory rather than only as a counterexample.",
+    "question": "What forcing cost, controllability, structural restrictions or optimization principles govern trajectories that drive smooth data toward singular behavior?"
+  },
+  "NS-M08": {
+    "title": "Singular manufactured-solution benchmark",
+    "summary": "Convert the published construction into a reproducible verification benchmark for incompressible Navier–Stokes solvers.",
+    "question": "Can the exact or faithfully computable fields be used to measure how discretizations, time stepping, filtering and adaptive mesh refinement behave as the singular scale collapses?"
+  },
+  "NS-M09": {
+    "title": "Rotating and stratified extensions",
+    "summary": "Test which parts of the concentration and cancellation mechanism survive in geophysical fluid models.",
+    "question": "What changes when Coriolis, buoyancy, stratification, Boussinesq or primitive-equation terms are added under precisely specified regimes?"
+  },
+  "NS-M10": {
+    "title": "Weather and NWP implications",
+    "summary": "Explain and test what the mathematical result does;and does not;imply for numerical weather prediction.",
+    "question": "Can the singular construction expose useful numerical stress cases for methods used in NWP while avoiding claims that operational weather models inherit the theorem directly?"
+  },
+  "NS-M11": {
+    "title": "Proof compression and conceptual skeleton",
+    "summary": "Extract an intelligible mathematical spine connecting the analytic paper and formal certificate.",
+    "question": "What is the smallest faithful dependency graph that lets a mathematician understand the mechanism without hiding indispensable obligations?"
+  },
+  "NS-M12": {
+    "title": "Lean reading course and challenge set",
+    "summary": "Turn the public proof corpus into a graded path from prerequisites to meaningful reconstruction tasks.",
+    "question": "Can students and agents learn the mathematics and formalization by solving well-scoped challenges whose success is mechanically checkable?"
+  },
+  "NS-M13": {
+    "title": "Interactive Navier–Stokes Atlas",
+    "summary": "Build a multilingual, evidence-linked interface for researchers, students and the public.",
+    "question": "Can one interface expose the C/D vs A/B logic, mechanism, proof map, scaling, open questions and evidence status without flattening uncertainty?"
+  },
+  "NS-M14": {
+    "title": "Public explainer: finite energy, unbounded speed",
+    "summary": "Create a mathematically faithful visual explanation of how concentration can coexist with finite energy.",
+    "question": "How can the public understand the reported singular behavior, smooth forcing and A/B/C/D distinction without being told that all fluid equations are broken?"
+  },
+  "NS-M15": {
+    "title": "Formal-proof epistemology case study",
+    "summary": "Use this public episode to separate distinct kinds of scientific warrant.",
+    "question": "How should we distinguish kernel-valid derivation, correct formal target, faithful paper-to-formal translation, reproducibility, expert understanding and broader scientific acceptance?"
+  },
+  "NS-M16": {
+    "title": "Human–AI collaboration experiments",
+    "summary": "Study which collaboration structures actually improve rigorous scientific throughput.",
+    "question": "When should agents work independently, share intermediate results, synthesize across routes, reproduce one another, or defer to human experts?"
+  },
+  "NS-M17": {
+    "title": "Source, review and errata watch",
+    "summary": "Maintain a transparent public index of primary sources, independent reviews, corrections and status changes.",
+    "question": "What new public evidence changes the warranted confidence in the analytic proof, formal certificate or derived research questions?"
+  },
+  "NS-M18": {
+    "title": "Community side quests",
+    "summary": "Continuously discover valuable Navier–Stokes questions that the initial catalog missed.",
+    "question": "What well-posed mathematical, numerical, physical, educational, historical, design or collaboration questions should be added next?"
+  }
+}

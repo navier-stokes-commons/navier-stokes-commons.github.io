@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:navier-stokes-commons:schema:review:v2",
+  "title": "NSC Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "target_id",
+    "target_digest_sha256",
+    "review_class",
+    "reviewer",
+    "independence",
+    "conflicts",
+    "checks",
+    "verdict",
+    "residual_uncertainty",
+    "evidence_url",
+    "reviewed_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "review_class": {
+      "type": "string",
+      "minLength": 3
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "display_name",
+        "profile_url"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 2
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "profile_url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "independent",
+        "basis"
+      ],
+      "properties": {
+        "independent": {
+          "type": "boolean"
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "verdict": {
+      "enum": [
+        "accept",
+        "request-changes",
+        "reject",
+        "unable-to-assess"
+      ]
+    },
+    "residual_uncertainty": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target_digest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

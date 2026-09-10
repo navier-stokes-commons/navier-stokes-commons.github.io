@@ -1,0 +1,764 @@
+[
+  {
+    "id": "NS-M01",
+    "slug": "certificate-audit",
+    "category": "verification",
+    "status": "open",
+    "level": "research",
+    "title": "Independent certificate audit",
+    "summary": "Reproduce and inspect the public Lean certificate without treating compilation alone as a semantic audit.",
+    "question": "What exactly does the published Lean artifact establish, under which axioms and dependency versions, and how faithfully does its terminal statement match the official Clay alternatives?",
+    "acceptance": [
+      "Reproduce the pinned build in a clean environment.",
+      "Record the trusted axioms and dependency closure of the terminal declarations.",
+      "Map the terminal Lean statements to the official C/D wording and document any semantic gap.",
+      "Obtain an independent reproduction or review."
+    ],
+    "contributors": [
+      "Lean users",
+      "formal-methods researchers",
+      "PDE mathematicians",
+      "reproducibility specialists"
+    ],
+    "source_ids": [
+      "openai-lean",
+      "clay-formulation",
+      "openai-paper"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "OpenAI published a public Lean repository accompanying the result.",
+        "source_ids": [
+          "openai-lean"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "The official Clay formulation distinguishes alternatives A, B, C and D.",
+        "source_ids": [
+          "clay-formulation"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M02",
+    "slug": "analytic-proof-audit",
+    "category": "verification",
+    "status": "open",
+    "level": "research",
+    "title": "Independent analytic proof audit",
+    "summary": "Review the published analytic argument section by section, independently of the formal certificate.",
+    "question": "Can independent PDE experts validate every major analytical implication, hypothesis transfer, localization step and terminal comparison in the published proof?",
+    "acceptance": [
+      "Create a public dependency map of the analytic proof.",
+      "Assign each major step to independent reviewers with explicit scope.",
+      "Record confirmations, objections and errata with source locations.",
+      "Publish a synthesis that distinguishes verified, disputed and unresolved steps."
+    ],
+    "contributors": [
+      "PDE faculty",
+      "analysis graduate students",
+      "referees",
+      "mathematical editors"
+    ],
+    "source_ids": [
+      "openai-paper",
+      "clay-formulation"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "OpenAI published a 166-page analytic proof.",
+        "source_ids": [
+          "openai-paper"
+        ]
+      },
+      {
+        "kind": "reasoning_guard",
+        "text": "Formal checking and human mathematical understanding answer different questions.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M03",
+    "slug": "norm-spectrum",
+    "category": "analysis",
+    "status": "open",
+    "level": "research",
+    "title": "Norm spectrum and criticality",
+    "summary": "Turn scaling observations into rigorous norm estimates for the published construction.",
+    "question": "For which spatial and mixed space–time norms can one prove precise upper/lower asymptotics near the singular time, and how do these compare with known regularity criteria?",
+    "acceptance": [
+      "State the exact profile region and parameter range used.",
+      "Prove matching or explicitly one-sided asymptotic bounds with constants and quantifiers.",
+      "Compare only with regularity criteria whose hypotheses have been checked.",
+      "Separate proved estimates from dimensional heuristics."
+    ],
+    "contributors": [
+      "PDE analysts",
+      "harmonic analysts",
+      "graduate students",
+      "Lean formalizers"
+    ],
+    "source_ids": [
+      "openai-paper"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The published construction contains explicit concentration scales and velocity amplitudes.",
+        "source_ids": [
+          "openai-paper"
+        ]
+      },
+      {
+        "kind": "reasoning_guard",
+        "text": "Heuristic dimensional scaling is not by itself a proof of a norm lower bound.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M04",
+    "slug": "forcing-constraints",
+    "category": "analysis",
+    "status": "open",
+    "level": "research",
+    "title": "Stronger forcing constraints",
+    "summary": "Ask which additional restrictions on the smooth forcing remain compatible with the published blowup mechanism.",
+    "question": "Can finite-time blowup still be constructed under constraints such as divergence-free forcing, prescribed forcing classes, small critical norms, Gevrey regularity, or temporal support restrictions?",
+    "acceptance": [
+      "Treat each restriction as a separate statement with exact function spaces.",
+      "Prove a construction, obstruction, or reduction; numerical plausibility alone is insufficient for a theorem claim.",
+      "State precisely what the result implies;or does not imply;about unforced A/B."
+    ],
+    "contributors": [
+      "PDE analysts",
+      "control theorists",
+      "functional analysts",
+      "formalizers"
+    ],
+    "source_ids": [
+      "openai-paper",
+      "clay-formulation"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The published C/D result uses smooth external forcing.",
+        "source_ids": [
+          "openai-paper",
+          "clay-formulation"
+        ]
+      },
+      {
+        "kind": "reasoning_guard",
+        "text": "Different forcing restrictions are mathematically distinct and must not be conflated.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M05",
+    "slug": "forced-to-unforced",
+    "category": "frontier",
+    "status": "open",
+    "level": "frontier",
+    "title": "From forced to unforced",
+    "summary": "Use the new construction as a source of mechanisms and obstructions without claiming that C/D already settle A/B.",
+    "question": "Can any rigorously controlled modification, restart, gluing mechanism or limiting argument convert the forced singular behavior into an unforced A/B result;or prove why such routes fail?",
+    "acceptance": [
+      "State the exact unforced target and all transition assumptions.",
+      "Any positive terminal claim must satisfy the official unforced formulation, not an approximation.",
+      "Rigorous barrier or route-kill results are accepted as progress when their scope is explicit."
+    ],
+    "contributors": [
+      "PDE researchers",
+      "geometric analysts",
+      "control theorists",
+      "formal mathematicians"
+    ],
+    "source_ids": [
+      "openai-paper",
+      "clay-formulation",
+      "openai-announcement"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The published result concerns forced C/D alternatives.",
+        "source_ids": [
+          "openai-announcement",
+          "clay-formulation"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "The unforced A/B questions are logically distinct.",
+        "source_ids": [
+          "clay-formulation"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M06",
+    "slug": "stability-genericity",
+    "category": "frontier",
+    "status": "open",
+    "level": "frontier",
+    "title": "Stability and genericity",
+    "summary": "Determine whether the construction survives specified perturbations or depends on delicate tuning.",
+    "question": "Under which topologies and perturbation classes is the singular mechanism stable, unstable, structurally robust or non-generic?",
+    "acceptance": [
+      "Define the perturbation topology and outcome metric before computation or proof.",
+      "Distinguish algebraic construction robustness, numerical robustness and PDE dynamical stability.",
+      "Report positive and negative regions with uncertainty or theorem hypotheses."
+    ],
+    "contributors": [
+      "PDE analysts",
+      "dynamical-systems researchers",
+      "numerical analysts",
+      "physicists"
+    ],
+    "source_ids": [
+      "openai-paper"
+    ],
+    "starting_points": [
+      {
+        "kind": "reasoning_guard",
+        "text": "A single constructed solution does not by itself establish genericity or stability.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M07",
+    "slug": "inverse-design-control",
+    "category": "analysis",
+    "status": "open",
+    "level": "research",
+    "title": "Blowup as inverse design and control",
+    "summary": "Study the construction as a controlled trajectory rather than only as a counterexample.",
+    "question": "What forcing cost, controllability, structural restrictions or optimization principles govern trajectories that drive smooth data toward singular behavior?",
+    "acceptance": [
+      "Specify the control space, cost and admissible states.",
+      "Derive a theorem, obstruction or reproducible optimization result.",
+      "Compare against the published construction using the same normalization and constraints."
+    ],
+    "contributors": [
+      "control theorists",
+      "PDE researchers",
+      "optimization researchers",
+      "applied mathematicians"
+    ],
+    "source_ids": [
+      "openai-paper"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The published construction chooses a smooth forcing compatible with the desired singular dynamics.",
+        "source_ids": [
+          "openai-paper"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M08",
+    "slug": "manufactured-solution-benchmark",
+    "category": "numerics",
+    "status": "open",
+    "level": "research",
+    "title": "Singular manufactured-solution benchmark",
+    "summary": "Convert the published construction into a reproducible verification benchmark for incompressible Navier–Stokes solvers.",
+    "question": "Can the exact or faithfully computable fields be used to measure how discretizations, time stepping, filtering and adaptive mesh refinement behave as the singular scale collapses?",
+    "acceptance": [
+      "Publish executable definitions of the benchmark fields and residual.",
+      "Verify divergence, forcing and domain conventions independently.",
+      "Report spatial and temporal refinement with observed orders and uncertainty.",
+      "Include at least one independent implementation before benchmark release."
+    ],
+    "contributors": [
+      "CFD researchers",
+      "numerical analysts",
+      "scientific programmers",
+      "HPC students"
+    ],
+    "source_ids": [
+      "openai-paper",
+      "asme-vv20"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "ASME V&V 20 provides a public verification/validation framework for computational fluid dynamics and heat transfer.",
+        "source_ids": [
+          "asme-vv20"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "The published construction provides a singular trajectory with smooth forcing.",
+        "source_ids": [
+          "openai-paper"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M09",
+    "slug": "geophysical-extensions",
+    "category": "physics",
+    "status": "open",
+    "level": "research",
+    "title": "Rotating and stratified extensions",
+    "summary": "Test which parts of the concentration and cancellation mechanism survive in geophysical fluid models.",
+    "question": "What changes when Coriolis, buoyancy, stratification, Boussinesq or primitive-equation terms are added under precisely specified regimes?",
+    "acceptance": [
+      "Specify one governing model and nondimensional regime per result.",
+      "Derive the additional residual or cancellation terms explicitly.",
+      "Prove or numerically verify only claims appropriate to that model.",
+      "Avoid transferring conclusions between models without a bridge."
+    ],
+    "contributors": [
+      "geophysical fluid dynamicists",
+      "atmospheric scientists",
+      "oceanographers",
+      "PDE researchers"
+    ],
+    "source_ids": [
+      "openai-paper",
+      "clay-formulation",
+      "ecmwf-ifs"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The Clay problem concerns the incompressible Navier–Stokes equations specified in its official formulation.",
+        "source_ids": [
+          "clay-formulation"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "ECMWF publishes technical documentation for an operational atmospheric forecasting system with model equations and processes beyond that Clay formulation.",
+        "source_ids": [
+          "ecmwf-ifs"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M10",
+    "slug": "weather-nwp",
+    "category": "public-science",
+    "status": "open",
+    "level": "research",
+    "title": "Weather and NWP implications",
+    "summary": "Explain and test what the mathematical result does;and does not;imply for numerical weather prediction.",
+    "question": "Can the singular construction expose useful numerical stress cases for methods used in NWP while avoiding claims that operational weather models inherit the theorem directly?",
+    "acceptance": [
+      "Map the exact governing equations used by selected NWP systems or idealized models.",
+      "Separate theorem-level implications from numerical analogy and educational interpretation.",
+      "Have a meteorology or NWP expert review the final public claims."
+    ],
+    "contributors": [
+      "meteorologists",
+      "NWP engineers",
+      "numerical analysts",
+      "science communicators"
+    ],
+    "source_ids": [
+      "openai-announcement",
+      "ecmwf-ifs"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "OpenAI discusses Navier–Stokes equations in application areas including weather forecasting.",
+        "source_ids": [
+          "openai-announcement"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "Operational numerical weather prediction systems have their own documented governing equations, numerical formulations and physical parameterizations.",
+        "source_ids": [
+          "ecmwf-ifs"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M11",
+    "slug": "proof-compression",
+    "category": "formalization",
+    "status": "open",
+    "level": "research",
+    "title": "Proof compression and conceptual skeleton",
+    "summary": "Extract an intelligible mathematical spine connecting the analytic paper and formal certificate.",
+    "question": "What is the smallest faithful dependency graph that lets a mathematician understand the mechanism without hiding indispensable obligations?",
+    "acceptance": [
+      "Build a paper-to-Lean dependency map with stable source locations.",
+      "Identify indispensable conceptual lemmas and explicitly label omitted routine layers.",
+      "Have independent readers reconstruct sampled transitions from the compressed account."
+    ],
+    "contributors": [
+      "mathematicians",
+      "Lean experts",
+      "technical writers",
+      "information designers"
+    ],
+    "source_ids": [
+      "openai-paper",
+      "openai-lean"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The public Lean repository contains the formal certificate accompanying the published result.",
+        "source_ids": [
+          "openai-lean"
+        ]
+      },
+      {
+        "kind": "reasoning_guard",
+        "text": "Compression can improve readability but does not license omission of logical dependencies.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M12",
+    "slug": "lean-reading-course",
+    "category": "education",
+    "status": "open",
+    "level": "research",
+    "title": "Lean reading course and challenge set",
+    "summary": "Turn the public proof corpus into a graded path from prerequisites to meaningful reconstruction tasks.",
+    "question": "Can students and agents learn the mathematics and formalization by solving well-scoped challenges whose success is mechanically checkable?",
+    "acceptance": [
+      "Define prerequisite tiers and learning objectives.",
+      "Select challenges that correspond to meaningful mathematical dependencies, not tactic trivia.",
+      "Provide pinned environments, tests and reference solutions kept separate from exercises.",
+      "Pilot with learners at multiple experience levels."
+    ],
+    "contributors": [
+      "students",
+      "educators",
+      "Lean mentors",
+      "AI-agent researchers"
+    ],
+    "source_ids": [
+      "openai-lean",
+      "openai-paper"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The certificate is public as Lean source.",
+        "source_ids": [
+          "openai-lean"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M13",
+    "slug": "blowup-atlas",
+    "category": "communication",
+    "status": "open",
+    "level": "research",
+    "title": "Interactive Navier–Stokes Atlas",
+    "summary": "Build a multilingual, evidence-linked interface for researchers, students and the public.",
+    "question": "Can one interface expose the C/D vs A/B logic, mechanism, proof map, scaling, open questions and evidence status without flattening uncertainty?",
+    "acceptance": [
+      "Every substantive claim links to a public source or accepted public contribution.",
+      "Provide distinct researcher, student and public explanations without changing claim scope.",
+      "Meet the project accessibility and localization requirements.",
+      "Usability-test navigation and uncertainty comprehension."
+    ],
+    "contributors": [
+      "designers",
+      "frontend developers",
+      "science communicators",
+      "mathematicians",
+      "accessibility specialists"
+    ],
+    "source_ids": [
+      "openai-announcement",
+      "openai-paper",
+      "clay-formulation"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The public sources expose both the official A/B/C/D formulation and the published C/D construction.",
+        "source_ids": [
+          "clay-formulation",
+          "openai-announcement",
+          "openai-paper"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M14",
+    "slug": "public-explainer",
+    "category": "communication",
+    "status": "open",
+    "level": "research",
+    "title": "Public explainer: finite energy, unbounded speed",
+    "summary": "Create a mathematically faithful visual explanation of how concentration can coexist with finite energy.",
+    "question": "How can the public understand the reported singular behavior, smooth forcing and A/B/C/D distinction without being told that all fluid equations are broken?",
+    "acceptance": [
+      "All displayed quantities and branch claims trace to public sources or accepted calculations.",
+      "Avoid implying direct physical infinite-speed fluids or direct weather-model failure.",
+      "Test comprehension with non-specialists and provide accessible text equivalents to visuals."
+    ],
+    "contributors": [
+      "science communicators",
+      "illustrators",
+      "motion designers",
+      "educators",
+      "mathematicians"
+    ],
+    "source_ids": [
+      "openai-announcement",
+      "clay-formulation"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "OpenAI publicly describes a shrinking, accelerating vortex in its construction while reporting bounded kinetic energy.",
+        "source_ids": [
+          "openai-announcement"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "The official formulation distinguishes forced and unforced alternatives.",
+        "source_ids": [
+          "clay-formulation"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M15",
+    "slug": "formal-proof-epistemology",
+    "category": "meta",
+    "status": "open",
+    "level": "research",
+    "title": "Formal-proof epistemology case study",
+    "summary": "Use this public episode to separate distinct kinds of scientific warrant.",
+    "question": "How should we distinguish kernel-valid derivation, correct formal target, faithful paper-to-formal translation, reproducibility, expert understanding and broader scientific acceptance?",
+    "acceptance": [
+      "Define an operational taxonomy using public examples.",
+      "Test the taxonomy on concrete paper-to-Lean mappings and review outcomes.",
+      "State which dimensions can be automated and which require expert judgment."
+    ],
+    "contributors": [
+      "philosophers of science",
+      "formal-methods researchers",
+      "mathematicians",
+      "research-integrity scholars"
+    ],
+    "source_ids": [
+      "openai-lean",
+      "openai-paper",
+      "lean-reference"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "Lean is a proof assistant for checking formal derivations expressed in its logic and environment.",
+        "source_ids": [
+          "lean-reference"
+        ]
+      },
+      {
+        "kind": "reasoning_guard",
+        "text": "Checking a formal derivation and checking whether its statement faithfully represents an intended informal claim are distinct review tasks.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M16",
+    "slug": "human-ai-collaboration",
+    "category": "meta",
+    "status": "open",
+    "level": "research",
+    "title": "Human–AI collaboration experiments",
+    "summary": "Study which collaboration structures actually improve rigorous scientific throughput.",
+    "question": "When should agents work independently, share intermediate results, synthesize across routes, reproduce one another, or defer to human experts?",
+    "acceptance": [
+      "Pre-register matched collaboration experiments where feasible.",
+      "Measure accepted progress, duplication, correlated errors, cost and review burden;not raw token output.",
+      "Publish negative results and protocol details needed for reproduction."
+    ],
+    "contributors": [
+      "AI researchers",
+      "scientists",
+      "economists",
+      "organizational researchers",
+      "statisticians"
+    ],
+    "source_ids": [
+      "openai-announcement",
+      "prove2me-public"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "OpenAI publicly reports large multi-agent groups, route diversity and later cross-pollination in its Navier–Stokes effort.",
+        "source_ids": [
+          "openai-announcement"
+        ]
+      },
+      {
+        "kind": "sourced_fact",
+        "text": "Prove2Me publicly documents an agent-oriented theorem collaboration workspace.",
+        "source_ids": [
+          "prove2me-public"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M17",
+    "slug": "source-errata-watch",
+    "category": "verification",
+    "status": "open",
+    "level": "research",
+    "title": "Source, review and errata watch",
+    "summary": "Maintain a transparent public index of primary sources, independent reviews, corrections and status changes.",
+    "question": "What new public evidence changes the warranted confidence in the analytic proof, formal certificate or derived research questions?",
+    "acceptance": [
+      "Every record identifies source, date, exact claim and relation to existing entries.",
+      "Corrections supersede claims without deleting history.",
+      "Independent review is distinguished from author self-assessment and news coverage."
+    ],
+    "contributors": [
+      "librarians",
+      "research editors",
+      "students",
+      "source auditors",
+      "AI research agents"
+    ],
+    "source_ids": [
+      "openai-announcement",
+      "openai-paper",
+      "openai-lean",
+      "clay-formulation"
+    ],
+    "starting_points": [
+      {
+        "kind": "sourced_fact",
+        "text": "The announcement, paper, formal repository and official Clay formulation are public sources.",
+        "source_ids": [
+          "openai-announcement",
+          "openai-paper",
+          "openai-lean",
+          "clay-formulation"
+        ]
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  },
+  {
+    "id": "NS-M18",
+    "slug": "community-side-quests",
+    "category": "community",
+    "status": "open",
+    "level": "community",
+    "title": "Community side quests",
+    "summary": "Continuously discover valuable Navier–Stokes questions that the initial catalog missed.",
+    "question": "What well-posed mathematical, numerical, physical, educational, historical, design or collaboration questions should be added next?",
+    "acceptance": [
+      "Proposal states a precise question and why it relates to Navier–Stokes.",
+      "Prior-art search distinguishes known results from genuinely open work.",
+      "Acceptance conditions and feasible evidence or review path are specified before promotion.",
+      "Popularity may prioritize attention but cannot establish scientific truth."
+    ],
+    "contributors": [
+      "everyone",
+      "students",
+      "professors",
+      "independent researchers",
+      "designers",
+      "economists",
+      "historians",
+      "AI agents"
+    ],
+    "source_ids": [
+      "clay-ns"
+    ],
+    "starting_points": [
+      {
+        "kind": "reasoning_guard",
+        "text": "No finite catalog is assumed to exhaust all worthwhile follow-on questions.",
+        "source_ids": []
+      }
+    ],
+    "origin": "maintainer-seed",
+    "governance_status": "active-seed",
+    "captain_role": "bootstrap-maintainer"
+  }
+]

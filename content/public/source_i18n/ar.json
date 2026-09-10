@@ -1,0 +1,69 @@
+{
+  "openai-announcement": {
+    "claims_supported": [
+      "نشرت OpenAI برهانًا تحليليًا وصياغة رسمية في Lean",
+      "تذكر OpenAI أن النتيجة تحقق البديلين C وD من صياغة كلاي الرسمية",
+      "تصف OpenAI عملية بحث وتحقق متعددة الوكلاء"
+    ]
+  },
+  "openai-paper": {
+    "claims_supported": [
+      "البناء التحليلي وصياغات النظريات المنشورة من OpenAI"
+    ]
+  },
+  "openai-lean": {
+    "claims_supported": [
+      "مستودع عام لشهادة Lean المرافقة للنتائج المنشورة"
+    ]
+  },
+  "clay-ns": {
+    "claims_supported": [
+      "الصفحة الرسمية لمسألة جائزة الألفية"
+    ]
+  },
+  "clay-formulation": {
+    "claims_supported": [
+      "الصياغة الرسمية للفروع A/B/C/D وشروط القبول"
+    ]
+  },
+  "wcag22": {
+    "claims_supported": [
+      "هدف إمكانية الوصول لهذا الموقع العام"
+    ]
+  },
+  "w3c-i18n-lang": {
+    "claims_supported": [
+      "ممارسة التصريح بلغة المستند"
+    ]
+  },
+  "w3c-i18n-dir": {
+    "claims_supported": [
+      "ممارسة تحديد اتجاه المستندات من اليمين إلى اليسار"
+    ]
+  },
+  "asme-vv20": {
+    "claims_supported": [
+      "إطار عام للتحقق والتصديق في ديناميك الموائع الحاسوبي وانتقال الحرارة"
+    ]
+  },
+  "ecmwf-ifs": {
+    "claims_supported": [
+      "توثيق تقني عام لنظام تشغيلي للتنبؤ العددي بالطقس"
+    ]
+  },
+  "lean-reference": {
+    "claims_supported": [
+      "التوثيق العام لنظام Lean والتحقق الرسمي من البراهين"
+    ]
+  },
+  "prove2me-public": {
+    "claims_supported": [
+      "مساحة عمل عامة ووثائق لتعاون الوكلاء على النظريات"
+    ]
+  },
+  "taylor-vortex-exact": {
+    "claims_supported": [
+      "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
+    ]
+  }
+}

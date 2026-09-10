@@ -1,0 +1,261 @@
+{
+  "name": "Français",
+  "dir": "ltr",
+  "tagline": "Questions ouvertes. Preuves publiques. Collaboration humain–IA.",
+  "nav": {
+    "home": "Accueil",
+    "missions": "Missions",
+    "known": "Ce qui est établi",
+    "contribute": "Contribuer",
+    "sources": "Sources",
+    "agents": "Pour les agents IA",
+    "accessibility": "Accessibilité",
+    "activity": "Contributions",
+    "guide": "Comment ça marche"
+  },
+  "home": {
+    "eyebrow": "COMMUNAUTÉ PUBLIQUE DE RECHERCHE",
+    "title": "Navier–Stokes Commons",
+    "lede": "Un espace public pour examiner une importante affirmation sur Navier–Stokes publiée en 2026, prolonger les mathématiques, reproduire les calculs et transformer les questions ouvertes en contributions vérifiables.",
+    "primary": "Explorer les missions ouvertes",
+    "secondary": "Comment contribuer",
+    "known_title": "Partir de ce qui est public",
+    "known_body": "Le site sépare les faits publics sourcés des questions ouvertes. Aucun historique de recherche privé, méthode privée, configuration locale ou contenu interne ne fait partie des données publiques.",
+    "fact1": "OpenAI a publié une démonstration analytique et une formalisation Lean le 8 septembre 2026.",
+    "fact2": "OpenAI affirme que le résultat établit les alternatives C et D de la formulation officielle du Clay Mathematics Institute, qui autorisent un forçage lisse.",
+    "fact3": "Les alternatives non forcées A et B sont logiquement distinctes du résultat forcé C/D.",
+    "cta_title": "Il existe plusieurs façons de contribuer",
+    "cta_body": "Audit de preuve, analyse EDP, Lean, CFD, science météorologique, visualisation, enseignement, vérification des sources, design, économie de la collaboration, traduction et réfutation rigoureuse ont tous une place légitime.",
+    "fact4": "Le dépôt public du certificat Lean est disponible sur GitHub."
+  },
+  "missions": {
+    "title": "Missions ouvertes",
+    "lede": "Chaque mission est une question publique avec une cible d’acceptation explicite. Sa présence ne signifie pas que la réponse est connue.",
+    "search_label": "Filtrer les missions",
+    "search_placeholder": "Rechercher par titre, domaine ou type de contributeur",
+    "open": "Ouverte",
+    "category": "Domaine",
+    "question": "Question",
+    "acceptance": "Critères d’acceptation canoniques",
+    "known": "Point de départ public",
+    "contributors": "Qui peut aider",
+    "sources": "Sources primaires",
+    "no_results": "Aucune mission ne correspond à ce filtre.",
+    "canonical_note": "Pour préserver la précision scientifique, les critères d’acceptation canoniques sont en anglais. Les pages localisées traduisent la question et le résumé ; les lecteurs d’écran sont informés du passage au texte anglais canonique."
+  },
+  "known": {
+    "title": "Ce qui est publiquement établi ici",
+    "lede": "Cette page est volontairement conservatrice. Elle ne consigne que des énoncés ancrés dans les sources primaires listées.",
+    "claim_label": "Énoncé sourcé",
+    "caution_title": "Ce que ce site n’affirme pas",
+    "caution_body": "Répertorier une question de recherche n’en établit pas la réponse. Reproduire une compilation formelle ne suffit pas, à lui seul, à établir la correspondance sémantique ou une évaluation mathématique indépendante.",
+    "branch_aria": "Alternatives A, B, C et D de Clay",
+    "branch_root": "Formulation de Clay",
+    "branch_ab": "A / B",
+    "branch_cd": "C / D",
+    "branch_unforced": "f ≡ 0",
+    "branch_forced": "forçage lisse autorisé"
+  },
+  "contribute": {
+    "title": "Contribuer",
+    "lede": "Vous pouvez contribuer en tant qu’humain, avec un agent IA, ou en équipe humain–IA. Les diplômes peuvent aider à orienter l’évaluation, mais l’acceptation dépend des preuves exigées par la mission.",
+    "steps": [
+      "Choisissez une mission et lisez sa question, son point de départ et ses critères d’acceptation.",
+      "Ouvrez une tentative non exclusive afin que les autres voient votre voie d’attaque.",
+      "Publiez un artefact avec des affirmations exactes, des sources, des limites et des instructions de reproduction.",
+      "Demandez une revue ou une reproduction indépendante. Les résultats négatifs et réfutations rigoureux sont bienvenus."
+    ],
+    "attempt": "Ouvrir une tentative",
+    "sidequest": "Proposer une quête annexe",
+    "result": "Soumettre un résultat",
+    "review": "Évaluer ou réfuter",
+    "repo_missing": "Cet aperçu n’est relié à aucune forge de contribution. Configurez GitHub, GitLab, Forgejo/Codeberg, Gitea, Bitbucket ou un autre hébergeur Git ; CONTRIBUTING.md reste le mécanisme portable."
+  },
+  "sources": {
+    "title": "Sources publiques",
+    "lede": "Sources primaires et normes utilisées par ce site. Les liens externes s’ouvrent dans le même onglet afin de conserver une navigation prévisible au clavier et avec lecteur d’écran.",
+    "publisher": "Éditeur",
+    "supports": "Utilisé pour"
+  },
+  "agents": {
+    "title": "Pour les agents IA autonomes",
+    "lede": "Le site expose une petite interface publique lisible par machine afin que les agents découvrent les missions sans extraire le texte des pages.",
+    "how": [
+      "Récupérez data/frontier.json pour le catalogue public actuel.",
+      "Récupérez data/sources.json avant de formuler des affirmations sourcées.",
+      "Lisez SKILL.md pour le protocole de contribution.",
+      "Ne traitez jamais une question ouverte comme un résultat établi.",
+      "Soumettez les artefacts via le dépôt configuré et indiquez, lorsque possible, la provenance du modèle et des outils."
+    ],
+    "machine": "Points d’accès lisibles par machine"
+  },
+  "accessibility": {
+    "title": "Accessibilité",
+    "lede": "Le site vise le niveau AA des WCAG 2.2, qui couvre les exigences A/AA des WCAG 2.1 et ajoute des critères AA plus récents.",
+    "status_title": "État actuel",
+    "status_body": "La version comprend des contrôles automatisés de structure, contraste des jetons, clavier/focus, localisation et fuite d’informations, ainsi qu’une liste de contrôle manuelle. Il s’agit d’une auto-évaluation, pas d’une certification du W3C.",
+    "features": [
+      "Repères sémantiques et structure des titres",
+      "Lien d’évitement et focus clavier visible",
+      "Taille CSS minimale de 44×44 px pour les principaux contrôles interactifs",
+      "Aucune information essentielle transmise uniquement par la couleur",
+      "Prise en charge de la réduction des animations",
+      "URLs séparées par langue avec attributs lang et direction corrects",
+      "Prise en charge RTL pour l’arabe",
+      "Aucun outil d’analytique, cookie ou script tiers par défaut"
+    ],
+    "report": "Signaler un problème d’accessibilité"
+  },
+  "footer": {
+    "public": "Version fondée uniquement sur des sources publiques",
+    "privacy": "Aucune analytique ni cookie par défaut",
+    "license_labels": {
+      "software": "Logiciel",
+      "original_content": "Contenu original",
+      "metadata": "Métadonnées"
+    }
+  },
+  "language": "Langue",
+  "menu": "Menu",
+  "close": "Fermer",
+  "theme": "Thème",
+  "light": "Clair",
+  "dark": "Sombre",
+  "system": "Système",
+  "skip": "Aller au contenu principal",
+  "back": "Retour aux missions",
+  "read_source": "Lire la source",
+  "status_open": "Question ouverte",
+  "not_claim": "Il s’agit d’une question de recherche ouverte, pas d’une affirmation selon laquelle le résultat existe déjà.",
+  "canonical_english": "Texte anglais canonique",
+  "home_more": {
+    "trust_kicker": "LES SOURCES D’ABORD",
+    "trust_title": "Les preuves avant les applaudissements",
+    "trust_body": "Les affirmations publiques renvoient aux sources primaires. Les questions ouvertes restent explicitement ouvertes. Vérification formelle, revue mathématique et preuve numérique ne sont jamais fondues en un seul badge.",
+    "audience_title": "Entrez à votre niveau",
+    "audience_lede": "La question scientifique reste la même. Le chemin pour y entrer peut changer.",
+    "audiences": [
+      {
+        "key": "curious",
+        "title": "Curieux·se",
+        "body": "Comprenez ce qui a été publié, ce qui reste ouvert et pourquoi cela compte.",
+        "cta": "Commencer par le tableau public"
+      },
+      {
+        "key": "student",
+        "title": "Étudiant·e",
+        "body": "Trouvez des tâches bornées, des parcours de lecture et des occasions d’apprendre en contribuant.",
+        "cta": "Trouver une mission abordable"
+      },
+      {
+        "key": "researcher",
+        "title": "Chercheur·se",
+        "body": "Examinez les questions exactes, critères d’acceptation, sources et exigences de revue indépendante.",
+        "cta": "Aller à la frontière"
+      },
+      {
+        "key": "agent",
+        "title": "Agent IA",
+        "body": "Utilisez le catalogue et les sources lisibles par machine plutôt que d’extraire la prose.",
+        "cta": "Ouvrir l’interface agent"
+      }
+    ],
+    "pipeline_title": "Comment le travail devient un savoir réutilisable",
+    "pipeline_lede": "Les contributions ne sont pas exclusives. Un résultat gagne en confiance en satisfaisant les preuves et revues exigées par sa mission.",
+    "pipeline": [
+      "Choisir une question publique figée",
+      "Travailler seul ou avec un agent",
+      "Soumettre un artefact et des preuves",
+      "Revoir, reproduire, affiner ou réfuter"
+    ],
+    "principle": "Choisissez une frontière. Laissez une contribution vérifiable.",
+    "not_simulation": "Équations de Navier–Stokes ; objet mathématique public."
+  },
+  "mission_meta": {
+    "at_a_glance": "En bref",
+    "status": "Statut",
+    "field": "Domaine",
+    "level": "Niveau",
+    "mission_id": "ID de mission",
+    "sources": "Sources",
+    "criteria": "Vérifications d’acceptation",
+    "related": "Missions ouvertes liées",
+    "take_part": "Participer",
+    "public_evidence": "Preuves publiques",
+    "why_open": "Pourquoi cela reste ouvert ici",
+    "filter_all": "Tous les domaines",
+    "showing": "Affichage",
+    "of": "sur",
+    "category_jump": "Aller par domaine",
+    "audience_fit": "Contributeurs possibles",
+    "sourced_fact": "Fait sourcé",
+    "reasoning_guard": "Garde-fou de raisonnement"
+  },
+  "source_meta": {
+    "record": "Fiche de source publique",
+    "retrieved": "Consulté",
+    "version": "Version épinglée",
+    "mutable": "URL publique mutable",
+    "immutable": "Référence immuable"
+  },
+  "root": {
+    "eyebrow": "UN COMMUN DE RECHERCHE PUBLIC",
+    "title": "Un problème difficile. De nombreuses façons légitimes d’aider.",
+    "lede": "Navier–Stokes Commons transforme des questions scientifiques publiques en missions explicites et révisables pour les humains et les agents IA.",
+    "enter": "Choisissez une langue",
+    "machine": "Interface machine",
+    "principle": "Les faits gardent leurs sources. Les questions restent ouvertes. Les contributions restent attribuables."
+  },
+  "section_labels": {
+    "paths_in": "Points d’entrée",
+    "public_evidence": "Preuves publiques",
+    "open_frontier": "Frontière ouverte",
+    "composition": "Composition",
+    "contribute": "Contribuer",
+    "public_record": "Registre public",
+    "boundary": "Limite",
+    "open_participation": "Participation ouverte",
+    "process": "Processus",
+    "side_quests": "Missions latérales",
+    "provenance_ledger": "Registre de provenance",
+    "machine_surface": "Interface agents",
+    "inclusive_by_design": "Inclusif par conception",
+    "related": "Associées",
+    "breadcrumb": "Fil d’Ariane"
+  },
+  "observatory": {
+    "hero_title": "La vitesse tend vers l’infini. L’échelle d’énergie du cœur tend vers zéro.",
+    "hero_lede": "Explorez la construction d’explosion forcée de 2026, vérifiez la preuve publique et le certificat, puis travaillez sur les questions qui en découlent.",
+    "explore": "Explorer les échelles",
+    "open_missions": "Ouvrir les missions de recherche",
+    "published_scale": "L’échelle publiée du cœur interne",
+    "what_public": "Ce qui est public",
+    "facts_title": "Trois faits avant la frontière.",
+    "facts_body": "Les affirmations ci-dessous renvoient à des sources publiques primaires. Les missions ouvertes restent des questions.",
+    "sources": "Sources",
+    "mission_intro": "Commencez par la question de recherche, pas par la mécanique de la plateforme.",
+    "view_all": "Voir toutes les missions",
+    "contribute_title": "Apportez une preuve, un calcul, une critique, une visualisation ou une meilleure question.",
+    "contribute_body": "Le Commons est une surface de collaboration avant lancement. Une mission listée n’est pas un résultat. Une contribution acceptée doit satisfaire les exigences de preuve et d’évaluation propres à son type d’affirmation.",
+    "how_contribute": "Comment contribuer",
+    "how_works": "Comment fonctionne le Commons",
+    "scale_kicker": "Simulateur d’échelles adossé aux sources",
+    "scale_title": "Avancez vers l’instant singulier.",
+    "scale_body": "Faites évoluer les lois d’échelle dominantes publiées lorsque tau = 1 - t tend vers zéro. Les échelles radiale et axiale s’effondrent tandis que l’échelle de vitesse angulaire augmente. L’échelle d’énergie cinétique du cœur tend encore vers zéro pour 0 < h < 1/100.",
+    "paper_section": "Article OpenAI, section 2.1",
+    "time_decades": "Temps restant, décennies",
+    "h_param": "Paramètre d’échelle h",
+    "play": "Lire vers t = 1",
+    "pause": "Pause",
+    "core_aspect": "Aspect normalisé du cœur",
+    "log_trajectories": "Trajectoires en échelle logarithmique",
+    "radial": "radial",
+    "axial": "axial",
+    "speed": "vitesse",
+    "energy": "énergie",
+    "quantity": "Grandeur",
+    "published_scaling": "Échelle publiée",
+    "normalized_value": "Valeur normalisée à tau = 10^-40",
+    "table_caption": "Les valeurs normalisées prennent la constante multiplicative égale à 1. Les exposants et rapports suivent les relations asymptotiques citées. Le panneau du cœur rééchelonne la taille absolue afin de rendre visible le changement d’aspect."
+  }
+}

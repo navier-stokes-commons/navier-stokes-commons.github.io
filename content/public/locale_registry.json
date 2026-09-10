@@ -1,0 +1,69 @@
+{
+  "schema": "nsc-locale-registry-v1",
+  "locales": [
+    {
+      "code": "en",
+      "translation_scope": "canonical"
+    },
+    {
+      "code": "es",
+      "translation_scope": "full-translation"
+    },
+    {
+      "code": "pt-BR",
+      "translation_scope": "full-translation"
+    },
+    {
+      "code": "fr",
+      "translation_scope": "full-translation"
+    },
+    {
+      "code": "ar",
+      "translation_scope": "full-translation"
+    },
+    {
+      "code": "zh-Hans",
+      "translation_scope": "full-translation"
+    },
+    {
+      "code": "de",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "it",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "ru",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "hi",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "bn",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "ja",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "ko",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "sw",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "tr",
+      "translation_scope": "interface-preview"
+    },
+    {
+      "code": "id",
+      "translation_scope": "interface-preview"
+    }
+  ]
+}
