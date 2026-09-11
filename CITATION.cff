@@ -3,5 +3,5 @@ title: Navier-Stokes Commons
 message: "Cite the exact release or repository commit used. For scientific claims, cite the underlying primary source or accepted contribution rather than the Commons alone."
 type: software
 license: Apache-2.0
-version: 0.4.0-beta.4
+version: 0.4.0-beta.5
 repository-code: "https://github.com/Aletheia-Prime/navier-stokes-commons-public"

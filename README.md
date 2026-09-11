@@ -1,5 +1,5 @@
 <!-- GENERATED:release-summary:start -->
-**Current release:** `public-web-v0.4.0-beta.4`
+**Current release:** `public-web-v0.4.0-beta.5`
 **Stage:** open-beta
 **Participation:** open
 **Seed research programs:** 18 missions

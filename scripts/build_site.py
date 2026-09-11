@@ -157,6 +157,7 @@ def nav(page:Path,loc:str,current:str,kind:str,slug=None):
         ('sources',L['nav']['sources'],'sources'),
         ('agents',L['nav']['agents'],'agents'),
     ]
+    if loc=='en': links.insert(0,('math','Mathematics','math'))
     n=[]
     for key,label,target_kind in links:
         aria=' aria-current="page"' if current==key else ''
@@ -731,6 +732,151 @@ def r11_agent_packet(q):
     node=next((n for n in frontier_graph['nodes'] if q['mission_id']==n['program_id']),None)
     return {'schema':'nsc-agent-work-packet-v1','problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'task':q['task'],'deliverables':q['deliverables'],'acceptance':q['acceptance'],'review':q['review'],'sources':q.get('source_ids',[]),'dependencies':q.get('dependencies',[]),'claim_ids':q.get('claim_ids',[]),'parallel_safe':q.get('parallel_safe',False),'non_exclusive':q.get('non_exclusive',True),'frontier':({'node_id':node['id'],'lane':node['lane'],'priority':node['priority'],'key_question':node['key_question'],'agent_suitability':node['agent_suitability'],'publication_path':node['publication_path']} if node else {'lane':'unclassified','priority':'P3'}),'provenance_required':['model/provider/version or human author identity','toolchain/environment versions','exact public source/artifact versions','commands/method sufficient for reproduction','limitations, uncertainty, and conflicts'],'submission':{'actions':'Resolve forge write actions via {{ACTIONS_ENDPOINT}}','rule':'An agent result is an artifact for review, never an automatic claim elevation.'}}
 
+def r13_math_page():
+    page=PUBLIC/'en/math/index.html'
+    thesis=clay_problem_status['landing_thesis']
+    alternatives=[]
+    for a in clay_problem_status['alternatives']:
+        alternatives.append(
+            '<tr>'
+            f'<th scope="row">{esc(a["id"])}</th>'
+            f'<td>{esc(a["domain"])}</td>'
+            f'<td>{esc(a["forcing"])}</td>'
+            f'<td>{esc(a["target"])}</td>'
+            f'<td>{esc(a["display_status"])}</td>'
+            '</tr>'
+        )
+    order={'P0':0,'P1':1,'P2':2,'P3':3}
+    frontier_nodes=sorted(
+        [n for n in frontier_graph['nodes'] if n.get('priority') in {'P0','P1'}],
+        key=lambda n:(order.get(n.get('priority'),9), n['id'])
+    )
+    programs=[]
+    for n in frontier_nodes:
+        mission=mission_by_id.get(n['program_id'])
+        program_link=(f'../missions/{mission["slug"]}/' if mission else '../frontier/')
+        probs=[]
+        for qid in n.get('problem_ids',[]):
+            q=quest_by_id.get(qid)
+            label=(qid+' - '+q['title']) if q else qid
+            probs.append(f'<li><a href="../quests/{esc(qid.lower())}/">{esc(label)}</a></li>')
+        if not probs:
+            probs.append('<li>No bounded problem is currently registered for this program.</li>')
+        programs.append(
+            '<li>'
+            f'<p><strong>{esc(n["priority"])} - <a href="{esc(program_link)}">{esc(n["title"])}</a></strong></p>'
+            f'<p>{esc(n["key_question"])}</p>'
+            f'<p>Review class: {esc(n["review_class"])}. Research output: {esc(n["publication_path"])}.</p>'
+            '<details><summary>Bounded research problems</summary><ul>'+''.join(probs)+'</ul></details>'
+            '</li>'
+        )
+    review_rows=[]
+    for c in claims_doc.get('claims',[]):
+        review_rows.append(
+            '<tr>'
+            f'<td><code>{esc(c["id"])}</code></td>'
+            f'<td>{esc(c["status"])}</td>'
+            f'<td>{esc(c["statement"])}</td>'
+            '</tr>'
+        )
+    update_rows=[]
+    for u in frontier_updates.get('updates',[]):
+        update_rows.append(
+            '<li>'
+            f'<p><strong>{esc(u["date"])} - <a href="{esc(u["url"])}">{esc(u["title"])}</a></strong> [source-reported]</p>'
+            f'<p>{esc(u["reported_result"])}</p>'
+            f'<p>Does not establish: {esc("; ".join(u["does_not_establish"]))}</p>'
+            '</li>'
+        )
+    machine_keys=['clay_problem_status','frontier_graph','frontier_updates','agent_packets','claims','sources','quests','actions','discovery']
+    machine=[]
+    for k in machine_keys:
+        target=registry['machine_endpoints'].get(k)
+        if target:
+            machine.append(f'<li><a href="{esc(rel(page,target.lstrip("/")))}"><code>{esc(target)}</code></a> - {esc(k.replace("_"," "))}</li>')
+    source_ids=['clay-formulation','openai-paper','openai-lean','openai-announcement']
+    source_links_html=[]
+    for sid in source_ids:
+        s=source_by_id.get(sid)
+        if s:
+            version=(' ['+esc(s['version'])+']') if s.get('version') else ''
+            source_links_html.append(f'<li><a href="{esc(s["url"])}">{esc(s["title"])}</a> - {esc(s["publisher"])}{version}</li>')
+    release=esc(project.get('release',''))
+    canonical=''
+    if SITE_URL:
+        canonical=f'<link rel="canonical" href="{esc(SITE_URL+"/en/math/")}">'
+    doc=f'''<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navier–Stokes Commons - Mathematics</title>
+<meta name="description" content="Plain, zero-JavaScript mathematical status, research frontier, review state, and machine-readable work records for Navier–Stokes Commons.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<meta name="referrer" content="no-referrer">
+{canonical}
+</head>
+<body>
+<a href="#main">Skip to content</a>
+<header>
+<h1>Navier–Stokes Commons - Mathematics</h1>
+<p><a href="../">Interactive view</a> | <a href="../frontier/">Research frontier</a> | <a href="../review/">Review</a> | <a href="../quests/">Research problems</a> | <a href="../claims/">Claims</a> | <a href="../sources/">Sources</a> | <a href="../agents/">Agents</a></p>
+<p>Release: <code>{release}</code>. This page requires no JavaScript and no stylesheet.</p>
+</header>
+<hr>
+<main id="main">
+<section id="status">
+<h2>Problem status</h2>
+<p><strong>{esc(thesis['headline'])}</strong></p>
+<p>{esc(thesis['body'])}</p>
+<table>
+<caption>Fefferman A/B/C/D alternatives and current public status</caption>
+<thead><tr><th>Alt.</th><th>Domain</th><th>Forcing</th><th>Target</th><th>Status here</th></tr></thead>
+<tbody>{''.join(alternatives)}</tbody>
+</table>
+<p>The Commons does not equate publication, formal kernel checking, independent mathematical review, broad field acceptance, or Clay Mathematics Institute recognition.</p>
+</section>
+<hr>
+<section id="frontier">
+<h2>Prioritized research programs</h2>
+<p>P0 and P1 denote current project priority, not truth, prestige, or probability of success.</p>
+<ol>{''.join(programs)}</ol>
+</section>
+<hr>
+<section id="review-state">
+<h2>Claim and review state</h2>
+<table>
+<thead><tr><th>Record</th><th>Status</th><th>Statement</th></tr></thead>
+<tbody>{''.join(review_rows)}</tbody>
+</table>
+<p>Lifecycle: research problem → non-exclusive attempt → versioned artifact → mechanical/formal checks as applicable → independent domain review → revision/re-review → accepted, rejected, disputed, or inconclusive → frontier update.</p>
+</section>
+<hr>
+<section id="recent-literature">
+<h2>Recent literature affecting the frontier</h2>
+<ul>{''.join(update_rows) if update_rows else '<li>No frontier updates are registered.</li>'}</ul>
+</section>
+<hr>
+<section id="primary-sources">
+<h2>Primary sources</h2>
+<ul>{''.join(source_links_html)}</ul>
+</section>
+<hr>
+<section id="machine-interface">
+<h2>Machine-readable interface</h2>
+<ul>{''.join(machine)}</ul>
+<p>Agent outputs are research artifacts for review. They do not elevate claim status automatically.</p>
+</section>
+</main>
+<hr>
+<footer>
+<p>Generated from the same canonical public records as the interactive site. No persuasive or decorative layer is required to use this page.</p>
+<p>{esc(localized_license_line('en',locales['en']))}</p>
+</footer>
+</body>
+</html>'''
+    write('en/math/index.html',doc)
+
 def home_page(loc):
     if loc!='en':
         L=locales[loc]; O=L['observatory']; R5,r5attrs=_r5_copy(loc); page=PUBLIC/f'{loc}/index.html'
@@ -751,7 +897,7 @@ def home_page(loc):
         write(f'{loc}/index.html',shell(page,loc,'home','home',R5['title'],R5['lede'],body,extra_head=r5_font_preloads(page)))
         return
     page=PUBLIC/'en/index.html'; thesis=clay_problem_status['landing_thesis']; inst=clay_problem_status['official_problem']['institutional_status']
-    body=f'''<section class="hero r11-status-hero"><div class="container r11-status-layout"><div class="r11-status-copy"><span class="eyebrow">THE 2026 RESULT · THE OPEN FRONTIER</span><h1>{esc(thesis['headline'])}</h1><p class="lede">{esc(thesis['body'])}</p><div class="r11-actions"><a class="button" href="frontier/">Work on an open problem</a><a class="button secondary" href="agents/">Give an agent a research problem</a><a class="text-link strong" href="review/">Review C/D ↗</a><a class="text-link" href="explain/">Explain A/B/C/D ↗</a></div></div><div class="r11-status-object">{r11_status_grid(page)}<p class="r11-institution">CMI recognition: <b>separate institutional process</b> · {esc(inst['note'])}</p></div></div></section><section class="r11-vortex-shell"><div class="container"><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div>{r5_vortex_stage(page,'en')}</div></section><section class="section r11-frontier-preview"><div class="container"><div class="section-head"><div><span class="eyebrow">PRIORITIZED RESEARCH FRONTIER</span><h2>The proof is a dependency. The subject is the program.</h2></div><div><p>Frontier mathematics is ranked separately from verification, computational research, and Commons support. A browser audit does not sit beside an A/B obstruction theorem as if they were the same kind of progress.</p><a class="text-link strong" href="frontier/">Open the frontier map →</a></div></div>{r11_frontier_preview(page)}</div></section><section class="section"><div class="container invitation-grid"><div><span class="eyebrow">RESEARCH LIFECYCLE</span><h2>Completion means review changes the frontier.</h2></div><div>{r11_review_lifecycle()}<p><a class="text-link strong" href="review/">See the acceptance and review contract →</a></p></div></div></section>{r6_community_entry_section(page,'en')}'''
+    body=f'''<section class="hero r11-status-hero"><div class="container r11-status-layout"><div class="r11-status-copy"><span class="eyebrow">THE 2026 RESULT · THE OPEN FRONTIER</span><h1>{esc(thesis['headline'])}</h1><p class="lede">{esc(thesis['body'])}</p><div class="r11-actions"><a class="button" href="frontier/">Work on an open problem</a><a class="button secondary" href="agents/">Give an agent a research problem</a><a class="button ghost" href="math/">Mathematics</a><a class="text-link strong" href="review/">Review C/D ↗</a><a class="text-link" href="explain/">Explain A/B/C/D ↗</a></div></div><div class="r11-status-object">{r11_status_grid(page)}<p class="r11-institution">CMI recognition: <b>separate institutional process</b> · {esc(inst['note'])}</p></div></div></section><section class="r11-vortex-shell"><div class="container"><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div>{r5_vortex_stage(page,'en')}</div></section><section class="section r11-frontier-preview"><div class="container"><div class="section-head"><div><span class="eyebrow">PRIORITIZED RESEARCH FRONTIER</span><h2>The proof is a dependency. The subject is the program.</h2></div><div><p>Frontier mathematics is ranked separately from verification, computational research, and Commons support. A browser audit does not sit beside an A/B obstruction theorem as if they were the same kind of progress.</p><a class="text-link strong" href="frontier/">Open the frontier map →</a></div></div>{r11_frontier_preview(page)}</div></section><section class="section"><div class="container invitation-grid"><div><span class="eyebrow">RESEARCH LIFECYCLE</span><h2>Completion means review changes the frontier.</h2></div><div>{r11_review_lifecycle()}<p><a class="text-link strong" href="review/">See the acceptance and review contract →</a></p></div></div></section>{r6_community_entry_section(page,'en')}'''
     write('en/index.html',shell(page,'en','home','home',thesis['headline'],thesis['body'],body,extra_head=r5_font_preloads(page)))
 
 def missions_page(loc):
@@ -899,7 +1045,7 @@ def accessibility_page(loc):
 def root_page():
     page=PUBLIC/'index.html'; thesis=clay_problem_status['landing_thesis']; R=locales['en']['root']
     langs=''.join(f'<a lang="{esc(loc)}" dir="{esc(locales[loc]["dir"])}" href="{esc(rel(page,logical_target(loc,"home")))}"><span>{esc(locales[loc]["name"])}</span><small>{esc(project.get("locale_status",{}).get(loc,"preview").replace("-"," "))}</small><span aria-hidden="true">↗</span></a>' for loc in project['locales'])
-    status=f'''<section class="r11-global-status"><div class="container r11-status-layout"><div class="r11-status-copy"><span class="eyebrow">NAVIER–STOKES COMMONS · RESEARCH, NOT A CAMPAIGN</span><h1>{esc(thesis['headline'])}</h1><p class="lede">{esc(thesis['body'])}</p><div class="r11-actions"><a class="button" href="en/frontier/">Work on an open problem</a><a class="button secondary" href="en/agents/">Give an agent a research problem</a><a class="text-link strong" href="en/review/">Review C/D ↗</a><a class="text-link" href="en/explain/">Explain A/B/C/D ↗</a><a class="text-link" href="en/context/">Context / credit ↗</a></div></div><div class="r11-status-object">{r11_status_grid(page)}<p class="r11-institution">Independent mathematical review and CMI recognition are distinct from OpenAI's publication claim.</p></div></div></section>'''
+    status=f'''<section class="r11-global-status"><div class="container r11-status-layout"><div class="r11-status-copy"><span class="eyebrow">NAVIER–STOKES COMMONS · RESEARCH, NOT A CAMPAIGN</span><h1>{esc(thesis['headline'])}</h1><p class="lede">{esc(thesis['body'])}</p><div class="r11-actions"><a class="button" href="en/frontier/">Work on an open problem</a><a class="button secondary" href="en/agents/">Give an agent a research problem</a><a class="button ghost" href="en/math/">Mathematics</a><a class="text-link strong" href="en/review/">Review C/D ↗</a><a class="text-link" href="en/explain/">Explain A/B/C/D ↗</a><a class="text-link" href="en/context/">Context / credit ↗</a></div></div><div class="r11-status-object">{r11_status_grid(page)}<p class="r11-institution">Independent mathematical review and CMI recognition are distinct from OpenAI's publication claim.</p></div></div></section>'''
     body=f'''<main id="main" class="global-landing">{status}{scale_trace("en")}<section class="r11-vortex-shell"><div class="container">{r5_vortex_stage(page,'en')}</div></section><section class="language-zone" aria-labelledby="language-title"><div class="language-zone-head"><span class="eyebrow">MULTILINGUAL ACCESS</span><h2 id="language-title">{esc(R['enter'])}</h2><p>English is the canonical research surface. Translation status remains explicit; mathematical claim scope does not change by locale.</p></div><div class="language-grid">{langs}</div></section></main>'''
     write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons: {esc(thesis['headline'])}</title><meta name="description" content="{esc(thesis['body'])}">{SECURITY_META}<meta name="color-scheme" content="light dark">{r5_font_preloads(page)}<link rel="describedby" href="{esc(rel(page,'llms.txt'))}" type="text/markdown"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script></body></html>''')
 
@@ -1028,7 +1174,7 @@ def main():
         for m in missions: mission_page(loc,m)
     quests_page()
     for q in quests: quest_page(q)
-    sprint_page(); governance_page(); claims_page(); benchmarks_page(); reference_flow_page(); r6_context_page(); r11_frontier_page(); r11_review_page(); r11_explain_page()
+    sprint_page(); governance_page(); claims_page(); benchmarks_page(); reference_flow_page(); r6_context_page(); r11_frontier_page(); r11_review_page(); r11_explain_page(); r13_math_page()
     machine_files()
     print(f'Built {sum(1 for _ in PUBLIC.rglob("*.html"))} HTML pages in {PUBLIC}')
 

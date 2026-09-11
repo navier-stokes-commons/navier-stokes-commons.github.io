@@ -89,7 +89,8 @@
     "review": "/en/review/",
     "explain": "/en/explain/",
     "agents": "/en/agents/",
-    "contribute": "/en/contribute/"
+    "contribute": "/en/contribute/",
+    "math": "/en/math/"
   },
   "discovery_contract": {
     "kind": "project-local-custom",

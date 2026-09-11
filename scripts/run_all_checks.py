@@ -14,6 +14,7 @@ commands=[
  ['python3','scripts/audit_evaluation_protocol.py'],
  ['python3','scripts/audit_r11_schemas.py'],
  ['python3','scripts/audit_r11_status.py'],
+ ['python3','scripts/audit_r13_math_view.py'],
  ['python3','scripts/audit_r11_frontier_graph.py'],
  ['python3','scripts/audit_r11_agent_packets.py'],
  ['python3','scripts/audit_r12_sdlc_authority.py'],
