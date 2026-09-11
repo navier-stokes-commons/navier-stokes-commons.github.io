@@ -14,6 +14,8 @@ for fn,(fam,license_name) in required.items():
  elif p.read_bytes()[:4]!=b'wOF2': errs.append(f'{fn} is not a WOFF2 payload')
  else: font_bytes += p.stat().st_size
  if fam not in css or f'fonts/{fn}' not in css: errs.append(f'CSS does not bind {fam} to {fn}')
+ pub=R/'public'/'assets'/'fonts'/fn
+ if p.is_file() and not pub.is_file(): errs.append(f'built public tree missing font {fn}')
  lic=R/'assets/fonts/licenses'/license_name
  if not lic.is_file() or lic.stat().st_size<1000: errs.append(f'missing font license {license_name}')
 if re.search(r'@import\s+url\([^)]*https?://',css,re.I) or re.search(r'@font-face\s*\{[^}]*https?://',css,re.I|re.S): errs.append('remote runtime font dependency present')

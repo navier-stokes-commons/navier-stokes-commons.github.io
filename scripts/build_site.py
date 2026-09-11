@@ -956,6 +956,7 @@ def main():
     PUBLIC.mkdir(parents=True)
     (PUBLIC/'assets').mkdir()
     shutil.copy2(ASSETS/'style.css',PUBLIC/'assets/style.css'); shutil.copy2(ASSETS/'site.js',PUBLIC/'assets/site.js')
+    if (ASSETS/'fonts').is_dir(): shutil.copytree(ASSETS/'fonts',PUBLIC/'assets/fonts',dirs_exist_ok=True)
     root_page()
     for loc in project['locales']:
         home_page(loc); missions_page(loc); guide_page(loc); known_page(loc); contribute_page(loc); activity_page(loc); sources_page(loc); agents_page(loc); accessibility_page(loc)
