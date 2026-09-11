@@ -11,7 +11,7 @@ public-audit:
   stage: test
   interruptible: true
   variables:
-    NSC_AUDIT_SCRATCH: $CI_PROJECT_DIR/audit-scratch
+    NSC_AUDIT_SCRATCH: $HOME/nsc-audit-scratch
     
     
     
@@ -21,9 +21,9 @@ public-audit:
     - SITE_URL="$CI_PAGES_URL" python3 scripts/run_all_checks.py
   after_script:
     - mkdir -p audit/runtime
-    - if [ -d audit-scratch/nsc-experience-audit ]; then cp -a audit-scratch/nsc-experience-audit audit/runtime/experience; fi
-    - if [ -d audit-scratch/nsc-layout-integrity ]; then cp -a audit-scratch/nsc-layout-integrity audit/runtime/layout; fi
-    - if [ -d audit-scratch/nsc-check-timings ]; then cp -a audit-scratch/nsc-check-timings audit/runtime/assurance; fi
+    - if [ -d "$NSC_AUDIT_SCRATCH/nsc-experience-audit" ]; then cp -a "$NSC_AUDIT_SCRATCH/nsc-experience-audit" audit/runtime/experience; fi
+    - if [ -d "$NSC_AUDIT_SCRATCH/nsc-layout-integrity" ]; then cp -a "$NSC_AUDIT_SCRATCH/nsc-layout-integrity" audit/runtime/layout; fi
+    - if [ -d "$NSC_AUDIT_SCRATCH/nsc-check-timings" ]; then cp -a "$NSC_AUDIT_SCRATCH/nsc-check-timings" audit/runtime/assurance; fi
   artifacts:
     when: always
     expire_in: 14 days
