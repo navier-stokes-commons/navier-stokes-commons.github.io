@@ -248,7 +248,7 @@
       "class": "derived",
       "authority": "content/public/founding_sprint.json + content/public/quests.json + content/public/project.json",
       "projections": [
-        "GitHub sentinel-bearing Founding Sprint index issue"
+        "GitHub sentinel-bearing Initial Independent Review Portfolio index issue"
       ],
       "reconciler": "scripts/sync_founding_sprint_issue.py"
     }

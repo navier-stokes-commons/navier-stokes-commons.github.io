@@ -53,7 +53,7 @@ def render(repository: str | None=None) -> tuple[str,str]:
         '',
         f"Repository: https://github.com/{repo}",
         '',
-        '_This issue is a generated projection of the canonical Founding Sprint and quest catalog. Edit the canonical JSON, not this issue body._',
+        '_This issue is a generated projection of the canonical Initial Independent Review Portfolio and quest catalog. Edit the canonical JSON, not this issue body._',
         '',
     ]
     return title,'\n'.join(lines)

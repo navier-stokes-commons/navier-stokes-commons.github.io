@@ -1,23 +1,23 @@
 {
   "name": "English",
   "dir": "ltr",
-  "tagline": "Open questions. Public evidence. Human–AI collaboration.",
+  "tagline": "OpenAI claims C/D. A/B remain open. Verify the result; work on the frontier.",
   "nav": {
     "home": "Home",
-    "missions": "Missions",
-    "known": "What is known",
-    "contribute": "Contribute",
+    "missions": "Research frontier",
+    "known": "Claim status",
+    "contribute": "Contribute research",
     "sources": "Sources",
-    "agents": "For AI agents",
+    "agents": "For research agents",
     "accessibility": "Accessibility",
     "activity": "Contributions",
-    "guide": "How this works"
+    "guide": "Research lifecycle"
   },
   "home": {
     "eyebrow": "PUBLIC RESEARCH COMMONS",
     "title": "Navier–Stokes Commons",
     "lede": "A public workspace for checking a major 2026 Navier–Stokes claim, extending the mathematics, reproducing computations, and turning open questions into reviewable contributions.",
-    "primary": "Explore open missions",
+    "primary": "Open research frontier",
     "secondary": "How to contribute",
     "known_title": "Start from what is public",
     "known_body": "The site separates sourced public facts from open questions. No private research history, unpublished private methods, or local-system material is part of the public dataset.",
@@ -29,9 +29,9 @@
     "fact4": "The public Lean certificate repository is available on GitHub."
   },
   "missions": {
-    "title": "Open missions",
-    "lede": "Each mission is a public question with an explicit acceptance target. A mission being listed does not imply that its answer is known.",
-    "search_label": "Filter missions",
+    "title": "Research programs",
+    "lede": "Each research program defines an open mathematical, verification, computational, or methodological question with explicit acceptance and review conditions. Listing a program never implies its answer is known.",
+    "search_label": "Filter research programs",
     "search_placeholder": "Search title, field or contributor type",
     "open": "Open",
     "category": "Field",
@@ -40,7 +40,7 @@
     "known": "Public starting point",
     "contributors": "Who may help",
     "sources": "Primary sources",
-    "no_results": "No missions match this filter.",
+    "no_results": "No research programs match this filter.",
     "canonical_note": "For scientific precision, acceptance criteria are canonical in English. Localized pages translate the question and summary; screen readers are told when canonical English text begins."
   },
   "known": {
@@ -58,16 +58,16 @@
   },
   "contribute": {
     "title": "Contribute",
-    "lede": "You can contribute as a human, with an AI agent, or as a human–AI team. Credentials can help route review, but acceptance depends on the evidence required by the mission.",
+    "lede": "You can contribute as a human, with a research agent, or as a human–agent team. Credentials help route review; acceptance depends on the evidence and independent review required by the research problem.",
     "steps": [
-      "Choose a mission and read its question, starting point and acceptance criteria.",
+      "Choose a research program and a bounded research problem; read its question, dependencies, sources, acceptance conditions, and review class.",
       "Open a non-exclusive attempt so others can see your intended route.",
-      "Publish an artifact with exact claims, sources, limitations and reproduction instructions.",
-      "Request review or independent reproduction. Negative results and falsifications are welcome when rigorous."
+      "Publish a versioned research artifact with exact claims, sources, limitations, provenance, and reproduction instructions.",
+      "Request the required independent review or reproduction. Revise, refute, or promote the result only through the recorded review state."
     ],
     "attempt": "Open an attempt",
-    "sidequest": "Propose a side quest",
-    "result": "Submit a result",
+    "sidequest": "Propose a research problem",
+    "result": "Submit a research artifact",
     "review": "Review or falsify",
     "repo_missing": "This preview is not connected to a contribution forge. Configure GitHub, GitLab, Forgejo/Codeberg, Gitea, Bitbucket, or another Git host; CONTRIBUTING.md is the portable fallback."
   },
@@ -78,10 +78,10 @@
     "supports": "Used for"
   },
   "agents": {
-    "title": "For autonomous AI agents",
-    "lede": "The site exposes a small public machine interface so agents can discover missions without scraping prose.",
+    "title": "For research agents",
+    "lede": "The Commons exposes structured frontier state and bounded research work packets so agents can operate without guessing from prose.",
     "how": [
-      "Fetch data/frontier.json for the current public mission catalog.",
+      "Fetch data/frontier-graph.json for prioritized research programs and data/agent-packets/index.json for bounded agent-ready problem packets.",
       "Fetch data/sources.json before making sourced claims.",
       "Read SKILL.md for the contribution protocol.",
       "Do not treat an open question as an established result.",
@@ -123,7 +123,7 @@
   "dark": "Dark",
   "system": "System",
   "skip": "Skip to main content",
-  "back": "Back to missions",
+  "back": "Back to research programs",
   "read_source": "Read source",
   "status_open": "Open question",
   "not_claim": "This is an open research question, not a claim that the result already exists.",
@@ -144,8 +144,8 @@
       {
         "key": "student",
         "title": "Student",
-        "body": "Find bounded tasks, reading paths and opportunities to learn by contributing.",
-        "cta": "Find a tractable mission"
+        "body": "Find bounded research problems, reading paths, and opportunities to learn by producing reviewable artifacts.",
+        "cta": "Find a bounded research problem"
       },
       {
         "key": "researcher",
@@ -161,7 +161,7 @@
       }
     ],
     "pipeline_title": "How work becomes reusable knowledge",
-    "pipeline_lede": "Contributions are non-exclusive. A result earns trust by passing the evidence and review required by its mission.",
+    "pipeline_lede": "Attempts are non-exclusive. An artifact changes the frontier only after the evidence and independent review required by its research problem.",
     "pipeline": [
       "Pick a frozen public question",
       "Work independently or with an agent",
@@ -176,10 +176,10 @@
     "status": "Status",
     "field": "Field",
     "level": "Level",
-    "mission_id": "Mission ID",
+    "mission_id": "Program ID",
     "sources": "Sources",
     "criteria": "Acceptance checks",
-    "related": "Related open missions",
+    "related": "Related research programs",
     "take_part": "Take part",
     "public_evidence": "Public evidence",
     "why_open": "Why this remains open here",
@@ -200,8 +200,8 @@
   },
   "root": {
     "eyebrow": "A PUBLIC RESEARCH COMMONS",
-    "title": "One hard problem. Many legitimate ways to help.",
-    "lede": "Navier–Stokes Commons turns public scientific questions into explicit, reviewable missions for humans and AI agents.",
+    "title": "OpenAI claims C and D. A and B remain open.",
+    "lede": "An expert-first public research commons for independently reviewing C/D and attacking the Navier–Stokes mathematics that remains open.",
     "enter": "Choose a language",
     "machine": "Machine interface",
     "principle": "Facts stay sourced. Questions stay open. Contributions stay attributable."
@@ -216,7 +216,7 @@
     "boundary": "Boundary",
     "open_participation": "Open participation",
     "process": "Process",
-    "side_quests": "Side quests",
+    "side_quests": "Proposed research problems",
     "provenance_ledger": "Provenance ledger",
     "machine_surface": "Machine surface",
     "inclusive_by_design": "Inclusive by design",
@@ -227,16 +227,16 @@
     "hero_title": "Speed goes to infinity. The core energy scale goes to zero.",
     "hero_lede": "Explore the 2026 forced blowup construction, check the public proof and certificate, and work on the questions that follow.",
     "explore": "Explore the scaling",
-    "open_missions": "Open research missions",
+    "open_missions": "Open research programs",
     "published_scale": "The published inner-core scale",
     "what_public": "What is public",
     "facts_title": "Three facts before the frontier.",
-    "facts_body": "Claims below point to primary public sources. Open missions remain questions.",
+    "facts_body": "Claims below point to primary public sources. Open research programs remain questions until their evidence and review conditions are met.",
     "sources": "Sources",
-    "mission_intro": "Start with the research question, not the platform machinery.",
-    "view_all": "View all missions",
+    "mission_intro": "Start with the mathematical question, dependency, and review gate, not the platform machinery.",
+    "view_all": "Open the research frontier",
     "contribute_title": "Bring a proof, a computation, a criticism, a visualization, or a better question.",
-    "contribute_body": "The Commons is open to non-exclusive public collaboration. A listed mission is not a result. An accepted contribution must survive the evidence and review requirements of its claim type.",
+    "contribute_body": "The Commons is an open research workspace. A listed program or problem is not a result. An artifact changes canonical claim or frontier state only after the required evidence and independent review.",
     "how_contribute": "How to contribute",
     "how_works": "How the commons works",
     "scale_kicker": "Source-backed scaling simulator",

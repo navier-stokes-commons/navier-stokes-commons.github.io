@@ -1,0 +1,78 @@
+{
+  "schema": "nsc-clay-problem-status-v2",
+  "observed_at": "2026-09-11",
+  "authority_policy": "primary-source-first; source-reported proof claims are not upgraded by presentation copy",
+  "official_problem": {
+    "source_id": "clay-formulation",
+    "statement": "Fefferman accepts a proof of any one of four alternatives A/B/C/D.",
+    "institutional_status": {
+      "state": "not-yet-recognized-by-CMI",
+      "source_id": "clay-ns",
+      "note": "CMI currently lists Navier–Stokes as Active. If the C/D proof is correct, it resolves the mathematical disjunction in Fefferman’s problem statement; CMI recognition is a separate process requiring a qualifying publication, at least two years, and general acceptance under CMI rules."
+    }
+  },
+  "alternatives": [
+    {
+      "id": "A",
+      "domain": "R^3",
+      "forcing": "f ≡ 0",
+      "target": "Global existence and smoothness for every permitted smooth divergence-free initial datum.",
+      "mathematical_status": "open",
+      "display_status": "OPEN",
+      "openai_2026_claim": "not targeted"
+    },
+    {
+      "id": "B",
+      "domain": "T^3",
+      "forcing": "f ≡ 0",
+      "target": "Periodic global existence and smoothness for every permitted smooth divergence-free initial datum.",
+      "mathematical_status": "open",
+      "display_status": "OPEN",
+      "openai_2026_claim": "not targeted"
+    },
+    {
+      "id": "C",
+      "domain": "R^3",
+      "forcing": "smooth rapidly decaying force allowed",
+      "target": "Existence of permitted smooth data/force for which no global smooth solution exists.",
+      "mathematical_status": "source-reported proposed resolution",
+      "display_status": "OPENAI CLAIM",
+      "openai_2026_claim": "OpenAI states its analytic proof and Lean formalization establish C."
+    },
+    {
+      "id": "D",
+      "domain": "T^3",
+      "forcing": "smooth force allowed",
+      "target": "Periodic analogue of C.",
+      "mathematical_status": "source-reported proposed resolution",
+      "display_status": "OPENAI CLAIM",
+      "openai_2026_claim": "OpenAI states its analytic proof and Lean formalization establish D."
+    }
+  ],
+  "landing_thesis": {
+    "headline": "OpenAI claims C and D. A and B remain open.",
+    "body": "Clay asks for a proof of any one of A, B, C or D. A/B are the unforced global-regularity statements; C/D allow smooth forcing and ask for breakdown. OpenAI published an analytic proof and Lean formalization claiming C/D. If that proof is correct, it resolves the mathematical disjunction Fefferman posed; independent review and CMI recognition are separate. Unforced A/B and much of Navier–Stokes remain open."
+  },
+  "sources": [
+    {
+      "id": "clay-formulation",
+      "url": "https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf",
+      "authority": "primary-official"
+    },
+    {
+      "id": "openai-announcement",
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "authority": "author-source"
+    },
+    {
+      "id": "clay-ns",
+      "url": "https://www.claymath.org/millennium/navier-stokes-equation/",
+      "authority": "institutional-current"
+    },
+    {
+      "id": "clay-rules",
+      "url": "https://www.claymath.org/millennium-problems/rules/",
+      "authority": "institutional-rules"
+    }
+  ]
+}

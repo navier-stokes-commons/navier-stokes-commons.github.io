@@ -76,7 +76,7 @@ def docs_outputs():
              f"**Participation:** {p['participation_status']}\n"
              f"**Seed research programs:** {n['missions']} missions\n"
              f"**Bounded work units:** {n['quests']} quests\n"
-             f"**Founding Sprint:** {n['founding_sprint_quests']} quests")
+             f"**Initial Independent Review Portfolio:** {n['founding_sprint_quests']} quests")
     # Remove legacy writable copy when first migrating.
     readme=re.sub(r'\*\*Current release:\*\*.*?\*\*Bounded work units:\*\*.*?\n', '', readme, count=1, flags=re.S)
     readme=replace_block(readme,'release-summary',summary)
@@ -85,7 +85,7 @@ def docs_outputs():
     guide=re.sub(r'Student participation now includes a six-rung bounded quest ladder,.*?frontier research\.', '', guide)
     guide=replace_block(guide,'participation-capability',cap)
     ann=(ROOT/'docs/LAUNCH_ANNOUNCEMENT.md').read_text()
-    launch=f"The current release includes {n['missions']} research missions and {n['quests']} bounded quests. {n['founding_sprint_quests']} quests are in the Founding Sprint."
+    launch=f"The current release includes {n['missions']} research missions and {n['quests']} bounded quests. {n['founding_sprint_quests']} quests are in the Initial Independent Review Portfolio."
     ann=re.sub(r'The first release includes \d+ research missions and \d+ bounded quests[^\n]*\n', '', ann)
     ann=replace_block(ann,'launch-counts',launch)
     # Release-critical license selections and machine entrypoints are projections, never writable prose copies.
@@ -93,7 +93,7 @@ def docs_outputs():
     license_summary=f"Software: {lic['software']}. Original content: {license_label(lic['original_content'])}. Metadata: {lic['metadata']}. See `LICENSE_POLICY.md`, `CONTENT_LICENSE.md`, and `DCO.md`."
     readme=replace_block(readme,'license-summary',license_summary)
     sprint=json.loads((C/'founding_sprint.json').read_text())
-    readme=replace_block(readme,'sprint-id',f"**Founding Sprint:** `{sprint['id']}`")
+    readme=replace_block(readme,'sprint-id',f"**Initial Independent Review Portfolio:** `{sprint['id']}`")
     reg=public_registry(); ep=reg['machine_endpoints']; href=lambda x:x.lstrip('/')
     readme=replace_block(readme,'agent-entrypoints',f"Humans may use the rendered site and repository issue forms. Agents should fetch `{href(ep['discovery'])}`, then read `{href(ep['agent_start'])}`, `{href(ep['agent_skill'])}`, `{href(ep['quests'])}`, `{href(ep['frontier'])}`, `{href(ep['claims'])}`, and `{href(ep['actions'])}` plus the relevant source records before acting.")
     lp=(ROOT/'LICENSE_POLICY.md').read_text()
@@ -122,12 +122,12 @@ def docs_outputs():
     sprint_doc=json.loads((C/'founding_sprint.json').read_text())
     quest_lookup={q['id']:q for q in json.loads((C/'quests.json').read_text())['quests']}
     sprint_lines='\n'.join(f"- `{qid}`: {quest_lookup[qid]['title']}" for qid in sprint_doc['quest_ids'])
-    sprint_text=(f"# Founding Sprint `{sprint_doc['id']}`\n\n{sprint_doc['purpose']}\n\n"
+    sprint_text=(f"# Initial Independent Review Portfolio `{sprint_doc['id']}`\n\n{sprint_doc['purpose']}\n\n"
                  f"The launch cohort contains **{len(sprint_doc['quest_ids'])} quests**. Participation is non-exclusive; multiple independent attempts are permitted.\n\n"
                  f"## Canonical quest set\n\n{sprint_lines}\n\n"
                  "## Completion semantics\n\nThe sprint is public work, not a pre-launch blocker. Its success conditions are the canonical conditions in `content/public/founding_sprint.json`, evaluated from public artifacts and review records. The first accepted contribution should exercise the complete lifecycle: attempt, artifact, evidence, independent review, canonical record, deterministic rebuild, and public projection.\n")
     release_notes=(f"# {version()}: collaboration beta with systemic assurance\n\n"
-      f"This release contains {n['missions']} seed research missions, {n['quests']} bounded quests, a six-rung task ladder, {n['founding_sprint_quests']} Founding Sprint quests, {n['tracked_claims']} tracked claim records, and {len(p['locales'])} locale surfaces.\n\n"
+      f"This release contains {n['missions']} seed research missions, {n['quests']} bounded quests, a six-rung task ladder, {n['founding_sprint_quests']} Initial Independent Review Portfolio quests, {n['tracked_claims']} tracked claim records, and {len(p['locales'])} locale surfaces.\n\n"
       "## Structural guarantees\n\n- Release-critical facts have one writable authority. Derived projections are reconciled and checked.\n- Locale and claim elevation states are evidence-derived from exact-content review records.\n- Mission-to-quest, claim-to-quest, and sprint membership reverse indexes are generated rather than manually duplicated.\n- Public browser rendering is exercised in CI, including JavaScript and no-JavaScript paths, narrow layouts, RTL, reduced motion, forced colors, and zoom.\n- Scientific interaction is limited to declared models with static fallbacks and independent mathematical oracles.\n- Collaboration transactions are machine-readable and forge-mediated rather than coupled to one host.\n- Comparative visual claims are evaluated against a pre-registered reference corpus rather than asserted by a synthetic aesthetic score.\n\n"
       "## Open-beta semantics\n\nOpen participation does not wait for independent certification of every scientific or institutional claim. Stronger claim states remain gated by the evidence class that can justify them. Negative results, reproductions, corrections, accessibility findings, design findings, and falsifications are first-class contributions when they satisfy their quest contract.\n")
     return {'README.md':readme,'docs/PRODUCT_GUIDE.md':guide,'docs/LAUNCH_ANNOUNCEMENT.md':ann,'docs/WCAG_SELF_ASSESSMENT.md':wcag,'docs/FOUNDING_SPRINT.md':sprint_text,'RELEASE_NOTES.md':release_notes,'LICENSE_POLICY.md':lp,'CONTENT_LICENSE.md':cl,'start.md':start,'SKILL.md':skill,'AGENTS.md':agents}

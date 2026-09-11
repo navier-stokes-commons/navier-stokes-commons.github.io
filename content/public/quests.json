@@ -1558,6 +1558,203 @@
       "parallel_safe": true,
       "non_exclusive": true,
       "benchmark_set_id": "NSC-BM-2026-09-10"
+    },
+    {
+      "id": "NS-Q037",
+      "mission_id": "NS-M06",
+      "status": "open",
+      "origin": "maintainer-seed-r11",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Independently audit the torus singular-force density threshold",
+      "summary": "Audit the Sep-9 Cao–Chi torus theorem as an external follow-up to the 2026 C/D construction, preserving the distinction between varying-force density and fixed-force stability.",
+      "task": "Reconstruct the theorem statement, inherited topology, exact insertion argument, fractional Sobolev scaling, and non-density mechanism at and above s=1/2. Identify every dependency on the OpenAI blowup packet and every limitation relevant to the Commons stability program.",
+      "deliverables": [
+        "Referee-style theorem/assumption map with stable locators.",
+        "Independent reconstruction of the critical scaling threshold or exact gap report.",
+        "Explicit consequence/non-consequence table for M06 and A/B."
+      ],
+      "acceptance": [
+        "The force space and topology are written exactly.",
+        "Positive and non-density directions are separated.",
+        "No varying-force density statement is described as fixed-force instability.",
+        "No implication for unforced A/B is asserted without a separate bridge theorem.",
+        "Independent PDE reviewer required for acceptance."
+      ],
+      "review": {
+        "class": "frontier-pde-review",
+        "independence": "Independent PDE reviewer distinct from the audit author required.",
+        "required_expertise": "3D Navier–Stokes, Sobolev scaling, perturbation/insertion arguments."
+      },
+      "contributors": [
+        "PDE analysts",
+        "functional analysts",
+        "graduate researchers",
+        "AI math agents"
+      ],
+      "source_ids": [
+        "cao-chi-torus-2609.10262",
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "frontier",
+        "stability",
+        "forcing",
+        "literature-update"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q038",
+      "mission_id": "NS-M06",
+      "status": "open",
+      "origin": "maintainer-seed-r11",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Separate force-space abundance from fixed-force dynamical stability",
+      "summary": "Turn the phrase stability/genericity into a theorem-status matrix after the new singular-force density results.",
+      "task": "For each candidate notion, varying-force density, fixed-force sensitivity to initial data, parameter robustness, force perturbation at fixed initial state, and numerical robustness, state what is now source-reported, what remains open, and the earliest theorem/obstruction that would change its status.",
+      "deliverables": [
+        "Typed implication/non-implication matrix.",
+        "One prioritized fixed-force or fixed-data theorem target with assumptions.",
+        "Known obstruction/prior-art ledger."
+      ],
+      "acceptance": [
+        "At least five distinct notions are separated.",
+        "Cao–Chi force-density theorems are represented without overclaim.",
+        "The recommended next theorem has exact variables held fixed and topology specified.",
+        "Independent PDE/dynamical-systems review required."
+      ],
+      "review": {
+        "class": "stability-scope-review",
+        "independence": "Independent PDE or dynamical-systems reviewer required.",
+        "required_expertise": "Nonlinear PDE stability and function spaces."
+      },
+      "contributors": [
+        "PDE analysts",
+        "dynamical-systems researchers",
+        "AI research agents"
+      ],
+      "source_ids": [
+        "cao-chi-torus-2609.10262",
+        "cao-chi-r3-2609.10269",
+        "openai-paper"
+      ],
+      "dependencies": [
+        "NS-Q037",
+        "NS-Q039"
+      ],
+      "claim_ids": [],
+      "tags": [
+        "frontier",
+        "stability",
+        "genericity"
+      ],
+      "parallel_safe": false,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q039",
+      "mission_id": "NS-M03",
+      "status": "open",
+      "origin": "maintainer-seed-r11",
+      "rung": "L4",
+      "priority": "standard",
+      "title": "Audit the whole-space singular-force Sobolev thresholds and energy approximation",
+      "summary": "Independently check the reported R^3 L1_t H^s_x and L2_t H^s_x thresholds and their energy/dissipation approximation claims.",
+      "task": "Reconstruct the whole-space localization/background-removal argument, low-frequency estimates, critical/non-density estimates, fixed-initial-velocity slice, and energy/dissipation approximation in the exact norms stated by the authors.",
+      "deliverables": [
+        "Theorem/dependency map.",
+        "Independent exponent/threshold derivation or gap report.",
+        "Comparison with the Commons norm-spectrum program and regularity criteria."
+      ],
+      "acceptance": [
+        "L1 and L2 time-integrability thresholds are not conflated.",
+        "Low-frequency handling and absence of periodic Poincaré structure are explicitly checked.",
+        "No fixed-force or A/B consequence is inferred.",
+        "Independent PDE review required."
+      ],
+      "review": {
+        "class": "pde-mathematical-review",
+        "independence": "Independent PDE reviewer required.",
+        "required_expertise": "Whole-space Navier–Stokes and Sobolev/energy estimates."
+      },
+      "contributors": [
+        "PDE analysts",
+        "harmonic analysts",
+        "graduate researchers",
+        "AI math agents"
+      ],
+      "source_ids": [
+        "cao-chi-r3-2609.10269",
+        "openai-paper"
+      ],
+      "dependencies": [],
+      "claim_ids": [],
+      "tags": [
+        "frontier",
+        "norms",
+        "whole-space",
+        "literature-update"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
+    },
+    {
+      "id": "NS-Q040",
+      "mission_id": "NS-M05",
+      "status": "open",
+      "origin": "maintainer-seed-r11",
+      "rung": "L5",
+      "priority": "standard",
+      "title": "Prove the strongest valid implication, or obstruction, from singular-force density toward A/B",
+      "summary": "Determine rigorously whether the newly reported abundance of singular forces supplies any bridge toward the unforced problem, or prove why the tempting implications fail.",
+      "task": "Start from the exact hypotheses of the torus and whole-space density results. Enumerate plausible limiting/removal arguments toward f=0 or fixed force. For each, identify the precise convergence/stability statement needed. Prove one bridge lemma, one no-go/obstruction theorem, or an exact reduction to a named unresolved estimate.",
+      "deliverables": [
+        "Implication diagram from force-density theorems to A/B target conditions.",
+        "Proof-grade bridge/obstruction/reduction artifact.",
+        "Source and assumption ledger."
+      ],
+      "acceptance": [
+        "The official A/B target is stated exactly.",
+        "Density in a weak force topology is never treated as convergence of singular solutions without a proved stability/compactness mechanism.",
+        "Any positive implication checks all limit-passage hypotheses.",
+        "A rigorous obstruction or reduction counts as success.",
+        "Independent senior 3D Navier–Stokes review required."
+      ],
+      "review": {
+        "class": "frontier-pde-review",
+        "independence": "Independent senior PDE review required.",
+        "required_expertise": "3D Navier–Stokes regularity, stability/compactness, singularity theory."
+      },
+      "contributors": [
+        "PDE researchers",
+        "geometric analysts",
+        "functional analysts",
+        "AI theorem agents under human review"
+      ],
+      "source_ids": [
+        "cao-chi-torus-2609.10262",
+        "cao-chi-r3-2609.10269",
+        "clay-formulation",
+        "openai-paper"
+      ],
+      "dependencies": [
+        "NS-Q037",
+        "NS-Q039"
+      ],
+      "claim_ids": [],
+      "tags": [
+        "frontier",
+        "unforced",
+        "forcing",
+        "obstruction"
+      ],
+      "parallel_safe": true,
+      "non_exclusive": true
     }
   ]
 }

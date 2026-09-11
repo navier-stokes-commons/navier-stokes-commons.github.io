@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://navier-stokes-commons/schemas/frontier-graph.schema.json",
+  "type": "object",
+  "required": [
+    "schema",
+    "observed_at",
+    "objective",
+    "lanes",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nsc-frontier-graph-v1"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "program_id",
+          "lane",
+          "priority",
+          "key_question",
+          "problem_ids",
+          "agent_suitability",
+          "review_class",
+          "publication_path"
+        ]
+      }
+    }
+  }
+}

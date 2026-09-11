@@ -1,6 +1,6 @@
-# Founding Sprint `NSC-FS1`
+# Initial Independent Review Portfolio `NSC-FS1`
 
-Turn the public Commons into a body of independently reviewable Navier-Stokes work while simultaneously stress-testing the collaboration protocol.
+Produce the first independently reviewable evidence across proof audit, formal semantics, substantive mathematics, scientific computation, and collaboration integrity.
 
 The launch cohort contains **17 quests**. Participation is non-exclusive; multiple independent attempts are permitted.
 

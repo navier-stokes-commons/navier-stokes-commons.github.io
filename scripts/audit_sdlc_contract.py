@@ -29,12 +29,15 @@ for path,label in [(fullp,'release'),(fastp,'fast')]:
         if marker not in txt:errs.append(f'{label} runner lacks timing receipt marker {marker}')
 if chr(47)+'tmp'+chr(47) in fullp.read_text() or chr(47)+'tmp'+chr(47) in fastp.read_text():errs.append('runner violates scratch policy')
 
-ci=R/'.github/workflows/ci.yml'; gl=R/'.gitlab-ci.yml'; legacy=R/'.github/workflows/pages.yml'
+ci=R/'.github/workflows/ci.yml'; gl=R/'.gitlab-ci.yml'; pages=R/'.github/workflows/pages.yml'
 if not ci.is_file():errs.append('GitHub consolidated CI/Pages workflow missing')
 else:
     t=ci.read_text()
-    if t.count('python3 scripts/run_all_checks.py')!=1:errs.append('GitHub must run complete suite exactly once per workflow')
-    if 'actions/deploy-pages@' not in t or 'name: github-pages' not in t:errs.append('GitHub does not deploy exact audited artifact')
+    pw=pages.read_text()
+    if t.count('python3 scripts/run_all_checks.py')!=1:errs.append('GitHub CI must run complete suite exactly once per workflow')
+    if pw.count('python3 scripts/run_all_checks.py')!=1:errs.append('GitHub Pages workflow must run complete suite exactly once')
+    if 'actions/deploy-pages@' not in pw or 'name: github-pages' not in pw:errs.append('GitHub does not deploy exact audited artifact')
+    if 'actions/deploy-pages@' in t:errs.append('GitHub CI must not deploy; pages.yml is the deploy authority')
     if 'cancel-in-progress: true' not in t:errs.append('GitHub lacks redundant-run cancellation')
     if 'cache: "pip"' not in t:errs.append('GitHub setup-python pip cache missing')
 # R7: pages.yml is the canonical GitHub Pages deployment adapter (audit_host_configs verifies it)

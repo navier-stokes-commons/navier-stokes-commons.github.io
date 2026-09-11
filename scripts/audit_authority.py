@@ -77,11 +77,12 @@ for rp in sorted((ROOT/'scripts').glob('*.py')):
         if address in txt: errs.append(f'{rp.relative_to(ROOT)}: runtime duplicates machine endpoint address {address}')
 # Browser assurance must be public and release-authoritative, while each host
 # executes the expensive full suite exactly once per pipeline.
-runner=(ROOT/'scripts/run_all_checks.py').read_text(); ci=(ROOT/'.github/workflows/ci.yml').read_text(); gl=(ROOT/'.gitlab-ci.yml').read_text()
+runner=(ROOT/'scripts/run_all_checks.py').read_text(); ci=(ROOT/'.github/workflows/ci.yml').read_text(); pages_wf=(ROOT/'.github/workflows/pages.yml').read_text(); gl=(ROOT/'.gitlab-ci.yml').read_text()
 if 'scripts/audit_browser.py' not in runner: errs.append('public canonical suite omits browser audit')
 if 'python3 scripts/bootstrap_audit_env.py' not in ci: errs.append('GitHub CI shared portable audit bootstrap missing')
 if ci.count('python3 scripts/run_all_checks.py')!=1: errs.append('GitHub workflow must execute complete suite exactly once')
-if 'actions/deploy-pages@' not in ci or 'name: github-pages' not in ci: errs.append('GitHub CI does not deploy exact audited Pages artifact')
+if 'actions/deploy-pages@' not in pages_wf or 'name: github-pages' not in pages_wf: errs.append('GitHub Pages workflow does not deploy exact audited artifact')
+if 'actions/deploy-pages@' in ci: errs.append('GitHub CI must not deploy; pages.yml is the sole deploy authority')
 if 'cancel-in-progress: true' not in ci: errs.append('GitHub CI lacks redundant-run cancellation')
 if 'cache: "pip"' not in ci: errs.append('GitHub CI pip cache missing')
 # R7: pages.yml is the canonical GitHub Pages deployment adapter; see audit_host_configs.py

@@ -1,0 +1,453 @@
+{
+  "schema": "nsc-frontier-graph-v1",
+  "observed_at": "2026-09-11",
+  "authority": "maintainer-preregistered research prioritization; priority is strategic, not a theorem claim",
+  "objective": "Maximize independently reviewable mathematical progress and reusable research artifacts, with special weight on work closest to the unresolved unforced A/B frontier and on verifying the 2026 C/D dependency.",
+  "lanes": [
+    {
+      "id": "frontier-mathematics",
+      "rank": 1,
+      "label": "Frontier mathematics"
+    },
+    {
+      "id": "verification-formalization",
+      "rank": 2,
+      "label": "Verification & formalization"
+    },
+    {
+      "id": "computational-research",
+      "rank": 3,
+      "label": "Computational research"
+    },
+    {
+      "id": "research-infrastructure",
+      "rank": 4,
+      "label": "Research infrastructure"
+    },
+    {
+      "id": "commons-support",
+      "rank": 5,
+      "label": "Commons support & public science"
+    }
+  ],
+  "priority_semantics": {
+    "P0": "highest strategic leverage / prerequisite",
+    "P1": "high-value active research",
+    "P2": "valuable adjacent/leveraging research",
+    "P3": "supporting work; never presented as equivalent to theorem progress"
+  },
+  "nodes": [
+    {
+      "id": "FG-01",
+      "program_id": "NS-M05",
+      "lane": "frontier-mathematics",
+      "priority": "P0",
+      "title": "Forced → unforced: bridges and obstruction theorems",
+      "strategic_value": "Closest current program to the unresolved A/B branch. A rigorous no-go theorem is progress; a valid bridge would be transformative.",
+      "key_question": "Can any restart, gluing, limiting, localization, or self-sustaining mechanism eliminate the external force while satisfying the exact A/B target?",
+      "problem_ids": [
+        "NS-Q032",
+        "NS-Q040"
+      ],
+      "prerequisites": [
+        "FG-02",
+        "FG-03"
+      ],
+      "agent_suitability": {
+        "level": "medium",
+        "good_for": [
+          "literature/obstruction ledgers",
+          "lemma search",
+          "formalizable reductions",
+          "counterexample search"
+        ],
+        "human_veto": "Senior 3D Navier–Stokes review before any route is promoted."
+      },
+      "review_class": "frontier-pde-review",
+      "publication_path": "Research note/preprint for a new bridge, obstruction theorem, or route-kill result.",
+      "success_changes": "Canonical A/B route ledger; new theorem/obstruction; new bounded descendants."
+    },
+    {
+      "id": "FG-02",
+      "program_id": "NS-M02",
+      "lane": "verification-formalization",
+      "priority": "P0",
+      "title": "Independent analytic proof audit",
+      "strategic_value": "The 2026 construction is the common dependency for most post-result research. Understanding/correctness failures propagate downstream.",
+      "key_question": "Which major implications in the analytic proof survive independent PDE scrutiny, with exact hypotheses and source locations?",
+      "problem_ids": [
+        "NS-Q006"
+      ],
+      "prerequisites": [],
+      "agent_suitability": {
+        "level": "medium-high",
+        "good_for": [
+          "dependency extraction",
+          "cross-checking equations",
+          "counterexample search",
+          "source mapping"
+        ],
+        "human_veto": "Independent PDE experts own semantic acceptance."
+      },
+      "review_class": "pde-mathematical-review",
+      "publication_path": "Public referee-style report, errata, or independent verification note.",
+      "success_changes": "Claim/evidence states for C/D and dependency graph."
+    },
+    {
+      "id": "FG-03",
+      "program_id": "NS-M01",
+      "lane": "verification-formalization",
+      "priority": "P0",
+      "title": "Lean certificate ↔ Clay statement semantic audit",
+      "strategic_value": "Kernel correctness and theorem-target correctness are distinct. This is the machine/human bridge the project must get exactly right.",
+      "key_question": "What do the terminal Lean declarations establish under which axioms/dependencies, and how exactly do they map to Fefferman C/D?",
+      "problem_ids": [
+        "NS-Q004",
+        "NS-Q005"
+      ],
+      "prerequisites": [],
+      "agent_suitability": {
+        "level": "high",
+        "good_for": [
+          "reproduction",
+          "declaration graphs",
+          "statement mapping",
+          "proof checking"
+        ],
+        "human_veto": "Lean + PDE semantic reviewer required for claim elevation."
+      },
+      "review_class": "semantic-formal-review",
+      "publication_path": "Reproducibility/semantic correspondence report; reusable formal artifacts.",
+      "success_changes": "Formal evidence status and reusable theorem graph."
+    },
+    {
+      "id": "FG-04",
+      "program_id": "NS-M04",
+      "lane": "frontier-mathematics",
+      "priority": "P1",
+      "title": "How restrictive can the force be?",
+      "strategic_value": "Measures mathematical distance between the C/D construction and more natural/restricted forcing regimes without falsely calling it A/B progress.",
+      "key_question": "Which exact restrictions on the smooth force remain compatible with blowup: divergence-free, small critical norms, prescribed classes, temporal localization, Gevrey constraints?",
+      "problem_ids": [
+        "NS-Q031"
+      ],
+      "prerequisites": [
+        "FG-02"
+      ],
+      "agent_suitability": {
+        "level": "medium",
+        "good_for": [
+          "constraint taxonomy",
+          "symbolic residual analysis",
+          "candidate proof search"
+        ],
+        "human_veto": "PDE scope review before promoting feasibility claims."
+      },
+      "review_class": "pde-scope-review",
+      "publication_path": "Theorem/obstruction paper by forcing class.",
+      "success_changes": "Constraint lattice and theorems narrowing forced blowup."
+    },
+    {
+      "id": "FG-05",
+      "program_id": "NS-M06",
+      "lane": "frontier-mathematics",
+      "priority": "P1",
+      "title": "Stability, genericity, and abundance , typed correctly",
+      "strategic_value": "Separates varying-force density, fixed-force dynamical stability, data stability, parameter robustness, and numerical robustness. Two Sep-9 papers already resolve part of the varying-force question.",
+      "key_question": "What remains stable or generic after conditioning on exactly what is held fixed?",
+      "problem_ids": [
+        "NS-Q033",
+        "NS-Q037",
+        "NS-Q038"
+      ],
+      "prerequisites": [
+        "FG-02"
+      ],
+      "update_ids": [
+        "FU-2026-09-09-CAO-CHI-TORUS",
+        "FU-2026-09-09-CAO-CHI-R3"
+      ],
+      "agent_suitability": {
+        "level": "medium",
+        "good_for": [
+          "topology taxonomy",
+          "literature updates",
+          "perturbative calculations",
+          "numerical probes"
+        ],
+        "human_veto": "Do not infer fixed-force instability from varying-force density."
+      },
+      "review_class": "stability-scope-review",
+      "publication_path": "PDE/dynamical-systems theorem, counterexample, or sharply scoped negative result.",
+      "success_changes": "Typed stability map rather than one ambiguous “robustness” claim."
+    },
+    {
+      "id": "FG-06",
+      "program_id": "NS-M03",
+      "lane": "frontier-mathematics",
+      "priority": "P1",
+      "title": "Norm spectrum and criticality",
+      "strategic_value": "Connects the explicit concentration scales to the regularity-criterion landscape and to newly reported force-space density thresholds.",
+      "key_question": "Which spatial and mixed norms admit rigorous asymptotics or thresholds, and which profile assumptions are actually available?",
+      "problem_ids": [
+        "NS-Q009",
+        "NS-Q021",
+        "NS-Q039"
+      ],
+      "prerequisites": [
+        "FG-02"
+      ],
+      "update_ids": [
+        "FU-2026-09-09-CAO-CHI-TORUS",
+        "FU-2026-09-09-CAO-CHI-R3"
+      ],
+      "agent_suitability": {
+        "level": "medium-high",
+        "good_for": [
+          "symbolic exponent algebra",
+          "formalization",
+          "literature comparison",
+          "candidate inequalities"
+        ],
+        "human_veto": "Heuristic scale counting cannot be promoted to theorem."
+      },
+      "review_class": "pde-mathematical-review",
+      "publication_path": "Analysis note/paper with rigorous bounds or exact obstruction statement.",
+      "success_changes": "Criticality map linked to established hypotheses."
+    },
+    {
+      "id": "FG-07",
+      "program_id": "NS-M11",
+      "lane": "verification-formalization",
+      "priority": "P1",
+      "title": "Conceptual skeleton and proof compression",
+      "strategic_value": "Makes the construction cognitively reusable by mathematicians and provides natural theorem boundaries for formal/agent work.",
+      "key_question": "What is the smallest faithful dependency graph preserving indispensable obligations across paper and Lean?",
+      "problem_ids": [
+        "NS-Q015",
+        "NS-Q016"
+      ],
+      "prerequisites": [
+        "FG-02",
+        "FG-03"
+      ],
+      "agent_suitability": {
+        "level": "high",
+        "good_for": [
+          "dependency graphs",
+          "paper↔Lean mapping",
+          "lemma extraction",
+          "formal work packets"
+        ],
+        "human_veto": "Compression must not erase dependencies or semantic caveats."
+      },
+      "review_class": "formal-semantic-review",
+      "publication_path": "Expository/technical artifact; formalized reusable components.",
+      "success_changes": "High-quality proof graph and agent-ready theorem decomposition."
+    },
+    {
+      "id": "FG-08",
+      "program_id": "NS-M08",
+      "lane": "computational-research",
+      "priority": "P1",
+      "title": "Singular manufactured-solution benchmark",
+      "strategic_value": "Could turn the construction into a serious solver-verification stress test, but only if enough fields are extractable faithfully.",
+      "key_question": "Can a solver-independent benchmark be specified, independently implemented, and used for controlled refinement studies near collapsing scales?",
+      "problem_ids": [
+        "NS-Q017",
+        "NS-Q018"
+      ],
+      "prerequisites": [
+        "FG-02"
+      ],
+      "update_ids": [
+        "FU-2026-09-09-CAO-CHI-R3"
+      ],
+      "agent_suitability": {
+        "level": "high",
+        "good_for": [
+          "interface extraction",
+          "code generation",
+          "independent implementations",
+          "V&V automation"
+        ],
+        "human_veto": "Numerical evidence never upgrades an analytic theorem claim."
+      },
+      "review_class": "numerical-research-review",
+      "publication_path": "Open benchmark + V&V paper/software artifact.",
+      "success_changes": "Validated benchmark state after independent implementation."
+    },
+    {
+      "id": "FG-09",
+      "program_id": "NS-M07",
+      "lane": "frontier-mathematics",
+      "priority": "P2",
+      "title": "Inverse design and control formulation",
+      "strategic_value": "Reframes the forced construction as trajectory design, potentially exposing cost/controllability/constraint structure.",
+      "key_question": "What exact state/control spaces and costs capture the construction, and what reachability/obstruction questions are genuinely open?",
+      "problem_ids": [
+        "NS-Q034"
+      ],
+      "prerequisites": [
+        "FG-02"
+      ],
+      "agent_suitability": {
+        "level": "medium",
+        "good_for": [
+          "formal problem specification",
+          "candidate optimization formulations",
+          "literature search"
+        ],
+        "human_veto": "No reachability/optimality claim without theorem-level evidence."
+      },
+      "review_class": "pde-control-review",
+      "publication_path": "Control/PDE formulation or theorem paper.",
+      "success_changes": "Typed control problem and bounded theorem targets."
+    },
+    {
+      "id": "FG-10",
+      "program_id": "NS-M09",
+      "lane": "frontier-mathematics",
+      "priority": "P2",
+      "title": "Rotating/stratified extensions",
+      "strategic_value": "Tests portability of the cancellation/concentration ideas to other fluid PDEs; important but less directly connected to A/B.",
+      "key_question": "Which additional terms appear in a precisely fixed rotating/Boussinesq model and can any cancellation mechanism survive?",
+      "problem_ids": [
+        "NS-Q035"
+      ],
+      "prerequisites": [
+        "FG-02"
+      ],
+      "agent_suitability": {
+        "level": "medium",
+        "good_for": [
+          "symbolic residual derivation",
+          "formal bookkeeping",
+          "numerical experiments"
+        ],
+        "human_veto": "No transfer between PDE models without a proved bridge."
+      },
+      "review_class": "geophysical-pde-review",
+      "publication_path": "Model-specific derivation/theorem paper.",
+      "success_changes": "New model-specific research branch."
+    },
+    {
+      "id": "FG-11",
+      "program_id": "NS-M16",
+      "lane": "research-infrastructure",
+      "priority": "P2",
+      "title": "Human–agent research protocol experiments",
+      "strategic_value": "Improves how scarce expert review and abundant agent compute are allocated; supports every mathematical lane rather than substituting for it.",
+      "key_question": "Which independence/sharing/reproduction patterns improve accepted research progress per unit expert review?",
+      "problem_ids": [
+        "NS-Q024",
+        "NS-Q025"
+      ],
+      "prerequisites": [],
+      "agent_suitability": {
+        "level": "high",
+        "good_for": [
+          "matched agent experiments",
+          "trace generation",
+          "protocol execution"
+        ],
+        "human_veto": "Outcome is accepted progress/review burden, not tokens or model self-ratings."
+      },
+      "review_class": "experimental-review",
+      "publication_path": "Reproducible agent-collaboration study.",
+      "success_changes": "Operating protocol for agent fleets."
+    },
+    {
+      "id": "FG-12",
+      "program_id": "NS-M13",
+      "lane": "commons-support",
+      "priority": "P3",
+      "title": "Research interface and atlas",
+      "strategic_value": "Critical support surface, but not itself evidence of mathematical progress.",
+      "key_question": "Can the interface expose exact status, frontier, evidence, and work packets without flattening uncertainty?",
+      "problem_ids": [
+        "NS-Q003",
+        "NS-Q010",
+        "NS-Q028",
+        "NS-Q029",
+        "NS-Q036"
+      ],
+      "prerequisites": [],
+      "agent_suitability": {
+        "level": "high",
+        "good_for": [
+          "implementation",
+          "QA",
+          "localization",
+          "interaction tests"
+        ],
+        "human_veto": "Support work must never outrank frontier mathematics on expert surfaces."
+      },
+      "review_class": "comparative-design-review",
+      "publication_path": "Product/research-interface artifact.",
+      "success_changes": "Better recruitment/coordination, not theorem status."
+    }
+  ],
+  "edges": [
+    {
+      "from": "FG-02",
+      "to": "FG-01",
+      "type": "prerequisite-informs"
+    },
+    {
+      "from": "FG-03",
+      "to": "FG-01",
+      "type": "semantic-foundation"
+    },
+    {
+      "from": "FG-02",
+      "to": "FG-04",
+      "type": "informs"
+    },
+    {
+      "from": "FG-02",
+      "to": "FG-05",
+      "type": "informs"
+    },
+    {
+      "from": "FG-02",
+      "to": "FG-06",
+      "type": "informs"
+    },
+    {
+      "from": "FG-02",
+      "to": "FG-08",
+      "type": "informs"
+    },
+    {
+      "from": "FG-02",
+      "to": "FG-07",
+      "type": "dependency-map"
+    },
+    {
+      "from": "FG-03",
+      "to": "FG-07",
+      "type": "formal-map"
+    },
+    {
+      "from": "FG-06",
+      "to": "FG-01",
+      "type": "regularity-context"
+    },
+    {
+      "from": "FG-04",
+      "to": "FG-01",
+      "type": "force-removal-lattice"
+    },
+    {
+      "from": "FG-11",
+      "to": "FG-01",
+      "type": "execution-support"
+    },
+    {
+      "from": "FG-12",
+      "to": "FG-01",
+      "type": "coordination-support"
+    }
+  ]
+}

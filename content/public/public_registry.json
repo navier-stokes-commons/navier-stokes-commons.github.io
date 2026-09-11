@@ -24,7 +24,10 @@
     "authority_map": "content/public/authority_map.json",
     "release_policy": "content/public/release_policy.json",
     "reference_benchmarks": "content/public/reference_benchmarks.json",
-    "actions": "content/public/actions.json"
+    "actions": "content/public/actions.json",
+    "clay_problem_status": "content/public/clay_problem_status.json",
+    "frontier_graph": "content/public/frontier_graph.json",
+    "frontier_updates": "content/public/frontier_updates.json"
   },
   "public_protocols": {
     "human_start": "start.md",
@@ -68,7 +71,11 @@
     "llms_index": "/llms.txt",
     "llms_full": "/llms-full.txt",
     "reference_benchmarks": "/data/reference-benchmarks.json",
-    "actions": "/data/actions.json"
+    "actions": "/data/actions.json",
+    "clay_problem_status": "/data/clay-problem-status.json",
+    "frontier_graph": "/data/frontier-graph.json",
+    "frontier_updates": "/data/frontier-updates.json",
+    "agent_packets": "/data/agent-packets/index.json"
   },
   "human_routes": {
     "default_locale": "/en/",
@@ -77,7 +84,12 @@
     "founding_sprint": "/en/sprint/",
     "governance": "/en/governance/",
     "benchmarks": "/en/benchmarks/",
-    "context": "/en/context/"
+    "context": "/en/context/",
+    "frontier": "/en/frontier/",
+    "review": "/en/review/",
+    "explain": "/en/explain/",
+    "agents": "/en/agents/",
+    "contribute": "/en/contribute/"
   },
   "discovery_contract": {
     "kind": "project-local-custom",

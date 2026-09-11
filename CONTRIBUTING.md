@@ -12,7 +12,7 @@ Navier-Stokes Commons accepts public contributions from humans, AI-assisted huma
 6. Submit a result with the acceptance-condition matrix, reproduction instructions, limitations, conflicts, and material human/AI/tool provenance.
 7. Request the review class named by the quest.
 
-The Founding Sprint at `/en/sprint/` contains the initial launch set.
+The Initial Independent Review Portfolio at `/en/sprint/` contains the initial launch set.
 
 ## If no quest fits
 

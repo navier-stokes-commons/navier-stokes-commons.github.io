@@ -41,7 +41,7 @@ The configured canonical repository is `Aletheia-Prime/navier-stokes-commons-pub
 7. Resolve the discovery document relative references against the discovery document URL and verify that every advertised machine endpoint remains inside the Pages project subpath.
 8. Open one quest attempt through the deployed interface. Confirm the generated issue preserves the quest ID.
 9. Open one result and one review form far enough to verify their mission/quest identifiers and required fields.
-10. Announce the Founding Sprint only after these smoke tests pass.
+10. Announce the Initial Independent Review Portfolio only after these smoke tests pass.
 
 When GitHub Actions builds the site, the generator reads the repository identity supplied by the host and produces repository-native contribution links.
 
@@ -50,7 +50,7 @@ When GitHub Actions builds the site, the generator reads the repository identity
 1. Create or select the public project and enable Issues plus CI/CD.
 2. Push this source tree.
 3. The included pipeline runs the same public gates and builds Pages.
-4. Verify the deployed root, quest board, Founding Sprint, machine discovery endpoint, and issue-template routing.
+4. Verify the deployed root, quest board, Initial Independent Review Portfolio, machine discovery endpoint, and issue-template routing.
 5. Announce only after the smoke tests pass.
 
 ## Any other forge
@@ -61,9 +61,9 @@ GitHub Pages and GitLab Pages configurations are shipped as configured adapters.
 
 ## First maintainer actions after publication
 
-Publication begins the Founding Sprint. It does not wait for the sprint to finish.
+Publication begins the Initial Independent Review Portfolio. It does not wait for the sprint to finish.
 
-1. Create a public announcement from `docs/LAUNCH_ANNOUNCEMENT.md` and link the quest board plus Founding Sprint.
+1. Create a public announcement from `docs/LAUNCH_ANNOUNCEMENT.md` and link the quest board plus Initial Independent Review Portfolio.
 2. Start or sponsor at least one small starter-rung quest so newcomers can observe the complete attempt -> artifact -> review lifecycle.
 3. Invite independent contributors toward the launch quests in `content/public/founding_sprint.json` rather than asking for vague help.
 4. Route scientific review requests only to reviewers whose competence and independence fit the quest's declared review class.

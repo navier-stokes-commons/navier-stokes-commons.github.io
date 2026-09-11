@@ -65,5 +65,22 @@
     "claims_supported": [
       "The two-dimensional Taylor vortex array is an exact unsteady solution of the Navier-Stokes equations."
     ]
+  },
+  "clay-rules": {
+    "claims_supported": [
+      "CMI prize consideration requires a qualifying publication, at least two years, and general acceptance in the global mathematics community before CMI examination"
+    ]
+  },
+  "cao-chi-torus-2609.10262": {
+    "claims_supported": [
+      "Authors report density of smooth singularity-producing forces on T^3 in inherited time-integrated spatial H^s iff s<1/2 under their stated setup",
+      "Authors explicitly distinguish varying-force density from classification for one prescribed force"
+    ]
+  },
+  "cao-chi-r3-2609.10269": {
+    "claims_supported": [
+      "Authors report whole-space singular-force density thresholds in relative L1_t H^s_x and L2_t H^s_x topologies",
+      "Authors explicitly disclaim fixed-force instability, loss of weak existence, and new formal verification"
+    ]
   }
 }

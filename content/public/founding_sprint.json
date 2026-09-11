@@ -1,10 +1,10 @@
 {
   "schema": "nsc-sprint-v1",
   "id": "NSC-FS1",
-  "title": "Founding Sprint",
+  "title": "Initial Independent Review Portfolio",
   "status": "open",
-  "purpose": "Turn the public Commons into a body of independently reviewable Navier-Stokes work while simultaneously stress-testing the collaboration protocol.",
-  "launch_rule": "The workspace may be published before these quests are complete. Completion changes the evidence state of the project; it does not retroactively authorize publication.",
+  "purpose": "Produce the first independently reviewable evidence across proof audit, formal semantics, substantive mathematics, scientific computation, and collaboration integrity.",
+  "launch_rule": "The workspace may be public before these research problems are complete. Their completion changes evidence and frontier state; it never self-certifies a scientific claim.",
   "quest_ids": [
     "NS-Q001",
     "NS-Q002",

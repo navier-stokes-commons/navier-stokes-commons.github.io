@@ -1,10 +1,10 @@
 <!-- GENERATED:release-summary:start -->
-**Current release:** `public-web-v0.4.0-beta.3`
+**Current release:** `public-web-v0.4.0-beta.4`
 **Stage:** open-beta
 **Participation:** open
 **Seed research programs:** 18 missions
-**Bounded work units:** 36 quests
-**Founding Sprint:** 17 quests
+**Bounded work units:** 40 quests
+**Initial Independent Review Portfolio:** 17 quests
 <!-- GENERATED:release-summary:end -->
 
 # Navier-Stokes Commons
@@ -12,7 +12,7 @@
 Navier-Stokes Commons is an open, machine-readable collaboration workspace for rigorous public work around the 2026 Navier-Stokes result and its consequences.
 
 <!-- GENERATED:sprint-id:start -->
-**Founding Sprint:** `NSC-FS1`
+**Initial Independent Review Portfolio:** `NSC-FS1`
 <!-- GENERATED:sprint-id:end -->
 
 The Commons is not a claim that every listed question is solved, nor that every submitted artifact is correct. It is infrastructure for turning public questions into bounded work, evidence, independent review, correction, and reusable public records.
@@ -61,7 +61,7 @@ A review request may return to revision any number of times. New evidence may al
 
 Open beta publication and institutional certification are separate predicates.
 
-Open beta requires the repository to be operable, truthful about status, reproducible, leak-clean, accessible by construction, and equipped with real work that contributors can start immediately. It does **not** require the Founding Sprint to be completed before publication.
+Open beta requires the repository to be operable, truthful about status, reproducible, leak-clean, accessible by construction, and equipped with real work that contributors can start immediately. It does **not** require the Initial Independent Review Portfolio to be completed before publication.
 
 Stronger claims such as independent scientific validation, WCAG conformance certification, reviewed translations, or an institutional 1.0 remain gated by the relevant independent evidence. See `ROADMAP.md` and `REVIEW_POLICY.md`.
 

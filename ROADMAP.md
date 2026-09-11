@@ -8,7 +8,7 @@ Open-beta launch gate requires:
 
 - canonical public SSOT and versioned schemas;
 - missions and bounded quests with every mission represented;
-- a visible bounded task ladder and Founding Sprint;
+- a visible bounded task ladder and Initial Independent Review Portfolio;
 - claim, result, review, and governance semantics;
 - forge-native attempt/result/review/proposal flows;
 - machine-readable agent discovery;

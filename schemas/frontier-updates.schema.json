@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://navier-stokes-commons/schemas/frontier-updates.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "observed_at", "policy", "updates"],
+  "properties": {
+    "schema": {"const": "nsc-frontier-updates-v1"},
+    "observed_at": {"type": "string"},
+    "policy": {"type": "string", "minLength": 10},
+    "updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "date", "title", "authors", "url", "source_id", "evidence_state", "affects_programs", "reported_result", "does_not_establish", "frontier_effect"],
+        "properties": {
+          "id": {"type": "string", "minLength": 8},
+          "date": {"type": "string"},
+          "title": {"type": "string", "minLength": 8},
+          "authors": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "url": {"type": "string", "format": "uri"},
+          "source_id": {"type": "string"},
+          "evidence_state": {"const": "source-reported-external-unreviewed"},
+          "affects_programs": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^NS-M[0-9]{2}$"}},
+          "reported_result": {"type": "string", "minLength": 20},
+          "does_not_establish": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "frontier_effect": {"type": "string", "minLength": 20}
+        }
+      }
+    }
+  }
+}

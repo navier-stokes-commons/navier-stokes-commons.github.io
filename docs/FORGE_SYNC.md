@@ -2,7 +2,7 @@
 
 Git repository content is canonical for project state. Forge issues are collaboration surfaces, not independent authorities.
 
-The Founding Sprint index issue is a generated external projection. `scripts/sync_founding_sprint_issue.py` derives its title and body from:
+The Initial Independent Review Portfolio index issue is a generated external projection. `scripts/sync_founding_sprint_issue.py` derives its title and body from:
 
 - `content/public/founding_sprint.json`;
 - `content/public/quests.json`;

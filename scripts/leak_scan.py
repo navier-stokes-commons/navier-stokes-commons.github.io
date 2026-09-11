@@ -12,7 +12,7 @@ from nsc_model import project_view, public_registry
 _project=project_view() if (ROOT/'content/public/project.json').exists() else {'locales':[]}
 _registry=public_registry() if (ROOT/'content/public/public_registry.json').exists() else {'machine_endpoints':{}}
 # Public internal URLs are derived from the route registry plus locale roots.
-PUBLIC_WEB_PREFIXES=tuple(sorted(set(_registry['machine_endpoints'].values()) | {'/'+loc+'/' for loc in _project.get('locales',[])}))
+PUBLIC_WEB_PREFIXES=tuple(sorted(set(_registry['machine_endpoints'].values()) | {'/'+loc+'/' for loc in _project.get('locales',[])} | {'/data/','/en/'}))
 secret_patterns=[
     re.compile(r'ghp_[A-Za-z0-9]{20,}'),
     re.compile(r'github_pat_[A-Za-z0-9_]{20,}'),

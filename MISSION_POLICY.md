@@ -33,9 +33,9 @@ Starting or "claiming" a quest announces an attempt. It never prevents parallel 
 
 The canonical ladder is `content/public/task_ladder.json`, from L0 source or interface checks through L5 open research. Maintainers should preserve a healthy launch distribution, especially L0-L2 entry points and L3-L4 substantive build/research tasks.
 
-## Founding Sprint
+## Initial Independent Review Portfolio
 
-The Founding Sprint is a selected cross-section of quests intended to produce early independent evidence while testing the system itself. Its completion is evidence of institutional substance. It is not a prerequisite for publishing the open workspace that allows contributors to undertake it.
+The Initial Independent Review Portfolio is a selected cross-section of quests intended to produce early independent evidence while testing the system itself. Its completion is evidence of institutional substance. It is not a prerequisite for publishing the open workspace that allows contributors to undertake it.
 
 ## Creating new work
 

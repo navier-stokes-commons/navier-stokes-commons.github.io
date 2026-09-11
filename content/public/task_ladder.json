@@ -3,7 +3,7 @@
   "rungs": [
     {
       "id": "L0",
-      "name": "Scout",
+      "name": "Verification check",
       "effort": "15-60 minutes",
       "scope": "Check one bounded public fact, link, label, accessibility state, or source locator.",
       "acceptance_style": "Exact evidence plus a reproducible check; no novel mathematics required.",
@@ -11,7 +11,7 @@
     },
     {
       "id": "L1",
-      "name": "Reproducer",
+      "name": "Reproduction",
       "effort": "1-3 hours",
       "scope": "Run or independently repeat one existing build, test, calculation, or public-source extraction.",
       "acceptance_style": "Commands or procedure, environment/versions, result, and discrepancies.",
@@ -19,7 +19,7 @@
     },
     {
       "id": "L2",
-      "name": "Mapper",
+      "name": "Mapping / synthesis",
       "effort": "2-8 hours",
       "scope": "Build a faithful map between claims, sources, declarations, proof sections, concepts, or workflows.",
       "acceptance_style": "Complete mapping for the stated slice, stable locators, and explicit unknowns.",
@@ -27,15 +27,15 @@
     },
     {
       "id": "L3",
-      "name": "Builder",
+      "name": "Artifact construction",
       "effort": "0.5-3 days",
-      "scope": "Create a reviewable code, visualization, documentation, or data artifact that advances a mission.",
+      "scope": "Create a reviewable code, visualization, documentation, or data artifact that advances a research program.",
       "acceptance_style": "Artifact, tests, reproduction instructions, limitations, and review target.",
       "starter": false
     },
     {
       "id": "L4",
-      "name": "Analyst",
+      "name": "Substantive analysis",
       "effort": "2-10 days",
       "scope": "Perform a mathematically, numerically, empirically, or methodologically substantive analysis.",
       "acceptance_style": "Precise claim, assumptions, derivation/experiment, uncertainty, counterchecks, and independent review.",
@@ -43,7 +43,7 @@
     },
     {
       "id": "L5",
-      "name": "Researcher",
+      "name": "Frontier research",
       "effort": "1-8+ weeks",
       "scope": "Attack a frontier theorem, formalization, stability problem, benchmark, or research-grade extension.",
       "acceptance_style": "Research artifact with field-appropriate verification and independent domain review.",
