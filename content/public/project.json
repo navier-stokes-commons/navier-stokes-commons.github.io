@@ -11,5 +11,9 @@
   },
   "release_stage": "open-beta",
   "participation_status": "open",
-  "repository_url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public"
+  "repository_url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public",
+  "pages_urls": {
+    "github": "https://aletheia-prime.github.io/navier-stokes-commons-public/",
+    "gitlab": "https://champia-labs-group.gitlab.io/navier-stokes-commons-public/"
+  }
 }
