@@ -1,0 +1,59 @@
+{
+  "schema": "nsc-research-context-v1",
+  "as_of": "2026-09-11",
+  "claim_status": {
+    "publisher": "OpenAI",
+    "scope": "Source-reported finite-time blowup construction for Clay alternatives C and D with smooth forcing.",
+    "unforced_boundary": "The unforced A/B alternatives are logically distinct.",
+    "independent_review": "open",
+    "institutional_acceptance": "The Commons does not claim Clay Mathematics Institute acceptance or prize status."
+  },
+  "affiliation_status": {
+    "independent": true,
+    "statement": "Navier-Stokes Commons is an independent public research-coordination project. It is not affiliated with or endorsed by OpenAI, Anthropic, the Clay Mathematics Institute, or the authors of the cited research."
+  },
+  "lineage": [
+    {
+      "kind": "prior_program",
+      "people": [
+        "Diego Córdoba",
+        "Luis Martínez-Zoroa"
+      ],
+      "title": "Blow-up for the incompressible 3D-Euler equations with uniform C^{1,1/2-epsilon} cap L^2 force",
+      "url": "https://arxiv.org/abs/2309.08495",
+      "note": "Published forced-blowup program. Tristan Buckmaster's public statement explicitly credits Córdoba and Martínez-Zoroa with the basic idea of the program his collaboration pursued."
+    },
+    {
+      "kind": "prior_program",
+      "people": [
+        "Diego Córdoba",
+        "Luis Martínez-Zoroa",
+        "Fan Zheng"
+      ],
+      "title": "Finite time blow-up for the hypodissipative Navier Stokes equations with a force",
+      "url": "https://arxiv.org/abs/2407.06776",
+      "note": "Published precursor extending the forced blowup program to hypodissipative Navier-Stokes."
+    }
+  ],
+  "concurrent_accounts": [
+    {
+      "party": "OpenAI",
+      "title": "On the Navier-Stokes Millennium Prize Problem",
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "summary": "OpenAI states that no specific user data was accessed to solve the problem, describes its multi-agent route, acknowledges concurrent Buckmaster-Alpöge work, and says it cannot completely rule out indirect improvement from de-identified product-usage data."
+    },
+    {
+      "party": "Tristan Buckmaster",
+      "title": "Public statement on the concurrent work and timeline",
+      "url": "https://cims.nyu.edu/~tristanb/statement.pdf",
+      "summary": "Buckmaster describes the Córdoba-Martínez-Zoroa lineage, his collaboration with Levent Alpöge, extensive use of several LLMs, and his account of discussions with OpenAI. He explicitly says he does not know whether their data was used and is not accusing anyone of that."
+    }
+  ],
+  "commons_policy": [
+    "Record public accounts with attribution instead of silently adjudicating unresolved provenance disputes.",
+    "Do not infer Clay acceptance, independent mathematical review, or unforced A/B blowup from the source-reported C/D result.",
+    "Require substantive contributions to disclose prior work, credit, human/AI/tool provenance, limitations, and reproducibility evidence.",
+    "Do not require private drafts, hidden chain-of-thought, private prompts, or confidential research to participate.",
+    "Treat negative results, corrections, reproductions, and falsifications as first-class contributions when they satisfy a bounded quest contract."
+  ]
+}

@@ -7,6 +7,10 @@ body:
     attributes: {label: Mission ID, placeholder: NS-M00}
     validations: {required: true}
   - type: textarea
+    id: prior_work
+    attributes: {label: Prior work and credit check, description: "Identify overlapping public work, missions, quests, people, and artifacts. State what was searched."}
+    validations: {required: true}
+  - type: textarea
     id: route
     attributes: {label: Intended route, description: "Explain why no existing quest is the better work unit and state the route at a public, reviewable level."}
     validations: {required: true}
@@ -17,12 +21,13 @@ body:
   - type: textarea
     id: provenance
     attributes: {label: Human, AI, and tool provenance}
+    validations: {required: true}
   - type: checkboxes
     id: certification
     attributes:
       label: Contribution certification
       options:
-        - label: I understand attempts are non-exclusive.
+        - label: I understand attempts are non-exclusive and issue ownership does not establish research priority.
           required: true
-        - label: I will submit only public material I have the right to contribute and will disclose material provenance.
+        - label: I will submit only public material I have the right to contribute and will disclose material provenance and prior work.
           required: true

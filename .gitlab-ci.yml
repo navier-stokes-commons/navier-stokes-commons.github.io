@@ -9,13 +9,39 @@ default:
 
 public-audit:
   stage: test
+  interruptible: true
+  variables:
+    NSC_AUDIT_SCRATCH: $CI_PROJECT_DIR/audit-scratch
+    
+    
+    
   script:
-    - python3 scripts/run_all_checks.py
+    # Build host-specific actions/canonical/sitemap once, audit that exact tree,
+    # then hand the proven public/ artifact to the Pages job unchanged.
+    - SITE_URL="$CI_PAGES_URL" python3 scripts/run_all_checks.py
+  after_script:
+    - mkdir -p audit/runtime
+    - if [ -d audit-scratch/nsc-experience-audit ]; then cp -a audit-scratch/nsc-experience-audit audit/runtime/experience; fi
+    - if [ -d audit-scratch/nsc-layout-integrity ]; then cp -a audit-scratch/nsc-layout-integrity audit/runtime/layout; fi
+    - if [ -d audit-scratch/nsc-check-timings ]; then cp -a audit-scratch/nsc-check-timings audit/runtime/assurance; fi
+  artifacts:
+    when: always
+    expire_in: 14 days
+    paths:
+      - audit/runtime/
+      - public/
 
 deploy-pages:
   stage: deploy
+  resource_group: pages
+  needs:
+    - job: public-audit
+      artifacts: true
+  before_script: []
   script:
-    - SITE_URL="$CI_PAGES_URL" python3 scripts/run_all_checks.py
+    - test -f public/index.html
+    - test -f public/openapi.json
+    - test -f public/sitemap.xml
   pages:
     publish: public
   rules:

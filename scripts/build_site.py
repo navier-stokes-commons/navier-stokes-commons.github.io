@@ -18,6 +18,7 @@ scaling=json.loads((CONTENT/'scaling_model.json').read_text())
 simulations_doc=json.loads((CONTENT/'simulations.json').read_text())
 reference_benchmarks=json.loads((CONTENT/'reference_benchmarks.json').read_text())
 actions_doc=json.loads((CONTENT/'actions.json').read_text())
+research_context=json.loads((CONTENT/'research_context.json').read_text())
 formula_catalog=json.loads((CONTENT/'formulas.json').read_text())
 quests=expanded_quests()
 quests_doc={'schema':json.loads((CONTENT/'quests.json').read_text()).get('schema','nsc-quests-v1'),'quests':quests}
@@ -188,7 +189,7 @@ def shell(page:Path,loc:str,current:str,kind:str,title:str,description:str,body:
 <meta name="theme-color" content="#f4f7f4" media="(prefers-color-scheme: light)">
 {canonical}
 {alt}
-<link rel="stylesheet" href="{esc(asset_css)}">
+<link rel="describedby" href="{esc(rel(page,"llms.txt"))}" type="text/markdown"><link rel="stylesheet" href="{esc(asset_css)}">
 {extra_head}
 </head>
 <body data-page-kind="{esc(kind)}">
@@ -370,6 +371,216 @@ def flow_chamber(page,loc):
     ux=sim_expr_text(sim['fields']['u_x']); uy=sim_expr_text(sim['fields']['u_y']); ee=sim_expr_text(sim['fields']['mean_kinetic_energy'])
     return f'''<section id="flow-chamber" class="section flow-chamber-section" lang="en" dir="ltr"><div class="container flow-chamber" data-flow-chamber data-simulation-id="{esc(sim['id'])}" data-flow-model="{esc(model_json)}" data-a="{A}" data-nu="{nu}" data-t="{t}"><div class="flow-copy"><span class="eyebrow">EXACT REFERENCE FLOW</span><h2>Watch an equation become a velocity field.</h2><p class="lede small">This chamber is an analytic two-dimensional periodic Navier-Stokes solution, rendered directly from its canonical expression tree. It is a reference flow, not a reconstruction of the 2026 three-dimensional singularity.</p><p class="flow-tracer-note" data-flow-tracer-note>The arrow field and reported energy are exact evaluations of the canonical solution. Animated dots, when enabled, are numerically integrated passive tracers for orientation only and are not proof data.</p><p class="source-line"><a href="{esc(source['url'])}">{esc(source['title'])}</a></p><div class="flow-formulas"><code>u_x = {esc(ux)}</code><code>u_y = {esc(uy)}</code><code>E_mean = {esc(ee)}</code></div><div class="flow-controls enhance-only" data-flow-controls hidden><label for="flow-time">Time <output data-flow-t-output>{t:.2f}</output><input id="flow-time" type="range" min="{params['t']['min']}" max="{params['t']['max']}" value="{t}" step="{params['t']['step']}" data-flow-t></label><label for="flow-nu">Viscosity nu <output data-flow-nu-output>{nu:.3f}</output><input id="flow-nu" type="range" min="{params['nu']['min']}" max="{params['nu']['max']}" value="{nu}" step="{params['nu']['step']}" data-flow-nu></label><button type="button" data-flow-play data-play-label="Play" data-pause-label="Pause">Play</button></div><p class="flow-state" data-flow-state aria-live="polite">At t={t:.2f}, nu={nu:.3f}, the mean kinetic energy is {energy:.4f}. The field has {esc(sim['qualitative_default'])}; {esc(sim['invariants'][0])}.</p></div><div class="flow-visual"><div class="flow-canvas-frame enhance-only" data-flow-canvas-frame hidden><canvas width="720" height="460" data-flow-canvas aria-hidden="true"></canvas><div class="flow-axis-label x">x from 0 to 2pi</div><div class="flow-axis-label y">y</div></div><figure class="flow-static"><figcaption>Static no-JavaScript velocity-direction field at the default state</figcaption><pre data-flow-static>{esc(fallback)}</pre></figure></div></div><div class="container flow-integrity"><span>Canonical expression AST</span><span>Periodic domain</span><span>No autoplay</span><span>Static fallback</span><span>Independent residual oracle</span></div></section>'''
 
+def _mechanism_copy(loc:str):
+    copies={
+      'en':{
+        'boundary_kicker':'THE BOUNDARY THAT MATTERS',
+        'boundary_title':'A forced finite-time blowup is claimed. The unforced problem remains distinct.',
+        'cd':'OpenAI reports a smooth forcing for which velocity becomes unbounded while kinetic energy remains bounded.',
+        'ab':'The corresponding unforced alternatives are logically distinct and remain a separate frontier.',
+        'status':'SOURCE-REPORTED · INDEPENDENT REVIEW OPEN',
+        'trace':'LIVE SCALE TRACE','trace_pause':'pause','trace_play':'play','trace_replay':'replay',
+        'kicker':'PHYSICAL DESCRIPTION · PAPER §§2–2.2',
+        'title':'One construction. Four different jobs.',
+        'intro':'This explorable separates the mechanism instead of turning it into one decorative vortex. The first three panels summarize the inner-core geometry and leading scales. The fourth shows why the annular oscillations are necessary. It is an explanatory schematic tied to the paper, not a numerical reconstruction of the full solution.',
+        'approach':'Approach the singular time','decades':'decades','h':'Scale parameter h','play':'Play scale sweep','pause':'Pause sweep','replay':'Replay scale sweep','motion_disabled':'Motion disabled',
+        'p1k':'01 · TOP VIEW','p1t':'Inward spiral','p1b':'Radial inflow carries angular momentum toward smaller radii. The trajectories are qualitative guide curves; the changing envelope uses the published radial scale.',
+        'p2k':'02 · SIDE VIEW','p2t':'Axial escape','p2b':'Incoming fluid cannot accumulate near the axis. Opposite axial outflow above and below the dividing layer permits continued inward motion and spin-up.','inflow':'inflow','outflow':'outflow',
+        'p3k':'03 · LEADING SCALES','p3t':'Shrink and diverge','p3b':'Radius contracts, characteristic angular speed diverges, and the core energy scale still tends to zero for 0 < h < 1/100. Anisotropy is shown directly as ell_z / ell_r.',
+        'p4k':'04 · ANNULUS','p4t':'Cancel the singular residual','p4b':'The background core alone leaves an unbounded residual in the annulus. Two localized oscillatory pulse families are arranged so their averaged quadratic momentum flux supplies the missing leading stress.','annulus':'ANNULUS','core':'CORE',
+        'laws':'Published leading-order inner-core scaling relations represented by this explorable.',
+        'scope':'Representation status','scope_text':'Panels 1, 2 and 4 are explanatory schematics. Panel 3 and the numeric readouts are derived directly from the recorded leading exponents. None is a full-field reconstruction.',
+        'reference':'Open the independently checkable exact 2-D reference flow',
+        'steps':[
+          ('01 TRANSPORT','Spin-up is a balance.','Inward angular-momentum transport competes with viscous loss; it is not a frictionless conservation cartoon.'),
+          ('02 INCOMPRESSIBILITY','The core cannot simply implode.','Axial outflow carries mass away from the concentrating central region.'),
+          ('03 CONCENTRATION','Large speed does not imply large total energy.','The support volume collapses fast enough that the core energy scale tends to zero.'),
+          ('04 CORRECTION','The pulses are not decoration.','They are the device used to cancel the singular annular momentum residual while keeping the external forcing smooth.'),
+        ],
+      },
+      'es':{
+        'boundary_kicker':'EL LÍMITE QUE IMPORTA',
+        'boundary_title':'Se afirma blowup forzado en tiempo finito. El problema sin fuerza sigue siendo distinto.',
+        'cd':'OpenAI informa una fuerza suave para la cual la velocidad se hace no acotada mientras la energía cinética permanece acotada.',
+        'ab':'Las alternativas correspondientes sin fuerza son lógicamente distintas y siguen siendo una frontera separada.',
+        'status':'INFORMADO POR LA FUENTE · REVISIÓN INDEPENDIENTE ABIERTA',
+        'trace':'TRAZA DE ESCALA EN VIVO','trace_pause':'pausar','trace_play':'reproducir','trace_replay':'repetir',
+        'kicker':'DESCRIPCIÓN FÍSICA · ARTÍCULO §§2–2.2',
+        'title':'Una construcción. Cuatro trabajos distintos.',
+        'intro':'Este explorable separa el mecanismo en vez de convertirlo en un único vórtice decorativo. Los tres primeros paneles resumen la geometría del núcleo interior y sus escalas principales. El cuarto muestra por qué hacen falta las oscilaciones del anillo. Es un esquema explicativo vinculado al artículo, no una reconstrucción numérica de la solución completa.',
+        'approach':'Acercarse al instante singular','decades':'décadas','h':'Parámetro de escala h','play':'Reproducir barrido','pause':'Pausar barrido','replay':'Repetir barrido','motion_disabled':'Movimiento desactivado',
+        'p1k':'01 · VISTA SUPERIOR','p1t':'Espiral hacia adentro','p1b':'La entrada radial transporta momento angular hacia radios menores. Las trayectorias son curvas guía cualitativas; la envolvente cambiante usa la escala radial publicada.',
+        'p2k':'02 · VISTA LATERAL','p2t':'Escape axial','p2b':'El fluido entrante no puede acumularse cerca del eje. La salida axial en sentidos opuestos por encima y por debajo de la capa divisoria permite que continúen la entrada y la aceleración del giro.','inflow':'entrada','outflow':'salida',
+        'p3k':'03 · ESCALAS PRINCIPALES','p3t':'Contraerse y divergir','p3b':'El radio se contrae, la velocidad angular característica diverge y la escala de energía del núcleo sigue tendiendo a cero para 0 < h < 1/100. La anisotropía se muestra directamente como ell_z / ell_r.',
+        'p4k':'04 · ANILLO','p4t':'Cancelar el residuo singular','p4b':'El núcleo de fondo por sí solo deja un residuo no acotado en el anillo. Se disponen dos familias de pulsos oscilatorios localizados para que su flujo cuadrático medio de momento aporte el esfuerzo principal faltante.','annulus':'ANILLO','core':'NÚCLEO',
+        'laws':'Relaciones de escala principales publicadas para el núcleo interior representadas por este explorable.',
+        'scope':'Estado de la representación','scope_text':'Los paneles 1, 2 y 4 son esquemas explicativos. El panel 3 y las lecturas numéricas se derivan directamente de los exponentes principales registrados. Ninguno reconstruye el campo completo.',
+        'reference':'Abrir el flujo de referencia 2-D exacto e independientemente verificable',
+        'steps':[
+          ('01 TRANSPORTE','La aceleración del giro es un balance.','El transporte de momento angular hacia adentro compite con la pérdida viscosa; no es una caricatura sin fricción.'),
+          ('02 INCOMPRESIBILIDAD','El núcleo no puede simplemente implosionar.','La salida axial aleja masa de la región central que se concentra.'),
+          ('03 CONCENTRACIÓN','Gran velocidad no implica gran energía total.','El volumen de soporte colapsa suficientemente rápido para que la escala de energía del núcleo tienda a cero.'),
+          ('04 CORRECCIÓN','Los pulsos no son decoración.','Son el dispositivo usado para cancelar el residuo singular de momento en el anillo manteniendo suave el forzamiento externo.'),
+        ],
+      },
+    }
+    return copies.get(loc,copies['en']), ('' if loc in copies else ' lang="en" dir="ltr"')
+
+
+def scale_trace(loc:str='en')->str:
+    C,attrs=_mechanism_copy(loc)
+    return f'''<section class="scale-trace-strip" data-scale-trace{attrs}><div class="container scale-trace-row"><span class="micro">{esc(C['trace'])}</span><pre data-scale-trace-output>τ 10^-2.00   ℓr 10^-1.00   ℓz 10^-0.99   |uθ| 10^1.01   Ecore 10^-0.97</pre><button class="enhance-only" type="button" data-scale-trace-toggle hidden data-pause="{esc(C['trace_pause'])}" data-play="{esc(C['trace_play'])}" data-replay="{esc(C['trace_replay'])}">{esc(C['trace_pause'])}</button></div></section>'''
+
+
+def reference_flow_page():
+    page=PUBLIC/'en/reference-flow/index.html'
+    body='''<section class="page-hero compact-hero"><div class="container narrow"><span class="eyebrow">EXACT REFERENCE FLOW · SEPARATE FROM THE 2026 BLOWUP</span><h1>One exact field for testing the visualization machinery.</h1><p class="lede">This two-dimensional periodic Taylor-vortex solution is independently checkable against the Navier–Stokes equations. It is retained as a reference implementation and is not a reconstruction of the 2026 three-dimensional singular construction.</p></div></section>'''+flow_chamber(page,'en')
+    write('en/reference-flow/index.html',canonical_shell(page,'guide','reference-flow','Exact 2-D reference flow','An independently checkable exact Navier–Stokes field used to test scientific visualization machinery.',body))
+
+
+
+def r5_font_preloads(page):
+    """Preload only the two first-viewport Latin faces; mono remains demand-loaded."""
+    news=rel(page,'assets/fonts/newsreader-latin-standard-normal.woff2')
+    geist=rel(page,'assets/fonts/geist-latin-wght-normal.woff2')
+    return (f'<link rel="preload" as="font" type="font/woff2" href="{esc(news)}" crossorigin>'
+            f'<link rel="preload" as="font" type="font/woff2" href="{esc(geist)}" crossorigin>')
+
+def _r5_copy(loc:str):
+    copies={
+      'en':{
+        'title':'Navier–Stokes, made explorable.',
+        'lede':'OpenAI published a finite-time blowup construction for the smoothly forced C/D formulation. Here the geometry, scale laws, proof artifacts and open questions become one manipulable research surface.',
+        'sub':'The 3-D object is an explicitly schematic, source-constrained explainer. It does not claim to reconstruct the complete velocity field.',
+        'explore':'Explore the mechanism','quest':'Pick a bounded quest',
+        'stage':'SCHEMATIC 3-D CORE','normalized':'NORMALIZED FOLLOW-CORE VIEW','laboratory':'LOG-COMPRESSED LABORATORY VIEW',
+        'help':'move = flow probe · drag = orbit · wheel = zoom',
+        'boundary':'Geometry is an explanatory schematic, not the computed 3-D solution. Scale readouts are derived from the published leading-order laws. Here k means τ = 1 − t = 10⁻ᵏ: k=1 gives τ=10⁻¹, while k=60 gives τ=10⁻⁶⁰. Move the cursor to interrogate nearby guide trajectories; the probe does not perturb the model.',
+        'k':'distance to singular time · k = −log₁₀(τ), τ = 1 − t','h':'scaling parameter h',
+        'play':'Play sweep','pause':'Pause sweep','frame':'Normalized core frame','frame_lab':'Laboratory frame',
+        'mechanism_kicker':'THE MECHANISM','mechanism_title':'Four coupled ideas.',
+        'mechanism_intro':'Do not reduce the proof to a decorative tornado. The physical picture is a sequence: inward angular-momentum transport, axial escape imposed by incompressibility, anisotropic concentration with diverging characteristic speed, and annular oscillatory corrections that cancel the singular residual while the external force remains smooth.',
+      },
+      'es':{
+        'title':'Navier–Stokes, para explorar.',
+        'lede':'OpenAI publicó una construcción de blowup en tiempo finito para la formulación C/D con forzamiento suave. Aquí la geometría, las leyes de escala, los artefactos de prueba y las preguntas abiertas se convierten en una superficie de investigación manipulable.',
+        'sub':'El objeto 3-D es un esquema explicativo restringido por las fuentes. No pretende reconstruir el campo de velocidades completo.',
+        'explore':'Explorar el mecanismo','quest':'Elegir una quest acotada',
+        'stage':'NÚCLEO 3-D ESQUEMÁTICO','normalized':'VISTA NORMALIZADA DEL NÚCLEO','laboratory':'VISTA DE LABORATORIO LOG-COMPRIMIDA',
+        'help':'mover = sonda · arrastrar = orbitar · rueda = zoom',
+        'boundary':'La geometría es un esquema explicativo, no la solución 3-D calculada. Las lecturas de escala se derivan de las leyes principales publicadas. Aquí k significa τ = 1 − t = 10⁻ᵏ: k=1 da τ=10⁻¹ y k=60 da τ=10⁻⁶⁰. Mueve el cursor para interrogar trayectorias guía cercanas; la sonda no perturba el modelo.',
+        'k':'distancia al instante singular · k = −log₁₀(τ), τ = 1 − t','h':'parámetro de escala h',
+        'play':'Reproducir barrido','pause':'Pausar barrido','frame':'Vista normalizada','frame_lab':'Vista de laboratorio',
+        'mechanism_kicker':'EL MECANISMO','mechanism_title':'Cuatro ideas acopladas.',
+        'mechanism_intro':'No reduzcas la prueba a un tornado decorativo. La imagen física es una secuencia: transporte de momento angular hacia adentro, escape axial impuesto por la incomprensibilidad, concentración anisotrópica con velocidad característica divergente y correcciones oscilatorias anulares que cancelan el residuo singular mientras la fuerza externa permanece suave.',
+      }
+    }
+    if loc in copies: return copies[loc],''
+    return copies['en'],' lang="en" dir="ltr"'
+
+
+def r5_sprint_copy(loc:str):
+    if loc=='es':
+        return {'button':'Únete al Founding Sprint','kicker':'BETA ABIERTA · FOUNDING SPRINT','title':'No te limites a leerlo. Elige una quest acotada y mejora el registro público.','body':'El Commons está abierto a intentos no exclusivos. Empieza con verificación de fuentes, reproducción en Lean, matemáticas, trabajo numérico, accesibilidad, pruebas de navegador, evaluación de agentes o revisión de gobernanza.','all':f'Las {len(quests)} quests'},''
+    if loc=='en':
+        return {'button':'Join the Founding Sprint','kicker':'OPEN BETA · FOUNDING SPRINT','title':'Do not just read it. Pick one bounded quest and make the public record better.','body':'The Commons is open for non-exclusive attempts. Start with source checks, Lean reproduction, mathematics, numerical work, accessibility, browser testing, agent evaluation, or governance review.','all':f'All {len(quests)} quests'},''
+    return {'button':'Join the Founding Sprint','kicker':'OPEN BETA · FOUNDING SPRINT','title':'Do not just read it. Pick one bounded quest and make the public record better.','body':'The Commons is open for non-exclusive attempts. Start with source checks, Lean reproduction, mathematics, numerical work, accessibility, browser testing, agent evaluation, or governance review.','all':f'All {len(quests)} quests'},' lang="en" dir="ltr"'
+
+def _r5_static_vortex_svg()->str:
+    def project(x,y,z,yaw=-.28,pitch=.10,zoom=5.8,w=1000,h=650):
+        cy,sy=math.cos(yaw),math.sin(yaw); cp,sp=math.cos(pitch),math.sin(pitch)
+        X=cy*x+sy*z; Z=-sy*x+cy*z; Y=cp*y-sp*Z; Z=sp*y+cp*Z
+        d=zoom-Z; f=min(w,h)*.88/d
+        return w*.5+X*f,h*.47-Y*f
+    paths=[]; k=14.0; H=.005; s=k/60; turns=1.25+19*s**.72; aspect=10**(k*H); axial=1+.78*math.log10(aspect+1)
+    for i in range(32):
+        a=(i*2.3999632297)%(2*math.pi); layer=(i%19)/18; family=i%7; pts=[]
+        for j in range(46):
+            u=j/45; zz=u*2-1; waist=.32+.68*abs(zz)**.70; lay=.32+1.48*(.15+.85*layer); radial=lay*waist*(1-.30*s*math.exp(-zz*zz*3)); handed=1 if family<3 else -1
+            th=a+handed*turns*(zz+.23*math.sin(zz*math.pi))*math.pi
+            x=radial*math.cos(th); z=radial*math.sin(th); y=zz*2.3*axial
+            flare=.15*math.sin(th*.7+math.sin(i*12.9898)*.17*8)*(1-math.exp(-abs(zz)*2)); x*=1+flare; z*=1-flare*.7
+            pts.append(project(x,y,z))
+        d=' '.join(('M' if j==0 else 'L')+f'{x:.1f},{y:.1f}' for j,(x,y) in enumerate(pts))
+        cls='vortex-static-teal' if family<3 else ('vortex-static-orange' if family in (4,5) else 'vortex-static-blue')
+        paths.append(f'<path d="{d}" class="{cls}"/>')
+    return f'''<svg class="vortex-static" data-vortex-static viewBox="0 0 1000 650" role="img" aria-label="Static three-dimensional schematic of inward-spiraling and axially extended guide trajectories"><g>{''.join(paths)}</g><text x="28" y="620">STATIC NO-JAVASCRIPT SCHEMATIC · quantitative scale laws remain available below</text></svg>'''
+
+def r5_vortex_stage(page:Path,loc:str)->str:
+    C,attrs=_r5_copy(loc); h=float(scaling['parameters']['h']['default']); k=14.0
+    lr=-.5*k; lz=-(.5-h)*k; speed=(.5+h)*k; energy=-(.5-3*h)*k; aspect=10**(h*k)
+    return f'''<figure class="vortex-stage" data-vortex-stage data-representation-status="schematic" data-quantitative-status="derived-leading-exponents" data-mode-normalized="{esc(C['normalized'])}" data-mode-laboratory="{esc(C['laboratory'])}"{attrs}>{_r5_static_vortex_svg()}<canvas data-vortex-canvas aria-hidden="true"></canvas><div class="flow-probe" data-flow-probe aria-hidden="true"><span class="flow-probe-ring"></span><span class="flow-probe-tag">flow probe</span></div><div class="stage-note">{esc(C['stage'])} · <span data-mode-label>{esc(C['normalized'])}</span></div><div class="stage-help">{esc(C['help'])}</div><div class="visual-boundary">{esc(C['boundary'])}</div><div class="stage-hud"><div class="hud-stats" aria-label="Derived leading-order scale readouts"><div class="hud-stat"><span>τ = 10⁻ᵏ</span><b data-tau-out>10^-14</b></div><div class="hud-stat"><span>ℓr</span><b data-r-out>10^{lr:.1f}</b></div><div class="hud-stat"><span>ℓz</span><b data-z-out>10^{lz:.1f}</b></div><div class="hud-stat"><span>|uθ|</span><b data-u-out>10^{speed:.1f}</b></div><div class="hud-stat"><span>Ecore</span><b data-e-out>10^{energy:.1f}</b></div><div class="hud-stat"><span>ℓz / ℓr</span><b data-aspect-out>10^{math.log10(aspect):.2f}</b></div></div><div class="vortex-controls enhance-only" data-vortex-controls hidden><div class="controls"><label>{esc(C['k'])}<input data-k type="range" min=".5" max="60" value="14" step=".5" aria-label="{esc(C['k'])}"></label><label>{esc(C['h'])}<input data-h type="range" min=".0005" max=".0095" value="{h}" step=".0005" aria-label="{esc(C['h'])}"></label></div><div class="hud-buttons"><button type="button" data-play data-play-label="{esc(C['play'])}" data-pause-label="{esc(C['pause'])}" aria-pressed="false">{esc(C['play'])}</button><button type="button" data-frame-toggle data-normalized-label="{esc(C['frame'])}" data-lab-label="{esc(C['frame_lab'])}">{esc(C['frame'])}</button></div></div></div><figcaption class="vortex-caption">{esc(C['sub'])}</figcaption></figure>'''
+
+def r5_claim_strip(page:Path,loc:str)->str:
+    C0,attrs=_mechanism_copy(loc); src=source_links(['openai-announcement','clay-formulation'],page)
+    return f'''<section class="truth-strip"{attrs}><div class="container truth-grid"><strong>{esc(C0['boundary_kicker'])}</strong><p>{esc(C0['cd'])} {esc(C0['ab'])}</p><span class="truth-source">{src}</span></div></section>'''
+
+def r5_mechanism_section(page:Path,loc:str)->str:
+    C,attrs=_r5_copy(loc); C0,_=_mechanism_copy(loc); source=source_by_id.get('openai-paper'); src=f'<a href="{esc(source["url"])}">{esc(source["title"])}</a>' if source else 'OpenAI 2026 paper'
+    steps=''.join(f'<article class="mechanism-step"><span class="micro">{esc(k0)}</span><h3>{esc(t)}</h3><p>{esc(b)}</p></article>' for k0,t,b in C0['steps'])
+    return f'''<section id="mechanism" class="section mechanism-explanation-section"{attrs}><div class="container"><div class="section-head"><div><span class="eyebrow">{esc(C['mechanism_kicker'])}</span><h2>{esc(C['mechanism_title'])}</h2></div><div><p>{esc(C['mechanism_intro'])}</p><p class="source-line">{src}</p></div></div><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div><div class="mechanism-steps">{steps}</div></div></section>'''
+
+def _r6_entry_copy(loc:str):
+    copies={
+      'en':{
+        'kicker':'CHOOSE YOUR WAY IN','title':'You do not need to believe the announcement to contribute.',
+        'intro':'Pick the smallest public task that matches your competence. Every route has an explicit evidence contract; negative results and corrections count when they close uncertainty.',
+        'routes':[
+          ('PDE / analysis','Interrogate the mathematical claim, assumptions, scaling arguments, and open analytical consequences.','claims','Inspect claims'),
+          ('Lean / formal methods','Rebuild, audit axioms, check theorem correspondence, or make a formal artifact easier to understand.','quests','Find formal-verification work'),
+          ('Numerics / CFD / sciviz','Test numerical consequences, V&V assumptions, or the honesty and usefulness of scientific visualizations.','missions','Open numerical/sciviz missions'),
+          ('Student / newcomer','Start with a bounded source, reproduction, browser, accessibility, or explanation task before attempting frontier mathematics.','sprint','Enter the Founding Sprint'),
+          ('Skeptic / reviewer','Audit the claim, lineage, attribution, provenance accounts, governance, or the Commons itself. Falsification is welcome.','context','Context / credit'),
+          ('AI agent / tool builder','Use the machine endpoints, choose one bounded quest, disclose model/tool provenance, and return an inspectable artifact.','agents','Open the agent interface'),
+        ]
+      },
+      'es':{
+        'kicker':'ELIGE CÓMO ENTRAR','title':'No tienes que creer el anuncio para contribuir.',
+        'intro':'Elige la tarea pública más pequeña que encaje con tu competencia. Cada ruta tiene un contrato explícito de evidencia; los resultados negativos y las correcciones cuentan cuando reducen incertidumbre.',
+        'routes':[
+          ('EDP / análisis','Interroga la afirmación matemática, los supuestos, las escalas y las consecuencias analíticas abiertas.','claims','Inspeccionar afirmaciones'),
+          ('Lean / métodos formales','Reproduce, audita axiomas, comprueba correspondencia de teoremas o mejora la legibilidad de un artefacto formal.','quests','Buscar trabajo formal'),
+          ('Numérico / CFD / sciviz','Prueba consecuencias numéricas, supuestos de V&V o la honestidad de las visualizaciones científicas.','missions','Abrir misiones numéricas/sciviz'),
+          ('Estudiante / recién llegado','Empieza por fuentes, reproducción, navegador, accesibilidad o explicación antes de intentar matemática de frontera.','sprint','Entrar al Founding Sprint'),
+          ('Escéptico / revisor','Audita la afirmación, el linaje, la atribución, las versiones públicas de procedencia, la gobernanza o el propio Commons.','context','Leer contexto / crédito'),
+          ('Agente de IA / herramientas','Usa los endpoints, elige una quest acotada, declara procedencia de modelo/herramienta y devuelve un artefacto inspeccionable.','agents','Abrir interfaz de agentes'),
+        ]
+      }
+    }
+    if loc in copies:return copies[loc],''
+    return copies['en'],' lang="en" dir="ltr"'
+
+
+def r6_community_entry_section(page:Path,loc:str)->str:
+    C,attrs=_r6_entry_copy(loc)
+    links={
+      'claims':'en/claims/index.html',
+      'quests':'en/quests/index.html',
+      'missions':logical_target(loc,'missions'),
+      'sprint':'en/sprint/index.html',
+      'context':'en/context/index.html',
+      'agents':logical_target(loc,'agents'),
+    }
+    cards=[]
+    for i,(title,body,key,cta) in enumerate(C['routes'],1):
+        href=rel(page,links[key])
+        cards.append(f'''<article class="entry-route"><span class="micro">{i:02d}</span><h3>{esc(title)}</h3><p>{esc(body)}</p><a class="text-link strong" href="{esc(href)}">{esc(cta)} <span aria-hidden="true">↗</span></a></article>''')
+    return f'''<section class="section community-entry-section"{attrs}><div class="container"><div class="section-head"><div><span class="eyebrow">{esc(C['kicker'])}</span><h2>{esc(C['title'])}</h2></div><p>{esc(C['intro'])}</p></div><div class="entry-route-grid">{''.join(cards)}</div></div></section>'''
+
+
+def r6_global_context_strip(page:Path)->str:
+    href=rel(page,'en/context/index.html')
+    return f'''<section class="r6-context-strip"><div class="container r6-context-row"><strong>INDEPENDENT COMMONS</strong><span>Not affiliated with OpenAI, Anthropic or Clay · source-reported C/D blowup · independent review open · unforced A/B remains distinct</span><a class="text-link strong" href="{esc(href)}">Context / credit <span aria-hidden="true">↗</span></a></div></section>'''
+
+
+def r6_context_page():
+    page=PUBLIC/'en/context/index.html'; ctx=research_context
+    lineage=''.join(f'''<article class="context-record"><span class="micro">LINEAGE</span><h2>{esc(', '.join(x['people']))}</h2><p>{esc(x['note'])}</p><a class="text-link" href="{esc(x['url'])}">{esc(x['title'])} <span aria-hidden="true">↗</span></a></article>''' for x in ctx['lineage'])
+    accounts=''.join(f'''<article class="context-record"><span class="micro">PUBLIC ACCOUNT · {esc(x['party'])}</span><h2>{esc(x['title'])}</h2><p>{esc(x['summary'])}</p><a class="text-link" href="{esc(x['url'])}">Read the attributed source <span aria-hidden="true">↗</span></a></article>''' for x in ctx['concurrent_accounts'])
+    policy=''.join(f'<li>{esc(x)}</li>' for x in ctx['commons_policy'])
+    body=f'''<section class="page-hero compact-hero"><div class="container page-hero-grid"><div><span class="eyebrow">CONTEXT · CREDIT · PROVENANCE</span><h1>Keep the mathematics, verification, lineage, and dispute as separate records.</h1><p class="lede">This independent Commons is not affiliated with OpenAI, Anthropic, the Clay Mathematics Institute, or the cited researchers. It exists because the 2026 result arrived during a live argument about credit and research provenance. Public accounts are attributed; unresolved allegations are not turned into mathematical facts.</p></div><aside class="context-status"><span class="micro">CURRENT COMMONS STATUS</span><strong>Independent review open</strong><p>{esc(ctx['claim_status']['scope'])}</p><p>{esc(ctx['claim_status']['unforced_boundary'])}</p><p>{esc(ctx['claim_status']['institutional_acceptance'])}</p></aside></div></section><section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow">RESEARCH LINEAGE</span><h2>Credit the route, not only the last artifact.</h2></div><p>The prior published program is relevant whether or not one accepts either side's account of the later concurrent-work dispute.</p></div><div class="context-grid">{lineage}</div></div></section><section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow">CONCURRENT PUBLIC ACCOUNTS</span><h2>Link both accounts. Do not silently adjudicate.</h2></div><p>The accounts materially disagree. Readers should inspect the primary public statements directly.</p></div><div class="context-grid">{accounts}</div></div></section><section class="section"><div class="container split-layout"><div><span class="eyebrow">COMMONS POLICY</span><h2>Participation should improve the public record, not manufacture volume.</h2><ul class="plain-list">{policy}</ul></div><aside class="plain-aside"><h2>Review without endorsement</h2><p>You can contribute by disproving, reproducing, correcting, contextualizing, or narrowing a claim. Participation does not require endorsing OpenAI, Anthropic, AI-generated mathematics, or the theorem itself.</p><div class="actions"><a class="button" href="{esc(rel(page,'en/quests/index.html'))}">Find a review quest</a><a class="button secondary" href="{esc(rel(page,'en/sources/index.html'))}">Public sources</a></div></aside></div></section>'''
+    write('en/context/index.html',canonical_shell(page,'guide','context','Context, credit, and provenance','Public research lineage, verification status, and attributed accounts surrounding the 2026 Navier-Stokes result.',body))
+
 def science_visual(loc,compact=False):
     if not compact:
         return ''
@@ -397,7 +608,7 @@ def canonical_shell(page:Path,current:str,kind:str,title:str,description:str,bod
     if SITE_URL:
         relurl=page.relative_to(PUBLIC).as_posix().replace('index.html','')
         canonical=f'<link rel="canonical" href="{esc(SITE_URL+"/"+relurl)}">'
-    return f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} · Navier-Stokes Commons</title><meta name="description" content="{esc(description)}">{SECURITY_META}<meta name="color-scheme" content="light dark">{canonical}<link rel="stylesheet" href="{esc(asset_css)}"></head><body data-page-kind="{esc(kind)}"><a class="skip-link" href="#main">Skip to main content</a>{header}<main id="main">{body}</main>{footer(page,'en')}<script src="{esc(asset_js)}" defer></script></body></html>'''
+    return f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} · Navier-Stokes Commons</title><meta name="description" content="{esc(description)}">{SECURITY_META}<meta name="color-scheme" content="light dark">{canonical}<link rel="describedby" href="{esc(rel(page,"llms.txt"))}" type="text/markdown"><link rel="stylesheet" href="{esc(asset_css)}"></head><body data-page-kind="{esc(kind)}"><a class="skip-link" href="#main">Skip to main content</a>{header}<main id="main">{body}</main>{footer(page,'en')}<script src="{esc(asset_js)}" defer></script></body></html>'''
 
 def quest_issue_url(q):
     return repo_issue('claim_quest.yml',f'[Quest attempt] {q["id"]} {q["title"]}')
@@ -472,19 +683,23 @@ def trust_strip(page,loc):
     return f'''<section class="trust-strip"><div class="container trust-grid"><div><span class="eyebrow">{esc(H['trust_kicker'])}</span><h2>{esc(H['trust_title'])}</h2></div><p>{esc(H['trust_body'])}</p><div class="trust-links"><a href="{esc(rel(page,logical_target(loc,'known')))}">{esc(L['nav']['known'])}</a><a href="{esc(rel(page,logical_target(loc,'sources')))}">{esc(L['nav']['sources'])}</a></div></div></section>'''
 
 def home_page(loc):
-    L=locales[loc]; O=L['observatory']; page=PUBLIC/f'{loc}/index.html'
+    L=locales[loc]; O=L['observatory']; R5,r5attrs=_r5_copy(loc); page=PUBLIC/f'{loc}/index.html'
     preview=''.join(mission_card(page,loc,m) for m in missions[:6])
     facts=[(L['home']['fact1'],['openai-announcement']),(L['home']['fact2'],['openai-announcement','clay-formulation']),(L['home']['fact3'],['clay-formulation'])]
     fact_html=''.join(f'''<article class="evidence-row"><span class="evidence-index">0{i}</span><div><p>{esc(txt)}</p><p class="source-line">{source_links(ids,page)}</p></div></article>''' for i,(txt,ids) in enumerate(facts,1))
     guide_href=rel(page,logical_target(loc,'guide'))
-    body=f'''<section class="hero theorem-hero"><div class="container theorem-hero-grid"><div class="hero-copy"><div class="eyebrow">NAVIER-STOKES COMMONS</div><h1>{esc(O['hero_title'])}</h1><p class="lede">{esc(O['hero_lede'])}</p><div class="hero-actions"><a class="button" lang="en" dir="ltr" href="{esc(rel(page,'en/sprint/index.html'))}">Join the Founding Sprint</a><a class="text-link strong" href="#scaling">{esc(O['explore'])}</a><a class="text-link" href="{esc(rel(page,logical_target(loc,'missions')))}">{esc(O['open_missions'])} <span aria-hidden="true">↗</span></a></div></div><aside class="hero-fact"><span class="micro">{esc(O['published_scale'])}</span><p><code>tau = 1 - t</code></p><p><code>ell_r ~ tau^(1/2)</code></p><p><code>ell_z ~ tau^(1/2-h)</code></p><p><code>|u_theta| ~ tau^(-1/2-h)</code></p><p><code>E_core ~ tau^(1/2-3h)</code></p><p class="source-line">{source_links(['openai-paper'],page)}</p></aside></div></section>
-<section id="scaling" class="section observatory-section"><div class="container">{scaling_lab(page,loc)}</div></section>
-{flow_chamber(page,loc)}
+    sprint_copy,sprint_attrs=r5_sprint_copy(loc)
+    body=f'''<section class="hero theorem-hero r5-hero"><div class="container r5-hero-grid"><div class="hero-copy"{r5attrs}><div class="eyebrow">NAVIER-STOKES COMMONS · OPEN BETA</div><h1>{esc(R5['title'])}</h1><p class="lede">{esc(R5['lede'])}</p><p class="hero-explainer">{esc(R5['sub'])}</p><div class="hero-actions"><a class="button" href="#mechanism">{esc(R5['explore'])}</a><a class="button secondary" lang="en" dir="ltr" href="{esc(rel(page,'en/quests/index.html'))}">{esc(R5['quest'])}</a></div></div>{r5_vortex_stage(page,loc)}</div></section>
+{r5_claim_strip(page,loc)}
+{scale_trace(loc)}
+{r5_mechanism_section(page,loc)}
+{r6_community_entry_section(page,loc)}
 <section class="section evidence-section"><div class="container"><div class="section-head"><div><span class="eyebrow">{esc(O['what_public'])}</span><h2>{esc(O['facts_title'])}</h2><p>{esc(O['facts_body'])}</p></div><a class="text-link" href="{esc(rel(page,logical_target(loc,'sources')))}">{esc(O['sources'])} <span aria-hidden="true">↗</span></a></div><div class="evidence-list">{fact_html}</div></div></section>
-<section class="section launch-sprint-strip"><div class="container invitation-grid" lang="en" dir="ltr"><div><span class="eyebrow">OPEN BETA · FOUNDING SPRINT</span><h2>Do not just read it. Pick one bounded quest and make the public record better.</h2></div><div><p>The Commons is open for non-exclusive attempts. Start with source checks, Lean reproduction, mathematics, numerical work, accessibility, browser testing, agent evaluation, or governance review.</p><div class="actions"><a class="button" href="{esc(rel(page,"en/sprint/index.html"))}">Founding Sprint</a><a class="text-link strong" href="{esc(rel(page,"en/quests/index.html"))}">All {len(quests)} quests <span aria-hidden="true">↗</span></a></div></div></div></section>
+<section class="section launch-sprint-strip"><div class="container invitation-grid"{sprint_attrs}><div><span class="eyebrow">{esc(sprint_copy['kicker'])}</span><h2>{esc(sprint_copy['title'])}</h2></div><div><p>{esc(sprint_copy['body'])}</p><div class="actions"><a class="button" href="{esc(rel(page,"en/sprint/index.html"))}">{esc(sprint_copy['button'])}</a><a class="text-link strong" href="{esc(rel(page,"en/quests/index.html"))}">{esc(sprint_copy['all'])} <span aria-hidden="true">↗</span></a></div></div></div></section>
 <section class="section mission-preview-section"><div class="container"><div class="section-head"><div><span class="eyebrow">{esc(L['section_labels']['open_frontier'])}</span><h2>{esc(L['missions']['title'])}</h2><p>{esc(O['mission_intro'])}</p></div><a class="text-link strong" href="{esc(rel(page,logical_target(loc,'missions')))}">{esc(O['view_all'])} <span aria-hidden="true">↗</span></a></div><div class="mission-list">{preview}</div></div></section>
 <section class="section invitation-section"><div class="container invitation-grid"><div><span class="eyebrow">{esc(L['section_labels']['contribute'])}</span><h2>{esc(O['contribute_title'])}</h2></div><div><p>{esc(O['contribute_body'])}</p><div class="actions"><a class="button" href="{esc(rel(page,logical_target(loc,'contribute')))}">{esc(O['how_contribute'])}</a><a class="text-link" href="{esc(guide_href)}">{esc(O['how_works'])} <span aria-hidden="true">↗</span></a></div></div></div></section>'''
-    write(f'{loc}/index.html',shell(page,loc,'home','home',O['hero_title'],O['hero_lede'],body))
+    write(f'{loc}/index.html',shell(page,loc,'home','home',R5['title'],R5['lede'],body,extra_head=r5_font_preloads(page)))
+
 def missions_page(loc):
     L=locales[loc]; M=L['mission_meta']; page=PUBLIC/f'{loc}/missions/index.html'
     groups=[]
@@ -629,8 +844,9 @@ def accessibility_page(loc):
 def root_page():
     page=PUBLIC/'index.html'; L=locales['en']; R=L['root']
     langs=''.join(f'<a lang="{esc(loc)}" dir="{esc(locales[loc]["dir"])}" href="{esc(rel(page,logical_target(loc,"home")))}"><span>{esc(locales[loc]["name"])}</span><small>{esc(project.get("locale_status",{}).get(loc,"preview").replace("-"," "))}</small><span aria-hidden="true">↗</span></a>' for loc in project['locales'])
-    body=f'''<main id="main" class="global-landing"><section class="global-hero"><div class="global-brand"><span class="eyebrow">{esc(R['eyebrow'])}</span><h1>{esc(R['title'])}</h1><p class="lede">{esc(R['lede'])}</p><p class="hero-principle">{esc(R['principle'])}</p><div class="root-actions"><a class="button" href="{esc(rel(page,'en/quests/index.html'))}">Start a quest</a><a class="text-link strong" href="{esc(rel(page,'en/sprint/index.html'))}">Founding Sprint <span aria-hidden="true">↗</span></a><a class="text-link" href="{esc(rel(page,registry['machine_endpoints']['discovery'].lstrip('/')))}">{esc(R['machine'])} <span aria-hidden="true">↗</span></a></div></div></section><section class="language-zone" aria-labelledby="language-title"><h2 id="language-title">{esc(R['enter'])}</h2><div class="language-grid">{langs}</div></section></main>'''
-    write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons</title><meta name="description" content="{esc(R['lede'])}">{SECURITY_META}<meta name="color-scheme" content="light dark"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script></body></html>''')
+    hero='''<section class="global-hero r5-root-hero"><div class="r5-root-grid"><div class="r5-root-copy"><span class="eyebrow">PUBLIC RESEARCH COMMONS · 2026 RESULT</span><h1>Navier–Stokes Commons</h1><p class="lede">A public workspace for checking the 2026 Navier–Stokes result, exploring its mechanism, extending the mathematics, and turning open questions into reviewable work for humans and AI agents.</p><p class="hero-principle">Pick a frontier. Leave a verifiable contribution.</p><div class="root-actions"><a class="button" href="en/quests/index.html">Start a quest</a><a class="button secondary" href="en/sprint/index.html">Founding Sprint</a><a class="text-link strong" href="en/context/index.html">Context / credit <span aria-hidden="true">↗</span></a><a class="text-link" href=".well-known/commons.json">Machine interface <span aria-hidden="true">↗</span></a></div></div>'''+r5_vortex_stage(page,'en')+'''</div></section>'''
+    body=f'''<main id="main" class="global-landing">{hero}{r6_global_context_strip(page)}{scale_trace('en')}<section class="language-zone" aria-labelledby="language-title"><div class="language-zone-head"><span class="eyebrow">MULTILINGUAL PUBLICATION</span><h2 id="language-title">{esc(R['enter'])}</h2><p>English is canonical. Reviewed and preview translations expose the same public research surface while preserving explicit language-status boundaries.</p></div><div class="language-grid">{langs}</div></section></main>'''
+    write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons</title><meta name="description" content="A public human-and-AI research commons for checking and extending the 2026 Navier–Stokes result.">{SECURITY_META}<meta name="color-scheme" content="light dark">{r5_font_preloads(page)}<link rel="describedby" href="{esc(rel(page,'llms.txt'))}" type="text/markdown"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script></body></html>''')
 
 def benchmarks_page():
     page=PUBLIC/'en/benchmarks/index.html'
@@ -658,6 +874,7 @@ def machine_files():
     (PUBLIC/'data/simulations.json').write_text(json.dumps(simulations_doc,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/reference-benchmarks.json').write_text(json.dumps(reference_benchmarks,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/actions.json').write_text(json.dumps(actions_doc,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/research-context.json').write_text(json.dumps(research_context,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/quests.json').write_text(json.dumps(quests_doc,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/task-ladder.json').write_text(json.dumps(task_ladder,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/taxonomy.json').write_text((CONTENT/'taxonomy.json').read_text())
@@ -669,7 +886,15 @@ def machine_files():
     (PUBLIC/'data/authority-map.json').write_text((CONTENT/'authority_map.json').read_text())
     (PUBLIC/'data/release-policy.json').write_text((CONTENT/'release_policy.json').read_text())
     caps=capabilities(); (PUBLIC/'data/capabilities.json').write_text(json.dumps({'schema':'nsc-capabilities-v1','capabilities':caps},indent=2,ensure_ascii=False)+'\n')
-    discovery={'schema':'commons-discovery-v4','project':project['project_id'],'name':project['name'],'reference_semantics':'Resolve every relative reference against this discovery document URL.',**{k:deployed_ref('.well-known/commons.json',v) for k,v in registry['machine_endpoints'].items()},**{f'human_{k}':deployed_ref('.well-known/commons.json',v) for k,v in registry['human_routes'].items()}}
+    discovery={'schema':'commons-discovery-v4','project':project['project_id'],'name':project['name'],'reference_semantics':'Resolve every relative reference against this discovery document URL.','discovery_contract':registry.get('discovery_contract',{}),**{k:deployed_ref('.well-known/commons.json',v) for k,v in registry['machine_endpoints'].items()},**{f'human_{k}':deployed_ref('.well-known/commons.json',v) for k,v in registry['human_routes'].items()}}
+    openapi_paths={}
+    for key,logical in registry['machine_endpoints'].items():
+        suffix=Path(logical).suffix.lower()
+        mime='application/json' if suffix=='.json' else ('text/markdown' if suffix=='.md' else 'text/plain')
+        openapi_paths[logical]={'get':{'operationId':'get_'+re.sub(r'[^a-zA-Z0-9_]+','_',key),'summary':'Read public Commons resource: '+key,'responses':{'200':{'description':'Static public resource','content':{mime:{}}}}}}
+    openapi_doc={'openapi':'3.1.2','info':{'title':'Navier-Stokes Commons public machine surface','version':project['release'],'description':'Read-only static discovery and research-coordination resources. Collaboration transactions are forge-mediated.'},'servers':[{'url':SITE_URL or '.'}],'paths':openapi_paths}
+    openapi_out=PUBLIC/registry['machine_endpoints']['openapi'].lstrip('/')
+    openapi_out.parent.mkdir(parents=True,exist_ok=True); openapi_out.write_text(json.dumps(openapi_doc,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'.well-known/commons.json').write_text(json.dumps(discovery,indent=2)+'\n')
     skill=(ROOT/'SKILL.md')
     if skill.exists(): shutil.copy2(skill,PUBLIC/'SKILL.md')
@@ -692,6 +917,7 @@ def machine_files():
       f"- Start: {ep['agent_start']} - minimal cold-start protocol",
       f"- Skill: {ep['agent_skill']} - execution and evidence contract",
       f"- Discovery: {ep['discovery']} - machine endpoint registry",
+      f"- OpenAPI: {ep['openapi']} - standard description of static GET resources",
       f"- Quests: {ep['quests']} - bounded work units",
       f"- Claims: {ep['claims']} - evidence/status records and derived quest links",
       f"- Sources: {ep['sources']} - public source registry",
@@ -700,6 +926,7 @@ def machine_files():
       f"- Simulations: {ep['simulations']} - declared scientific interaction models",
       f"- Actions: {ep['actions']} - forge-mediated collaboration transactions",
       f"- Benchmarks: {ep['reference_benchmarks']} - pre-registered comparison corpus",
+      f"- Research context: {ep['research_context']} - claim scope, lineage, and attributed provenance accounts",
       f"- Governance: {ep['governance']} - roles and decision rules",
       f"- Sprint: {ep['founding_sprint']} - launch work set",'',
       f"Never infer a stronger claim status than {ep['claims']}. Attempts are non-exclusive. Negative results and falsifications are valid when they satisfy the quest acceptance contract."
@@ -709,10 +936,20 @@ def machine_files():
     for rel in ['start.md','SKILL.md','AGENTS.md','GOVERNANCE.md','MISSION_POLICY.md','REVIEW_POLICY.md','CONTRIBUTING.md','PUBLIC_SSOT.json']:
         src=PUBLIC/rel
         if src.exists(): full_parts.append(f'\n\n# FILE: {rel}\n\n'+src.read_text())
-    for rel in ['data/capabilities.json','data/claims.json','data/quests.json','data/sources.json','data/founding-sprint.json','data/authority-map.json','data/simulations.json','data/actions.json','data/reference-benchmarks.json']:
+    for rel in ['data/capabilities.json','data/claims.json','data/quests.json','data/sources.json','data/founding-sprint.json','data/authority-map.json','data/simulations.json','data/actions.json','data/reference-benchmarks.json','data/research-context.json']:
         src=PUBLIC/rel; full_parts.append(f'\n\n# FILE: {rel}\n\n'+src.read_text())
     (PUBLIC/'llms-full.txt').write_text(''.join(full_parts))
-    (PUBLIC/'robots.txt').write_text('User-agent: *\nAllow: /\n')
+    if SITE_URL:
+        sm=[]
+        for hp in sorted(PUBLIC.rglob('*.html')):
+            rp=hp.relative_to(PUBLIC).as_posix()
+            route=rp[:-10] if rp.endswith('index.html') else rp
+            sm.append(SITE_URL+'/'+route)
+        xml='<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n'+''.join('<url><loc>'+html.escape(u)+'</loc></url>\n' for u in sm)+'</urlset>\n'
+        (PUBLIC/'sitemap.xml').write_text(xml)
+        (PUBLIC/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+SITE_URL+'/sitemap.xml\n')
+    else:
+        (PUBLIC/'robots.txt').write_text('User-agent: *\nAllow: /\n')
 
 def main():
     if PUBLIC.exists(): shutil.rmtree(PUBLIC)
@@ -725,7 +962,7 @@ def main():
         for m in missions: mission_page(loc,m)
     quests_page()
     for q in quests: quest_page(q)
-    sprint_page(); governance_page(); claims_page(); benchmarks_page()
+    sprint_page(); governance_page(); claims_page(); benchmarks_page(); reference_flow_page(); r6_context_page()
     machine_files()
     print(f'Built {sum(1 for _ in PUBLIC.rglob("*.html"))} HTML pages in {PUBLIC}')
 

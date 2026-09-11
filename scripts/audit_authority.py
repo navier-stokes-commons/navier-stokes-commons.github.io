@@ -75,11 +75,21 @@ for rp in sorted((ROOT/'scripts').glob('*.py')):
     txt=rp.read_text()
     for address in reg['machine_endpoints'].values():
         if address in txt: errs.append(f'{rp.relative_to(ROOT)}: runtime duplicates machine endpoint address {address}')
-# Browser assurance must be public and required in both CI and canonical suite.
-for rel in ['scripts/run_all_checks.py','.github/workflows/ci.yml','.github/workflows/pages.yml']:
-    txt=(ROOT/rel).read_text()
-    if rel.endswith('.py') and 'scripts/audit_browser.py' not in txt: errs.append('public canonical suite omits browser audit')
-    if rel.endswith('.yml') and 'python3 scripts/bootstrap_audit_env.py' not in txt: errs.append(f'{rel}: shared portable browser/audit dependency bootstrap missing')
+# Browser assurance must be public and release-authoritative, while each host
+# executes the expensive full suite exactly once per pipeline.
+runner=(ROOT/'scripts/run_all_checks.py').read_text(); ci=(ROOT/'.github/workflows/ci.yml').read_text(); gl=(ROOT/'.gitlab-ci.yml').read_text()
+if 'scripts/audit_browser.py' not in runner: errs.append('public canonical suite omits browser audit')
+if 'python3 scripts/bootstrap_audit_env.py' not in ci: errs.append('GitHub CI shared portable audit bootstrap missing')
+if ci.count('python3 scripts/run_all_checks.py')!=1: errs.append('GitHub workflow must execute complete suite exactly once')
+if 'actions/deploy-pages@' not in ci or 'name: github-pages' not in ci: errs.append('GitHub CI does not deploy exact audited Pages artifact')
+if 'cancel-in-progress: true' not in ci: errs.append('GitHub CI lacks redundant-run cancellation')
+if 'cache: "pip"' not in ci: errs.append('GitHub CI pip cache missing')
+# R7: pages.yml is the canonical GitHub Pages deployment adapter; see audit_host_configs.py
+if 'python3 scripts/bootstrap_audit_env.py' not in gl: errs.append('GitLab shared portable audit bootstrap missing')
+if gl.count('python3 scripts/run_all_checks.py')!=1: errs.append('GitLab pipeline must execute complete suite exactly once')
+if 'artifacts: true' not in gl or 'publish: public' not in gl: errs.append('GitLab Pages does not consume exact audited public artifact')
+if 'interruptible: true' not in gl: errs.append('GitLab audit job lacks redundant-pipeline cancellation hint')
+if 'resource_group: pages' not in gl: errs.append('GitLab Pages deploy lacks serialization')
 if errs:
     print('AUTHORITY_INVARIANT_AUDIT_FAILED',file=sys.stderr); [print(' - '+e,file=sys.stderr) for e in errs]; raise SystemExit(1)
 print(f'AUTHORITY_INVARIANT_AUDIT_PASS facts={len(facts)} endpoints={len(reg["machine_endpoints"])} writable_reverse_relations=0 browser_gate=public')

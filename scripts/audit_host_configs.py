@@ -34,8 +34,8 @@ if not re.search(r'(?ms)^  deploy:\n.*?^    needs: build\s*$', pages):
 if not re.search(r'(?ms)^  deploy:\n.*?^    environment:\n      name: github-pages\s*$', pages):
     errs.append('GitHub Pages: deploy job must target the github-pages environment')
 gitlab=(ROOT/'.gitlab-ci.yml').read_text() if (ROOT/'.gitlab-ci.yml').exists() else ''
-if gitlab.count('python3 scripts/run_all_checks.py') < 2:
-    errs.append('GitLab CI: test and deploy jobs must both invoke canonical scripts/run_all_checks.py')
+if gitlab.count('python3 scripts/run_all_checks.py') < 1:
+    errs.append('GitLab CI: audit job must invoke canonical scripts/run_all_checks.py')
 if 'python3 scripts/bootstrap_audit_env.py' not in gitlab:
     errs.append('GitLab CI: shared audit-environment bootstrap missing')
 if not (ROOT/'scripts/bootstrap_audit_env.py').exists():

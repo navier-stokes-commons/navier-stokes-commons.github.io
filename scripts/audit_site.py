@@ -79,7 +79,7 @@ for page in PUBLIC.rglob('*.html'):
         loc=parts[0]; expected_dir='rtl' if loc=='ar' else 'ltr'
         if p.html_attrs.get('lang')!=loc:errs.append(f'{relp}: html lang mismatch')
         if p.html_attrs.get('dir')!=expected_dir:errs.append(f'{relp}: html dir mismatch')
-        canonical_only = loc=='en' and (relp.as_posix().startswith('en/quests/') or relp.as_posix() in {'en/quests/index.html','en/sprint/index.html','en/governance/index.html','en/claims/index.html','en/benchmarks/index.html'})
+        canonical_only = loc=='en' and (relp.as_posix().startswith('en/quests/') or relp.as_posix() in {'en/quests/index.html','en/sprint/index.html','en/governance/index.html','en/claims/index.html','en/benchmarks/index.html','en/reference-flow/index.html','en/context/index.html'})
         if not canonical_only:
             hreflangs={x for x,_ in p.alternates}
             needed=set(project['locales'])|{'x-default'}

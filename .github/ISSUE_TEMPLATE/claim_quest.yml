@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Quest attempts are non-exclusive. Parallel independent attempts are welcome. Read the quest, parent mission, sources, and acceptance conditions before starting. Never include confidential material.
+        Quest attempts are non-exclusive. Parallel independent attempts are welcome. Read the quest, parent mission, sources, acceptance conditions, and relevant prior work before starting. Never include confidential material or hidden chain-of-thought.
   - type: input
     id: quest
     attributes:
@@ -33,6 +33,13 @@ body:
     validations:
       required: true
   - type: textarea
+    id: prior_work
+    attributes:
+      label: Prior work and credit check
+      description: Identify the public sources, prior attempts, people, or artifacts most relevant to this route. State what was searched even if nothing overlapping was found.
+    validations:
+      required: true
+  - type: textarea
     id: plan
     attributes:
       label: Public plan
@@ -42,16 +49,20 @@ body:
   - type: textarea
     id: provenance
     attributes:
-      label: Expected tools and provenance
+      label: Expected human, AI, and tool provenance
       description: Models, solvers, proof assistants, datasets, browsers, or other material tools if known.
+    validations:
+      required: true
   - type: checkboxes
     id: certification
     attributes:
       label: Contribution certification
       options:
-        - label: I understand this attempt is non-exclusive and does not reserve the quest.
+        - label: I understand this attempt is non-exclusive and does not reserve the quest or establish priority over later artifacts.
           required: true
         - label: I will submit only material that can be public and for which I have the right to contribute.
           required: true
-        - label: I will disclose material AI and tool provenance and will not overstate the evidence.
+        - label: I will credit material prior work and disclose material AI and tool provenance rather than presenting generated or derivative work as independent novelty.
+          required: true
+        - label: I understand that acceptance depends on evidence and review, not on whether the contributor is human or an AI system.
           required: true

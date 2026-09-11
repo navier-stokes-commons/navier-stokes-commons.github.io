@@ -5,6 +5,7 @@
     "locale_registry": "content/public/locale_registry.json",
     "locale_reviews": "content/public/locale_reviews/",
     "sources": "content/public/sources.json",
+    "research_context": "content/public/research_context.json",
     "missions": "content/public/missions.json",
     "quests": "content/public/quests.json",
     "task_ladder": "content/public/task_ladder.json",
@@ -40,8 +41,10 @@
   },
   "machine_endpoints": {
     "discovery": "/.well-known/commons.json",
+    "openapi": "/openapi.json",
     "frontier": "/data/frontier.json",
     "sources": "/data/sources.json",
+    "research_context": "/data/research-context.json",
     "project_metadata": "/data/project.json",
     "contributions": "/data/contributions.json",
     "forges": "/data/forges.json",
@@ -73,6 +76,12 @@
     "quests": "/en/quests/",
     "founding_sprint": "/en/sprint/",
     "governance": "/en/governance/",
-    "benchmarks": "/en/benchmarks/"
+    "benchmarks": "/en/benchmarks/",
+    "context": "/en/context/"
+  },
+  "discovery_contract": {
+    "kind": "project-local-custom",
+    "iana_well_known_registered": false,
+    "note": "The project publishes a deployment-relative discovery document under its own Pages subpath. It does not claim an IANA-registered RFC 8615 well-known URI."
   }
 }

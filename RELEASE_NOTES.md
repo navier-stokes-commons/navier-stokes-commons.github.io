@@ -1,4 +1,4 @@
-# 0.4.0-beta.2.9: collaboration beta with systemic assurance
+# 0.4.0-beta.3: collaboration beta with systemic assurance
 
 This release contains 18 seed research missions, 36 bounded quests, a six-rung task ladder, 17 Founding Sprint quests, 5 tracked claim records, and 16 locale surfaces.
 

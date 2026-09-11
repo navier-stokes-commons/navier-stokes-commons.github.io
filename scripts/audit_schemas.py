@@ -21,9 +21,10 @@ check('review','review.schema.json',[(x.get('id','?'),x) for x in load(C/'review
 check('locale-review','locale-review.schema.json',[(p.name,load(p)) for p in sorted((C/'locale_reviews').glob('*.json'))])
 check('actions','actions.schema.json',[('document',load(C/'actions.json'))])
 check('reference-benchmarks','reference-benchmarks.schema.json',[('document',load(C/'reference_benchmarks.json'))])
+check('research-context','research-context.schema.json',[('document',load(C/'research_context.json'))])
 if errs:
     print('SCHEMA_AUDIT_FAILED',file=sys.stderr)
     for e in errs[:300]: print(' - '+e,file=sys.stderr)
     if len(errs)>300: print(f' ... {len(errs)-300} more',file=sys.stderr)
     raise SystemExit(1)
-print('SCHEMA_AUDIT_PASS mission=true quest=true contribution=true review=true locale_review=true actions=true reference_benchmarks=true')
+print('SCHEMA_AUDIT_PASS mission=true quest=true contribution=true review=true locale_review=true actions=true reference_benchmarks=true research_context=true')

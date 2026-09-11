@@ -15,7 +15,7 @@ body:
     validations: {required: true}
   - type: textarea
     id: novelty
-    attributes: {label: Why this is not already covered, description: "Point to overlapping missions or quests and explain the distinction."}
+    attributes: {label: Prior work, overlap, and novelty, description: "Point to overlapping public work, people, missions or quests; explain the distinction and what was searched."}
     validations: {required: true}
   - type: textarea
     id: sources
@@ -38,4 +38,6 @@ body:
       label: Public contribution certification
       options:
         - label: I will submit only public material I have the right to contribute and will disclose material provenance.
+          required: true
+        - label: I have searched for and credited material prior work and am not creating a duplicate work unit merely to generate activity.
           required: true

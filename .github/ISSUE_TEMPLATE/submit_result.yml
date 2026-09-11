@@ -18,6 +18,10 @@ body:
     attributes: {label: Exact claim, description: "State only what the artifact establishes."}
     validations: {required: true}
   - type: textarea
+    id: prior_work
+    attributes: {label: Prior work, lineage, and credit statement, description: "Identify the public work, people, attempts, datasets, proofs, code, or model outputs materially relied upon. Explain what is genuinely new in this artifact, if anything."}
+    validations: {required: true}
+  - type: textarea
     id: acceptance
     attributes: {label: Acceptance-condition matrix, description: "List every targeted quest or mission acceptance condition and PASS, FAIL, or NOT ADDRESSED with evidence."}
     validations: {required: true}
@@ -46,5 +50,7 @@ body:
           required: true
         - label: I have the right to submit the material under the applicable project licenses.
           required: true
-        - label: I have not represented an open or unreviewed claim as independently established.
+        - label: I have credited material prior work and have not represented derivative or generated material as independent novelty.
+          required: true
+        - label: I have not represented an open, source-reported, or unreviewed claim as independently established.
           required: true

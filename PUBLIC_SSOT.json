@@ -1,7 +1,7 @@
 {
   "schema": "nsc-public-ssot-v2",
   "project_id": "navier-stokes",
-  "release": "public-web-v0.4.0-beta.2.9",
+  "release": "public-web-v0.4.0-beta.3",
   "release_stage": "open-beta",
   "participation_status": "open",
   "canonical_data": {
@@ -9,6 +9,7 @@
     "locale_registry": "content/public/locale_registry.json",
     "locale_reviews": "content/public/locale_reviews/",
     "sources": "content/public/sources.json",
+    "research_context": "content/public/research_context.json",
     "missions": "content/public/missions.json",
     "quests": "content/public/quests.json",
     "task_ladder": "content/public/task_ladder.json",
@@ -44,8 +45,10 @@
   },
   "machine_endpoints": {
     "discovery": "/.well-known/commons.json",
+    "openapi": "/openapi.json",
     "frontier": "/data/frontier.json",
     "sources": "/data/sources.json",
+    "research_context": "/data/research-context.json",
     "project_metadata": "/data/project.json",
     "contributions": "/data/contributions.json",
     "forges": "/data/forges.json",
@@ -77,7 +80,8 @@
     "quests": "/en/quests/",
     "founding_sprint": "/en/sprint/",
     "governance": "/en/governance/",
-    "benchmarks": "/en/benchmarks/"
+    "benchmarks": "/en/benchmarks/",
+    "context": "/en/context/"
   },
   "path_semantics": "Registry paths are logical site-root paths. Deployed agents MUST resolve the relative references emitted by .well-known/commons.json against that discovery document URL; this preserves GitHub/GitLab project subpaths.",
   "work_model": {
