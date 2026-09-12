@@ -10,7 +10,9 @@ def run(*args,check=True):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--remote',default='gitlab');ap.add_argument('--branch',default='main');ap.add_argument('--apply',action='store_true');a=ap.parse_args()
     try:
-        head=run('git','rev-parse',a.branch)
+        # The canonical SHA is whatever is checked out (CI pins a detached SHA,
+        # where a local branch ref may not exist).
+        head=run('git','rev-parse','HEAD')
         status=run('git','status','--porcelain')
         if status: raise RuntimeError('working tree is not clean')
         remote_line=run('git','ls-remote',a.remote,f'refs/heads/{a.branch}',check=False)
