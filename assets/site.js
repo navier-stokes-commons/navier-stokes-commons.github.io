@@ -324,7 +324,7 @@
   kInput?.addEventListener('input',()=>{k=Number(kInput.value);setPlaying(false);stats();schedule();},{passive:true});
   hInput?.addEventListener('input',()=>{h=Number(hInput.value);stats();schedule();},{passive:true});
   speedInput?.addEventListener('input',()=>{try{localStorage.setItem('nsc-vortex-speed',String(Number(speedInput.value)));}catch(_){}if(playing){playStart=performance.now()-(k-.5)/59.5*(sweepMs/Number(speedInput.value));}updateSpeedLabel();schedule();},{passive:true});
-  playBtn?.addEventListener('click',()=>{if(reduced.matches)return;if(playing){setPlaying(false);return;}playFrom=.5;k=.5;if(kInput)kInput.value=String(k);stats();setPlaying(true);});
+  playBtn?.addEventListener('click',()=>{if(reduced.matches)return;if(playing){setPlaying(false);return;}playFrom=.5;k=.5;if(kInput)kInput.value=String(k);stats();setPlaying(true);advancePlay(performance.now());schedule();});
   frameBtn?.addEventListener('click',()=>{normalize=!normalize;frameBtn.textContent=normalize?(frameBtn.dataset.normalizedLabel||'Normalized core frame'):(frameBtn.dataset.labLabel||'Laboratory frame');if(modeLabel)modeLabel.textContent=normalize?(stage.dataset.modeNormalized||'NORMALIZED FOLLOW-CORE VIEW'):(stage.dataset.modeLaboratory||'LOG-COMPRESSED LABORATORY VIEW');schedule();});
   const applyMotionPreference=()=>{if(reduced.matches){playing=false;ambient=false;}else{if(!ambientUserPaused)ambient=true;if(!playing){playing=true;playStart=performance.now();playFrom=.5;}}if(playBtn){playBtn.disabled=Boolean(reduced.matches);playBtn.setAttribute('aria-disabled',String(Boolean(reduced.matches)));playBtn.setAttribute('aria-pressed',String(playing));playBtn.textContent=playing?(playBtn.dataset.pauseLabel||'Pause sweep'):(playBtn.dataset.playLabel||'Play sweep');}updateSpeedLabel();stats();schedule();};
   applyMotionPreference(); reduced.addEventListener?.('change',applyMotionPreference);
@@ -455,7 +455,7 @@
   let userPaused=false; try{userPaused=localStorage.getItem(storageKey)==='1';}catch(_){}
   let active=!reduced.matches&&!userPaused,visible=!document.hidden,raf=0,last=0,phase=0;
   let pointer={x:.72,y:.44,tx:.72,ty:.44,inside:false};
-  const glyphs=['→','↗','↑','↖','←','↙','↓','↘'];
+  const glyphs=['.','.',':',';','+','=','x','X','#','@'];
   const lowPower=saveData||matchMedia('(max-width:680px)').matches||((navigator.deviceMemory||8)<=4)||((navigator.hardwareConcurrency||8)<=4);
   const minDt=1000/(lowPower?14:24);
   const toggle=document.createElement('button');
@@ -470,7 +470,7 @@
   function resize(){const dpr=Math.min(devicePixelRatio||1,lowPower?1:1.35),w=Math.max(1,Math.round(innerWidth*dpr)),h=Math.max(1,Math.round(innerHeight*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}}
   addEventListener('resize',()=>{resize();schedule();},{passive:true});
   function field(x,y,t){const sx=x*Math.PI*2,sy=y*Math.PI*2;let u=Math.sin(sx+t*.34)*Math.cos(sy*.92-t*.11);let v=-Math.cos(sx+t*.34)*Math.sin(sy*.92-t*.11);const dx=x-pointer.x,dy=y-pointer.y,r2=dx*dx+dy*dy,inf=pointer.inside?Math.exp(-r2/.028):0;u+=-dy*inf*3.6;v+=dx*inf*3.6;return[u,v,inf];}
-  function draw(now){resize();const w=innerWidth,h=innerHeight;ctx.clearRect(0,0,w,h);pointer.x+=(pointer.tx-pointer.x)*.11;pointer.y+=(pointer.ty-pointer.y)*.11;const gap=lowPower?48:34,cols=Math.ceil(w/gap)+1,rows=Math.ceil(h/gap)+1;phase=now/1000+scrollY/Math.max(800,h)*.7;ctx.font=(lowPower?'10px':'11px')+' "Geist Mono Variable", ui-monospace, monospace';ctx.textAlign='center';ctx.textBaseline='middle';for(let j=0;j<rows;j++){for(let i=0;i<cols;i++){const px=i*gap+(j%2)*gap*.5,py=j*gap,x=px/Math.max(1,w),y=py/Math.max(1,h),f=field(x,y,phase),u=f[0],v=f[1],inf=f[2],mag=Math.hypot(u,v),ang=(Math.atan2(-v,u)+Math.PI*2)%(Math.PI*2),idx=Math.round(ang/(Math.PI/4))%8,alpha=.025+.035*Math.min(1,mag)+.11*inf;ctx.fillStyle='rgba(110,220,211,'+alpha.toFixed(3)+')';ctx.fillText(mag<.16?'·':glyphs[idx],px,py);}}}
+  function draw(now){resize();const w=innerWidth,h=innerHeight;ctx.clearRect(0,0,w,h);pointer.x+=(pointer.tx-pointer.x)*.11;pointer.y+=(pointer.ty-pointer.y)*.11;const gap=lowPower?48:34,cols=Math.ceil(w/gap)+1,rows=Math.ceil(h/gap)+1;phase=now/1000+scrollY/Math.max(800,h)*.7;ctx.font=(lowPower?'10px':'11px')+' "Geist Mono Variable", ui-monospace, monospace';ctx.textAlign='center';ctx.textBaseline='middle';for(let j=0;j<rows;j++){for(let i=0;i<cols;i++){const px=i*gap+(j%2)*gap*.5,py=j*gap,x=px/Math.max(1,w),y=py/Math.max(1,h),f=field(x,y,phase),u=f[0],v=f[1],inf=f[2],mag=Math.hypot(u,v),level=Math.max(0,Math.min(glyphs.length-1,Math.floor(mag*glyphs.length*1.8))),alpha=.08+.09*Math.min(1,mag)+.2*inf;ctx.fillStyle='rgba(110,220,211,'+alpha.toFixed(3)+')';ctx.fillText(glyphs[level],px,py);}}}
   function schedule(){if(visible&&!raf)raf=requestAnimationFrame(frame);}
   function frame(now){raf=0;if(!visible)return;if(!last||now-last>=minDt){last=now;draw(now);}if(active||pointer.inside)schedule();}
   function motionChange(){if(reduced.matches){active=false;}else if(!userPaused){active=true;}toggle.hidden=reduced.matches;label();notify();schedule();}
