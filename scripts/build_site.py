@@ -82,7 +82,7 @@ if not FORGE_URL:
     elif _remote:
         FORGE_URL=_remote.removesuffix('.git')
     if FORGE_URL and FORGE_KIND=='generic':
-        FORGE_KIND='github' if 'github.com' in FORGE_URL else 'generic'
+        FORGE_KIND='github' if 'github.com' in FORGE_URL else ('gitlab' if 'gitlab.com' in FORGE_URL else 'generic')
 REPO_URL=FORGE_URL
 HOST=FORGE_KIND
 
@@ -255,46 +255,6 @@ def formula_value(qid,tau,h):
     e=q['exponent']['constant']+q['exponent']['h']*h
     return tau**e
 
-def ascii_core_frame(tau,h,width=23,height=11):
-    aspect=formula_value('aspect',tau,h)
-    inner_w=max(3,min(width-4,int(round((width-4)/(aspect**0.5)))))
-    inner_h=max(3,min(height-2,int(round((height-2)*(aspect**0.5)))))
-    if inner_h%2==0: inner_h-=1
-    if inner_w%2==0: inner_w-=1
-    canvas=[[' ']*width for _ in range(height)]
-    cx,cy=width//2,height//2
-    rx=max(1,inner_w//2); ry=max(1,inner_h//2)
-    for y in range(height):
-        for x in range(width):
-            dx=(x-cx)/rx; dy=(y-cy)/ry
-            v=dx*dx+dy*dy
-            if 0.72 <= v <= 1.35: canvas[y][x]='#'
-            elif v<0.72 and (x==cx or y==cy): canvas[y][x]='+'
-    art='\n'.join(''.join(row).rstrip() for row in canvas)
-    def exp_line(qid,symbol):
-        value=formula_value(qid,tau,h)
-        logv=math.log10(value) if value > 0 else 0
-        arrow='>' if logv >= 0 else '<'
-        bar=arrow*max(1,min(22,int(round(abs(logv)/2)))) if abs(logv) >= 0.2 else '.'
-        return f'{symbol:<10} 10^{logv:>7.2f}  {bar}'
-    return art+'\n\n'+\
-        exp_line('ell_r','ell_r')+'\n'+\
-        exp_line('ell_z','ell_z')+'\n'+\
-        exp_line('u_theta','|u_theta|')+'\n'+\
-        exp_line('energy','E_core')+'\n'+\
-        exp_line('re_theta','Re_theta')
-
-def curve_path_server(qid,h):
-    q=next(q for q in scaling['quantities'] if q['id']==qid)
-    e=q['exponent']['constant'] + q['exponent']['h']*h
-    pts=[]
-    for k in range(0,81,2):
-        logv=-k*e
-        x=48+(k/80)*452
-        y=max(20,min(216,118-logv*2.25))
-        pts.append(f'{"L" if k else "M"}{x:.1f} {y:.1f}')
-    return ' '.join(pts)
-
 def formula_tex(node):
     typ=node['type']
     if typ=='row': return ' '.join(formula_tex(x) for x in node['children']).replace(' ,',',')
@@ -335,33 +295,6 @@ def equation_block():
     mathml=formula_mathml(ast)
     speech=formula_speech(ast)
     return f'''<div class="equation-line equation-object" data-formula-id="{esc(formula['id'])}" data-equation-tex="{esc(tex)}"><math display="block" aria-label="{esc(speech)}"><semantics>{mathml}<annotation encoding="application/x-tex">{esc(tex)}</annotation></semantics></math></div>'''
-def scaling_lab(page,loc):
-    O=locales[loc]['observatory']
-    h=float(scaling['parameters']['h']['default'])
-    default_k=40.0
-    default_tau=10**(-default_k)
-    frames=[]
-    for k in (2,20,60):
-        tau=10**(-k)
-        frame=ascii_core_frame(tau,h)
-        frames.append(f'''<div class="ascii-frame"><div class="ascii-head">tau = 10^-{k}</div><pre aria-label="{esc(O['core_aspect'])}, tau 10^-{k}">{esc(frame)}</pre></div>''')
-    symbol={'ell_r':'ell_r','ell_z':'ell_z','u_theta':'|u_theta|','energy':'E_core','re_theta':'Re_theta'}
-    vals=[]
-    for qid in ('ell_r','ell_z','u_theta','energy','re_theta'):
-        q=next(q for q in scaling['quantities'] if q['id']==qid)
-        value=formula_value(qid,default_tau,h)
-        logv=math.log10(value) if value > 0 else 0
-        display='1' if abs(logv) < 0.005 else f'10^{logv:.2f}'
-        vals.append(f'''<tr><th scope="row"><code>{esc(symbol[qid])}</code></th><td><code>{esc(q['relation'])} {esc(q['formula'])}</code></td><td data-scale-value="{esc(qid)}">{esc(display)}</td></tr>''')
-    source=source_by_id.get('openai-paper')
-    src=f'<a href="{esc(source["url"])}">{esc(O["paper_section"])}</a>' if source else esc(O['paper_section'])
-    default_aspect=formula_value('aspect',default_tau,h)
-    default_speed=math.log10(formula_value('u_theta',default_tau,h))
-    default_energy=math.log10(formula_value('energy',default_tau,h))
-    dirv=locales[loc].get('dir','ltr')
-    coeffs={q['id']:[q['exponent']['constant'],q['exponent']['h']] for q in scaling['quantities']}
-    coeff_json=json.dumps(coeffs,separators=(',',':'))
-    return f'''<section class="scaling-lab" data-scaling-lab data-source="openai-paper" data-exponents="{esc(coeff_json)}" lang="{esc(loc)}" dir="{esc(dirv)}"><div class="lab-copy"><span class="micro">{esc(O['scale_kicker'])}</span><h2>{esc(O['scale_title'])}</h2><p>{esc(O['scale_body'])}</p><p class="source-line">{src}</p>{equation_block()}<div class="lab-controls enhance-only" data-lab-controls hidden><label>{esc(O['time_decades'])} <output data-k-output>{default_k:.0f}</output><input type="range" min="0.25" max="80" value="{default_k:.0f}" step="0.25" data-tau-k aria-label="{esc(O['time_decades'])}"></label><label>{esc(O['h_param'])} <output data-h-output>{h:.4f}</output><input type="range" min="0.0005" max="0.0095" value="{h}" step="0.0001" data-h aria-label="{esc(O['h_param'])}"></label><button type="button" data-lab-play data-play-label="{esc(O['play'])}" data-pause-label="{esc(O['pause'])}">{esc(O['play'])}</button></div></div><div class="lab-stage"><div class="core-viz" aria-labelledby="core-viz-title"><h3 id="core-viz-title">{esc(O['core_aspect'])}</h3><svg viewBox="0 0 420 340" role="img" aria-labelledby="core-svg-title core-svg-desc"><title id="core-svg-title">{esc(O['core_aspect'])}</title><desc id="core-svg-desc">{esc(O['table_caption'])}</desc><line x1="210" y1="24" x2="210" y2="316" class="core-axis"/><line x1="54" y1="170" x2="366" y2="170" class="core-axis"/><ellipse cx="210" cy="170" rx="{92/math.sqrt(default_aspect):.2f}" ry="{min(138,92*math.sqrt(default_aspect)):.2f}" class="core-ellipse" data-core-ellipse/><circle cx="210" cy="170" r="5" class="core-origin"/></svg><div class="core-meters"><div><span>tau</span><strong data-tau-output>10^-{default_k:.0f}</strong></div><div><span>ell_z / ell_r</span><strong data-aspect-output>{default_aspect:.2f}</strong></div><div><span>{esc(O['speed'])}</span><strong data-speed-output>10^{default_speed:.2f}</strong></div><div><span>{esc(O['energy'])}</span><strong data-energy-output>10^{default_energy:.2f}</strong></div></div></div><div class="lab-plot"><h3>{esc(O['log_trajectories'])}</h3><svg viewBox="0 0 520 250" role="img" aria-labelledby="plot-title plot-desc"><title id="plot-title">{esc(O['log_trajectories'])}</title><desc id="plot-desc">{esc(O['table_caption'])}</desc><line x1="48" y1="20" x2="48" y2="216" class="plot-axis"/><line x1="48" y1="216" x2="500" y2="216" class="plot-axis"/><path data-curve="ell_r" class="curve curve-r" d="{curve_path_server('ell_r',h)}"/><path data-curve="ell_z" class="curve curve-z" d="{curve_path_server('ell_z',h)}"/><path data-curve="u_theta" class="curve curve-u" d="{curve_path_server('u_theta',h)}"/><path data-curve="energy" class="curve curve-e" d="{curve_path_server('energy',h)}"/><line data-cursor x1="274" y1="20" x2="274" y2="216" class="plot-cursor"/><g class="plot-key"><text x="60" y="36">{esc(O['radial'])}</text><text x="170" y="36">{esc(O['axial'])}</text><text x="290" y="36">{esc(O['speed'])}</text><text x="390" y="36">{esc(O['energy'])}</text></g></svg></div></div><div class="lab-fallback"><div class="ascii-live"><span class="micro">ASCII SCALE TRACE</span><pre data-ascii-live>{esc(ascii_core_frame(default_tau,h))}</pre></div><div class="ascii-sequence">{''.join(frames)}</div><table class="scaling-table"><caption>{esc(O['table_caption'])}</caption><thead><tr><th>{esc(O['quantity'])}</th><th>{esc(O['published_scaling'])}</th><th>{esc(O['normalized_value'])}</th></tr></thead><tbody>{''.join(vals)}</tbody></table></div></section>'''
 def sim_expr_eval(node, variables, parameters):
     typ=node['type']
     if typ=='number': return float(node['value'])
