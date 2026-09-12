@@ -19,8 +19,10 @@ def main():
         remote_sha=remote_line.split()[0] if remote_line else None
         if remote_sha:
             # Fetch explicitly so ancestry test is local and race-aware.
-            run('git','fetch','--quiet',a.remote,f'{a.branch}:refs/remotes/{a.remote}/{a.branch}')
-            ff=subprocess.run(['git','merge-base','--is-ancestor',f'{a.remote}/{a.branch}',a.branch]).returncode==0
+            run('git','fetch','--quiet',a.remote,f'+refs/heads/{a.branch}:refs/remotes/{a.remote}/{a.branch}')
+            # Compare against the advertised remote SHA directly; CI checkouts
+            # may not have the remote-tracking ref materialize reliably.
+            ff=subprocess.run(['git','merge-base','--is-ancestor',remote_sha,head]).returncode==0
             if not ff: raise RuntimeError(f'FORGE_DIVERGENCE GitLab {remote_sha} is not an ancestor of canonical {head}; explicit reconciliation required')
         if not a.apply:
             print(f'GITLAB_MIRROR_CHECK_PASS canonical={head} remote={remote_sha or "absent"} fast_forward_safe=true');return 0
