@@ -1,6 +1,257 @@
 {
   "schema": "nsc-unified-intake-v1",
-  "generated_at": null,
-  "sources": [],
-  "items": []
+  "sources": [
+    {
+      "forge": "github",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public"
+    },
+    {
+      "forge": "gitlab",
+      "repository": "champia-labs-group/navier-stokes-commons-public"
+    }
+  ],
+  "items": [
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:9",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 9,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/9",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:29:36Z",
+      "updated_at": "2026-09-11T21:09:53Z",
+      "title": "Initial Independent Review Portfolio: start here - 17 launch quests, parallel attempts welcome",
+      "target_ids": [
+        "NS-Q001",
+        "NS-Q002",
+        "NS-Q003",
+        "NS-Q004",
+        "NS-Q005",
+        "NS-Q006",
+        "NS-Q007",
+        "NS-Q008",
+        "NS-Q009",
+        "NS-Q010",
+        "NS-Q011",
+        "NS-Q012",
+        "NS-Q024",
+        "NS-Q028",
+        "NS-Q029",
+        "NS-Q030",
+        "NS-Q036"
+      ],
+      "fingerprint": "sha256:4861389e98c3551ee11bd79cd9c9cdf7565218cd61bbd3b866c4035b74d7e01b",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:1",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:2",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:3",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:4",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:5",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:8"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 10,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/10",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T05:03:22Z",
+      "updated_at": "2026-09-10T05:03:22Z",
+      "title": "[NS-Q036] Run a blinded comparative visual and interaction review",
+      "target_ids": [
+        "NS-M13",
+        "NS-Q036"
+      ],
+      "fingerprint": "sha256:c33677ca1e5f5689ce7560b575299cb833f70bc581a45691cabb2b4ddcfee71d",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:8",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 8,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/8",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:27:03Z",
+      "updated_at": "2026-09-10T02:27:03Z",
+      "title": "[NS-Q030] Review bootstrap governance for capture, conflicts, and appeals",
+      "target_ids": [
+        "NS-M18",
+        "NS-Q030"
+      ],
+      "fingerprint": "sha256:245145e7e92aea7d92bea2876086d6c808f9df032374efd58eaa66a00b9cb114",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 7,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/7",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:56Z",
+      "updated_at": "2026-09-10T02:26:56Z",
+      "title": "[NS-Q029] Assistive-technology review of the launch workflow",
+      "target_ids": [
+        "NS-M13",
+        "NS-Q029"
+      ],
+      "fingerprint": "sha256:994e7ef5eda8121726cdd8999150d0be8b5617f99a495f95dbd70b1c84b45da0",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 6,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/6",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:50Z",
+      "updated_at": "2026-09-10T02:26:50Z",
+      "title": "[NS-Q028] Cross-browser launch audit in Firefox and WebKit",
+      "target_ids": [
+        "NS-M13",
+        "NS-Q028"
+      ],
+      "fingerprint": "sha256:c8fe2c6beb816f860325cf41f95cdff88e593d4d473a1918f60636430a6f2237",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:5",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 5,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/5",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:44Z",
+      "updated_at": "2026-09-10T02:26:44Z",
+      "title": "[NS-Q024] Run an agent cold-start quest selection benchmark",
+      "target_ids": [
+        "NS-M16",
+        "NS-Q024"
+      ],
+      "fingerprint": "sha256:ee3af703d8a11cac0bc5d4e3befb865a27bc44b14f22208ce1c081047579b82a",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:4",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 4,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/4",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:37Z",
+      "updated_at": "2026-09-10T02:26:37Z",
+      "title": "[NS-Q009] Prove the spatial Lp scaling threshold for the published core model",
+      "target_ids": [
+        "NS-M03",
+        "NS-Q009"
+      ],
+      "fingerprint": "sha256:793abc52fa0554ae5383086712746fac77731b5b29dc4b96ff7dd8ba6538d356",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:3",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 3,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/3",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:30Z",
+      "updated_at": "2026-09-10T02:26:30Z",
+      "title": "[NS-Q005] Compare Clay C/D with the Lean terminal statement",
+      "target_ids": [
+        "NS-M01",
+        "NS-Q005"
+      ],
+      "fingerprint": "sha256:2f14e30107a3f6a411bf9dab476da75b3f9282285e43a5cb36e2a80bc87cac37",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:2",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:2",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 2,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/2",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:22Z",
+      "updated_at": "2026-09-10T02:26:22Z",
+      "title": "[NS-Q004] Reproduce repository metadata for the Lean certificate",
+      "target_ids": [
+        "NS-M01",
+        "NS-Q004"
+      ],
+      "fingerprint": "sha256:0a1e26cdbd12dc6308f0ea0076b8dd2b3c46667dd9ae2ad720897f5ed8f82399",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:3",
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    },
+    {
+      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:1",
+      "forge": "github",
+      "kind": "review",
+      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "native_id": 1,
+      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/1",
+      "author": "Aletheia-Prime",
+      "created_at": "2026-09-10T02:26:13Z",
+      "updated_at": "2026-09-10T02:26:13Z",
+      "title": "[NS-Q001] Verify the pinned OpenAI Lean source locator",
+      "target_ids": [
+        "NS-M17",
+        "NS-Q001"
+      ],
+      "fingerprint": "sha256:73f3195e2394adfae32d14569270da4ab9af1a22ab4c08f8ed38506f4eaf64d9",
+      "status": "open",
+      "possible_related_items": [
+        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+      ]
+    }
+  ],
+  "generated_at": "2026-09-12T15:35:04.231980Z"
 }
