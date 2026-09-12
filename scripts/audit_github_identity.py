@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Fail closed if the current public source still names the retired GitHub identity."""
 from pathlib import Path
-import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,15 +14,12 @@ FORBIDDEN = (OLD_OWNER, OLD_PAGES, OLD_REPO)
 HISTORICAL_ALLOWLIST = set()
 
 def main() -> int:
-    rows = subprocess.check_output(
-        ["git", "ls-files", "-z"], cwd=ROOT, text=False
-    ).decode().split("\0")
     hits = []
-    for raw in rows:
-        if not raw or raw in HISTORICAL_ALLOWLIST:
-            continue
-        path = ROOT / raw
+    for path in ROOT.rglob("*"):
         if not path.is_file():
+            continue
+        rel = path.relative_to(ROOT)
+        if ".git" in rel.parts or rel.as_posix() in HISTORICAL_ALLOWLIST:
             continue
         try:
             text = path.read_text(encoding="utf-8")
@@ -31,7 +27,7 @@ def main() -> int:
             continue
         for token in FORBIDDEN:
             if token.casefold() in text.casefold():
-                hits.append(f"{raw}: retired identity token")
+                hits.append(f"{rel}: retired identity token")
                 break
     if hits:
         print("GITHUB_IDENTITY_AUDIT_FAIL", file=sys.stderr)
