@@ -36,6 +36,21 @@ mission_by_id={m['id']:m for m in missions}
 rung_by_id={r['id']:r for r in task_ladder['rungs']}
 formula_by_id={f['id']:f for f in formula_catalog['formulas']}
 source_by_id={s['id']:s for s in sources}
+def break_hex(value):
+    value=str(value)
+    return '<wbr>'.join(value[i:i+8] for i in range(0,len(value),8)) if re.fullmatch(r'[0-9a-fA-F]{40}|[0-9a-fA-F]{64}',value) else esc(value)
+def packet_submission():
+    return {'actions':'../actions.json','attempt':'claim_quest','result':'submit_result','review':'request_review','reference_semantics':'Resolve relative to this packet document; operation IDs are listed in actions.json (claim_quest, submit_result, request_review).','rule':'An agent result is an artifact for review, never an automatic claim elevation.'}
+
+def math_text_breaks(document):
+    # Plain HTML has no overflow-wrap stylesheet. Add optional breaks only in
+    # long visible tokens; keep attributes, link targets and copied text exact.
+    head,body=document.split('<body>',1)
+    def token_breaks(match):
+        value=match.group().replace('/','/<wbr>')
+        return re.sub(r'[A-Za-z]{12,}',lambda m:'<wbr>'.join(m[0][i:i+8] for i in range(0,len(m[0]),8)),value)
+    parts=re.split(r'(<[^>]+>)',body)
+    return head+'<body>'+''.join(part if part.startswith('<') else re.sub(r'\S{14,}',token_breaks,part) for part in parts)
 locales={loc:json.loads((CONTENT/'locales'/f'{loc}.json').read_text()) for loc in project['locales']}
 mi18n={loc:json.loads((CONTENT/'mission_i18n'/f'{loc}.json').read_text()) for loc in project['locales']}
 taxonomy={loc:json.loads((CONTENT/'taxonomy_i18n'/f'{loc}.json').read_text()) for loc in project['locales']}
@@ -730,7 +745,7 @@ def r11_explain_page():
 
 def r11_agent_packet(q):
     node=next((n for n in frontier_graph['nodes'] if q['mission_id']==n['program_id']),None)
-    return {'schema':'nsc-agent-work-packet-v1','problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'task':q['task'],'deliverables':q['deliverables'],'acceptance':q['acceptance'],'review':q['review'],'sources':q.get('source_ids',[]),'dependencies':q.get('dependencies',[]),'claim_ids':q.get('claim_ids',[]),'parallel_safe':q.get('parallel_safe',False),'non_exclusive':q.get('non_exclusive',True),'frontier':({'node_id':node['id'],'lane':node['lane'],'priority':node['priority'],'key_question':node['key_question'],'agent_suitability':node['agent_suitability'],'publication_path':node['publication_path']} if node else {'lane':'unclassified','priority':'P3'}),'provenance_required':['model/provider/version or human author identity','toolchain/environment versions','exact public source/artifact versions','commands/method sufficient for reproduction','limitations, uncertainty, and conflicts'],'submission':{'actions':'Resolve forge write actions via {{ACTIONS_ENDPOINT}}','rule':'An agent result is an artifact for review, never an automatic claim elevation.'}}
+    return {'schema':'nsc-agent-work-packet-v1','problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'task':q['task'],'deliverables':q['deliverables'],'acceptance':q['acceptance'],'review':q['review'],'sources':q.get('source_ids',[]),'dependencies':q.get('dependencies',[]),'claim_ids':q.get('claim_ids',[]),'parallel_safe':q.get('parallel_safe',False),'non_exclusive':q.get('non_exclusive',True),'frontier':({'node_id':node['id'],'lane':node['lane'],'priority':node['priority'],'key_question':node['key_question'],'agent_suitability':node['agent_suitability'],'publication_path':node['publication_path']} if node else {'lane':'unclassified','priority':'P3'}),'provenance_required':['model/provider/version or human author identity','toolchain/environment versions','exact public source/artifact versions','commands/method sufficient for reproduction','limitations, uncertainty, and conflicts'],'submission':packet_submission()}
 
 def r13_math_page():
     page=PUBLIC/'en/math/index.html'
@@ -738,13 +753,9 @@ def r13_math_page():
     alternatives=[]
     for a in clay_problem_status['alternatives']:
         alternatives.append(
-            '<tr>'
-            f'<th scope="row">{esc(a["id"])}</th>'
-            f'<td>{esc(a["domain"])}</td>'
-            f'<td>{esc(a["forcing"])}</td>'
-            f'<td>{esc(a["target"])}</td>'
-            f'<td>{esc(a["display_status"])}</td>'
-            '</tr>'
+            f'<dt><strong>{esc(a["id"])}</strong> - {esc(a["display_status"])}</dt>'
+            f'<dd><p>Domain: {esc(a["domain"])}. Forcing: {esc(a["forcing"])}.</p>'
+            f'<p>Target: {esc(a["target"])}</p></dd>'
         )
     order={'P0':0,'P1':1,'P2':2,'P3':3}
     frontier_nodes=sorted(
@@ -773,11 +784,8 @@ def r13_math_page():
     review_rows=[]
     for c in claims_doc.get('claims',[]):
         review_rows.append(
-            '<tr>'
-            f'<td><code>{esc(c["id"])}</code></td>'
-            f'<td>{esc(c["status"])}</td>'
-            f'<td>{esc(c["statement"])}</td>'
-            '</tr>'
+            f'<dt><code>{esc(c["id"])}</code> - {esc(c["status"])}</dt>'
+            f'<dd><p>{esc(c["statement"])}</p></dd>'
         )
     update_rows=[]
     for u in frontier_updates.get('updates',[]):
@@ -799,7 +807,7 @@ def r13_math_page():
     for sid in source_ids:
         s=source_by_id.get(sid)
         if s:
-            version=(' ['+esc(s['version'])+']') if s.get('version') else ''
+            version=(' ['+break_hex(s['version'])+']') if s.get('version') else ''
             source_links_html.append(f'<li><a href="{esc(s["url"])}">{esc(s["title"])}</a> - {esc(s["publisher"])}{version}</li>')
     release=esc(project.get('release',''))
     canonical=''
@@ -819,7 +827,7 @@ def r13_math_page():
 <body>
 <a href="#main">Skip to content</a>
 <header>
-<h1>Navier–Stokes Commons - Mathematics</h1>
+<h1>Navier–Stokes Commons - Mathe<wbr>matics</h1>
 <p><a href="../">Interactive view</a> | <a href="../frontier/">Research frontier</a> | <a href="../review/">Review</a> | <a href="../quests/">Research problems</a> | <a href="../claims/">Claims</a> | <a href="../sources/">Sources</a> | <a href="../agents/">Agents</a></p>
 <p>Release: <code>{release}</code>. This page requires no JavaScript and no stylesheet.</p>
 </header>
@@ -829,11 +837,8 @@ def r13_math_page():
 <h2>Problem status</h2>
 <p><strong>{esc(thesis['headline'])}</strong></p>
 <p>{esc(thesis['body'])}</p>
-<table>
-<caption>Fefferman A/B/C/D alternatives and current public status</caption>
-<thead><tr><th>Alt.</th><th>Domain</th><th>Forcing</th><th>Target</th><th>Status here</th></tr></thead>
-<tbody>{''.join(alternatives)}</tbody>
-</table>
+<p>Fefferman A/B/C/D alternatives and current public status</p>
+<dl>{''.join(alternatives)}</dl>
 <p>The Commons does not equate publication, formal kernel checking, independent mathematical review, broad field acceptance, or Clay Mathematics Institute recognition.</p>
 </section>
 <hr>
@@ -845,10 +850,7 @@ def r13_math_page():
 <hr>
 <section id="review-state">
 <h2>Claim and review state</h2>
-<table>
-<thead><tr><th>Record</th><th>Status</th><th>Statement</th></tr></thead>
-<tbody>{''.join(review_rows)}</tbody>
-</table>
+<dl>{''.join(review_rows)}</dl>
 <p>Lifecycle: research problem → non-exclusive attempt → versioned artifact → mechanical/formal checks as applicable → independent domain review → revision/re-review → accepted, rejected, disputed, or inconclusive → frontier update.</p>
 </section>
 <hr>
@@ -875,7 +877,7 @@ def r13_math_page():
 </footer>
 </body>
 </html>'''
-    write('en/math/index.html',doc)
+    write('en/math/index.html',math_text_breaks(doc))
 
 def home_page(loc):
     if loc!='en':
@@ -1081,8 +1083,8 @@ def machine_files():
     (PUBLIC/'data/frontier-updates.json').write_text(json.dumps(frontier_updates,indent=2,ensure_ascii=False)+'\n')
     packet_dir=PUBLIC/'data/agent-packets'; packet_dir.mkdir(parents=True,exist_ok=True); packet_index=[]
     for q in quests:
-        pkt=r11_agent_packet(q); fn=q['id']+'.json'; (packet_dir/fn).write_text(json.dumps(pkt,indent=2,ensure_ascii=False)+'\n'); packet_index.append({'problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'frontier_priority':pkt['frontier'].get('priority','P3'),'url':'/data/agent-packets/'+fn})
-    (packet_dir/'index.json').write_text(json.dumps({'schema':'nsc-agent-packet-index-v1','packets':packet_index},indent=2,ensure_ascii=False)+'\n')
+        pkt=r11_agent_packet(q); fn=q['id']+'.json'; (packet_dir/fn).write_text(json.dumps(pkt,indent=2,ensure_ascii=False)+'\n'); packet_index.append({'problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'frontier_priority':pkt['frontier'].get('priority','P3'),'url':fn})
+    (packet_dir/'index.json').write_text(json.dumps({'schema':'nsc-agent-packet-index-v1','reference_semantics':'URLs resolve relative to this index document.','packets':packet_index},indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/quests.json').write_text(json.dumps(quests_doc,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/task-ladder.json').write_text(json.dumps(task_ladder,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/taxonomy.json').write_text((CONTENT/'taxonomy.json').read_text())
