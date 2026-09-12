@@ -266,9 +266,11 @@
   const outTau=stage?.querySelector('[data-tau-out]'),outR=stage?.querySelector('[data-r-out]'),outZ=stage?.querySelector('[data-z-out]'),outU=stage?.querySelector('[data-u-out]'),outE=stage?.querySelector('[data-e-out]'),outAspect=stage?.querySelector('[data-aspect-out]');
   if(controls) controls.hidden=false;
 
+  const speedInput=stage?.querySelector('[data-speed]'),speedOut=stage?.querySelector('[data-speed-out]');
+  const sweepMs=Math.max(1000,Number(stage?.dataset.sweepMs)||7000);
   let k=Number(kInput?.value||14),h=Number(hInput?.value||.005),yaw=-.28,pitch=.10,zoom=5.8,normalize=true;
   let pointer=[3,3],pointerPx=[-1000,-1000],dragging=false,px=0,py=0;
-  let playing=false,playStart=0,playFrom=k,raf=0,visible=true,ambient=!reduced.matches,ambientUserPaused=false;
+  let playing=!reduced.matches,playStart=0,playFrom=k,raf=0,visible=true,ambient=!reduced.matches,ambientUserPaused=false;
   const introStart=performance.now(),introMs=3800;
   const introTime=now=>{if(reduced.matches)return 0;const intro=Math.min(3.8,Math.max(0,(now-introStart)/1000));const after=Math.max(0,now-introStart-introMs)/1000;return intro+after*.16;};
   const introActive=now=>!reduced.matches && now-introStart<introMs;
@@ -297,30 +299,34 @@
     if(playBtn){playBtn.setAttribute('aria-pressed',String(playing));playBtn.textContent=playing?(playBtn.dataset.pauseLabel||'Pause sweep'):(playBtn.dataset.playLabel||'Play sweep');}
     schedule();
   }
+  function updateSpeedLabel(){if(speedOut)speedOut.textContent=`${Number(speedInput?.value||1).toFixed(2).replace(/\.?0+$/,'')}×`}
   function advancePlay(now){
     if(!playing)return false;
-    const q=Math.min(1,(now-playStart)/7000);
+    const dur=sweepMs/Number(speedInput?.value||1);
+    let raw=(now-playStart)/dur;
+    if(playStart&&raw<0){playStart=now;raw=0;}
+    const q=raw%1;
     const eased=1-Math.pow(1-q,2.25);
-    k=playFrom+(60-playFrom)*eased;
+    k=.5+59.5*eased;
     if(kInput)kInput.value=String(k);
     stats();
-    if(q>=1)setPlaying(false);
-    return q<1;
+    return true;
   }
 
   canvas.addEventListener('pointermove',e=>{updateProbe(e);if(dragging){yaw-=(e.clientX-px)*.006;pitch=Math.max(-1.05,Math.min(1.05,pitch-(e.clientY-py)*.0045));px=e.clientX;py=e.clientY;schedule();}});
-  canvas.addEventListener('pointerdown',e=>{dragging=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture?.(e.pointerId);schedule();});
+  canvas.addEventListener('pointerdown',e=>{dragging=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture?.(e.pointerId);setPlaying(false);schedule();});
   canvas.addEventListener('pointerup',e=>{dragging=false;try{canvas.releasePointerCapture?.(e.pointerId)}catch{};schedule();});
   canvas.addEventListener('pointercancel',()=>{dragging=false;clearProbe();});
   canvas.addEventListener('pointerleave',()=>{dragging=false;clearProbe();});
   canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(3.7,Math.min(9.4,zoom+e.deltaY*.004));schedule();},{passive:false});
   kInput?.addEventListener('input',()=>{k=Number(kInput.value);setPlaying(false);stats();schedule();},{passive:true});
   hInput?.addEventListener('input',()=>{h=Number(hInput.value);stats();schedule();},{passive:true});
-  playBtn?.addEventListener('click',()=>{if(reduced.matches)return;if(playing){setPlaying(false);return;}if(k>59.5){k=.5;if(kInput)kInput.value=String(k);stats();}setPlaying(true);});
+  speedInput?.addEventListener('input',()=>{if(playing){playStart=performance.now()-(k-.5)/59.5*(sweepMs/Number(speedInput.value));}updateSpeedLabel();schedule();},{passive:true});
+  playBtn?.addEventListener('click',()=>{if(reduced.matches)return;if(playing){setPlaying(false);return;}playFrom=.5;k=.5;if(kInput)kInput.value=String(k);stats();setPlaying(true);});
   frameBtn?.addEventListener('click',()=>{normalize=!normalize;frameBtn.textContent=normalize?(frameBtn.dataset.normalizedLabel||'Normalized core frame'):(frameBtn.dataset.labLabel||'Laboratory frame');if(modeLabel)modeLabel.textContent=normalize?(stage.dataset.modeNormalized||'NORMALIZED FOLLOW-CORE VIEW'):(stage.dataset.modeLaboratory||'LOG-COMPRESSED LABORATORY VIEW');schedule();});
-  const applyMotionPreference=()=>{if(reduced.matches){setPlaying(false);ambient=false;}else if(!ambientUserPaused){ambient=true;}if(playBtn){playBtn.disabled=Boolean(reduced.matches);playBtn.setAttribute('aria-disabled',String(Boolean(reduced.matches)));}schedule();};
+  const applyMotionPreference=()=>{if(reduced.matches){playing=false;ambient=false;}else{if(!ambientUserPaused)ambient=true;if(!playing){playing=true;playStart=performance.now();playFrom=.5;}}if(playBtn){playBtn.disabled=Boolean(reduced.matches);playBtn.setAttribute('aria-disabled',String(Boolean(reduced.matches)));playBtn.setAttribute('aria-pressed',String(playing));playBtn.textContent=playing?(playBtn.dataset.pauseLabel||'Pause sweep'):(playBtn.dataset.playLabel||'Play sweep');}updateSpeedLabel();stats();schedule();};
   applyMotionPreference(); reduced.addEventListener?.('change',applyMotionPreference);
-  window.addEventListener('nsc:ambient-motion',e=>{ambientUserPaused=!Boolean(e.detail?.active);ambient=Boolean(e.detail?.active)&&!reduced.matches;schedule();});
+  window.addEventListener('nsc:ambient-motion',e=>{ambientUserPaused=!Boolean(e.detail?.active);ambient=Boolean(e.detail?.active)&&!reduced.matches;if(!e.detail?.active){if(playing)setPlaying(false);}else if(!reduced.matches&&!playing&&playBtn&&!playBtn.disabled){setPlaying(true);}schedule();});
   document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible&&raf){cancelAnimationFrame(raf);raf=0;}else schedule();});
 
   const lowPower=saveData||matchMedia('(max-width: 680px)').matches||((navigator.deviceMemory||8)<=4)||((navigator.hardwareConcurrency||8)<=4);
@@ -453,7 +459,7 @@
   const toggle=document.createElement('button');
   toggle.type='button'; toggle.className='r14-motion-toggle r14-global-motion';
   const label=()=>{toggle.textContent=active?'Pause motion':'Resume motion';toggle.setAttribute('aria-pressed',String(!active));};
-  label(); document.body.appendChild(toggle);
+  label(); document.body.appendChild(toggle); notify();
   function notify(){window.dispatchEvent(new CustomEvent('nsc:ambient-motion',{detail:{active}}));}
   function setActive(v,persist=true){userPaused=!v;active=Boolean(v)&&!reduced.matches;if(persist){try{localStorage.setItem(storageKey,userPaused?'1':'0');}catch(_){}}label();notify();schedule();}
   toggle.addEventListener('click',()=>setActive(!active));

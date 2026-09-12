@@ -46,7 +46,10 @@ with sync_playwright() as pw:
   setk(1);a=shot(stage);setk(60);bb=shot(stage);dk=mad(a,bb);(SHOTS/'k1.png').write_bytes(a);(SHOTS/'k60.png').write_bytes(bb)
   setk(14);base=shot(stage);box=pg.locator('[data-vortex-canvas]').bounding_box();pg.mouse.move(box['x']+box['width']*.70,box['y']+box['height']*.40);pg.wait_for_timeout(100);probe=shot(stage);dp=mad(base,probe);probe_visible=pg.locator('[data-flow-probe]').is_visible()
   pg.mouse.move(box['x']+box['width']*.53,box['y']+box['height']*.54);pg.mouse.down();pg.mouse.move(box['x']+box['width']*.73,box['y']+box['height']*.37,steps=7);pg.mouse.up();pg.wait_for_timeout(100);orb=shot(stage);do=mad(probe,orb)
-  before=float(kin.input_value());pg.locator('[data-vortex-controls] [data-play]').click();pg.wait_for_timeout(350);after=float(kin.input_value());pg.locator('[data-vortex-controls] [data-play]').click()
+  playbtn=pg.locator('[data-vortex-controls] [data-play]')
+  if playbtn.get_attribute('aria-pressed')!='true':playbtn.click();pg.wait_for_timeout(150)
+  playbtn.click();pg.wait_for_timeout(150);paused_ok=playbtn.get_attribute('aria-pressed')=='false';p1=float(kin.input_value());pg.wait_for_timeout(250);p2=float(kin.input_value());assert paused_ok and p2==p1, 'pause failed'
+  playbtn.click();pg.wait_for_timeout(100);k_resumed=float(kin.input_value());pg.wait_for_timeout(400);after=float(kin.input_value());assert after>k_resumed, 'resume failed';before=k_resumed
   if dk<.025:fails.append({'dynamic':'k1_vs_k60','mad':dk});
   if dp<.0007 or not probe_visible:fails.append({'dynamic':'pointer_probe','mad':dp,'probe_visible':probe_visible});
   if do<.01:fails.append({'dynamic':'orbit_drag','mad':do});

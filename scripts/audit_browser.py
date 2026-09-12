@@ -51,12 +51,14 @@ def run():
       controls=page.locator('[data-vortex-controls]')
       if not all([rec['vortex_present'],rec['typed_schematic'],rec['static_present'],rec['old_atlas_absent']]):ok=False
       if cfg['js']:
-        rec['controls_visible']=controls.is_visible();k=page.locator('[data-k]');u=page.locator('[data-u-out]');before=u.text_content();old=k.input_value();page.wait_for_timeout(180);rec['no_main_sweep_autoplay']=k.input_value()==old
+        rec['controls_visible']=controls.is_visible();k=page.locator('[data-k]');u=page.locator('[data-u-out]');before=u.text_content();old=k.input_value();page.wait_for_timeout(180);rec['autoplay_sweep_advances']=k.input_value()!=old
         k.evaluate("e=>{e.value='44';e.dispatchEvent(new Event('input',{bubbles:true}))}");rec['state_updates']=u.text_content()!=before
         rec['canvas_present']=page.locator('[data-vortex-canvas]').count()==1
         play=page.locator('[data-vortex-controls] [data-play]');rec['play_present']=play.count()==1
         if cfg['motion']=='reduce':rec['reduced_motion_play_disabled']=play.is_disabled()
-        if not(rec['controls_visible'] and rec['no_main_sweep_autoplay'] and rec['state_updates'] and rec['canvas_present'] and rec['play_present']):ok=False
+        motion_allowed=cfg['motion']!='reduce'
+        sweep_ok=rec['autoplay_sweep_advances'] if motion_allowed else not rec['autoplay_sweep_advances']
+        if not(rec['controls_visible'] and sweep_ok and rec['state_updates'] and rec['canvas_present'] and rec['play_present']):ok=False
         if cfg['motion']=='reduce' and not rec.get('reduced_motion_play_disabled'):ok=False
       else:
         rec['controls_hidden']=controls.count()==1 and not controls.is_visible();rec['static_visible']=vis(page,'[data-vortex-static]')
