@@ -133,5 +133,5 @@
     "Collaboration actions are specified as forge-neutral logical transactions and projected through forge adapters.",
     "Comparative visual claims require a dated pre-registered benchmark set and independent human review."
   ],
-  "canonical_repository": "https://github.com/Aletheia-Prime/navier-stokes-commons-public"
+  "canonical_repository": "https://github.com/timperelman/navier-stokes-commons-public"
 }

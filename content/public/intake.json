@@ -3,7 +3,7 @@
   "sources": [
     {
       "forge": "github",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public"
+      "repository": "timperelman/navier-stokes-commons-public"
     },
     {
       "forge": "gitlab",
@@ -12,13 +12,13 @@
   ],
   "items": [
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:9",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:9",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 9,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/9",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/9",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:29:36Z",
       "updated_at": "2026-09-11T21:09:53Z",
       "title": "Initial Independent Review Portfolio: start here - 17 launch quests, parallel attempts welcome",
@@ -41,28 +41,28 @@
         "NS-Q030",
         "NS-Q036"
       ],
-      "fingerprint": "sha256:4861389e98c3551ee11bd79cd9c9cdf7565218cd61bbd3b866c4035b74d7e01b",
+      "fingerprint": "sha256:768811398a88f37c831252c49c89cce5173e9d4d8291175f418801628378f28b",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:1",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:2",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:3",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:4",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:5",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:8"
+        "github:timperelman/navier-stokes-commons-public:issue:1",
+        "github:timperelman/navier-stokes-commons-public:issue:10",
+        "github:timperelman/navier-stokes-commons-public:issue:2",
+        "github:timperelman/navier-stokes-commons-public:issue:3",
+        "github:timperelman/navier-stokes-commons-public:issue:4",
+        "github:timperelman/navier-stokes-commons-public:issue:5",
+        "github:timperelman/navier-stokes-commons-public:issue:6",
+        "github:timperelman/navier-stokes-commons-public:issue:7",
+        "github:timperelman/navier-stokes-commons-public:issue:8"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:10",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 10,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/10",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/10",
+      "author": "timperelman",
       "created_at": "2026-09-10T05:03:22Z",
       "updated_at": "2026-09-10T05:03:22Z",
       "title": "[NS-Q036] Run a blinded comparative visual and interaction review",
@@ -70,22 +70,22 @@
         "NS-M13",
         "NS-Q036"
       ],
-      "fingerprint": "sha256:c33677ca1e5f5689ce7560b575299cb833f70bc581a45691cabb2b4ddcfee71d",
+      "fingerprint": "sha256:189b891171a4c6b04df1fef03884b9bffc4c8659ba8e2ecc1f2b928762bd2dee",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:6",
+        "github:timperelman/navier-stokes-commons-public:issue:7",
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:8",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:8",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 8,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/8",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/8",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:27:03Z",
       "updated_at": "2026-09-10T02:27:03Z",
       "title": "[NS-Q030] Review bootstrap governance for capture, conflicts, and appeals",
@@ -93,20 +93,20 @@
         "NS-M18",
         "NS-Q030"
       ],
-      "fingerprint": "sha256:245145e7e92aea7d92bea2876086d6c808f9df032374efd58eaa66a00b9cb114",
+      "fingerprint": "sha256:843758c3effa8ea54b162132a29c264c70e6754feb29ce6e469b70d22c2dc83e",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:7",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 7,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/7",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/7",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:56Z",
       "updated_at": "2026-09-10T02:26:56Z",
       "title": "[NS-Q029] Assistive-technology review of the launch workflow",
@@ -114,22 +114,22 @@
         "NS-M13",
         "NS-Q029"
       ],
-      "fingerprint": "sha256:994e7ef5eda8121726cdd8999150d0be8b5617f99a495f95dbd70b1c84b45da0",
+      "fingerprint": "sha256:c82cd0737c3d0c41b11344958687d9e8a16d0388a3a00e4b525c8e18318d0d8a",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:10",
+        "github:timperelman/navier-stokes-commons-public:issue:6",
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:6",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:6",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 6,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/6",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/6",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:50Z",
       "updated_at": "2026-09-10T02:26:50Z",
       "title": "[NS-Q028] Cross-browser launch audit in Firefox and WebKit",
@@ -137,22 +137,22 @@
         "NS-M13",
         "NS-Q028"
       ],
-      "fingerprint": "sha256:c8fe2c6beb816f860325cf41f95cdff88e593d4d473a1918f60636430a6f2237",
+      "fingerprint": "sha256:5e48d244ab65f820e34a3c282736c7dc8e58670c25cc5fc822d0ee12a4a19f7d",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:10",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:7",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:10",
+        "github:timperelman/navier-stokes-commons-public:issue:7",
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:5",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:5",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 5,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/5",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/5",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:44Z",
       "updated_at": "2026-09-10T02:26:44Z",
       "title": "[NS-Q024] Run an agent cold-start quest selection benchmark",
@@ -160,20 +160,20 @@
         "NS-M16",
         "NS-Q024"
       ],
-      "fingerprint": "sha256:ee3af703d8a11cac0bc5d4e3befb865a27bc44b14f22208ce1c081047579b82a",
+      "fingerprint": "sha256:c3f67a7c8c7a7ca319e106c2eeaa7477dcfd131fb6a1e73c1e76fd0a6c095cb8",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:4",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:4",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 4,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/4",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/4",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:37Z",
       "updated_at": "2026-09-10T02:26:37Z",
       "title": "[NS-Q009] Prove the spatial Lp scaling threshold for the published core model",
@@ -181,20 +181,20 @@
         "NS-M03",
         "NS-Q009"
       ],
-      "fingerprint": "sha256:793abc52fa0554ae5383086712746fac77731b5b29dc4b96ff7dd8ba6538d356",
+      "fingerprint": "sha256:810bdd8ff4326fa4830ee6d865bba334d6b3dcb5e30bae6a683a588c543ecb99",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:3",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:3",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 3,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/3",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/3",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:30Z",
       "updated_at": "2026-09-10T02:26:30Z",
       "title": "[NS-Q005] Compare Clay C/D with the Lean terminal statement",
@@ -202,21 +202,21 @@
         "NS-M01",
         "NS-Q005"
       ],
-      "fingerprint": "sha256:2f14e30107a3f6a411bf9dab476da75b3f9282285e43a5cb36e2a80bc87cac37",
+      "fingerprint": "sha256:4ac7c72b0e1fa51bba101d296ad36496d50567123fb8d6d68deccb3966f36703",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:2",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:2",
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:2",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:2",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 2,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/2",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/2",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:22Z",
       "updated_at": "2026-09-10T02:26:22Z",
       "title": "[NS-Q004] Reproduce repository metadata for the Lean certificate",
@@ -224,21 +224,21 @@
         "NS-M01",
         "NS-Q004"
       ],
-      "fingerprint": "sha256:0a1e26cdbd12dc6308f0ea0076b8dd2b3c46667dd9ae2ad720897f5ed8f82399",
+      "fingerprint": "sha256:f95901238b77d589edb4b1921bb4af5d3c86c05a18ac1f009196f61226147055",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:3",
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:3",
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     },
     {
-      "id": "github:Aletheia-Prime/navier-stokes-commons-public:issue:1",
+      "id": "github:timperelman/navier-stokes-commons-public:issue:1",
       "forge": "github",
       "kind": "review",
-      "repository": "Aletheia-Prime/navier-stokes-commons-public",
+      "repository": "timperelman/navier-stokes-commons-public",
       "native_id": 1,
-      "url": "https://github.com/Aletheia-Prime/navier-stokes-commons-public/issues/1",
-      "author": "Aletheia-Prime",
+      "url": "https://github.com/timperelman/navier-stokes-commons-public/issues/1",
+      "author": "timperelman",
       "created_at": "2026-09-10T02:26:13Z",
       "updated_at": "2026-09-10T02:26:13Z",
       "title": "[NS-Q001] Verify the pinned OpenAI Lean source locator",
@@ -246,12 +246,12 @@
         "NS-M17",
         "NS-Q001"
       ],
-      "fingerprint": "sha256:73f3195e2394adfae32d14569270da4ab9af1a22ab4c08f8ed38506f4eaf64d9",
+      "fingerprint": "sha256:bb501e63e95d31f23668fe73b791a6ac80f351c6dfc1884b0e9dc714b3cb68c3",
       "status": "open",
       "possible_related_items": [
-        "github:Aletheia-Prime/navier-stokes-commons-public:issue:9"
+        "github:timperelman/navier-stokes-commons-public:issue:9"
       ]
     }
   ],
-  "generated_at": "2026-09-12T15:35:04.231980Z"
+  "generated_at": "2026-09-12T23:10:47.256269Z"
 }

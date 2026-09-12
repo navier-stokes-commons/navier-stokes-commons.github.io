@@ -2,7 +2,7 @@
 from __future__ import annotations
 import subprocess,sys,time,json,os
 if not os.environ.get('GITHUB_REPOSITORY') and not os.environ.get('CI_PROJECT_URL') and not os.environ.get('COMMONS_FORGE_URL'):
-    os.environ['GITHUB_REPOSITORY']='Aletheia-Prime/navier-stokes-commons-public'
+    os.environ['GITHUB_REPOSITORY']='timperelman/navier-stokes-commons-public'
 from scratch import ScratchPolicyError,scratch_dir
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -23,6 +23,7 @@ commands=[
  ['python3','scripts/audit_r14_prove2me_bridge.py'],
  ['python3','scripts/audit_r14_experience_policy.py'],
  ['python3','scripts/audit_r14_forge_topology.py'],
+ ['python3','scripts/audit_github_identity.py'],
  ['python3','scripts/audit_r14_intake.py'],
  ['python3','scripts/audit_r14_source_watch.py'],
  ['python3','scripts/audit_r15_prove2me_reuse.py'],

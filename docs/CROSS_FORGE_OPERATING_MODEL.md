@@ -2,7 +2,7 @@
 
 ## Authority
 
-GitHub `Aletheia-Prime/navier-stokes-commons-public` remains the canonical source repository because current public project metadata names it as `repository_url`.
+GitHub `timperelman/navier-stokes-commons-public` remains the canonical source repository because current public project metadata names it as `repository_url`.
 
 GitLab `champia-labs-group/navier-stokes-commons-public` is an exact public mirror and fully valid contribution intake surface.
 

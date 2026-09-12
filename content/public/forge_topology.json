@@ -2,7 +2,7 @@
   "schema": "nsc-forge-topology-v1",
   "canonical_source": {
     "forge": "github",
-    "repository": "Aletheia-Prime/navier-stokes-commons-public",
+    "repository": "timperelman/navier-stokes-commons-public",
     "branch": "main"
   },
   "mirror": {
@@ -13,7 +13,7 @@
     "force_push_forbidden": true
   },
   "public_pages": {
-    "github": "https://aletheia-prime.github.io/navier-stokes-commons-public/",
+    "github": "https://timperelman.github.io/navier-stokes-commons-public/",
     "gitlab": "https://champia-labs-group.gitlab.io/navier-stokes-commons-public/"
   },
   "intake": {
