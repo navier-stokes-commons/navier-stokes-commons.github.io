@@ -1,0 +1,33 @@
+{
+  "schema": "nsc-experience-policy-v1",
+  "rich_default": true,
+  "mathematics_projection": "/en/math/",
+  "rich_home": {
+    "visual_object_first_viewport": true,
+    "abcd_status_compact": true,
+    "headline_max_target_lines_desktop": 4,
+    "headline_max_target_lines_mobile": 4,
+    "primary_subject": "Navier-Stokes research, not OpenAI branding",
+    "ambient_motion_default": true,
+    "vortex_motion_default": true,
+    "pointer_response": true,
+    "ambient_ascii_glyph_field": true,
+    "scroll_phase_response": true,
+    "pause_control_required": true,
+    "reduced_motion_disables_automatic_motion": true,
+    "save_data_reduces_density_and_frame_rate": true
+  },
+  "mathematics_view": {
+    "javascript_required": false,
+    "stylesheet_required": false,
+    "persuasive_copy": false,
+    "ornamental_motion": false,
+    "complete_status_frontier_review_sources": true,
+    "plain_html_intentional": true
+  },
+  "scientific_boundary": {
+    "vortex": "source-constrained schematic; not the computed 2026 solution field",
+    "ambient_glyph_field": "decorative reference-flow-inspired interface field; pointer perturbation is UI-only",
+    "quantitative_readouts": "must remain source-derived or explicitly derived with provenance"
+  }
+}

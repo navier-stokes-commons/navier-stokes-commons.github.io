@@ -268,9 +268,9 @@
 
   let k=Number(kInput?.value||14),h=Number(hInput?.value||.005),yaw=-.28,pitch=.10,zoom=5.8,normalize=true;
   let pointer=[3,3],pointerPx=[-1000,-1000],dragging=false,px=0,py=0;
-  let playing=false,playStart=0,playFrom=k,raf=0,visible=true;
+  let playing=false,playStart=0,playFrom=k,raf=0,visible=true,ambient=!reduced.matches,ambientUserPaused=false;
   const introStart=performance.now(),introMs=3800;
-  const introTime=now=>reduced.matches?0:Math.min(3.8,Math.max(0,(now-introStart)/1000));
+  const introTime=now=>{if(reduced.matches)return 0;const intro=Math.min(3.8,Math.max(0,(now-introStart)/1000));const after=Math.max(0,now-introStart-introMs)/1000;return intro+after*.16;};
   const introActive=now=>!reduced.matches && now-introStart<introMs;
   const schedule=()=>{if(visible&&!raf)raf=requestAnimationFrame(frame);};
   const fmt=(x,d=1)=>`10^${x.toFixed(d)}`;
@@ -318,8 +318,9 @@
   hInput?.addEventListener('input',()=>{h=Number(hInput.value);stats();schedule();},{passive:true});
   playBtn?.addEventListener('click',()=>{if(reduced.matches)return;if(playing){setPlaying(false);return;}if(k>59.5){k=.5;if(kInput)kInput.value=String(k);stats();}setPlaying(true);});
   frameBtn?.addEventListener('click',()=>{normalize=!normalize;frameBtn.textContent=normalize?(frameBtn.dataset.normalizedLabel||'Normalized core frame'):(frameBtn.dataset.labLabel||'Laboratory frame');if(modeLabel)modeLabel.textContent=normalize?(stage.dataset.modeNormalized||'NORMALIZED FOLLOW-CORE VIEW'):(stage.dataset.modeLaboratory||'LOG-COMPRESSED LABORATORY VIEW');schedule();});
-  const applyMotionPreference=()=>{if(reduced.matches)setPlaying(false);if(playBtn){playBtn.disabled=Boolean(reduced.matches);playBtn.setAttribute('aria-disabled',String(Boolean(reduced.matches)));}schedule();};
+  const applyMotionPreference=()=>{if(reduced.matches){setPlaying(false);ambient=false;}else if(!ambientUserPaused){ambient=true;}if(playBtn){playBtn.disabled=Boolean(reduced.matches);playBtn.setAttribute('aria-disabled',String(Boolean(reduced.matches)));}schedule();};
   applyMotionPreference(); reduced.addEventListener?.('change',applyMotionPreference);
+  window.addEventListener('nsc:ambient-motion',e=>{ambientUserPaused=!Boolean(e.detail?.active);ambient=Boolean(e.detail?.active)&&!reduced.matches;schedule();});
   document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible&&raf){cancelAnimationFrame(raf);raf=0;}else schedule();});
 
   const lowPower=saveData||matchMedia('(max-width: 680px)').matches||((navigator.deviceMemory||8)<=4)||((navigator.hardwareConcurrency||8)<=4);
@@ -390,7 +391,7 @@
   function frame(now){
     raf=0;if(!visible||contextLost)return;
     const stillPlaying=advancePlay(now);renderer(now);stage.dataset.rendererReady='true';
-    if(stillPlaying||introActive(now)||dragging) schedule();
+    if(stillPlaying||introActive(now)||dragging||ambient) schedule();
   }
   stats();schedule();
 })();
@@ -429,4 +430,43 @@
     if(reduced?.matches)button.textContent=button.dataset.play||'play';
     render();if(running)raf=requestAnimationFrame(tick);reduced?.addEventListener?.('change',applyMotion);
   }
+})();
+
+/* R14 ambient glyph field: decorative reference-flow-inspired UI layer; pointer perturbation is not simulated physics. */
+/* ambient|| persistent normal-mode field; reduced motion remains authoritative. */
+(() => {
+  'use strict';
+  let canvas=document.querySelector('[data-ambient-field]');
+  if(!canvas) return;
+  if(canvas.tagName!=='CANVAS'){const c=document.createElement('canvas');c.className=canvas.className;c.setAttribute('data-ambient-field','');c.setAttribute('aria-hidden','true');canvas.replaceWith(c);canvas=c;}
+  const ctx=canvas.getContext('2d',{alpha:true});
+  if(!ctx) return;
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const saveData=Boolean(navigator.connection?.saveData);
+  const storageKey='nsc-ambient-paused';
+  let userPaused=false; try{userPaused=localStorage.getItem(storageKey)==='1';}catch(_){}
+  let active=!reduced.matches&&!userPaused,visible=!document.hidden,raf=0,last=0,phase=0;
+  let pointer={x:.72,y:.44,tx:.72,ty:.44,inside:false};
+  const glyphs=['→','↗','↑','↖','←','↙','↓','↘'];
+  const lowPower=saveData||matchMedia('(max-width:680px)').matches||((navigator.deviceMemory||8)<=4)||((navigator.hardwareConcurrency||8)<=4);
+  const minDt=1000/(lowPower?14:24);
+  const toggle=document.createElement('button');
+  toggle.type='button'; toggle.className='r14-motion-toggle r14-global-motion';
+  const label=()=>{toggle.textContent=active?'Pause motion':'Resume motion';toggle.setAttribute('aria-pressed',String(!active));};
+  label(); document.body.appendChild(toggle);
+  function notify(){window.dispatchEvent(new CustomEvent('nsc:ambient-motion',{detail:{active}}));}
+  function setActive(v,persist=true){userPaused=!v;active=Boolean(v)&&!reduced.matches;if(persist){try{localStorage.setItem(storageKey,userPaused?'1':'0');}catch(_){}}label();notify();schedule();}
+  toggle.addEventListener('click',()=>setActive(!active));
+  addEventListener('pointermove',e=>{pointer.tx=e.clientX/Math.max(1,innerWidth);pointer.ty=e.clientY/Math.max(1,innerHeight);pointer.inside=true;schedule();},{passive:true});
+  addEventListener('pointerout',e=>{if(!e.relatedTarget)pointer.inside=false;},{passive:true});
+  function resize(){const dpr=Math.min(devicePixelRatio||1,lowPower?1:1.35),w=Math.max(1,Math.round(innerWidth*dpr)),h=Math.max(1,Math.round(innerHeight*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}}
+  addEventListener('resize',()=>{resize();schedule();},{passive:true});
+  function field(x,y,t){const sx=x*Math.PI*2,sy=y*Math.PI*2;let u=Math.sin(sx+t*.34)*Math.cos(sy*.92-t*.11);let v=-Math.cos(sx+t*.34)*Math.sin(sy*.92-t*.11);const dx=x-pointer.x,dy=y-pointer.y,r2=dx*dx+dy*dy,inf=pointer.inside?Math.exp(-r2/.028):0;u+=-dy*inf*3.6;v+=dx*inf*3.6;return[u,v,inf];}
+  function draw(now){resize();const w=innerWidth,h=innerHeight;ctx.clearRect(0,0,w,h);pointer.x+=(pointer.tx-pointer.x)*.11;pointer.y+=(pointer.ty-pointer.y)*.11;const gap=lowPower?48:34,cols=Math.ceil(w/gap)+1,rows=Math.ceil(h/gap)+1;phase=now/1000+scrollY/Math.max(800,h)*.7;ctx.font=(lowPower?'10px':'11px')+' "Geist Mono Variable", ui-monospace, monospace';ctx.textAlign='center';ctx.textBaseline='middle';for(let j=0;j<rows;j++){for(let i=0;i<cols;i++){const px=i*gap+(j%2)*gap*.5,py=j*gap,x=px/Math.max(1,w),y=py/Math.max(1,h),f=field(x,y,phase),u=f[0],v=f[1],inf=f[2],mag=Math.hypot(u,v),ang=(Math.atan2(-v,u)+Math.PI*2)%(Math.PI*2),idx=Math.round(ang/(Math.PI/4))%8,alpha=.025+.035*Math.min(1,mag)+.11*inf;ctx.fillStyle='rgba(110,220,211,'+alpha.toFixed(3)+')';ctx.fillText(mag<.16?'·':glyphs[idx],px,py);}}}
+  function schedule(){if(visible&&!raf)raf=requestAnimationFrame(frame);}
+  function frame(now){raf=0;if(!visible)return;if(!last||now-last>=minDt){last=now;draw(now);}if(active||pointer.inside)schedule();}
+  function motionChange(){if(reduced.matches){active=false;}else if(!userPaused){active=true;}toggle.hidden=reduced.matches;label();notify();schedule();}
+  reduced.addEventListener?.('change',motionChange);
+  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible&&raf){cancelAnimationFrame(raf);raf=0;}else schedule();});
+  resize();draw(performance.now());toggle.hidden=reduced.matches;notify();schedule();
 })();

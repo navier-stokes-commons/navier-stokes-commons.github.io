@@ -1,0 +1,6 @@
+{
+  "schema": "nsc-source-watch-v1",
+  "policy": "detect-only-never-auto-elevate",
+  "observations": {},
+  "deltas": []
+}

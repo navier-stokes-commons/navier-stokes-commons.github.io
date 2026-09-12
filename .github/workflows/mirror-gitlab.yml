@@ -1,0 +1,36 @@
+name: Mirror canonical main to GitLab
+
+on:
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsc-gitlab-mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    if: ${{ vars.NSC_GITLAB_MIRROR_ENABLED == 'true' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      - name: Configure dedicated GitLab mirror credential
+        env:
+          MIRROR_KEY: ${{ secrets.NSC_GITLAB_MIRROR_SSH_KEY }}
+        run: |
+          test -n "$MIRROR_KEY"
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$MIRROR_KEY" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+          ssh-keyscan -t ed25519 gitlab.com >> "$HOME/.ssh/known_hosts"
+          git remote add gitlab git@gitlab.com:champia-labs-group/navier-stokes-commons-public.git
+      - name: Prove fast-forward safety and mirror exact canonical SHA
+        run: python3 scripts/mirror_gitlab.py --remote gitlab --branch main --apply

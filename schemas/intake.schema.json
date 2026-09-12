@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["schema","items"],"properties":{"schema":{"const":"nsc-unified-intake-v1"},"items":{"type":"array","items":{"type":"object","required":["id","forge","kind","repository","native_id","url","title","fingerprint"],"additionalProperties":true}}},"additionalProperties":true}

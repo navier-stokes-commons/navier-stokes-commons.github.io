@@ -1,0 +1,5 @@
+{
+  "schema": "nsc-formalization-links-v1",
+  "records": [],
+  "note": "Records are added only after an NSC problem has a reviewed formal target or an observed external Prove2Me theorem/mission is mapped back to NSC. Empty at R14 bootstrap is valid."
+}

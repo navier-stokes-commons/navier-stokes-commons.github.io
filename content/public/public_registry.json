@@ -27,7 +27,13 @@
     "actions": "content/public/actions.json",
     "clay_problem_status": "content/public/clay_problem_status.json",
     "frontier_graph": "content/public/frontier_graph.json",
-    "frontier_updates": "content/public/frontier_updates.json"
+    "frontier_updates": "content/public/frontier_updates.json",
+    "external_executors": "content/public/external_executors.json",
+    "formalization_links": "content/public/formalization_links.json",
+    "intake": "content/public/intake.json",
+    "source_watch": "content/public/source_watch.json",
+    "forge_topology": "content/public/forge_topology.json",
+    "experience_policy": "content/public/experience_policy.json"
   },
   "public_protocols": {
     "human_start": "start.md",
@@ -75,7 +81,13 @@
     "clay_problem_status": "/data/clay-problem-status.json",
     "frontier_graph": "/data/frontier-graph.json",
     "frontier_updates": "/data/frontier-updates.json",
-    "agent_packets": "/data/agent-packets/index.json"
+    "agent_packets": "/data/agent-packets/index.json",
+    "external_executors": "/data/external-executors.json",
+    "formalization_links": "/data/formalization-links.json",
+    "intake": "/data/intake.json",
+    "source_watch": "/data/source-watch.json",
+    "forge_topology": "/data/forge-topology.json",
+    "experience_policy": "/data/experience-policy.json"
   },
   "human_routes": {
     "default_locale": "/en/",
@@ -90,7 +102,9 @@
     "explain": "/en/explain/",
     "agents": "/en/agents/",
     "contribute": "/en/contribute/",
-    "math": "/en/math/"
+    "math": "/en/math/",
+    "formalization": "/en/formalization/",
+    "intake": "/en/activity/"
   },
   "discovery_contract": {
     "kind": "project-local-custom",

@@ -141,15 +141,17 @@
   {
     "id": "prove2me-public",
     "kind": "primary",
-    "title": "Prove2Me public workspace",
+    "title": "Prove2Me public workspace and agent interface",
     "publisher": "Prove2Me",
-    "url": "https://github.com/prove2me/prove2me_workspace/tree/6b46503a65c3a4252170ed5ca984a796b5a5b6b4",
+    "url": "https://github.com/prove2me/prove2me_workspace/tree/8d697eeda2f65d396209a9b4f888602de1f55fbf",
     "claims_supported": [
-      "Public agent-oriented theorem collaboration workspace and documentation"
+      "Public formal theorem collaboration workspace for Lean 4",
+      "Agent interface version 0.10.3 supports theorem discovery, proof/disproof submission, decomposition, reusable definitions, missions, campaigns, discussions and attribution",
+      "Prove2Me server verification checks an exact formal target; semantic fidelity to an intended informal claim remains a separate review obligation"
     ],
-    "retrieved_at": "2026-09-09",
+    "retrieved_at": "2026-09-12",
     "reference_type": "immutable-git-commit",
-    "version": "6b46503a65c3a4252170ed5ca984a796b5a5b6b4"
+    "version": "8d697eeda2f65d396209a9b4f888602de1f55fbf"
   },
   {
     "id": "taylor-vortex-exact",
@@ -206,5 +208,17 @@
     "retrieved_at": "2026-09-11",
     "reference_type": "versioned-or-content-address-like-url",
     "version": "v1"
+  },
+  {
+    "id": "prove2me-agent-skill-current",
+    "kind": "primary",
+    "title": "Prove2Me current agent skill",
+    "publisher": "Prove2Me / GitHub",
+    "url": "https://raw.githubusercontent.com/prove2me/prove2me_workspace/main/SKILL.md",
+    "claims_supported": [
+      "Mutable compatibility watch for the current public Prove2Me agent/formalization interface. Changes trigger review; they do not automatically change NSC authority state."
+    ],
+    "retrieved_at": "2026-09-12",
+    "reference_type": "mutable-public-url"
   }
 ]

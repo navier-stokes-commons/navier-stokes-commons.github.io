@@ -1,0 +1,27 @@
+{
+  "schema": "nsc-forge-topology-v1",
+  "canonical_source": {
+    "forge": "github",
+    "repository": "Aletheia-Prime/navier-stokes-commons-public",
+    "branch": "main"
+  },
+  "mirror": {
+    "forge": "gitlab",
+    "project_path": "champia-labs-group/navier-stokes-commons-public",
+    "branch": "main",
+    "policy": "fast-forward-only",
+    "force_push_forbidden": true
+  },
+  "public_pages": {
+    "github": "https://aletheia-prime.github.io/navier-stokes-commons-public/",
+    "gitlab": "https://champia-labs-group.gitlab.io/navier-stokes-commons-public/"
+  },
+  "intake": {
+    "github": "accepted as public collaboration intake",
+    "gitlab": "accepted as public collaboration intake",
+    "normalization": "one derived intake queue",
+    "scientific_authority": "neither issue tracker; reviewed canonical repository data only"
+  },
+  "source_mirror_invariant": "Every terminal release requires GitHub main, GitLab main, GitHub Pages source SHA, and GitLab Pages source SHA to identify the same canonical release source.",
+  "divergence_rule": "If GitLab main contains non-ancestor work, stop mirroring and reconcile explicitly; never force over unknown work."
+}

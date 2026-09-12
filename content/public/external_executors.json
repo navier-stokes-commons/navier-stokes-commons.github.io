@@ -1,0 +1,35 @@
+{
+  "schema": "nsc-external-executors-v1",
+  "executors": [
+    {
+      "id": "prove2me",
+      "name": "Prove2Me",
+      "role": "formal theorem execution, decomposition, machine checking, attribution, and reusable Lean library; not a second general Lean theorem service owned by NSC",
+      "api_base": "https://prove2.me/api/v1",
+      "workspace_repository": "https://github.com/prove2me/prove2me_workspace",
+      "workspace_commit": "8d697eeda2f65d396209a9b4f888602de1f55fbf",
+      "skill_version": "0.10.3",
+      "authority_boundary": "A Prove2Me verdict establishes the exact formal target under its pinned Lean environment. NSC separately reviews semantic correspondence and parent-domain implications.",
+      "preferred_for": [
+        "Lean proof",
+        "Lean disproof",
+        "Lean theorem decomposition",
+        "reuse of formal lemmas"
+      ],
+      "not_authoritative_for": [
+        "informal theorem semantics",
+        "paper-to-Lean fidelity",
+        "Navier-Stokes frontier effect",
+        "CMI recognition"
+      ],
+      "catalog_policy": "search-before-create; reuse existing missions/theorems whenever faithful",
+      "known_overlap": {
+        "title": "Formalize Navier-Stokes Open Problem",
+        "scope": "Fefferman statement A plus classical partial results; B/C/D out of scope",
+        "captain": "korbonits",
+        "catalog_url": "https://prove2.me/f/partial-differential-equations",
+        "rule": "Do not create a duplicate statement-A mission."
+      }
+    }
+  ]
+}

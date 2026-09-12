@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["schema","policy","observations","deltas"],"properties":{"schema":{"const":"nsc-source-watch-v1"},"policy":{"const":"detect-only-never-auto-elevate"},"observations":{"type":"object"},"deltas":{"type":"array"}},"additionalProperties":false}

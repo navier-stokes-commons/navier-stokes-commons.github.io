@@ -82,5 +82,12 @@
       "Authors report whole-space singular-force density thresholds in relative L1_t H^s_x and L2_t H^s_x topologies",
       "Authors explicitly disclaim fixed-force instability, loss of weak existence, and new formal verification"
     ]
+  },
+  "prove2me-agent-skill-current": {
+    "title": "Prove2Me current agent skill",
+    "publisher": "Prove2Me / GitHub",
+    "claims_supported": [
+      "Mutable compatibility watch for the current public Prove2Me agent/formalization interface. Changes trigger review; they do not automatically change NSC authority state."
+    ]
   }
 }

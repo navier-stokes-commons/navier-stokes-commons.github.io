@@ -22,6 +22,12 @@ research_context=json.loads((CONTENT/'research_context.json').read_text())
 clay_problem_status=json.loads((CONTENT/'clay_problem_status.json').read_text())
 frontier_graph=json.loads((CONTENT/'frontier_graph.json').read_text())
 frontier_updates=json.loads((CONTENT/'frontier_updates.json').read_text())
+external_executors=json.loads((CONTENT/'external_executors.json').read_text())
+formalization_links=json.loads((CONTENT/'formalization_links.json').read_text())
+intake_doc=json.loads((CONTENT/'intake.json').read_text())
+source_watch_doc=json.loads((CONTENT/'source_watch.json').read_text())
+forge_topology=json.loads((CONTENT/'forge_topology.json').read_text())
+experience_policy=json.loads((CONTENT/'experience_policy.json').read_text())
 formula_catalog=json.loads((CONTENT/'formulas.json').read_text())
 quests=expanded_quests()
 quests_doc={'schema':json.loads((CONTENT/'quests.json').read_text()).get('schema','nsc-quests-v1'),'quests':quests}
@@ -172,7 +178,9 @@ def nav(page:Path,loc:str,current:str,kind:str,slug=None):
         ('sources',L['nav']['sources'],'sources'),
         ('agents',L['nav']['agents'],'agents'),
     ]
-    if loc=='en': links.insert(0,('math','Mathematics','math'))
+    if loc=='en':
+        links.insert(0,('math','Mathematics','math'))
+        links.insert(1,('formalization','Formalization','formalization'))
     n=[]
     for key,label,target_kind in links:
         aria=' aria-current="page"' if current==key else ''
@@ -214,6 +222,7 @@ def shell(page:Path,loc:str,current:str,kind:str,title:str,description:str,body:
 {extra_head}
 </head>
 <body data-page-kind="{esc(kind)}">
+{r14_ambient_canvas()}
 <a class="skip-link" href="#main">{esc(L['skip'])}</a>
 {nav(page,loc,current,kind,slug)}
 {locale_preview_notice(loc)}
@@ -745,7 +754,7 @@ def r11_explain_page():
 
 def r11_agent_packet(q):
     node=next((n for n in frontier_graph['nodes'] if q['mission_id']==n['program_id']),None)
-    return {'schema':'nsc-agent-work-packet-v1','problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'task':q['task'],'deliverables':q['deliverables'],'acceptance':q['acceptance'],'review':q['review'],'sources':q.get('source_ids',[]),'dependencies':q.get('dependencies',[]),'claim_ids':q.get('claim_ids',[]),'parallel_safe':q.get('parallel_safe',False),'non_exclusive':q.get('non_exclusive',True),'frontier':({'node_id':node['id'],'lane':node['lane'],'priority':node['priority'],'key_question':node['key_question'],'agent_suitability':node['agent_suitability'],'publication_path':node['publication_path']} if node else {'lane':'unclassified','priority':'P3'}),'provenance_required':['model/provider/version or human author identity','toolchain/environment versions','exact public source/artifact versions','commands/method sufficient for reproduction','limitations, uncertainty, and conflicts'],'submission':packet_submission()}
+    return {'schema':'nsc-agent-work-packet-v1','problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'task':q['task'],'deliverables':q['deliverables'],'acceptance':q['acceptance'],'review':q['review'],'sources':q.get('source_ids',[]),'dependencies':q.get('dependencies',[]),'claim_ids':q.get('claim_ids',[]),'parallel_safe':q.get('parallel_safe',False),'non_exclusive':q.get('non_exclusive',True),'frontier':({'node_id':node['id'],'lane':node['lane'],'priority':node['priority'],'key_question':node['key_question'],'agent_suitability':node['agent_suitability'],'publication_path':node['publication_path']} if node else {'lane':'unclassified','priority':'P3'}),'provenance_required':['model/provider/version or human author identity','toolchain/environment versions','exact public source/artifact versions','commands/method sufficient for reproduction','limitations, uncertainty, and conflicts'],'submission':packet_submission(),'formal_execution':r14_formal_execution_for(q)}
 
 def r13_math_page():
     page=PUBLIC/'en/math/index.html'
@@ -796,7 +805,7 @@ def r13_math_page():
             f'<p>Does not establish: {esc("; ".join(u["does_not_establish"]))}</p>'
             '</li>'
         )
-    machine_keys=['clay_problem_status','frontier_graph','frontier_updates','agent_packets','claims','sources','quests','actions','discovery']
+    machine_keys=['clay_problem_status','frontier_graph','frontier_updates','agent_packets','external_executors','formalization_links','intake','claims','sources','quests','actions','discovery']
     machine=[]
     for k in machine_keys:
         target=registry['machine_endpoints'].get(k)
@@ -898,9 +907,9 @@ def home_page(loc):
     <section class="section invitation-section"><div class="container invitation-grid"><div><span class="eyebrow">{esc(L['section_labels']['contribute'])}</span><h2>{esc(O['contribute_title'])}</h2></div><div><p>{esc(O['contribute_body'])}</p><div class="actions"><a class="button" href="{esc(rel(page,logical_target(loc,'contribute')))}">{esc(O['how_contribute'])}</a><a class="text-link" href="{esc(guide_href)}">{esc(O['how_works'])} <span aria-hidden="true">↗</span></a></div></div></div></section>'''
         write(f'{loc}/index.html',shell(page,loc,'home','home',R5['title'],R5['lede'],body,extra_head=r5_font_preloads(page)))
         return
-    page=PUBLIC/'en/index.html'; thesis=clay_problem_status['landing_thesis']; inst=clay_problem_status['official_problem']['institutional_status']
-    body=f'''<section class="hero r11-status-hero"><div class="container r11-status-layout"><div class="r11-status-copy"><span class="eyebrow">THE 2026 RESULT · THE OPEN FRONTIER</span><h1>{esc(thesis['headline'])}</h1><p class="lede">{esc(thesis['body'])}</p><div class="r11-actions"><a class="button" href="frontier/">Work on an open problem</a><a class="button secondary" href="agents/">Give an agent a research problem</a><a class="button ghost" href="math/">Mathematics</a><a class="text-link strong" href="review/">Review C/D ↗</a><a class="text-link" href="explain/">Explain A/B/C/D ↗</a></div></div><div class="r11-status-object">{r11_status_grid(page)}<p class="r11-institution">CMI recognition: <b>separate institutional process</b> · {esc(inst['note'])}</p></div></div></section><section class="r11-vortex-shell"><div class="container"><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div>{r5_vortex_stage(page,'en')}</div></section><section class="section r11-frontier-preview"><div class="container"><div class="section-head"><div><span class="eyebrow">PRIORITIZED RESEARCH FRONTIER</span><h2>The proof is a dependency. The subject is the program.</h2></div><div><p>Frontier mathematics is ranked separately from verification, computational research, and Commons support. A browser audit does not sit beside an A/B obstruction theorem as if they were the same kind of progress.</p><a class="text-link strong" href="frontier/">Open the frontier map →</a></div></div>{r11_frontier_preview(page)}</div></section><section class="section"><div class="container invitation-grid"><div><span class="eyebrow">RESEARCH LIFECYCLE</span><h2>Completion means review changes the frontier.</h2></div><div>{r11_review_lifecycle()}<p><a class="text-link strong" href="review/">See the acceptance and review contract →</a></p></div></div></section>{r6_community_entry_section(page,'en')}'''
-    write('en/index.html',shell(page,'en','home','home',thesis['headline'],thesis['body'],body,extra_head=r5_font_preloads(page)))
+    page=PUBLIC/'en/index.html'; thesis=clay_problem_status['landing_thesis']
+    body=r14_rich_hero(page)+f'''<section class="section r11-frontier-preview"><div class="container"><div class="section-head"><div><span class="eyebrow">PRIORITIZED RESEARCH FRONTIER</span><h2>The proof is a dependency. The subject is the program.</h2></div><div><p>Frontier mathematics is ranked separately from verification, computational research, and Commons support.</p><a class="text-link strong" href="frontier/">Open the frontier map →</a></div></div>{r11_frontier_preview(page)}</div></section><section class="section"><div class="container invitation-grid"><div><span class="eyebrow">RESEARCH LIFECYCLE</span><h2>Completion means review changes the frontier.</h2></div><div>{r11_review_lifecycle()}<p><a class="text-link strong" href="review/">See the acceptance and review contract →</a></p></div></div></section>{r6_community_entry_section(page,'en')}'''
+    write('en/index.html',shell(page,'en','home','home','Navier–Stokes research after the 2026 C/D construction',thesis['body'],body,extra_head=r5_font_preloads(page)))
 
 def missions_page(loc):
     L=locales[loc]; M=L['mission_meta']; page=PUBLIC/f'{loc}/missions/index.html'
@@ -965,7 +974,7 @@ def activity_page(loc):
     rows=[c for c in contributions if c.get('status')=='accepted']
     cards=''.join(contribution_card(page,loc,c) for c in rows) if rows else '<p class="empty-record">No accepted public contributions have been published yet.</p>'
     title=L['nav'].get('activity','Contributions')
-    body=f'<section class="page-hero compact-hero"><div class="container"><span class="eyebrow">{esc(L['section_labels']['public_record'])}</span><h1>{esc(title)}</h1><p class="lede">Accepted contributions are generated from canonical public contribution manifests after review and merge.</p></div></section><section class="section"><div class="container contribution-list">{cards}</div></section>'
+    body=f'<section class="page-hero compact-hero"><div class="container"><span class="eyebrow">{esc(L['section_labels']['public_record'])}</span><h1>{esc(title)}</h1><p class="lede">Accepted contributions are generated from canonical public contribution manifests after review and merge. Public GitHub/GitLab submissions appear separately as unreviewed intake.</p></div></section><section class="section"><div class="container contribution-list">{cards}</div></section><section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow">UNIFIED PUBLIC INTAKE</span><h2>GitHub + GitLab + source deltas</h2></div><p>Derived coordination queue. Nothing here is accepted merely because it appears.</p></div>{r14_intake_list(page)}</div></section>'
     write(f'{loc}/activity/index.html',shell(page,loc,'activity','activity',title,title,body))
 
 def known_page(loc):
@@ -1028,7 +1037,7 @@ def sources_page(loc):
 def agents_page(loc):
     L=locales[loc]; page=PUBLIC/f'{loc}/agents/index.html'
     how=''.join(f'<li><span class="pipeline-index">0{i}</span><span>{esc(x)}</span></li>' for i,x in enumerate(L['agents']['how'],1))
-    endpoint_keys=['quests','frontier','claims','task_ladder','taxonomy','sources','governance','founding_sprint','reviews','project_metadata','scaling_model','formulas','simulations','actions','reference_benchmarks','capabilities','authority_map','llms_index','llms_full','agent_start','agent_skill','discovery']
+    endpoint_keys=['quests','frontier','claims','task_ladder','taxonomy','sources','governance','founding_sprint','reviews','project_metadata','scaling_model','formulas','simulations','actions','reference_benchmarks','capabilities','authority_map','external_executors','formalization_links','intake','source_watch','forge_topology','experience_policy','llms_index','llms_full','agent_start','agent_skill','discovery']
     endpoints=[(key,registry['machine_endpoints'][key].lstrip('/')) for key in endpoint_keys]
     eps=''.join(f'<li><a class="endpoint" href="{esc(rel(page,target))}"><code>{esc(name)}</code><span aria-hidden="true">↗</span></a></li>' for name,target in endpoints)
     discovery_route=registry['machine_endpoints']['discovery']
@@ -1044,12 +1053,66 @@ def accessibility_page(loc):
     body=f'''<section class="page-hero compact-hero"><div class="container page-hero-grid"><div><span class="eyebrow">{esc(L['section_labels']['inclusive_by_design'])}</span><h1>{esc(L['accessibility']['title'])}</h1><p class="lede">{esc(L['accessibility']['lede'])}</p></div><div class="accessibility-symbol" aria-hidden="true"><span>AA</span><small>WCAG 2.2</small></div></div></section><section class="section"><div class="container split-layout"><div><h2>{esc(L['accessibility']['status_title'])}</h2><p class="lede small">{esc(L['accessibility']['status_body'])}</p>{action}</div><div class="feature-card"><ul class="check-list">{features}</ul></div></div></section>'''
     write(f'{loc}/accessibility/index.html',shell(page,loc,'accessibility','accessibility',L['accessibility']['title'],L['accessibility']['lede'],body))
 
+
+def r14_ambient_canvas():
+    return '<div class="r14-ambient-field" data-ambient-field aria-hidden="true" data-semantics="decorative-reference-field-plus-pointer-ui"></div>'
+
+
+def r14_formal_execution_for(q):
+    text=' '.join([str(q.get('title','')),str(q.get('summary','')),str(q.get('task','')),str(q.get('review',{}).get('class','')),' '.join(q.get('tags',[]))]).lower()
+    relevant=any(x in text for x in ['lean','formal','theorem','proof'])
+    if not relevant:
+        return {'applicable':False,'reason':'This problem is not currently classified as an exact formal theorem execution leaf.'}
+    return {
+      'applicable':True,
+      'preferred_executor':'prove2me',
+      'export_state':'candidate',
+      'rule':'Freeze and review intended semantics before exporting an exact theorem target. Prove2Me owns proof/disproof/decomposition execution; NSC owns semantic mapping and parent-frontier effect.',
+      'executor_registry':'../external-executors.json',
+      'formalization_links':'../formalization-links.json'
+    }
+
+def r14_abcd_strip():
+    items=[]
+    for a in clay_problem_status['alternatives']:
+        cls='open' if a['mathematical_status']=='open' else 'claim'
+        # Rich projection is deliberately terse. Exact semantics remain in the canonical status endpoint and /en/math/.
+        forcing='unforced' if 'f' in a['forcing'] and ('0' in a['forcing'] or 'none' in a['forcing'].lower()) else 'forced'
+        target='Global smoothness' if 'smooth' in a['target'].lower() and 'break' not in a['target'].lower() else 'Finite-time breakdown'
+        items.append(f'<article class="r14-abcd-item {cls}"><strong>{esc(a["id"])}</strong><span>{esc(a["domain"])} · {esc(forcing)}</span><b>{esc(a["display_status"])}</b><small>{esc(target)}</small></article>')
+    return '<div class="r14-abcd-strip" aria-label="Clay alternatives A, B, C and D">'+''.join(items)+'</div>'
+
+def r14_rich_hero(page):
+    return f'''<section class="r14-hero" data-r14-rich-hero><div class="container r14-hero-grid"><div class="r14-hero-copy"><span class="eyebrow">NAVIER–STOKES · AFTER THE 2026 C/D CONSTRUCTION</span><h1>C/D changed the problem. A/B is still open.</h1><p class="lede">OpenAI claims C and D; the Commons records that claim as source-reported while independent review proceeds. A and B remain open, and the mathematics that follows is the work.</p><p class="r14-status-line"><strong>Publication ≠ independent review ≠ CMI recognition.</strong> Formal verification proves the encoded statement; semantic correspondence remains a separate review obligation.</p><div class="r14-actions"><a class="button" href="{esc(rel(page,'en/frontier/index.html'))}">Work on an open problem</a><a class="button secondary" href="{esc(rel(page,'en/math/index.html'))}">Mathematics</a><a class="button ghost" href="{esc(rel(page,'en/agents/index.html'))}">Give an agent a research problem</a><a class="text-link strong" href="{esc(rel(page,'en/review/index.html'))}">Review C/D ↗</a></div></div><div class="r14-hero-visual"><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div>{r5_vortex_stage(page,'en')}</div></div>{r14_abcd_strip()}<p class="container r14-hero-footnote">The realtime vortex is a source-constrained schematic, not a computed 2026 solution field. Pointer interaction and the ambient glyph wake are interface devices, not simulated physics.</p></section>'''
+
+def r14_intake_list(page):
+    items=intake_doc.get('items',[])[:80]
+    if not items:
+        return '<p class="empty-record">No public GitHub/GitLab submission or source-delta record is currently in the derived intake queue.</p>'
+    rows=[]
+    for x in items:
+        forge=x.get('forge','')
+        target=', '.join(x.get('target_ids',[])) or 'unclassified target'
+        rows.append(f'''<article class="contribution-record"><div class="contribution-meta"><span>{esc(forge)}</span><span>{esc(x.get('kind','other'))}</span><span>{esc(x.get('status','open'))}</span></div><h3><a href="{esc(x.get('url','#'))}">{esc(x.get('title','Untitled intake item'))}</a></h3><p>{esc(target)} · <code>{esc(x.get('id',''))}</code></p><p><small>Intake is public coordination state, not scientific acceptance.</small></p></article>''')
+    return '<div class="contribution-list">'+''.join(rows)+'</div>'
+
+def r14_formalization_page():
+    page=PUBLIC/'en/formalization/index.html'
+    executor=next((x for x in external_executors.get('executors',[]) if x.get('id')=='prove2me'),None)
+    links=formalization_links.get('records',[])
+    rows=[]
+    for r in links:
+        rows.append(f'''<article class="mission-block"><span class="section-number">{esc(r.get('nsc_problem_id',''))}</span><div><h2><a href="{esc(r.get('external_url','#'))}">{esc(r.get('external_status','external formalization'))}</a></h2><p>NSC import state: <code>{esc(r.get('nsc_import_state',''))}</code></p><p>Formal statement digest: <code>{esc(r.get('formal_statement_digest',''))}</code></p></div></article>''')
+    ext=(f'''<aside class="plain-aside"><span class="eyebrow">PREFERRED FORMAL EXECUTOR</span><h2>{esc(executor['name'])}</h2><p>{esc(executor['role'])}</p><p>{esc(executor['authority_boundary'])}</p><p><a href="{esc(executor['workspace_repository']+'/tree/'+executor['workspace_commit'])}">Pinned workspace {esc(executor['skill_version'])} ↗</a></p><p><a href="{'https://prove2.me/' + 'start.md'}">Agent start ↗</a> · <a href="https://prove2.me/formalpedia">Formalpedia ↗</a></p></aside>''' if executor else '')
+    current=''.join(rows) if rows else '<p class="empty-record">No NSC problem is currently linked to an accepted Prove2Me theorem or mission. This is valid: export requires a reviewed intended formal target.</p>'
+    body=f'''<section class="page-hero"><div class="container page-hero-grid"><div><span class="eyebrow">FORMALIZATION · INTEROPERABILITY</span><h1>Use the best proof infrastructure. Keep the scientific question explicit.</h1><p class="lede">Navier–Stokes Commons does not need a second general Lean theorem platform. When a bounded research problem has a reviewed formal target, Prove2Me is the preferred execution and reuse layer. NSC separately records whether the formal statement matches the intended mathematics and what the verified result changes in the Navier–Stokes frontier.</p></div>{ext}</div></section><section class="section"><div class="container split-layout"><div><h2>Authority boundary</h2><ul class="plain-list"><li>Prove2Me: exact formal statement, proof/disproof/decomposition, pinned Lean environment, reusable formal lemmas.</li><li>NSC: target semantics, paper-to-formal correspondence, analytic/numerical context, domain review, frontier implication, provenance and claim state.</li><li>A kernel-checked theorem enters NSC as external formal evidence; it never automatically resolves the parent PDE problem.</li></ul></div><div><h2>Current bridge records</h2>{current}</div></div></section>'''
+    write('en/formalization/index.html',r11_english_shell(page,'formalization','formalization','Formalization interoperability','Prove2Me interoperability and formal-evidence authority boundary.',body))
+
 def root_page():
-    page=PUBLIC/'index.html'; thesis=clay_problem_status['landing_thesis']; R=locales['en']['root']
+    page=PUBLIC/'index.html'; R=locales['en']['root']; thesis=clay_problem_status['landing_thesis']
     langs=''.join(f'<a lang="{esc(loc)}" dir="{esc(locales[loc]["dir"])}" href="{esc(rel(page,logical_target(loc,"home")))}"><span>{esc(locales[loc]["name"])}</span><small>{esc(project.get("locale_status",{}).get(loc,"preview").replace("-"," "))}</small><span aria-hidden="true">↗</span></a>' for loc in project['locales'])
-    status=f'''<section class="r11-global-status"><div class="container r11-status-layout"><div class="r11-status-copy"><span class="eyebrow">NAVIER–STOKES COMMONS · RESEARCH, NOT A CAMPAIGN</span><h1>{esc(thesis['headline'])}</h1><p class="lede">{esc(thesis['body'])}</p><div class="r11-actions"><a class="button" href="en/frontier/">Work on an open problem</a><a class="button secondary" href="en/agents/">Give an agent a research problem</a><a class="button ghost" href="en/math/">Mathematics</a><a class="text-link strong" href="en/review/">Review C/D ↗</a><a class="text-link" href="en/explain/">Explain A/B/C/D ↗</a><a class="text-link" href="en/context/">Context / credit ↗</a></div></div><div class="r11-status-object">{r11_status_grid(page)}<p class="r11-institution">Independent mathematical review and CMI recognition are distinct from OpenAI's publication claim.</p></div></div></section>'''
-    body=f'''<main id="main" class="global-landing">{status}{scale_trace("en")}<section class="r11-vortex-shell"><div class="container">{r5_vortex_stage(page,'en')}</div></section><section class="language-zone" aria-labelledby="language-title"><div class="language-zone-head"><span class="eyebrow">MULTILINGUAL ACCESS</span><h2 id="language-title">{esc(R['enter'])}</h2><p>English is the canonical research surface. Translation status remains explicit; mathematical claim scope does not change by locale.</p></div><div class="language-grid">{langs}</div></section></main>'''
-    write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons: {esc(thesis['headline'])}</title><meta name="description" content="{esc(thesis['body'])}">{SECURITY_META}<meta name="color-scheme" content="light dark">{r5_font_preloads(page)}<link rel="describedby" href="{esc(rel(page,'llms.txt'))}" type="text/markdown"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script></body></html>''')
+    body=f'''<main id="main" class="global-landing">{r14_rich_hero(page)}{scale_trace('en')}<p class="container"><a class="text-link strong" href="{esc(rel(page,'en/context/index.html'))}">Context / credit ↗</a></p><section class="language-zone" aria-labelledby="language-title"><div class="language-zone-head"><span class="eyebrow">MULTILINGUAL ACCESS</span><h2 id="language-title">{esc(R['enter'])}</h2><p>English is the canonical research surface. Translation status remains explicit; mathematical claim scope does not change by locale.</p></div><div class="language-grid">{langs}</div></section></main>'''
+    write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons</title><meta name="description" content="{esc(thesis['body'])}">{SECURITY_META}<meta name="color-scheme" content="light dark">{r5_font_preloads(page)}<link rel="describedby" href="{esc(rel(page,'llms.txt'))}" type="text/markdown"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{r14_ambient_canvas()}{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script></body></html>''')
 
 def benchmarks_page():
     page=PUBLIC/'en/benchmarks/index.html'
@@ -1081,6 +1144,12 @@ def machine_files():
     (PUBLIC/'data/clay-problem-status.json').write_text(json.dumps(clay_problem_status,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/frontier-graph.json').write_text(json.dumps(frontier_graph,indent=2,ensure_ascii=False)+'\n')
     (PUBLIC/'data/frontier-updates.json').write_text(json.dumps(frontier_updates,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/external-executors.json').write_text(json.dumps(external_executors,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/formalization-links.json').write_text(json.dumps(formalization_links,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/intake.json').write_text(json.dumps(intake_doc,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/source-watch.json').write_text(json.dumps(source_watch_doc,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/forge-topology.json').write_text(json.dumps(forge_topology,indent=2,ensure_ascii=False)+'\n')
+    (PUBLIC/'data/experience-policy.json').write_text(json.dumps(experience_policy,indent=2,ensure_ascii=False)+'\n')
     packet_dir=PUBLIC/'data/agent-packets'; packet_dir.mkdir(parents=True,exist_ok=True); packet_index=[]
     for q in quests:
         pkt=r11_agent_packet(q); fn=q['id']+'.json'; (packet_dir/fn).write_text(json.dumps(pkt,indent=2,ensure_ascii=False)+'\n'); packet_index.append({'problem_id':q['id'],'program_id':q['mission_id'],'title':q['title'],'frontier_priority':pkt['frontier'].get('priority','P3'),'url':fn})
@@ -1140,6 +1209,10 @@ def machine_files():
       f"- Clay A/B/C/D status: {ep['clay_problem_status']} - exact branch semantics and publication/recognition state",
       f"- Research frontier graph: {ep['frontier_graph']} - prioritized programs, dependencies, review classes",
       f"- Agent work packets: {ep['agent_packets']} - bounded problem packets derived from canonical work records",
+      f"- External formal executors: {ep['external_executors']} - delegated theorem execution and authority boundaries",
+      f"- Formalization links: {ep['formalization_links']} - Prove2Me/NSC evidence mappings",
+      f"- Unified forge intake: {ep['intake']} - derived GitHub + GitLab collaboration queue",
+      f"- Source watch: {ep['source_watch']} - detected primary-source changes pending review",
       f"- Governance: {ep['governance']} - roles and decision rules",
       f"- Initial review portfolio: {ep['founding_sprint']} - bootstrap independent-evidence set (legacy endpoint retained)",'',
       f"Never infer a stronger claim status than {ep['claims']}. Attempts are non-exclusive. Negative results and falsifications are valid when they satisfy the quest acceptance contract."
@@ -1149,7 +1222,7 @@ def machine_files():
     for rel in ['start.md','SKILL.md','AGENTS.md','GOVERNANCE.md','MISSION_POLICY.md','REVIEW_POLICY.md','CONTRIBUTING.md','PUBLIC_SSOT.json']:
         src=PUBLIC/rel
         if src.exists(): full_parts.append(f'\n\n# FILE: {rel}\n\n'+src.read_text())
-    for rel in ['data/capabilities.json','data/claims.json','data/quests.json','data/sources.json','data/founding-sprint.json','data/authority-map.json','data/simulations.json','data/actions.json','data/reference-benchmarks.json','data/research-context.json','data/clay-problem-status.json','data/frontier-graph.json','data/frontier-updates.json','data/agent-packets/index.json']:
+    for rel in ['data/capabilities.json','data/claims.json','data/quests.json','data/sources.json','data/founding-sprint.json','data/authority-map.json','data/simulations.json','data/actions.json','data/reference-benchmarks.json','data/research-context.json','data/clay-problem-status.json','data/frontier-graph.json','data/frontier-updates.json','data/agent-packets/index.json','data/external-executors.json','data/formalization-links.json','data/intake.json','data/source-watch.json','data/forge-topology.json','data/experience-policy.json']:
         src=PUBLIC/rel; full_parts.append(f'\n\n# FILE: {rel}\n\n'+src.read_text())
     (PUBLIC/'llms-full.txt').write_text(''.join(full_parts))
     if SITE_URL:
@@ -1176,7 +1249,7 @@ def main():
         for m in missions: mission_page(loc,m)
     quests_page()
     for q in quests: quest_page(q)
-    sprint_page(); governance_page(); claims_page(); benchmarks_page(); reference_flow_page(); r6_context_page(); r11_frontier_page(); r11_review_page(); r11_explain_page(); r13_math_page()
+    sprint_page(); governance_page(); claims_page(); benchmarks_page(); reference_flow_page(); r6_context_page(); r11_frontier_page(); r11_review_page(); r11_explain_page(); r13_math_page(); r14_formalization_page()
     machine_files()
     print(f'Built {sum(1 for _ in PUBLIC.rglob("*.html"))} HTML pages in {PUBLIC}')
 
