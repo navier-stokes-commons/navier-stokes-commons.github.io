@@ -267,6 +267,8 @@
   if(controls) controls.hidden=false;
 
   const speedInput=stage?.querySelector('[data-speed]'),speedOut=stage?.querySelector('[data-speed-out]');
+  let savedSpeed=1;try{const s=parseFloat(localStorage.getItem('nsc-vortex-speed'));if(Number.isFinite(s)&&s>=Number(speedInput?.min||.25)&&s<=Number(speedInput?.max||3))savedSpeed=s;}catch(_){}
+  if(speedInput&&savedSpeed!==1)speedInput.value=String(savedSpeed);
   const sweepMs=Math.max(1000,Number(stage?.dataset.sweepMs)||7000);
   let k=Number(kInput?.value||14),h=Number(hInput?.value||.005),yaw=-.28,pitch=.10,zoom=5.8,normalize=true;
   let pointer=[3,3],pointerPx=[-1000,-1000],dragging=false,px=0,py=0;
@@ -321,7 +323,7 @@
   canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(3.7,Math.min(9.4,zoom+e.deltaY*.004));schedule();},{passive:false});
   kInput?.addEventListener('input',()=>{k=Number(kInput.value);setPlaying(false);stats();schedule();},{passive:true});
   hInput?.addEventListener('input',()=>{h=Number(hInput.value);stats();schedule();},{passive:true});
-  speedInput?.addEventListener('input',()=>{if(playing){playStart=performance.now()-(k-.5)/59.5*(sweepMs/Number(speedInput.value));}updateSpeedLabel();schedule();},{passive:true});
+  speedInput?.addEventListener('input',()=>{try{localStorage.setItem('nsc-vortex-speed',String(Number(speedInput.value)));}catch(_){}if(playing){playStart=performance.now()-(k-.5)/59.5*(sweepMs/Number(speedInput.value));}updateSpeedLabel();schedule();},{passive:true});
   playBtn?.addEventListener('click',()=>{if(reduced.matches)return;if(playing){setPlaying(false);return;}playFrom=.5;k=.5;if(kInput)kInput.value=String(k);stats();setPlaying(true);});
   frameBtn?.addEventListener('click',()=>{normalize=!normalize;frameBtn.textContent=normalize?(frameBtn.dataset.normalizedLabel||'Normalized core frame'):(frameBtn.dataset.labLabel||'Laboratory frame');if(modeLabel)modeLabel.textContent=normalize?(stage.dataset.modeNormalized||'NORMALIZED FOLLOW-CORE VIEW'):(stage.dataset.modeLaboratory||'LOG-COMPRESSED LABORATORY VIEW');schedule();});
   const applyMotionPreference=()=>{if(reduced.matches){playing=false;ambient=false;}else{if(!ambientUserPaused)ambient=true;if(!playing){playing=true;playStart=performance.now();playFrom=.5;}}if(playBtn){playBtn.disabled=Boolean(reduced.matches);playBtn.setAttribute('aria-disabled',String(Boolean(reduced.matches)));playBtn.setAttribute('aria-pressed',String(playing));playBtn.textContent=playing?(playBtn.dataset.pauseLabel||'Pause sweep'):(playBtn.dataset.playLabel||'Play sweep');}updateSpeedLabel();stats();schedule();};

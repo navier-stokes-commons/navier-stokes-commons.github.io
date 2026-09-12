@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import sys
+import json,sys
 R=Path(__file__).resolve().parents[1];P=R/'public';errs=[]
 h=(P/'en/index.html').read_text();root=(P/'index.html').read_text();math=(P/'en/math/index.html').read_text();js=(R/'assets/site.js').read_text();css=(R/'assets/style.css').read_text()
+pol=json.loads((R/'content/public/experience_policy.json').read_text()).get('rich_home',{})
+if not pol.get('vortex_motion_default') or not pol.get('vortex_motion_loops') or not pol.get('vortex_sweep_speed_control') or pol.get('vortex_sweep_default_ms')!=7000:errs.append('experience policy contradicts autoplay+loop+speed contract')
+if 'data-sweep-ms="7000"' not in h or 'data-speed' not in h:errs.append('flagship lacks 7000ms sweep + speed control markup')
+for tok in ['const q=raw%1','nsc-vortex-speed']:
+    if tok not in js:errs.append('runtime missing loop/speed persistence token '+tok)
 for name,text in [('root',root),('en',h)]:
  for tok in ['class="r14-hero"','data-vortex-stage','class="r14-abcd-strip"','data-ambient-field','>Mathematics<']:
   if tok not in text:errs.append(name+' missing '+tok)

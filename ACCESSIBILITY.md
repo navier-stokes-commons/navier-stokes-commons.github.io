@@ -14,7 +14,9 @@ The public site targets **WCAG 2.2 Level AA**, a stronger and more current targe
 - high-contrast light and dark system themes;
 - 44×44 CSS minimum for primary controls;
 - no critical information conveyed only by color;
-- no auto-playing media;
+- auto-playing motion is limited to the scientific schematic: it loops at a
+  user-set speed, pauses on demand, stays static under reduced-motion, and never
+  autoplays audio;
 - reduced-motion handling;
 - responsive layout without required horizontal scrolling at ordinary phone widths;
 - correct language and text-direction declarations;

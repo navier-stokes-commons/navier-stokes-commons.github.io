@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, os, shutil, html, urllib.parse, re, math
+import json, os, shutil, html, urllib.parse, re, math, subprocess
 from pathlib import Path
 from nsc_model import project_view, expanded_missions, expanded_quests, expanded_claims_doc, localized_license_line, counts, capabilities, public_registry, release_policy
 
@@ -71,6 +71,18 @@ if not FORGE_KIND:
     FORGE_KIND='github' if GH_REPO else ('gitlab' if GL_URL else 'generic')
 if not FORGE_URL:
     FORGE_URL=(f'https://github.com/{GH_REPO}' if GH_REPO else GL_URL)
+if not FORGE_URL:
+    try:
+        _remote=subprocess.run(['git','-C',str(Path(__file__).resolve().parents[1]),'remote','get-url','origin'],capture_output=True,text=True,timeout=5).stdout.strip()
+    except Exception:
+        _remote=''
+    if _remote.startswith('https://github.com/') or _remote.startswith('git@github.com:'):
+        _owner_repo=_remote.split('github.com',1)[1].lstrip('/:').removesuffix('.git')
+        FORGE_URL=f'https://github.com/{_owner_repo}'
+    elif _remote:
+        FORGE_URL=_remote.removesuffix('.git')
+    if FORGE_URL and FORGE_KIND=='generic':
+        FORGE_KIND='github' if 'github.com' in FORGE_URL else 'generic'
 REPO_URL=FORGE_URL
 HOST=FORGE_KIND
 

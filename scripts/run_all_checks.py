@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import subprocess,sys,time,json,os
+os.environ.setdefault('GITHUB_REPOSITORY','Aletheia-Prime/navier-stokes-commons-public')
 from scratch import ScratchPolicyError,scratch_dir
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
