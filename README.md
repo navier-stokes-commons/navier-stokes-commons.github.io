@@ -86,3 +86,6 @@ Software: Apache-2.0. Original content: Creative Commons Attribution 4.0 Interna
 ## Rich research interface and spare compute
 
 The rich public surface recruits both human and machine effort: visitors may take a bounded research problem, route spare local/API inference compute to an agent-suitable packet, submit negative or positive artifacts, and enter independent review. The R16 flow field is an exploratory UI device, not the computed 2026 solution. The plain Mathematics projection remains independent of this interface.
+## Start here / casual onboarding
+
+The human Start path is generated at `/en/guide/`. It includes audience-specific entry routes, a first-coding-agent workflow, and a link to a non-canonical long-form ChatGPT explainer. Commercial support is currently disabled; future sponsorship/affiliate boundaries are documented in `docs/SPONSORSHIP_AND_AFFILIATE_POLICY.md`.

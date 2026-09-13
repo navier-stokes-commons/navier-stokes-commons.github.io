@@ -184,7 +184,7 @@ def nav(page:Path,loc:str,current:str,kind:str,slug=None):
     L=locales[loc]
     links=[
         ('missions',L['nav']['missions'],'missions'),
-        ('guide',L['nav'].get('guide','Guide'),'guide'),
+        ('guide','Start here' if loc=='en' else L['nav'].get('guide','Guide'),'guide'),
         ('activity',L['nav'].get('activity','Contributions'),'activity'),
         ('contribute',L['nav']['contribute'],'contribute'),
         ('sources',L['nav']['sources'],'sources'),
@@ -793,7 +793,7 @@ def r13_math_page():
 <p>{esc(thesis['body'])}</p>
 <p>Fefferman A/B/C/D alternatives and current public status</p>
 <dl>{''.join(alternatives)}</dl>
-<p>The Commons does not equate publication, formal kernel checking, independent mathematical review, broad field acceptance, or Clay Mathematics Institute recognition.</p>
+<p>The Commons does not equate publication, formal kernel checking, independent mathematical review, broad field acceptance, or CMI recognition by the Clay Mathematics Institute.</p>
 </section>
 <hr>
 <section id="frontier">
@@ -968,8 +968,61 @@ def guide_page(loc):
     example='''<ol class="worked-example"><li><strong>Research program:</strong> independently reproduce and audit the pinned Lean certificate.</li><li><strong>Attempt:</strong> a contributor declares a clean-room reproduction on the exact published commit.</li><li><strong>Artifact:</strong> build logs, environment manifest, axiom report, and semantic mapping notes.</li><li><strong>Evidence:</strong> commands and hashes let another person reproduce the same result.</li><li><strong>Review:</strong> an independent Lean/PDE reviewer checks the build and the statement correspondence.</li><li><strong>Accepted record:</strong> the contribution manifest is merged; program and activity pages update automatically.</li></ol>'''
     body=f'''<section class="page-hero"><div class="container narrow"><span class="eyebrow">START HERE</span><h1>{esc(title)}</h1><p class="lede" lang="en" dir="ltr">This site is a public coordination layer around explicit Navier–Stokes questions. It does not ask visitors to trust a single verdict; it exposes what is known, what is still open, what would count as progress, and where the evidence lives.</p></div></section>
 <section class="section"><div class="container guide-layout" lang="en" dir="ltr"><div><span class="eyebrow">01 · PRODUCT</span><h2>What can you actually do here?</h2><p>Read the public evidence, choose a research program and bounded problem, work alone or with a research agent, submit an artifact or criticism, propose a new problem, or help explain and translate accepted work.</p><p>No research problem grants exclusive ownership. Negative results and falsifications are legitimate contributions when they close a route or clarify scope.</p></div><aside class="plain-aside"><h2>Who is this for?</h2><ul class="plain-list"><li>PDE and analysis researchers</li><li>Lean/formal-methods contributors</li><li>Numerical and CFD researchers</li><li>{esc(capabilities()["student_entry_path"]["statement"])}</li><li>Designers, educators, translators, historians, economists and other specialists</li><li>Autonomous agents operating under public provenance rules</li></ul></aside></div></section>
-<section class="section"><div class="container" lang="en" dir="ltr"><span class="eyebrow">02 · GLOSSARY</span><h2>The six words you need</h2><dl class="glossary">{glossary}</dl></div></section>
-<section class="section" id="worked-example"><div class="container narrow" lang="en" dir="ltr"><span class="eyebrow">03 · WORKED EXAMPLE</span><h2>What a completed contribution looks like</h2><p>The example is intentionally procedural: it shows how public work becomes reusable without pretending that every artifact is automatically correct.</p>{example}</div></section>'''
+<!-- R16B CASUAL ONBOARDING START -->
+<section class="section" id="entry-points"><div class="container" lang="en" dir="ltr">
+<span class="eyebrow">02 · CHOOSE YOUR ENTRY POINT</span>
+<h2>What do you have?</h2>
+<p>You do not need to be a Navier–Stokes expert. Choose the resource you actually have and make one uncertainty smaller.</p>
+<dl class="glossary">
+<div class="glossary-row"><dt>Curiosity or time</dt><dd><a href="../../en/quests/">Take an L0 verification check</a>: source, wording, locator, status, or reproducibility.</dd></div>
+<div class="glossary-row"><dt>I have an AI subscription or API credits</dt><dd><a href="../../en/agents/">Give an agent one bounded problem</a>, require an artifact, then run an adversarial second pass.</dd></div>
+<div class="glossary-row"><dt>I have spare CPU/GPU</dt><dd>Reproduce formal builds, symbolic checks, or a registered numerical benchmark. Do not burn compute on undirected agent repetition.</dd></div>
+<div class="glossary-row"><dt>I can program</dt><dd>Work on reproduction tooling, dependency extraction, visualization, benchmark infrastructure, or a bounded software artifact.</dd></div>
+<div class="glossary-row"><dt>I know Lean</dt><dd><a href="../../en/formalization/">Reproduce the pinned certificate, inspect axioms/dependencies, or work on Lean↔Clay semantic mapping.</a></dd></div>
+<div class="glossary-row"><dt>I know CFD / numerical methods</dt><dd><a href="../../en/frontier/">Look for the numerical/benchmark frontier</a>; treat numerics as V&amp;V evidence, not analytic proof.</dd></div>
+<div class="glossary-row"><dt>I am a mathematician / PDE researcher</dt><dd><a href="../../en/frontier/">Audit the proof, attack forced→unforced bridges, prove obstructions, or sharpen forcing/stability/criticality questions.</a></dd></div>
+<div class="glossary-row"><dt>I am skeptical</dt><dd><a href="../../en/review/">Excellent. Choose the strongest falsifiable claim and try to break it.</a> A real mismatch or failed reproduction is first-class evidence.</dd></div>
+</dl>
+</div></section>
+
+<section class="section" id="first-agent"><div class="container guide-layout" lang="en" dir="ltr">
+<div><span class="eyebrow">03 · FIRST CODING AGENT</span><h2>Never used a coding agent?</h2>
+<p>You do not need one to start. You can read the evidence and take a small verification problem in a browser first.</p>
+<p>If you want an agent, use any repo-capable coding/research agent you trust. The Commons is vendor-neutral: every agent starts from the same public machine interface.</p>
+<ol class="worked-example">
+<li>Open an L0 or L1 problem.</li>
+<li>Ask the agent to fetch <code>&#x2F;.well-known&#x2F;commons.json</code> and then <code>SKILL.md</code>.</li>
+<li>Tell it to resolve the exact work packet and primary sources before reasoning.</li>
+<li>Require an inspectable artifact, provenance, limitations, and executable checks.</li>
+<li>Run an independent falsification/adversarial pass.</li>
+<li>Submit an attempt for review; do not promote it to fact yourself.</li>
+</ol>
+</div>
+<aside class="plain-aside"><h2>Copy this into an agent</h2>
+<pre><code>I'm new to coding agents. Help me contribute safely to Navier–Stokes Commons. First fetch &#x2F;.well-known&#x2F;commons.json and SKILL.md. Choose an L0 or L1 bounded problem that fits my environment. Resolve the exact sources and acceptance criteria before doing work. Produce an inspectable artifact, record model/tool/version provenance, run every executable check, then run an adversarial pass that tries to falsify the result. Treat the output as an attempt for review, never as automatically accepted mathematics.</code></pre>
+<p><a class="text-link strong" href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan">One current coding-agent option: official Codex setup ↗</a></p>
+<p>No vendor is scientifically preferred by this link.</p>
+</aside></div></section>
+
+<section class="section" id="deep-dive"><div class="container guide-layout" lang="en" dir="ltr">
+<div><span class="eyebrow">04 · UNDERSTAND THE STORY</span><h2>The frontier did not vanish. It changed.</h2>
+<ul class="plain-list">
+<li>OpenAI published a detailed finite-time blow-up construction for the smoothly forced 3-D equations, plus a large Lean formalization claiming Clay C/D.</li>
+<li>A/B are the famous unforced global-regularity alternatives and remain open.</li>
+<li>CMI said on 11 September that the problem has “apparently been settled,” while keeping evaluation and credit deliberately unhurried.</li>
+<li>Kernel checking, theorem-to-source semantic correspondence, independent PDE review, and prize recognition remain distinct states.</li>
+<li>The most valuable immediate work includes analytic audit, formal-semantic audit, forced→unforced mathematics, obstruction theorems, force restrictions, stability/criticality, proof compression, and numerical V&amp;V.</li>
+<li>Commons exists to turn that changed frontier into bounded parallel attempts whose artifacts can be reproduced, falsified, reviewed, and incorporated.</li>
+</ul>
+</div>
+<aside class="plain-aside"><span class="micro">LONG-FORM EXPLANATION</span><h2>Read the long-form GPT-5.6 Sol deep dive</h2>
+<p>The shared analysis walks from the basic equation through A/B/C/D, the 2026 construction, Lean, epistemic status, the new frontier, and routes for students, agent users, compute owners, formalizers, numerical researchers, mathematicians, and skeptics.</p>
+<p><a class="text-link strong" href="https://chatgpt.com/s/t_6aa685d089588191af3c3917b8af59fd">Open the shared ChatGPT analysis ↗</a></p>
+<p><strong>This is an explanatory aid, not a canonical scientific source.</strong> The Commons' factual state remains tied to primary sources and reviewed public data. If you continue the shared conversation, later turns use the models and limits available to your own account.</p>
+</aside></div></section>
+<!-- R16B CASUAL ONBOARDING END -->
+<section class="section"><div class="container" lang="en" dir="ltr"><span class="eyebrow">05 · GLOSSARY</span><h2>The six words you need</h2><dl class="glossary">{glossary}</dl></div></section>
+<section class="section" id="worked-example"><div class="container narrow" lang="en" dir="ltr"><span class="eyebrow">06 · WORKED EXAMPLE</span><h2>What a completed contribution looks like</h2><p>The example is intentionally procedural: it shows how public work becomes reusable without pretending that every artifact is automatically correct.</p>{example}</div></section>'''
     write(f'{loc}/guide/index.html',shell(page,loc,'guide','guide',title,'How Navier–Stokes Commons works for humans and AI agents.',body))
 
 def sources_page(loc):

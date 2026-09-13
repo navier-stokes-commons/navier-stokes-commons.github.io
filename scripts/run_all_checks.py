@@ -19,6 +19,7 @@ commands=[
  ['python3','scripts/audit_r11_frontier_graph.py'],
  ['python3','scripts/audit_r12_sdlc_authority.py'],
  ['python3','scripts/build_site.py'],
+ ['python3','scripts/audit_r16b_onboarding.py'],
  ['python3','scripts/audit_r14_product_boundary.py'],
  ['python3','scripts/audit_r14_prove2me_bridge.py'],
  ['python3','scripts/audit_r14_experience_policy.py'],

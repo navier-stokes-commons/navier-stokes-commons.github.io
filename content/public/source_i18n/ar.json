@@ -89,5 +89,12 @@
     "claims_supported": [
       "Mutable compatibility watch for the current public Prove2Me agent/formalization interface. Changes trigger review; they do not automatically change NSC authority state."
     ]
+  },
+  "clay-2026-announcement": {
+    "title": "Navier-Stokes Announcement",
+    "claims_supported": [
+      "CMI says it is contemplating the announcement that the Navier-Stokes problem has apparently been settled",
+      "CMI says the prize evaluation and credit process is deliberately unhurried"
+    ]
   }
 }

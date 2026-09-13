@@ -1,14 +1,14 @@
 {
   "schema": "nsc-clay-problem-status-v2",
-  "observed_at": "2026-09-11",
+  "observed_at": "2026-09-13",
   "authority_policy": "primary-source-first; source-reported proof claims are not upgraded by presentation copy",
   "official_problem": {
     "source_id": "clay-formulation",
     "statement": "Fefferman accepts a proof of any one of four alternatives A/B/C/D.",
     "institutional_status": {
-      "state": "not-yet-recognized-by-CMI",
-      "source_id": "clay-ns",
-      "note": "CMI currently lists Navier–Stokes as Active. If the C/D proof is correct, it resolves the mathematical disjunction in Fefferman’s problem statement; CMI recognition is a separate process requiring a qualifying publication, at least two years, and general acceptance under CMI rules."
+      "state": "cmi-apparently-settled-evaluation-pending",
+      "source_id": "clay-2026-announcement",
+      "note": "On 11 September 2026 CMI said it was contemplating the announcement that the Navier-Stokes problem has \"apparently been settled,\" while explicitly saying its evaluation and credit process is deliberately unhurried. The current problem page remains Active and there is no prize recognition. Unforced A/B remain open."
     }
   },
   "alternatives": [
@@ -51,7 +51,7 @@
   ],
   "landing_thesis": {
     "headline": "OpenAI claims C and D. A and B remain open.",
-    "body": "Clay asks for a proof of any one of A, B, C or D. A/B are the unforced global-regularity statements; C/D allow smooth forcing and ask for breakdown. OpenAI published an analytic proof and Lean formalization claiming C/D. If that proof is correct, it resolves the mathematical disjunction Fefferman posed; independent review and CMI recognition are separate. Unforced A/B and much of Navier–Stokes remain open."
+    "body": "Clay accepts a proof of any one of A, B, C or D. A/B are the unforced global-regularity statements; C/D allow smooth forcing and ask for breakdown. OpenAI published an analytic proof and Lean formalization claiming C/D. On 11 September CMI said the problem has \"apparently been settled,\" while keeping its deliberately unhurried evaluation/credit process separate. Unforced A/B and much of Navier-Stokes remain open."
   },
   "sources": [
     {
@@ -73,6 +73,11 @@
       "id": "clay-rules",
       "url": "https://www.claymath.org/millennium-problems/rules/",
       "authority": "institutional-rules"
+    },
+    {
+      "id": "clay-2026-announcement",
+      "url": "https://www.claymath.org/news/navier-stokes-announcement/",
+      "authority": "institutional-current-assessment"
     }
   ]
 }

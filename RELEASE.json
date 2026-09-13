@@ -43,7 +43,7 @@
     "ar"
   ],
   "missions": 18,
-  "public_sources_and_standards": 17,
+  "public_sources_and_standards": 18,
   "accessibility_target": "WCAG 2.2 Level AA",
   "accessibility_claim": "engineered/self-assessed target; independent assistive-technology and disabled-user sign-off remains required",
   "runtime_third_party_scripts": false,

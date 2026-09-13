@@ -55,6 +55,20 @@
     "reference_type": "mutable-public-url"
   },
   {
+    "id": "clay-2026-announcement",
+    "kind": "primary",
+    "title": "Navier-Stokes Announcement",
+    "publisher": "Clay Mathematics Institute",
+    "date": "2026-09-11",
+    "url": "https://www.claymath.org/news/navier-stokes-announcement/",
+    "claims_supported": [
+      "CMI says it is contemplating the announcement that the Navier-Stokes problem has apparently been settled",
+      "CMI says the prize evaluation and credit process is deliberately unhurried"
+    ],
+    "retrieved_at": "2026-09-13",
+    "reference_type": "mutable-public-url"
+  },
+  {
     "id": "clay-formulation",
     "kind": "primary",
     "title": "Existence and Smoothness of the Navier–Stokes Equation",
