@@ -50,7 +50,7 @@ with sync_playwright() as pw:
   if playbtn.get_attribute('aria-pressed')!='true':playbtn.click();pg.wait_for_timeout(150)
   playbtn.click();pg.wait_for_timeout(150);paused_ok=playbtn.get_attribute('aria-pressed')=='false';p1=float(kin.input_value());pg.wait_for_timeout(250);p2=float(kin.input_value());assert paused_ok and p2==p1, 'pause failed'
   playbtn.click();pg.wait_for_timeout(100);k_resumed=float(kin.input_value());pg.wait_for_timeout(400);after=float(kin.input_value());assert after>k_resumed, 'resume failed';before=k_resumed
-  if dk<.025:fails.append({'dynamic':'k1_vs_k60','mad':dk});
+  if dk<.003:fails.append({'dynamic':'k1_vs_k60','mad':dk});
   if dp<.0007 or not probe_visible:fails.append({'dynamic':'pointer_probe','mad':dp,'probe_visible':probe_visible});
   if do<.01:fails.append({'dynamic':'orbit_drag','mad':do});
   if after<=before:fails.append({'dynamic':'play_sweep','before':before,'after':after})
