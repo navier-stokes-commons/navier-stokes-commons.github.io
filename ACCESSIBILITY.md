@@ -14,10 +14,9 @@ The public site targets **WCAG 2.2 Level AA**, a stronger and more current targe
 - high-contrast light and dark system themes;
 - 44×44 CSS minimum for primary controls;
 - no critical information conveyed only by color;
-- auto-playing motion is limited to the scientific schematic and the ambient
-  glyph field: both can be paused from the page, stay fully static under
-  reduced-motion, never autoplay audio, and the schematic sweep loops at a
-  user-set speed;
+- rich-mode visual motion starts automatically only when reduced motion is not requested; one explicit Pause/Resume control governs nonessential rich motion, while ordinary pointer/drag/parameter interaction never silently changes the user's running intent;
+- the R16 pointer wake and Flow response control are explicitly UI-only exploratory effects, not physical viscosity or a computed 2026 solution;
+- reduced-motion keeps the rich view static, and the zero-JavaScript path retains a complete static scientific fallback;
 - reduced-motion handling;
 - responsive layout without required horizontal scrolling at ordinary phone widths;
 - correct language and text-direction declarations;

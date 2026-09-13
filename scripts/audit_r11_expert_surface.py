@@ -9,8 +9,12 @@ def txt(p):
     if not f.exists(): errs.append('missing '+p); return ''
     return f.read_text(errors='replace')
 h=txt('en/index.html'); root=txt('index.html'); fr=txt('en/frontier/index.html'); rv=txt('en/review/index.html'); ex=txt('en/explain/index.html'); probs=txt('en/quests/index.html'); guide=txt('en/guide/index.html'); agents=txt('en/agents/index.html')
-for needle in ['OpenAI claims C and D','A and B remain open','Work on an open problem','Give an agent a research problem','Review C/D']:
+for needle in ['OpenAI claims C and D','A and B remain open','Review C/D']:
     if needle not in h and needle not in root: errs.append('missing expert-first thesis/action '+needle)
+if not (('Take an open problem' in h or 'Take an open problem' in root) or ('Work on an open problem' in h or 'Work on an open problem' in root)):
+    errs.append('missing expert-first thesis/action open-problem CTA')
+if not (('Put spare compute to work' in h or 'Put spare compute to work' in root) or ('Give an agent a research problem' in h or 'Give an agent a research problem' in root)):
+    errs.append('missing expert-first thesis/action spare-compute CTA')
 for bad in ['One hard problem. Many legitimate ways to help.','Start a quest','Research Sprint']:
     if bad in h or bad in root: errs.append('legacy general-public/gamified first-surface copy remains: '+bad)
 for label,doc in [('frontier',fr),('review',rv),('explain',ex)]:

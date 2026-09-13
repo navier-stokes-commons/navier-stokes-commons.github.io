@@ -44,7 +44,7 @@ with sync_playwright() as pw:
   ctx=b.new_context(viewport={'width':1200,'height':900},reduced_motion='no-preference');pg=ctx.new_page();pg.set_content(inline(P/'en/index.html',True),wait_until='domcontentloaded');pg.wait_for_timeout(4200);stage=pg.locator('[data-vortex-stage]');kin=pg.locator('[data-k]')
   def setk(v):kin.evaluate(f"e=>{{e.value='{v}';e.dispatchEvent(new Event('input',{{bubbles:true}}))}}");pg.wait_for_timeout(100)
   setk(1);a=shot(stage);setk(60);bb=shot(stage);dk=mad(a,bb);(SHOTS/'k1.png').write_bytes(a);(SHOTS/'k60.png').write_bytes(bb)
-  setk(14);base=shot(stage);box=pg.locator('[data-vortex-canvas]').bounding_box();pg.mouse.move(box['x']+box['width']*.70,box['y']+box['height']*.40);pg.wait_for_timeout(100);probe=shot(stage);dp=mad(base,probe);probe_visible=pg.locator('[data-flow-probe]').is_visible()
+  setk(14);base=shot(stage);box=pg.locator('[data-vortex-canvas]').bounding_box();pg.mouse.move(box['x']+box['width']*.70,box['y']+box['height']*.40);pg.wait_for_timeout(100);probe=shot(stage);dp=mad(base,probe);probe_visible=pg.locator('[data-flow-probe]').is_visible() or pg.locator('.r16-fluid-canvas').is_visible()
   pg.mouse.move(box['x']+box['width']*.53,box['y']+box['height']*.54);pg.mouse.down();pg.mouse.move(box['x']+box['width']*.73,box['y']+box['height']*.37,steps=7);pg.mouse.up();pg.wait_for_timeout(100);orb=shot(stage);do=mad(probe,orb)
   playbtn=pg.locator('[data-vortex-controls] [data-play]')
   if playbtn.get_attribute('aria-pressed')!='true':playbtn.click();pg.wait_for_timeout(150)

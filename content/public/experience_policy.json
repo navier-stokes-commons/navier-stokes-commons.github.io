@@ -18,7 +18,24 @@
     "scroll_phase_response": true,
     "pause_control_required": true,
     "reduced_motion_disables_automatic_motion": true,
-    "save_data_reduces_density_and_frame_rate": true
+    "save_data_reduces_density_and_frame_rate": true,
+    "motion_stop_semantics": [
+      "explicit_user_pause",
+      "prefers-reduced-motion"
+    ],
+    "pointer_interaction_preserves_running_intent": true,
+    "parameter_changes_preserve_running_intent": true,
+    "visibility_suspends_without_changing_running_intent": true,
+    "flow_response_modes": [
+      "light",
+      "balanced",
+      "viscous"
+    ],
+    "flow_response_is_ui_only": true,
+    "fluid_wake_pointer_velocity": true,
+    "dominant_wireframe_hourglass_prohibited": true,
+    "advanced_parameters_subordinate": true,
+    "spare_compute_primary_cta": true
   },
   "mathematics_view": {
     "javascript_required": false,
@@ -31,6 +48,7 @@
   "scientific_boundary": {
     "vortex": "source-constrained schematic; not the computed 2026 solution field",
     "ambient_glyph_field": "decorative reference-flow-inspired interface field; pointer perturbation is UI-only",
-    "quantitative_readouts": "must remain source-derived or explicitly derived with provenance"
+    "quantitative_readouts": "must remain source-derived or explicitly derived with provenance",
+    "fluid_pointer_response": "UI-only exploratory perturbation using pointer position/velocity; not physical viscosity and not the computed 2026 solution."
   }
 }

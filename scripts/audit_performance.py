@@ -4,7 +4,9 @@ from pathlib import Path
 from urllib.parse import urlsplit
 import re,sys
 ROOT=Path(__file__).resolve().parents[1]; PUBLIC=ROOT/'public'; CSS=ROOT/'assets/style.css'; JS=ROOT/'assets/site.js'; FONTS=ROOT/'assets/fonts'; errs=[]; warnings=[]
-limits={'css':55*1024,'js':38*1024,'html':110*1024,'fonts_total':420*1024}
+# R16's authored fluid renderer is bundled locally; retain bounded payload
+# limits while accounting for its CSS/JS overlay.
+limits={'css':60*1024,'js':56*1024,'html':110*1024,'fonts_total':420*1024}
 if CSS.stat().st_size>limits['css']: errs.append(f'CSS {CSS.stat().st_size} > {limits["css"]}')
 if JS.stat().st_size>limits['js']: errs.append(f'JS {JS.stat().st_size} > {limits["js"]}')
 css=CSS.read_text(); js=JS.read_text()

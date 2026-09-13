@@ -82,3 +82,7 @@ For first publication and post-publication smoke tests, follow `docs/PUBLISHING.
 <!-- GENERATED:license-summary:start -->
 Software: Apache-2.0. Original content: Creative Commons Attribution 4.0 International. Metadata: CC0-1.0. See `LICENSE_POLICY.md`, `CONTENT_LICENSE.md`, and `DCO.md`.
 <!-- GENERATED:license-summary:end -->
+
+## Rich research interface and spare compute
+
+The rich public surface recruits both human and machine effort: visitors may take a bounded research problem, route spare local/API inference compute to an agent-suitable packet, submit negative or positive artifacts, and enter independent review. The R16 flow field is an exploratory UI device, not the computed 2026 solution. The plain Mathematics projection remains independent of this interface.

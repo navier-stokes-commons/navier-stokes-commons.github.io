@@ -6,7 +6,9 @@ R=Path(__file__).resolve().parents[1]
 css=(R/'assets/style.css').read_text(); js=(R/'assets/site.js').read_text(); errs=[]
 # Static payload budgets: generous enough for the selected experience but small
 # enough that visual polish cannot silently turn into a framework-sized runtime.
-limits={'css':55*1024,'js':64*1024,'fonts':260*1024}
+# R16 adds the fluid-field visual system to the established stylesheet. Keep a
+# bounded budget while accounting for that authored, static overlay.
+limits={'css':60*1024,'js':64*1024,'fonts':260*1024}
 if len(css.encode())>limits['css']: errs.append(f'CSS bytes {len(css.encode())} > {limits["css"]}')
 if len(js.encode())>limits['js']: errs.append(f'JS bytes {len(js.encode())} > {limits["js"]}')
 font_dir=R/'assets/fonts'; font_bytes=sum(p.stat().st_size for p in font_dir.glob('*.woff2')) if font_dir.exists() else 0

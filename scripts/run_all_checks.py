@@ -22,6 +22,7 @@ commands=[
  ['python3','scripts/audit_r14_product_boundary.py'],
  ['python3','scripts/audit_r14_prove2me_bridge.py'],
  ['python3','scripts/audit_r14_experience_policy.py'],
+ ['python3','scripts/audit_r16_fluid_hero.py'],
  ['python3','scripts/audit_r14_forge_topology.py'],
  ['python3','scripts/audit_github_identity.py'],
  ['python3','scripts/audit_r14_intake.py'],
