@@ -28,11 +28,11 @@ Do not edit generated HTML to make a failing gate pass. Correct canonical source
 
 ## Canonical GitHub target
 
-The configured canonical repository is `timperelman/navier-stokes-commons-public`. The source tree may be staged there while private, but collaboration launch begins only when repository visibility is public and the deployed smoke tests below pass.
+The configured canonical repository is `navier-stokes-commons/navier-stokes-commons.github.io`. The source tree may be staged there while private, but collaboration launch begins only when repository visibility is public and the deployed smoke tests below pass.
 
 ## GitHub publication
 
-1. Use the configured canonical repository `timperelman/navier-stokes-commons-public`; do not create a competing canonical repository.
+1. Use the configured canonical repository `navier-stokes-commons/navier-stokes-commons.github.io`; do not create a competing canonical repository.
 2. Keep the repository private during the exact source cutover and the first CI validation.
 3. Push the exact source-only release tree to `main` and require **Public site CI** to pass on that exact commit.
 4. Change repository visibility to public only after CI succeeds.

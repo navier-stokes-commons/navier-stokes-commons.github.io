@@ -42,7 +42,7 @@ Choose GitHub.com and the preferred Git protocol. Browser authentication is pref
 
 ```bash
 gh auth status
-gh repo view timperelman/navier-stokes-commons-public
+gh repo view navier-stokes-commons/navier-stokes-commons.github.io
 ```
 
 4. Confirm Git write access using the actual checkout remote, without making a commit:
@@ -59,19 +59,19 @@ After creating the dedicated GitLab mirror key below:
 
 ```bash
 gh secret set NSC_GITLAB_MIRROR_SSH_KEY \
-  --repo timperelman/navier-stokes-commons-public \
+  --repo navier-stokes-commons/navier-stokes-commons.github.io \
   < ~/.ssh/nsc_gitlab_mirror
 
 gh variable set NSC_GITLAB_MIRROR_ENABLED \
-  --repo timperelman/navier-stokes-commons-public \
+  --repo navier-stokes-commons/navier-stokes-commons.github.io \
   --body true
 ```
 
 Then verify only the secret/variable names, never their values:
 
 ```bash
-gh secret list --repo timperelman/navier-stokes-commons-public
-gh variable list --repo timperelman/navier-stokes-commons-public
+gh secret list --repo navier-stokes-commons/navier-stokes-commons.github.io
+gh variable list --repo navier-stokes-commons/navier-stokes-commons.github.io
 ```
 
 ## Prove2Me setup if missing

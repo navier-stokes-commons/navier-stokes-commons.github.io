@@ -2,7 +2,7 @@
 from __future__ import annotations
 import subprocess,sys,time,json,os
 if not os.environ.get('GITHUB_REPOSITORY') and not os.environ.get('CI_PROJECT_URL') and not os.environ.get('COMMONS_FORGE_URL'):
-    os.environ['GITHUB_REPOSITORY']='timperelman/navier-stokes-commons-public'
+    os.environ['GITHUB_REPOSITORY']='navier-stokes-commons/navier-stokes-commons.github.io'
 from scratch import ScratchPolicyError,scratch_dir
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]

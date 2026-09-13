@@ -34,7 +34,7 @@ def main() -> int:
         for hit in hits:
             print(" - " + hit, file=sys.stderr)
         return 1
-    print("GITHUB_IDENTITY_AUDIT_PASS owner=timperelman retired_current_refs=0 historical_allowlist=0")
+    print("GITHUB_IDENTITY_AUDIT_PASS owner=navier-stokes-commons retired_current_refs=0 historical_allowlist=0")
     return 0
 
 if __name__ == "__main__":

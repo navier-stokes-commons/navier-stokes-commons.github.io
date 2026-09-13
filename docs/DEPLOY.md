@@ -13,7 +13,7 @@ For a source checkout, `public/` is generated and ignored by Git. For a full rel
 
 ## 2. Canonical GitHub Pages deployment
 
-The canonical repository is `timperelman/navier-stokes-commons-public`. For the first public cutover, keep it private while replacing the staging source and while CI validates the exact commit. Change visibility only after that CI run succeeds.
+The canonical repository is `navier-stokes-commons/navier-stokes-commons.github.io`. For the first public cutover, keep it private while replacing the staging source and while CI validates the exact commit. Change visibility only after that CI run succeeds.
 
 1. Replace the staging branch with the exact source-only release tree.
 2. Wait for **Public site CI** on that exact commit and require success.

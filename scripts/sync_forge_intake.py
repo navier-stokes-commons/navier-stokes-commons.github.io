@@ -62,7 +62,7 @@ def gitlab_items(project,token=None):
     return out
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--github-repo',default=os.getenv('NSC_GITHUB_REPO','timperelman/navier-stokes-commons-public'));ap.add_argument('--gitlab-project',default=os.getenv('NSC_GITLAB_PROJECT','champia-labs-group/navier-stokes-commons-public'));ap.add_argument('--output',default=str(ROOT/'content/public/intake.json'));ap.add_argument('--github-only',action='store_true');ap.add_argument('--gitlab-only',action='store_true');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--github-repo',default=os.getenv('NSC_GITHUB_REPO','navier-stokes-commons/navier-stokes-commons.github.io'));ap.add_argument('--gitlab-project',default=os.getenv('NSC_GITLAB_PROJECT','champia-labs-group/navier-stokes-commons-public'));ap.add_argument('--output',default=str(ROOT/'content/public/intake.json'));ap.add_argument('--github-only',action='store_true');ap.add_argument('--gitlab-only',action='store_true');a=ap.parse_args()
     items=[]; sources=[]
     try:
         if not a.gitlab_only:
