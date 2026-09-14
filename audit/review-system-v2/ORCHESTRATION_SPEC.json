@@ -1,0 +1,39 @@
+{
+  "schema": "nsc-review-orchestration-v2",
+  "principle": "Synthetic evaluators are high-authority defect finders and low-authority estimators of human-population preference.",
+  "release_sequence": [
+    "build deterministic public product",
+    "create one active RC candidate bound to public product digest",
+    "capture release-equivalent evidence before exposing prior verdicts to blind lanes",
+    "calibrate each evaluator/model instance on seeded faults before its review can count as PASS evidence",
+    "run blind user-stratum lanes independently",
+    "run specialist lanes independently",
+    "run hostile Goodhart lane with access to machine gates plus rendered evidence",
+    "surface all FAIL/veto/contradiction outputs without averaging",
+    "if any material alarm exists, reject/supersede the candidate; repair the product or evaluation contract, never the score",
+    "only after a clean synthetic defect-discovery pass run release-authoritative machine checks and any required human/field escalation",
+    "deploy and repeat live-host smoke/evidence capture; deployment is not proof of perceptual quality"
+  ],
+  "information_firebreaks": {
+    "blind_user_lanes": ["no prior PASS/FAIL labels", "no author rationale", "no candidate age/incumbency", "no machine scores", "rendered product only plus simple task"],
+    "specialist_lanes": ["no other reviewer verdicts before independent observation", "contract-specific modalities only", "source only where epistemically necessary"],
+    "hostile_lane": ["may see gates and prior claims", "must construct pass-the-gate/fail-the-goal counterexamples"],
+    "arbiter_lane": ["sees conflicting raw evidence", "cannot average conflict away", "must identify which claim is unsupported and why"]
+  },
+  "aggregation": {
+    "global_score": "forbidden",
+    "p0_p1_fail": "candidate-blocking",
+    "valid_reviewer_fail": "candidate-blocking",
+    "abstain": "does not count as pass",
+    "unresolved_contradiction": "candidate-blocking",
+    "minority_veto": "preserved verbatim; never majority-voted away",
+    "missing_required_modality": "candidate-blocking",
+    "synthetic_pass": "supports defect-discovery closure only; does not establish human preference prevalence"
+  },
+  "model_diversity": {
+    "minimum_families_for_multi_reviewer_criterion": 2,
+    "implementation_agent_may_not_be_sole_release_reviewer": true,
+    "holdout_reviewers_must_not_be_reused_for_iterative_tuning": true
+  },
+  "stop_rule": "No candidate is terminal while a material counterexample, missing evidence modality, unresolved contradiction, or unreviewed critical criterion remains. Additional synthetic passes stop when new passes no longer discover material defects and the evidence contract is satisfied; human/field questions remain explicitly unclaimed."
+}

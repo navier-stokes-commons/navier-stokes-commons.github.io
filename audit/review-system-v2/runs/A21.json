@@ -1,0 +1,193 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-A21-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "A21",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-alpha",
+    "model_version": "2026.09",
+    "independence_group": "design-independent",
+    "split": "holdout",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/A21.json",
+      "evidence_sha256": "c5ebc6257f3f50fb21f4fb47ee350d24303477cf97663f210c32c01953278ff0"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/A21.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-multi-scale-screenshots",
+      "modality": "multi-scale-screenshots",
+      "sha256": "c65e1bb27b76140c62cd84a9218f21f23a028d8d5f54e94f4437445eaf5efb87",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/multiscale-font-captures.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/multiscale-font-captures.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-reduced-motion-capture",
+      "modality": "reduced-motion-capture",
+      "sha256": "76d7e1253236c809c16f489b5925931c95a677c577879e24ed53f8b5091598db",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/fallback-captures.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/fallback-captures.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-screenshot",
+      "modality": "screenshot",
+      "sha256": "02f91fade6671bf0f576e76d173c15f9e9499b3af5e3f1a8b3e23c59eafafb2a",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-task-transcript",
+      "modality": "task-transcript",
+      "sha256": "d5b939e58274163e69ce9a5b8b8640e82354755a20572748b85e7424fa644b62",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/cold-task.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/cold-task.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-timed-frames",
+      "modality": "timed-frames",
+      "sha256": "88e1a64a539c9b1ecea46d440fc84528cebea58d6b58976c62c73be16c608b33",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "motion-autonomous-salience",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "background-compositing-visibility",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O3",
+      "criterion_id": "typography-optical-legibility",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-multi-scale-screenshots"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O4",
+      "criterion_id": "language-grid-composition",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O5",
+      "criterion_id": "first-impression-alive-and-finished",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames",
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O6",
+      "criterion_id": "visual-hierarchy-polish",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O7",
+      "criterion_id": "fallback-compositional-equivalence",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot",
+        "E-reduced-motion-capture"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O8",
+      "criterion_id": "navigation-task-clarity",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-task-transcript",
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O9",
+      "criterion_id": "scientific-visual-honesty",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot",
+        "E-timed-frames"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/A21.txt",
+    "sha256": "3c7003fb1d2e444eaa91806de10610d2d173ff0f8647d1bfc184724590cd7f8b"
+  }
+}

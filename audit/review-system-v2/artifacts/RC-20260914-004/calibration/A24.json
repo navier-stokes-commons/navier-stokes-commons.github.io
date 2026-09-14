@@ -1,0 +1,111 @@
+{
+  "schema": "nsc-reviewer-calibration-v2",
+  "contract_id": "A24",
+  "suite_id": "SEED_SUITE_V2",
+  "suite_sha256": "24cce0903346424af37ccbb810bbd9d0241a39f074e053e9bf0bf28bcc5d6ff6",
+  "seeded_cases": 24,
+  "recall": 1.0,
+  "precision": 1.0,
+  "scope_accuracy": 1.0,
+  "overall_accuracy": 1.0,
+  "passed": true,
+  "predictions_sha256": "5b6a2033ac89ffd31363365e1b530e24a7c3a8d6aa5f482e78ff89413b2a0c52",
+  "details": [
+    {
+      "case_id": "S01",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S02",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S03",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S04",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S05",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S06",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S07",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S08",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S09",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S10",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S11",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S12",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S13",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S14",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S15",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S16",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S17",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S18",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S19",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S20",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S21",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S22",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S23",
+      "got": "ABSTAIN"
+    },
+    {
+      "case_id": "S24",
+      "got": "ABSTAIN"
+    }
+  ]
+}

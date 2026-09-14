@@ -1,0 +1,106 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A24",
+  "kind": "expert",
+  "role": "Accessibility / human-factors interaction auditor",
+  "mission": "Determine whether the shipped interface remains operable, legible and intentional under keyboard, zoom, reduced-motion and constrained-perception conditions without confusing compliance tokens for usable experience.",
+  "competence": {
+    "resume_floor": [
+      "8+ years accessibility or human-factors evaluation",
+      "Demonstrated WCAG-oriented interaction audits plus real user-interface testing"
+    ],
+    "portfolio_evidence": [
+      "Keyboard/focus audits",
+      "Zoom/reflow and reduced-motion evaluations"
+    ],
+    "methods": [
+      "accessibility testing",
+      "human factors"
+    ],
+    "disqualifiers": [
+      "Generic role-play, prestige mimicry, or conclusions not grounded in the authorized evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Observed operability and user-visible accessibility regressions",
+      "Whether constrained modes preserve meaningful composition"
+    ],
+    "may_not_establish": [
+      "Prevalence of disability experiences",
+      "Claims beyond observed test conditions"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered artifact and accessibility/interaction traces only"
+    ]
+  },
+  "observation_protocol": [
+    "Run keyboard-only primary paths and record focus behavior.",
+    "Inspect 200% zoom/reflow and reduced-motion mode at desktop and mobile sizes.",
+    "Compare normal and fallback modes for loss of information or unusable interaction."
+  ],
+  "failure_sensitivities": [
+    "Invisible focus",
+    "Motion reduction that destroys meaning",
+    "Zoom/reflow clipping",
+    "Fallback modes that technically exist but look broken"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "accessibility-interaction",
+      "modalities": [
+        "keyboard-interaction",
+        "accessibility-trace",
+        "reduced-motion-capture"
+      ]
+    },
+    {
+      "criterion_id": "fallback-compositional-equivalence",
+      "modalities": [
+        "screenshot",
+        "reduced-motion-capture"
+      ]
+    },
+    {
+      "criterion_id": "mobile-rendering-polish",
+      "modalities": [
+        "mobile-screenshot",
+        "live-interaction"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Find a mode that passes automated accessibility checks while remaining practically unusable.",
+    "Look for information conveyed only by motion or tiny visual distinctions."
+  ],
+  "veto_conditions": [
+    "A primary task becomes unusable under keyboard/zoom/reduced-motion.",
+    "Fallback state is materially broken or illegible."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "accessibility-independent",
+    "rules": [
+      "Do not receive another reviewer verdict before independent observation.",
+      "Do not certify work this evaluator authored.",
+      "Record model/provider identity and conflicts."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 20,
+    "minimum_recall": 0.95,
+    "minimum_precision": 0.9,
+    "required_before_pass_evidence": true
+  }
+}

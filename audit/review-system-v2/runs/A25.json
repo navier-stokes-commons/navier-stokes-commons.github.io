@@ -1,0 +1,98 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-A25-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "A25",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-alpha",
+    "model_version": "2026.09",
+    "independence_group": "science-visual-independent",
+    "split": "holdout",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/A25.json",
+      "evidence_sha256": "b987a769ad6d21a9e3d05444b8729ca4db774b9bd040986fa183eb41daec13d1"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/A25.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-screenshot",
+      "modality": "screenshot",
+      "sha256": "02f91fade6671bf0f576e76d173c15f9e9499b3af5e3f1a8b3e23c59eafafb2a",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-source",
+      "modality": "source",
+      "sha256": "a6578ecb478b0630a9287b55a153f6415062175758aa477cda8a17f0a264a1b0",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/source-authority.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/source-authority.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-timed-frames",
+      "modality": "timed-frames",
+      "sha256": "88e1a64a539c9b1ecea46d440fc84528cebea58d6b58976c62c73be16c608b33",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "scientific-visual-honesty",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot",
+        "E-timed-frames",
+        "E-source"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "visual-hierarchy-polish",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/A25.txt",
+    "sha256": "78642c9314c48bc69b3a6cda451cad68ada5b7b2884a93e5833b73118fc3fd2c"
+  }
+}

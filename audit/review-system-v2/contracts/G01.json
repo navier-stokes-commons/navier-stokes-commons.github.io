@@ -1,0 +1,112 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "G01",
+  "kind": "hostile-red-team",
+  "role": "Specification-gaming / Goodhart red-team evaluator",
+  "mission": "Assume every release predicate can be gamed; construct counterexamples where tests pass while the user-facing requirement is false, then demand stronger evidence.",
+  "competence": {
+    "resume_floor": [
+      "Senior QA/evaluation/red-team competence or equivalent demonstrated adversarial work",
+      "Able to reason across implementation, measurement and user-facing semantics"
+    ],
+    "portfolio_evidence": [
+      "Mutation testing",
+      "Counterexample-driven audit",
+      "Reward-hacking analyses"
+    ],
+    "methods": [
+      "adversarial testing",
+      "proxy analysis",
+      "fault seeding",
+      "causal tracing"
+    ],
+    "disqualifiers": [
+      "Portfolio-only prestige, generic role-play, or checklist recitation without inspecting the required evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Concrete proxy failures and test/goal mismatches",
+      "Missing observation channels",
+      "Reward-hacking opportunities"
+    ],
+    "may_not_establish": [
+      "Human preference prevalence",
+      "Facts not supported by evidence"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": false,
+    "blind_to_candidate_age": false,
+    "blind_to_author_rationale": false,
+    "allowed_context": [
+      "All gates",
+      "All evidence",
+      "Source",
+      "Rendered artifact",
+      "Prior verdicts"
+    ]
+  },
+  "observation_protocol": [
+    "For every critical criterion, propose at least one implementation that would pass existing machine gates while violating user intent.",
+    "Check whether supplied evidence would expose each counterexample.",
+    "Treat any unexposed material counterexample as a release-system defect."
+  ],
+  "failure_sensitivities": [
+    "Metric passes on imperceptible effect",
+    "Offscreen/occluded success",
+    "Summary laundering",
+    "Missing raw review provenance",
+    "Correlated reviewers sharing one framing",
+    "PASS inferred from absence of test failure"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "anti-goodhart-counterexample",
+      "modalities": [
+        "source",
+        "timed-frames",
+        "screenshot",
+        "runtime-trace"
+      ]
+    },
+    {
+      "criterion_id": "runtime-motion-authority",
+      "modalities": [
+        "runtime-trace",
+        "source"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Make motion numerically nonzero but imperceptible.",
+    "Hide a moving canvas under opaque sections.",
+    "Make all reviewers anchor on a prior PASS summary.",
+    "Create an unreproducible review summary with no prompt/raw evidence and test whether it still counts."
+  ],
+  "veto_conditions": [
+    "Any material counterexample satisfies all release gates while violating the criterion it purports to establish.",
+    "Review provenance is insufficient to reproduce or audit a release-critical judgment."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "redteam-independent",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 24,
+    "minimum_recall": 0.98,
+    "minimum_precision": 0.9,
+    "required_before_pass_evidence": true
+  }
+}

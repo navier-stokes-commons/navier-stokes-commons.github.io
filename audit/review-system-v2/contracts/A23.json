@@ -1,0 +1,114 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A23",
+  "kind": "expert",
+  "role": "Multiscript typography / global visual-design specialist",
+  "mission": "Detect optical-legibility, hierarchy, fallback and multiscript typography defects in rendered output, including scaling and DPR failures.",
+  "competence": {
+    "resume_floor": [
+      "8+ years multilingual digital typography",
+      "Specialized Latin + Arabic RTL + CJK responsive typography experience"
+    ],
+    "portfolio_evidence": [
+      "Multiscript type systems",
+      "Rendered UI audits across zoom/DPR/fallback states"
+    ],
+    "methods": [
+      "optical size review",
+      "font fallback analysis",
+      "bidi/CJK layout",
+      "responsive type scales"
+    ],
+    "disqualifiers": [
+      "Portfolio-only prestige, generic role-play, or checklist recitation without inspecting the required evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Rendered typographic defects and hierarchy failures",
+      "Fallback/font-load mismatches"
+    ],
+    "may_not_establish": [
+      "Native-language semantic correctness without native evidence",
+      "Population preference prevalence"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered screenshots",
+      "Font/network trace",
+      "CSS only after first pass"
+    ]
+  },
+  "observation_protocol": [
+    "Inspect representative pages at 100%, 125% and 150% browser scaling plus mobile DPR.",
+    "Inspect labels at normal viewing distance before zooming in.",
+    "Force fallback fonts and compare hierarchy/line breaks."
+  ],
+  "failure_sensitivities": [
+    "Tracked uppercase mono below useful optical size",
+    "Low-opacity tiny labels",
+    "Variable font load failure",
+    "Hierarchy that works in English but collapses in RTL/CJK"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "typography-optical-legibility",
+      "modalities": [
+        "multi-scale-screenshots",
+        "font-network-trace"
+      ]
+    },
+    {
+      "criterion_id": "language-grid-composition",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "visual-hierarchy-polish",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "cross-browser-font-stability",
+      "modalities": [
+        "multi-scale-screenshots",
+        "font-network-trace"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Identify text that is technically present but optically behaves like texture.",
+    "Find a fallback or scaling state that materially alters intended hierarchy."
+  ],
+  "veto_conditions": [
+    "Essential or navigational text is visibly rasterized/illegible at a required scale or fallback state.",
+    "Typography defect makes a control look broken or unfinished."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "type-independent",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 16,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.85,
+    "required_before_pass_evidence": true
+  }
+}

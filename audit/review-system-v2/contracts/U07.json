@@ -1,0 +1,105 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "U07",
+  "kind": "synthetic-user-stratum",
+  "role": "Constrained mobile / low-end visitor stratum",
+  "mission": "Evaluate whether the intended visual and interaction experience survives a small viewport, lower performance budget and ordinary touch/scroll behavior.",
+  "competence": {
+    "resume_floor": [
+      "Task stratum grounded in device constraints rather than demographic stereotype",
+      "Must use constrained viewport/performance evidence"
+    ],
+    "portfolio_evidence": [
+      "Mobile interaction trace",
+      "Constrained-render screenshots"
+    ],
+    "methods": [
+      "touch task analysis",
+      "viewport stress testing"
+    ],
+    "disqualifiers": [
+      "Inferring real-device performance without measured evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Visible mobile defects and task failures",
+      "Whether the rich experience is still legible in the supplied constrained run"
+    ],
+    "may_not_establish": [
+      "Population preference",
+      "Unmeasured device behavior"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Mobile live interaction",
+      "Mobile timed frames",
+      "Performance trace if supplied"
+    ]
+  },
+  "observation_protocol": [
+    "Load at 360px-class width and wait two seconds.",
+    "Scroll vertically, use navigation, and inspect background/motion continuity.",
+    "Report overlap, horizontal overflow, jank or invisible motion."
+  ],
+  "failure_sensitivities": [
+    "Motion that disappears on mobile",
+    "Horizontal overflow",
+    "Controls too small or visually broken",
+    "Background that becomes decorative noise"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "first-impression-alive-and-finished",
+      "modalities": [
+        "timed-frames",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "motion-autonomous-salience",
+      "modalities": [
+        "timed-frames"
+      ]
+    },
+    {
+      "criterion_id": "mobile-rendering-polish",
+      "modalities": [
+        "mobile-screenshot",
+        "live-interaction"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Try to complete the first-screen interpretation without zooming.",
+    "Look for a desktop-only effect falsely certified as site-wide."
+  ],
+  "veto_conditions": [
+    "Flagship experience materially collapses on the required mobile evidence."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "mobile-stratum",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 10,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.8,
+    "required_before_pass_evidence": true
+  }
+}

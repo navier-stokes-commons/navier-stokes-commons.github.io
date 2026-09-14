@@ -1,0 +1,234 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-A14-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "A14",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-alpha",
+    "model_version": "2026.09",
+    "independence_group": "runtime-independent",
+    "split": "development",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/A14.json",
+      "evidence_sha256": "6b8ec280afa41d81f779c238657ff7f666b711a5d0daaf4f10a8acad26c590c4"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/A14.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-accessibility-trace",
+      "modality": "accessibility-trace",
+      "sha256": "3f7dd0cc6455a81cda9282793880d76d8a14838b8ac6eb55011d9fac81143c24",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/accessibility.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/accessibility.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-computed-style-trace",
+      "modality": "computed-style-trace",
+      "sha256": "6cf13dd6ce642c71229231c9a4d4bfd07104f8e1949c8dfb6cfd04b1bc88e6ed",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/computed-style.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/computed-style.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-font-network-trace",
+      "modality": "font-network-trace",
+      "sha256": "3914ca614d025549009dee2883f3b9e9d70e649e71ffd5f7fbd21c9e1ac24235",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/font-network.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/font-network.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-keyboard-interaction",
+      "modality": "keyboard-interaction",
+      "sha256": "499078cea3d233b61a774023da50a0be51e81eb153563c336ac8d2103f8e0072",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/keyboard-zoom.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/keyboard-zoom.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-live-interaction",
+      "modality": "live-interaction",
+      "sha256": "b7fc96ea0a4de42601fbd5075854322d693ea3b2ee42956d5147483980822b7f",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-mobile-screenshot",
+      "modality": "mobile-screenshot",
+      "sha256": "8baf6bb40d7dc160c955cb21a2a3665e5603accd6cc232c0bf20936ee8c9085b",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/mobile-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/mobile-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-multi-scale-screenshots",
+      "modality": "multi-scale-screenshots",
+      "sha256": "c65e1bb27b76140c62cd84a9218f21f23a028d8d5f54e94f4437445eaf5efb87",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/multiscale-font-captures.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/multiscale-font-captures.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-runtime-trace",
+      "modality": "runtime-trace",
+      "sha256": "d64138f48ee0f8488b87572548cce1d86a31bc98e0ca6d9eadc525c8447ef1db",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/runtime-ownership.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/runtime-ownership.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-screenshot",
+      "modality": "screenshot",
+      "sha256": "02f91fade6671bf0f576e76d173c15f9e9499b3af5e3f1a8b3e23c59eafafb2a",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-source",
+      "modality": "source",
+      "sha256": "a6578ecb478b0630a9287b55a153f6415062175758aa477cda8a17f0a264a1b0",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/source-authority.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/source-authority.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-timed-frames",
+      "modality": "timed-frames",
+      "sha256": "88e1a64a539c9b1ecea46d440fc84528cebea58d6b58976c62c73be16c608b33",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "runtime-motion-authority",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-runtime-trace",
+        "E-source"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "background-compositing-visibility",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-computed-style-trace",
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O3",
+      "criterion_id": "typography-optical-legibility",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-font-network-trace",
+        "E-multi-scale-screenshots"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O4",
+      "criterion_id": "motion-pointer-salience",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-live-interaction",
+        "E-timed-frames"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O5",
+      "criterion_id": "anti-goodhart-counterexample",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-source",
+        "E-runtime-trace"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O6",
+      "criterion_id": "mobile-rendering-polish",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-mobile-screenshot",
+        "E-live-interaction"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O7",
+      "criterion_id": "cross-browser-font-stability",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-multi-scale-screenshots",
+        "E-font-network-trace"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O8",
+      "criterion_id": "accessibility-interaction",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-accessibility-trace",
+        "E-keyboard-interaction"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/A14.txt",
+    "sha256": "8b46fdf01443d4fd973a96f2b364e243ffd646ce1fbf92e6bb5cc3b1533d1c33"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "U01",
+  "kind": "synthetic-user-stratum",
+  "role": "Blind first-time curious visitor",
+  "mission": "Act as a cold first-time visitor whose only evidence is the rendered product; report what is perceptible without accommodating the authors intent.",
+  "competence": {
+    "resume_floor": [
+      "No specialist credentials required; represents a task stratum rather than a profession",
+      "Must be run blind to implementation and release claims"
+    ],
+    "portfolio_evidence": [
+      "Cold-start interaction transcript",
+      "First-impression defect report"
+    ],
+    "methods": [
+      "task execution",
+      "plain-language paraphrase"
+    ],
+    "disqualifiers": [
+      "Receiving implementation rationale, prior PASS labels, or expected answers before the first pass."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "What a cold evaluator can directly perceive",
+      "Confusion and discoverability failures in the assigned run"
+    ],
+    "may_not_establish": [
+      "Frequency of such reactions in real people",
+      "Lived experience claims"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered artifact only",
+      "One simple task"
+    ]
+  },
+  "observation_protocol": [
+    "Describe what appears to be moving before touching anything.",
+    "Move the pointer and describe the visible effect without being told what should happen.",
+    "Identify anything that looks broken, clipped, tiny, unfinished or like developer instrumentation."
+  ],
+  "failure_sensitivities": [
+    "Invisible/subtle motion",
+    "Unclear interactive affordance",
+    "Clipped grid/border",
+    "Unreadable microtype",
+    "Debug terminology"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "motion-autonomous-salience",
+      "modalities": [
+        "timed-frames",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "motion-pointer-salience",
+      "modalities": [
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "language-grid-composition",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "first-impression-alive-and-finished",
+      "modalities": [
+        "timed-frames",
+        "screenshot",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "background-compositing-visibility",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "visual-hierarchy-polish",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "navigation-task-clarity",
+      "modalities": [
+        "task-transcript",
+        "screenshot"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Try to falsify the authors claim that the page feels alive using only ordinary observation.",
+    "State explicitly when an intended behavior is not perceptible."
+  ],
+  "veto_conditions": [
+    "The page is described as static/broken/unfinished under the assigned evidence.",
+    "A primary interaction cannot be discovered without explanation."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "blind-user-stratum",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 12,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.8,
+    "required_before_pass_evidence": true
+  }
+}

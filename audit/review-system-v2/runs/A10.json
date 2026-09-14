@@ -1,0 +1,120 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-A10-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "A10",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-alpha",
+    "model_version": "2026.09",
+    "independence_group": "ux-independent",
+    "split": "development",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/A10.json",
+      "evidence_sha256": "eca5b82b8bb9507ff8638cf1b67372b3d65553fc369416daf2cb5b3555c9e4b8"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/A10.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-live-interaction",
+      "modality": "live-interaction",
+      "sha256": "b7fc96ea0a4de42601fbd5075854322d693ea3b2ee42956d5147483980822b7f",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-screenshot",
+      "modality": "screenshot",
+      "sha256": "02f91fade6671bf0f576e76d173c15f9e9499b3af5e3f1a8b3e23c59eafafb2a",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-task-transcript",
+      "modality": "task-transcript",
+      "sha256": "d5b939e58274163e69ce9a5b8b8640e82354755a20572748b85e7424fa644b62",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/cold-task.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/cold-task.txt",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "first-impression-alive-and-finished",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-live-interaction",
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "language-grid-composition",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O3",
+      "criterion_id": "visual-hierarchy-polish",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O4",
+      "criterion_id": "navigation-task-clarity",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-task-transcript",
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/A10.txt",
+    "sha256": "d6c1943c9641d6a07722d4819cb9fba6693b4226bb96cd1dbe47a56f96f8d1b9"
+  }
+}

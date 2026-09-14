@@ -1,0 +1,29 @@
+{
+  "schema": "nsc-release-candidate-v2",
+  "candidate_id": "RC-20260914-001",
+  "parent_candidate_id": null,
+  "status": "superseded",
+  "created_at_utc": "2026-09-14T04:03:04Z",
+  "base_source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+  "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82",
+  "objective": "Recover and release a visibly alive, coherent, accessible Navier-Stokes Commons public experience",
+  "material_changes": [
+    "Baseline beta.8 under indictment before redesign"
+  ],
+  "known_unresolved": [
+    "perceptually static or weak motion",
+    "page-wide background may be hidden",
+    "pointer response may be weak",
+    "language grid may read clipped",
+    "microtype legibility risk",
+    "runtime motion ownership unverified"
+  ],
+  "evidence_carried_forward": [],
+  "evidence_invalidated": [],
+  "supersession": {
+    "reason": "Baseline rejected pending architecture search and runtime evidence",
+    "trigger_evidence": [
+      "baseline-known-unresolved-defects"
+    ]
+  }
+}

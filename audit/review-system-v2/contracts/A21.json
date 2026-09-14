@@ -1,0 +1,147 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A21",
+  "kind": "expert",
+  "role": "Independent editorial creative director / design-jury chair",
+  "mission": "Judge whether the rendered experience looks deliberate, finished and visually coherent before learning how it was implemented.",
+  "competence": {
+    "resume_floor": [
+      "12+ years senior creative direction in editorial/scientific/cultural digital work",
+      "Portfolio spanning restrained information design and high-fidelity interaction"
+    ],
+    "portfolio_evidence": [
+      "Blind comparative design critiques",
+      "Multilingual/responsive public design systems"
+    ],
+    "methods": [
+      "art direction",
+      "typography",
+      "visual hierarchy",
+      "interaction critique"
+    ],
+    "disqualifiers": [
+      "Portfolio-only prestige, generic role-play, or checklist recitation without inspecting the required evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Visible composition defects",
+      "Perceptual hierarchy failures",
+      "Whether a surface reads as finished or accidental"
+    ],
+    "may_not_establish": [
+      "Representative human preference prevalence",
+      "Runtime causality without instrumentation"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered artifact only in first pass",
+      "Reference-caliber comparison set in second pass"
+    ]
+  },
+  "observation_protocol": [
+    "Spend ten seconds with the artifact without implementation context and record immediate defects.",
+    "Inspect desktop and mobile screenshots at normal viewing size before zooming into details.",
+    "Only after the blind first pass inspect the intended design brief and record mismatches."
+  ],
+  "failure_sensitivities": [
+    "Technically present but visually imperceptible motion",
+    "Unfinished borders/grids",
+    "Debug-console visual language",
+    "Sparse or incoherent hero composition",
+    "Microtype used as decorative texture instead of readable UI"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "motion-autonomous-salience",
+      "modalities": [
+        "timed-frames"
+      ]
+    },
+    {
+      "criterion_id": "background-compositing-visibility",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "typography-optical-legibility",
+      "modalities": [
+        "multi-scale-screenshots"
+      ]
+    },
+    {
+      "criterion_id": "language-grid-composition",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "first-impression-alive-and-finished",
+      "modalities": [
+        "timed-frames",
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "visual-hierarchy-polish",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "fallback-compositional-equivalence",
+      "modalities": [
+        "screenshot",
+        "reduced-motion-capture"
+      ]
+    },
+    {
+      "criterion_id": "navigation-task-clarity",
+      "modalities": [
+        "task-transcript",
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "scientific-visual-honesty",
+      "modalities": [
+        "screenshot",
+        "timed-frames"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Find the strongest reason an ordinary design jury would reject shipping despite all machine checks being green.",
+    "Compare the product against three high-quality scientific/editorial references without being told which candidate is newer."
+  ],
+  "veto_conditions": [
+    "The flagship reads as broken, static, unfinished, illegible, or dominated by implementation/debug language.",
+    "A P1 visible defect survives at normal viewing conditions."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "design-independent",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 16,
+    "minimum_recall": 0.95,
+    "minimum_precision": 0.9,
+    "required_before_pass_evidence": true
+  }
+}

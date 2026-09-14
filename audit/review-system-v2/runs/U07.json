@@ -1,0 +1,109 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-U07-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "U07",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-beta",
+    "model_version": "2026.09",
+    "independence_group": "mobile-stratum",
+    "split": "development",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/U07.json",
+      "evidence_sha256": "f26cf98072e57bf2b1dabb7e73d5155f5eaae1584a622a6221c165153f01fb4e"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/U07.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-live-interaction",
+      "modality": "live-interaction",
+      "sha256": "b7fc96ea0a4de42601fbd5075854322d693ea3b2ee42956d5147483980822b7f",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-mobile-screenshot",
+      "modality": "mobile-screenshot",
+      "sha256": "8baf6bb40d7dc160c955cb21a2a3665e5603accd6cc232c0bf20936ee8c9085b",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/mobile-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/mobile-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-timed-frames",
+      "modality": "timed-frames",
+      "sha256": "88e1a64a539c9b1ecea46d440fc84528cebea58d6b58976c62c73be16c608b33",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "first-impression-alive-and-finished",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames",
+        "E-live-interaction"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "motion-autonomous-salience",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O3",
+      "criterion_id": "mobile-rendering-polish",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-mobile-screenshot",
+        "E-live-interaction"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/U07.txt",
+    "sha256": "0fdff57d707176a5122965dc4b3def8ccc3aab4464f1cd9b397d00f195d5d7ee"
+  }
+}

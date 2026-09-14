@@ -1,0 +1,34 @@
+{
+  "schema": "nsc-terminal-acceptance-v3",
+  "terminal_token": "NSC_TERMINAL_PRODUCT_PASS",
+  "required": {
+    "source_provenance_exact": true,
+    "one_active_rc": true,
+    "known_unresolved_empty": true,
+    "blind_reviews_first": true,
+    "min_model_families_per_multi_reviewer_criterion": 2,
+    "hostile_goodhart_clean": true,
+    "machine_suite_pass": true,
+    "github_pages_live_same_sha": true,
+    "gitlab_pages_live_same_sha": true,
+    "live_host_review_pass": true,
+    "autonomous_motion_visibly_salient": true,
+    "pointer_motion_visibly_directional": true,
+    "sitewide_background_visibly_exposed": true,
+    "single_runtime_motion_authority_per_surface": true,
+    "language_grid_intentional": true,
+    "typography_legible_multiscale": true,
+    "mobile_polished": true,
+    "keyboard_zoom_reduced_motion_operable": true,
+    "scientific_visual_honesty": true,
+    "fallbacks_intentional": true,
+    "navigation_task_clarity": true,
+    "visual_hierarchy_finished": true
+  },
+  "forbidden_terminal_substitutes": [
+    "R17_TERMINAL_PUBLIC_PASS",
+    "ALL_PUBLIC_RELEASE_CHECKS_PASS",
+    "SYNTHETIC_REVIEW_V2_RELEASE_PASS by itself",
+    "HTTP 200 by itself"
+  ]
+}

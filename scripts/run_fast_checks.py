@@ -12,6 +12,7 @@ commands=[
  ['python3','scripts/catalog.py','validate'],
  ['python3','scripts/audit_sdlc_contract.py'],
  ['python3','scripts/audit_evaluation_protocol.py'],
+ ['python3','scripts/audit_review_system_v2.py','--static'],
  ['python3','scripts/audit_r11_schemas.py'],
  ['python3','scripts/audit_r11_status.py'],
  ['python3','scripts/audit_r11_frontier_graph.py'],

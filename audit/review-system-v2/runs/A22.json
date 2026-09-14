@@ -1,0 +1,120 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-A22-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "A22",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-beta",
+    "model_version": "2026.09",
+    "independence_group": "motion-independent",
+    "split": "holdout",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/A22.json",
+      "evidence_sha256": "6f30ca23b52bca58898ed700c896577e68aac5f7fbd7431ef32edbe776bfcc03"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/A22.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-live-interaction",
+      "modality": "live-interaction",
+      "sha256": "b7fc96ea0a4de42601fbd5075854322d693ea3b2ee42956d5147483980822b7f",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-runtime-trace",
+      "modality": "runtime-trace",
+      "sha256": "d64138f48ee0f8488b87572548cce1d86a31bc98e0ca6d9eadc525c8447ef1db",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/runtime-ownership.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/runtime-ownership.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-timed-frames",
+      "modality": "timed-frames",
+      "sha256": "88e1a64a539c9b1ecea46d440fc84528cebea58d6b58976c62c73be16c608b33",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "motion-autonomous-salience",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames",
+        "E-live-interaction"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "motion-pointer-salience",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames",
+        "E-live-interaction"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O3",
+      "criterion_id": "runtime-motion-authority",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-runtime-trace"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O4",
+      "criterion_id": "first-impression-alive-and-finished",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/A22.txt",
+    "sha256": "9610bf3fc964a97b45368e1f2155910193d0ecd2c2feb0764f045257614b6d11"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "nsc-release-candidate-v2",
+  "candidate_id": "RC-20260914-004",
+  "parent_candidate_id": "RC-20260914-003",
+  "status": "active",
+  "created_at_utc": "2026-09-14T04:32:50Z",
+  "base_source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+  "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82",
+  "objective": "Release the strongest evidence-backed hybrid fluid atmosphere with auditable single ownership",
+  "material_changes": [
+    "Candidate C selected: hybrid layered field with one authoritative R17 controller and intentional compositing",
+    "Removed competing legacy English ambient writer; retained localized fallback ownership",
+    "Validated typography, language composition, pointer salience, and accessible fallback behavior"
+  ],
+  "known_unresolved": [],
+  "evidence_carried_forward": [],
+  "evidence_invalidated": [],
+  "supersession": {
+    "reason": null,
+    "trigger_evidence": []
+  }
+}

@@ -1,0 +1,361 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nsc-review-run-v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "run_id",
+    "candidate",
+    "evaluator",
+    "prompt",
+    "evidence",
+    "observations",
+    "verdict",
+    "vetoes",
+    "contradictions",
+    "unknowns",
+    "raw_output"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nsc-review-run-v2"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "source_sha",
+        "version",
+        "product_digest_sha256"
+      ],
+      "properties": {
+        "source_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "version": {
+          "type": "string"
+        },
+        "artifact_uri": {
+          "type": "string"
+        },
+        "product_digest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "product_uri": {
+          "type": "string"
+        },
+        "candidate_id": {
+          "type": "string",
+          "pattern": "^RC-[0-9]{8}-[0-9]{3}$"
+        }
+      }
+    },
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_id",
+        "model_provider",
+        "model_family",
+        "model_version",
+        "independence_group",
+        "split",
+        "blindness_attestation",
+        "calibration"
+      ],
+      "properties": {
+        "contract_id": {
+          "type": "string"
+        },
+        "model_provider": {
+          "type": "string",
+          "minLength": 2
+        },
+        "model_family": {
+          "type": "string",
+          "minLength": 2
+        },
+        "model_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independence_group": {
+          "type": "string",
+          "minLength": 2
+        },
+        "split": {
+          "enum": [
+            "development",
+            "holdout",
+            "incident"
+          ]
+        },
+        "blindness_attestation": {
+          "type": "object",
+          "required": [
+            "prior_verdicts_exposed",
+            "candidate_age_exposed",
+            "author_rationale_exposed"
+          ],
+          "properties": {
+            "prior_verdicts_exposed": {
+              "type": "boolean"
+            },
+            "candidate_age_exposed": {
+              "type": "boolean"
+            },
+            "author_rationale_exposed": {
+              "type": "boolean"
+            }
+          }
+        },
+        "calibration": {
+          "type": "object",
+          "required": [
+            "suite_id",
+            "seeded_cases",
+            "recall",
+            "precision",
+            "passed",
+            "evidence_ref",
+            "evidence_sha256"
+          ],
+          "properties": {
+            "suite_id": {
+              "type": "string"
+            },
+            "seeded_cases": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "recall": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "precision": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "passed": {
+              "type": "boolean"
+            },
+            "evidence_ref": {
+              "type": "string"
+            },
+            "evidence_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_ref",
+        "template_sha256",
+        "rendered_ref",
+        "rendered_sha256"
+      ],
+      "properties": {
+        "template_ref": {
+          "type": "string"
+        },
+        "template_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rendered_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rendered_ref": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "modality",
+          "sha256",
+          "uri",
+          "release_equivalent"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "modality": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uri": {
+            "type": "string"
+          },
+          "release_equivalent": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "local_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "criterion_id",
+          "epistemic_type",
+          "severity",
+          "claim",
+          "evidence_refs",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "criterion_id": {
+            "type": "string"
+          },
+          "epistemic_type": {
+            "enum": [
+              "direct-observation",
+              "derived-inference",
+              "hypothesis"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "P3",
+              "INFO"
+            ]
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 8
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ABSTAIN",
+        "CONTRADICTION"
+      ]
+    },
+    "vetoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "severity",
+          "criterion_id",
+          "statement"
+        ],
+        "properties": {
+          "severity": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          "criterion_id": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "criterion_id",
+          "statement"
+        ],
+        "properties": {
+          "criterion_id": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "raw_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "sha256"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

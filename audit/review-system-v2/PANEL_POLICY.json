@@ -1,0 +1,315 @@
+{
+  "schema": "nsc-synthetic-review-policy-v2",
+  "purpose": "Use synthetic evaluators aggressively for defect discovery and release vetoes without pretending their votes estimate human-population preference.",
+  "candidate_binding": {
+    "require_reviewed_source_sha": true,
+    "require_exact_product_digest": true,
+    "product_digest_scope": "deterministic public/ tree after canonical build; review-receipt-only commits may follow without invalidating the reviewed product",
+    "require_live_or_release-equivalent_evidence": true
+  },
+  "global_rules": {
+    "no_composite_score_laundering": true,
+    "minority_veto_preserved": true,
+    "abstain_never_counts_as_pass": true,
+    "missing_required_evidence_blocks": true,
+    "unresolved_contradiction_blocks": true,
+    "direct_observation_beats_author_claim": true,
+    "blind_lanes_must_not_receive_prior_scores_or_release_claims": true,
+    "review_prompt_and_raw_output_must_be_hash_bound": true,
+    "reviewer_model_identity_must_be_recorded": true,
+    "synthetic_pass_does_not_certify_human_preference": true,
+    "synthetic_fail_can_block_release": true
+  },
+  "critical_criteria": [
+    {
+      "id": "motion-autonomous-salience",
+      "statement": "On normal-motion English rich pages, autonomous background/hero motion is visibly perceptible within two seconds without pointer input.",
+      "required_modalities": [
+        "timed-frames",
+        "live-interaction"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A22",
+        "A21",
+        "U01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "motion-pointer-salience",
+      "statement": "Horizontal and vertical pointer motion produce obvious, directionally distinguishable deformation on home and at least one non-home rich English page.",
+      "required_modalities": [
+        "timed-frames",
+        "live-interaction"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A22",
+        "A14",
+        "U01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "background-compositing-visibility",
+      "statement": "The intended site-wide moving background remains visually exposed through the final composited page rather than being hidden by opaque surfaces.",
+      "required_modalities": [
+        "screenshot",
+        "computed-style-trace"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A21",
+        "A14",
+        "U01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "runtime-motion-authority",
+      "statement": "Exactly one authoritative motion controller owns each moving surface, clock, pointer state, pause state and reduced-motion state; no competing writer can clear or replace the same render target.",
+      "required_modalities": [
+        "runtime-trace",
+        "source"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 0,
+      "required_contracts_any": [
+        "A14",
+        "A22",
+        "G01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "typography-optical-legibility",
+      "statement": "Body, metadata and labels remain optically legible and crisp at 100%, 125%, 150%, mobile DPR, and fallback-font states; decorative microtype may not masquerade as readable UI text.",
+      "required_modalities": [
+        "multi-scale-screenshots",
+        "font-network-trace"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A23",
+        "A21",
+        "U05"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "language-grid-composition",
+      "statement": "The language selector has a deliberate complete visual boundary or an explicitly open editorial treatment; it must not read as accidentally clipped or unfinished.",
+      "required_modalities": [
+        "screenshot"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A21",
+        "A23",
+        "U01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "first-impression-alive-and-finished",
+      "statement": "A blind first-impression reviewer, shown only the rendered product, does not describe the site as static, broken, unfinished, illegible, or debug-like on any flagship page.",
+      "required_modalities": [
+        "timed-frames",
+        "screenshot",
+        "live-interaction"
+      ],
+      "min_expert_reviewers": 1,
+      "min_blind_user_strata": 2,
+      "required_contracts_any": [
+        "U01",
+        "U07",
+        "A21"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "anti-goodhart-counterexample",
+      "statement": "A hostile evaluator cannot exhibit a concrete implementation or observation where all machine predicates pass while the user-facing requirement is materially false.",
+      "required_modalities": [
+        "source",
+        "timed-frames",
+        "screenshot",
+        "runtime-trace"
+      ],
+      "min_expert_reviewers": 1,
+      "min_blind_user_strata": 0,
+      "required_contracts_any": [
+        "G01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "visual-hierarchy-polish",
+      "statement": "At normal viewing sizes the site reads as deliberate, finished and visually hierarchical rather than clipped, debug-like, over-microtyped or accidentally composed.",
+      "required_modalities": [
+        "screenshot"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A21",
+        "A10",
+        "U01"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "navigation-task-clarity",
+      "statement": "A cold visitor can identify the project purpose and reach a meaningful next action or contribution/frontier path without prior explanation.",
+      "required_modalities": [
+        "task-transcript",
+        "screenshot"
+      ],
+      "min_expert_reviewers": 1,
+      "min_blind_user_strata": 2,
+      "required_contracts_any": [
+        "A10",
+        "U01",
+        "U09",
+        "U10"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "accessibility-interaction",
+      "statement": "Keyboard, 200% zoom/reflow and reduced-motion modes preserve primary task operability, focus visibility, legibility and intentional composition.",
+      "required_modalities": [
+        "keyboard-interaction",
+        "accessibility-trace",
+        "reduced-motion-capture"
+      ],
+      "min_expert_reviewers": 1,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A24",
+        "U11"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "mobile-rendering-polish",
+      "statement": "Representative mobile and constrained-device views remain legible, scrollable, responsive and visually intentional with no hidden primary affordances or severe jank.",
+      "required_modalities": [
+        "mobile-screenshot",
+        "live-interaction"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 2,
+      "required_contracts_any": [
+        "A14",
+        "A24",
+        "U07",
+        "U11"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "scientific-visual-honesty",
+      "statement": "Motion and graphics are visibly labeled and composed so they cannot reasonably be mistaken for stronger quantitative simulation, proof or scientific evidence than the project actually has.",
+      "required_modalities": [
+        "screenshot",
+        "timed-frames",
+        "source"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A25",
+        "A21",
+        "U10"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "fallback-compositional-equivalence",
+      "statement": "Reduced-motion, no-JS and renderer-failure modes remain intentional visual compositions with equivalent informational hierarchy rather than emergency placeholders.",
+      "required_modalities": [
+        "screenshot",
+        "reduced-motion-capture"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 2,
+      "required_contracts_any": [
+        "A24",
+        "A21",
+        "U05",
+        "U11"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "cross-browser-font-stability",
+      "statement": "Typography remains crisp and legible under representative browser/scaling/fallback-font conditions; font loading failure cannot turn interface text into broken microtype.",
+      "required_modalities": [
+        "multi-scale-screenshots",
+        "font-network-trace"
+      ],
+      "min_expert_reviewers": 2,
+      "min_blind_user_strata": 1,
+      "required_contracts_any": [
+        "A23",
+        "A14",
+        "U05"
+      ],
+      "veto_severities": [
+        "P0",
+        "P1"
+      ]
+    }
+  ],
+  "release_rule": "Every critical criterion must have its required evidence modalities and reviewer coverage. Any P0/P1 veto, missing evidence, missing review, or unresolved contradiction blocks release. No average, majority, or Pareto score can override this rule.",
+  "minimum_model_families_when_multi_reviewer": 2
+}

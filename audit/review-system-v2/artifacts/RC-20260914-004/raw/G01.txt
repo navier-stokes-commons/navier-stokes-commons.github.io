@@ -1,0 +1,1 @@
+Independent G01 observation: PASS; assigned modalities inspected; no veto.

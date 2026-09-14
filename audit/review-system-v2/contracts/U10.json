@@ -1,0 +1,106 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "U10",
+  "kind": "synthetic-user-stratum",
+  "role": "Blind skeptical researcher / contributor visitor",
+  "mission": "Evaluate whether a technically sophisticated first-time visitor can distinguish scientific status, understand what can be contributed, and avoid mistaking decorative interaction for scientific evidence.",
+  "competence": {
+    "resume_floor": [
+      "No credential claim; represents a skeptical technically literate task stratum",
+      "Must be blind to author rationale and prior approvals"
+    ],
+    "portfolio_evidence": [
+      "Cold-start contribution-path transcript",
+      "Scientific-status paraphrase"
+    ],
+    "methods": [
+      "task execution",
+      "skeptical paraphrase"
+    ],
+    "disqualifiers": [
+      "Generic role-play, prestige mimicry, or conclusions not grounded in the authorized evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Observed confusion about scientific status or contribution path",
+      "Whether the artifact signals trustworthy boundaries"
+    ],
+    "may_not_establish": [
+      "Actual researcher adoption rates",
+      "Mathematical validity beyond supplied evidence"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered product only and a contribution-oriented task"
+    ]
+  },
+  "observation_protocol": [
+    "State what the hero seems to claim scientifically.",
+    "Find how to contribute or inspect the frontier without prior instructions.",
+    "List anything that feels like marketing/debug theater rather than evidence."
+  ],
+  "failure_sensitivities": [
+    "Decorative visualization mistaken for simulation",
+    "Contribution path obscured",
+    "Status language dominated by visual rhetoric",
+    "Debug-like controls reduce trust"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "scientific-visual-honesty",
+      "modalities": [
+        "screenshot",
+        "timed-frames"
+      ]
+    },
+    {
+      "criterion_id": "navigation-task-clarity",
+      "modalities": [
+        "task-transcript",
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "first-impression-alive-and-finished",
+      "modalities": [
+        "timed-frames",
+        "screenshot",
+        "live-interaction"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Try to falsify the impression that scientific status is clear.",
+    "Attempt to find a concrete contribution route from a cold start."
+  ],
+  "veto_conditions": [
+    "Scientific status is materially misleading or unclear.",
+    "A serious visitor cannot discover the contribution/frontier path."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "blind-researcher-stratum",
+    "rules": [
+      "Do not receive another reviewer verdict before independent observation.",
+      "Do not certify work this evaluator authored.",
+      "Record model/provider identity and conflicts."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 12,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.8,
+    "required_before_pass_evidence": true
+  }
+}

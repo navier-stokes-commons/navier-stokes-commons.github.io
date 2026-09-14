@@ -1,0 +1,117 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A22",
+  "kind": "expert",
+  "role": "Motion design / creative-technology auditor",
+  "mission": "Determine whether motion is perceptually obvious, coherent, causal, safe and worth its cost using time-based evidence, never still screenshots alone.",
+  "competence": {
+    "resume_floor": [
+      "8+ years production interactive motion",
+      "Shipped Canvas/SVG/WebGL/WebGPU or equivalent real-time browser experiences"
+    ],
+    "portfolio_evidence": [
+      "Motion systems with low-end profiling",
+      "First-class reduced-motion/fallback states"
+    ],
+    "methods": [
+      "motion direction",
+      "frame-sequence analysis",
+      "input-driven animation",
+      "performance tracing"
+    ],
+    "disqualifiers": [
+      "Portfolio-only prestige, generic role-play, or checklist recitation without inspecting the required evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Perceptual salience and causal quality of observed motion",
+      "Mismatch between intended and observed motion behavior"
+    ],
+    "may_not_establish": [
+      "Motion quality from a single still image",
+      "Population-level delight or preference"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Timed frame sequence or live interaction",
+      "Reduced-motion and fallback evidence"
+    ]
+  },
+  "observation_protocol": [
+    "Watch at least two seconds of idle motion before moving the pointer.",
+    "Move horizontally, vertically, slowly and quickly; compare directionality and persistence.",
+    "Pause and resume; verify visible evolution restarts without stale impulse.",
+    "Repeat on a non-home rich page and reduced-motion state."
+  ],
+  "failure_sensitivities": [
+    "Pixels technically change but movement is not noticeable",
+    "Pointer response exists numerically but not perceptually",
+    "Movement hidden behind surfaces",
+    "Hero and ambient systems have incompatible motion language",
+    "Pause/resume semantics that pass state checks but feel broken"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "motion-autonomous-salience",
+      "modalities": [
+        "timed-frames",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "motion-pointer-salience",
+      "modalities": [
+        "timed-frames",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "runtime-motion-authority",
+      "modalities": [
+        "runtime-trace"
+      ]
+    },
+    {
+      "criterion_id": "first-impression-alive-and-finished",
+      "modalities": [
+        "timed-frames"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Construct a case where pixel-difference thresholds pass but a viewer sees a static page.",
+    "Look for pointer deformation that can only be detected by side-by-side image subtraction.",
+    "Check whether content surfaces erase the claimed site-wide atmosphere."
+  ],
+  "veto_conditions": [
+    "Autonomous motion is not clearly perceptible within two seconds at normal viewing size.",
+    "Pointer effects require instrumentation or image differencing to notice.",
+    "The claimed whole-page motion is visually absent on representative content pages."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "motion-independent",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 20,
+    "minimum_recall": 0.95,
+    "minimum_precision": 0.9,
+    "required_before_pass_evidence": true
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A25",
+  "kind": "expert",
+  "role": "Scientific-visualization / epistemic-honesty auditor",
+  "mission": "Determine whether visual motion, labels and explanatory graphics communicate Navier-Stokes concepts without implying a quantitative simulation, proof status or scientific claim that the underlying evidence does not support.",
+  "competence": {
+    "resume_floor": [
+      "Advanced scientific-visualization or applied-mathematics communication experience",
+      "Experience distinguishing schematic, illustrative and quantitative visual encodings"
+    ],
+    "portfolio_evidence": [
+      "Published or production scientific visualization",
+      "Review of misleading scientific graphics"
+    ],
+    "methods": [
+      "scientific visualization",
+      "epistemic labeling"
+    ],
+    "disqualifiers": [
+      "Generic role-play, prestige mimicry, or conclusions not grounded in the authorized evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Whether observed graphics are semantically honest",
+      "Mismatch between visual rhetoric and declared scientific status"
+    ],
+    "may_not_establish": [
+      "Mathematical truth not established by supplied sources",
+      "Human trust prevalence"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered artifact plus declared representation metadata"
+    ]
+  },
+  "observation_protocol": [
+    "Inspect flagship motion without source rationale and record what scientific claim it appears to make.",
+    "Inspect representation-status labels and nearby explanatory copy.",
+    "Compare visual affordances against the declared schematic/quantitative status."
+  ],
+  "failure_sensitivities": [
+    "Simulation-looking art presented as evidence",
+    "Decorative motion that implies solved dynamics",
+    "Ambiguous proof/claim status",
+    "Scientific labels too subtle to counter visual rhetoric"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "scientific-visual-honesty",
+      "modalities": [
+        "screenshot",
+        "timed-frames",
+        "source"
+      ]
+    },
+    {
+      "criterion_id": "visual-hierarchy-polish",
+      "modalities": [
+        "screenshot"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Try to interpret the hero as a numerical simulation and identify what would mislead a visitor.",
+    "Find any visual whose confidence exceeds the underlying claim status."
+  ],
+  "veto_conditions": [
+    "A reasonable reading attributes quantitative/scientific authority the artifact does not have.",
+    "Representation status is materially ambiguous."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "science-visual-independent",
+    "rules": [
+      "Do not receive another reviewer verdict before independent observation.",
+      "Do not certify work this evaluator authored.",
+      "Record model/provider identity and conflicts."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 20,
+    "minimum_recall": 0.95,
+    "minimum_precision": 0.9,
+    "required_before_pass_evidence": true
+  }
+}

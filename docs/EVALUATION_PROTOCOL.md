@@ -80,3 +80,8 @@ Production selection retains the incumbent unless all hard vetoes pass and the c
 ## Release separation
 
 `run_fast_checks.py` is a strict local-preflight subset only; `run_all_checks.py` remains release-authoritative.
+
+
+## Review-system v2 release authority
+
+Release candidates use `audit/review-system-v2/`. Persona catalogues and summary prose are not release evidence. Every synthetic review must be candidate/product-digest bound, prompt/raw-output hash-bound, calibrated, modality-correct, and preserve FAIL/veto/contradiction outputs. A valid critical FAIL blocks the candidate; it is not majority-voted away. Still screenshots cannot certify temporal motion. Synthetic PASS closes only the named defect-discovery criterion and does not certify human preference or lived experience. `run_all_checks.py` is release-authoritative and therefore requires an active release candidate plus review-system-v2 receipts after `build_site.py`.

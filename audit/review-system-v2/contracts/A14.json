@@ -1,0 +1,145 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A14",
+  "kind": "expert",
+  "role": "Web-platform / performance engineer",
+  "mission": "Establish actual runtime ownership, loading behavior and compositing rather than trusting source comments or the existence of animation code.",
+  "competence": {
+    "resume_floor": [
+      "10+ years frontend/browser engineering",
+      "Production debugging of rendering/performance failures"
+    ],
+    "portfolio_evidence": [
+      "Performance-critical interactive public sites",
+      "Cross-browser runtime investigations"
+    ],
+    "methods": [
+      "DevTools performance tracing",
+      "DOM/canvas instrumentation",
+      "network/font tracing",
+      "computed-style inspection"
+    ],
+    "disqualifiers": [
+      "Portfolio-only prestige, generic role-play, or checklist recitation without inspecting the required evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Actual runtime writers/listeners/loops",
+      "Occlusion and asset-loading failures",
+      "Browser-level causal mechanisms"
+    ],
+    "may_not_establish": [
+      "Aesthetic quality by itself",
+      "Human preference prevalence"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": false,
+    "allowed_context": [
+      "Rendered artifact",
+      "Source",
+      "Runtime trace"
+    ]
+  },
+  "observation_protocol": [
+    "Instrument the page before reading comments that claim ownership.",
+    "Enumerate animation-frame loops, timers, pointer listeners, canvases and elements that mutate moving surfaces.",
+    "Inspect computed opacity/background/z-index and network/font state on the deployed or release-equivalent artifact."
+  ],
+  "failure_sensitivities": [
+    "Two modules writing or replacing the same canvas",
+    "Motion hidden beneath opaque surfaces",
+    "Font fallback or failed asset load",
+    "A running loop that changes pixels outside perceptible regions"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "runtime-motion-authority",
+      "modalities": [
+        "runtime-trace",
+        "source"
+      ]
+    },
+    {
+      "criterion_id": "background-compositing-visibility",
+      "modalities": [
+        "computed-style-trace",
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "typography-optical-legibility",
+      "modalities": [
+        "font-network-trace",
+        "multi-scale-screenshots"
+      ]
+    },
+    {
+      "criterion_id": "motion-pointer-salience",
+      "modalities": [
+        "live-interaction",
+        "timed-frames"
+      ]
+    },
+    {
+      "criterion_id": "anti-goodhart-counterexample",
+      "modalities": [
+        "source",
+        "runtime-trace"
+      ]
+    },
+    {
+      "criterion_id": "mobile-rendering-polish",
+      "modalities": [
+        "mobile-screenshot",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "cross-browser-font-stability",
+      "modalities": [
+        "multi-scale-screenshots",
+        "font-network-trace"
+      ]
+    },
+    {
+      "criterion_id": "accessibility-interaction",
+      "modalities": [
+        "accessibility-trace",
+        "keyboard-interaction"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Disprove comments claiming a single motion authority by instrumenting actual writers.",
+    "Find a configuration in which requestAnimationFrame is active while final composited motion is invisible."
+  ],
+  "veto_conditions": [
+    "Competing writers own one render target or shared motion state.",
+    "Required animation/font asset fails or is hidden in the release-equivalent environment."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "runtime-independent",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 16,
+    "minimum_recall": 0.95,
+    "minimum_precision": 0.9,
+    "required_before_pass_evidence": true
+  }
+}

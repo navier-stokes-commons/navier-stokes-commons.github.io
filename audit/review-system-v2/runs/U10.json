@@ -1,0 +1,119 @@
+{
+  "schema": "nsc-review-run-v2",
+  "run_id": "RC-20260914-004-U10-independent",
+  "candidate": {
+    "candidate_id": "RC-20260914-004",
+    "source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8",
+    "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82"
+  },
+  "evaluator": {
+    "contract_id": "U10",
+    "model_provider": "independent-synthetic-harness",
+    "model_family": "family-beta",
+    "model_version": "2026.09",
+    "independence_group": "blind-researcher-stratum",
+    "split": "development",
+    "blindness_attestation": {
+      "prior_verdicts_exposed": false,
+      "candidate_age_exposed": false,
+      "author_rationale_exposed": false
+    },
+    "calibration": {
+      "suite_id": "SEED_SUITE_V2",
+      "seeded_cases": 24,
+      "recall": 1.0,
+      "precision": 1.0,
+      "passed": true,
+      "evidence_ref": "audit/review-system-v2/artifacts/RC-20260914-004/calibration/U10.json",
+      "evidence_sha256": "d6d5fe56bf26ddf8a4d035575b6225fa1201da0345da605f06eb50a0e275586b"
+    }
+  },
+  "prompt": {
+    "template_ref": "audit/review-system-v2/prompts/REVIEW_TEMPLATE.md",
+    "template_sha256": "f600eba338b6c4e3de6c38171430a9c86245dc84c61171316116fcdb8f940f78",
+    "rendered_ref": "audit/review-system-v2/artifacts/RC-20260914-004/prompts/U10.txt",
+    "rendered_sha256": "925e48b4ebfb3e693eb1dd6a2f11fe624d39ccbefb575c4bfc4e3a4054f27b7f"
+  },
+  "evidence": [
+    {
+      "id": "E-live-interaction",
+      "modality": "live-interaction",
+      "sha256": "b7fc96ea0a4de42601fbd5075854322d693ea3b2ee42956d5147483980822b7f",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/pointer-pause-resume.json",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-screenshot",
+      "modality": "screenshot",
+      "sha256": "02f91fade6671bf0f576e76d173c15f9e9499b3af5e3f1a8b3e23c59eafafb2a",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/desktop-composition.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-task-transcript",
+      "modality": "task-transcript",
+      "sha256": "d5b939e58274163e69ce9a5b8b8640e82354755a20572748b85e7424fa644b62",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/cold-task.txt",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/cold-task.txt",
+      "release_equivalent": true
+    },
+    {
+      "id": "E-timed-frames",
+      "modality": "timed-frames",
+      "sha256": "88e1a64a539c9b1ecea46d440fc84528cebea58d6b58976c62c73be16c608b33",
+      "uri": "repo://audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "local_ref": "audit/review-system-v2/artifacts/RC-20260914-004/evidence/timed-frames.json",
+      "release_equivalent": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "criterion_id": "scientific-visual-honesty",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-screenshot",
+        "E-timed-frames"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O2",
+      "criterion_id": "navigation-task-clarity",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-task-transcript",
+        "E-screenshot"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "O3",
+      "criterion_id": "first-impression-alive-and-finished",
+      "epistemic_type": "direct-observation",
+      "severity": "INFO",
+      "claim": "Direct observation supports the criterion under assigned task.",
+      "evidence_refs": [
+        "E-timed-frames",
+        "E-screenshot",
+        "E-live-interaction"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "verdict": "PASS",
+  "vetoes": [],
+  "contradictions": [],
+  "unknowns": [],
+  "raw_output": {
+    "ref": "audit/review-system-v2/artifacts/RC-20260914-004/raw/U10.txt",
+    "sha256": "a45c89c2823e9dcfc94cfb3361bc8410c91e40b88cb15dce955a284ddd4fa886"
+  }
+}

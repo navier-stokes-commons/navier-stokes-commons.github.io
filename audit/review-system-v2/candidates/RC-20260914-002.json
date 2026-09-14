@@ -1,0 +1,22 @@
+{
+  "schema": "nsc-release-candidate-v2",
+  "candidate_id": "RC-20260914-002",
+  "parent_candidate_id": "RC-20260914-001",
+  "status": "superseded",
+  "created_at_utc": "2026-09-14T04:29:02Z",
+  "base_source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+  "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82",
+  "objective": "Compare a field-dominant architecture against the beta.8 baseline for calm site-wide motion",
+  "material_changes": [
+    "Candidate A: single canvas field-dominant architecture with shared motion clock"
+  ],
+  "known_unresolved": [],
+  "evidence_carried_forward": [],
+  "evidence_invalidated": [],
+  "supersession": {
+    "reason": "Comparative design search retained candidate C as simpler and more coherent",
+    "trigger_evidence": [
+      "architecture-search-comparison"
+    ]
+  }
+}

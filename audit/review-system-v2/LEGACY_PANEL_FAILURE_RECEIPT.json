@@ -1,0 +1,457 @@
+{
+  "schema": "nsc-legacy-panel-failure-receipt-v2",
+  "source_sha256": "2e034a298f3e30caba64e6f6d9a51ad0442786f08658a175d01f8e45287989c2",
+  "legacy_review_count": 28,
+  "non_evidentiary_count": 28,
+  "conclusion": "The historical panel cannot provide release PASS evidence under v2 because its review summaries are not reproducible evaluator runs and key visual/motion claims use insufficient evidence modalities.",
+  "reviews": [
+    {
+      "auditor_id": "A01",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A02",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A03",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A04",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A05",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A06",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A07",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A08",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A09",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A10",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A11",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Motion/visual claim relied on screenshots, which cannot establish temporal motion behavior."
+    },
+    {
+      "auditor_id": "A12",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A13",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A14",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A15",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A16",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A17",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A18",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A19",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A20",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A21",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "A22",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Motion review contains no recorded timed or live interaction evidence and therefore cannot establish motion quality."
+    },
+    {
+      "auditor_id": "A23",
+      "legacy_verdict": "machine_no_blocker_external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "L01",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "L02",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "L03",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "L04",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    },
+    {
+      "auditor_id": "L05",
+      "legacy_verdict": "external_required",
+      "non_evidentiary_under_v2": true,
+      "missing_release_evidence": [
+        "model/provider/version",
+        "exact prompt",
+        "prompt hash",
+        "evidence packet and hashes",
+        "raw model output/transcript",
+        "observation-vs-inference typing",
+        "criterion-level veto/abstention",
+        "candidate product digest"
+      ],
+      "specific_alarm": "Summary-only synthetic conclusion; no reproducible run provenance."
+    }
+  ]
+}

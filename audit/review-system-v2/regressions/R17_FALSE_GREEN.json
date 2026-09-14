@@ -1,0 +1,33 @@
+{
+  "schema": "nsc-review-regression-v2",
+  "id": "R17_FALSE_GREEN_2026_09_13",
+  "incident": "R17 was certified terminal by machine/proxy gates, then ordinary product inspection immediately reported that the animation felt broken/static and other visible design defects remained.",
+  "release_claims_that_must_not_be_self-authenticating": [
+    "hero=coherent-fluid-field",
+    "pointer_response=hero+sitewide-english-wake",
+    "resume_visual=true",
+    "R17_TERMINAL_PUBLIC_PASS"
+  ],
+  "evidence": [
+    {
+      "id": "desktop-static-frame",
+      "path": "audit/review-system-v2/regressions/evidence/r17-desktop-running.png",
+      "sha256": "6a55c43fec0eb343b27e6dbd8380b1988a820e4d79c8de61cc0868d791c5bc6d",
+      "epistemic_limit": "A still can show composition and typography but cannot establish temporal motion or pointer responsiveness."
+    },
+    {
+      "id": "quests-static-frame",
+      "path": "audit/review-system-v2/regressions/evidence/r17-pagewide-quests-pointer.png",
+      "sha256": "02f91fade6671bf0f576e76d173c15f9e9499b3af5e3f1a8b3e23c59eafafb2a",
+      "epistemic_limit": "A still shows very low-contrast background traces but cannot establish that they visibly move."
+    }
+  ],
+  "required_alarms": [
+    "A motion reviewer presented only still screenshots must ABSTAIN from certifying motion.",
+    "A blind product reviewer who describes the experience as static/broken/unfinished creates a release-blocking alarm even if numerical motion metrics pass.",
+    "Machine PASS plus direct perceptual FAIL creates a contradiction, not an average score.",
+    "Untraceable one-paragraph synthetic review summaries cannot count as release evidence.",
+    "The hostile lane must test the counterexample: nonzero pixel deltas hidden, occluded or perceptually negligible."
+  ],
+  "regression_status": "must remain blocked by review-system-v2 negative controls"
+}

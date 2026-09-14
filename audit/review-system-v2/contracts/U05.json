@@ -1,0 +1,104 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "U05",
+  "kind": "synthetic-user-stratum",
+  "role": "Low-vision / scaled-display simulation stratum",
+  "mission": "Stress optical legibility at enlarged browser scaling and constrained contrast while explicitly not claiming to substitute for disabled-user lived experience.",
+  "competence": {
+    "resume_floor": [
+      "No claim of lived experience; this is an artifact stress-test stratum",
+      "Must use required scaled render evidence"
+    ],
+    "portfolio_evidence": [
+      "Scaled screenshot defect log",
+      "Zoom/reflow task trace"
+    ],
+    "methods": [
+      "visual comparison",
+      "zoom/reflow inspection"
+    ],
+    "disqualifiers": [
+      "Claiming real disabled-user preference or comfort from simulation."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Artifact defects exposed by zoom/scaling",
+      "Loss of legibility under specified render conditions"
+    ],
+    "may_not_establish": [
+      "Disabled-user lived experience",
+      "Accessibility certification"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "100/125/150/200% screenshots",
+      "Rendered controls"
+    ]
+  },
+  "observation_protocol": [
+    "Inspect metadata and controls at each required scale.",
+    "Flag text that becomes muddy, clipped, overly tracked or structurally ambiguous.",
+    "Check whether hierarchy survives without reading source CSS."
+  ],
+  "failure_sensitivities": [
+    "Microtype rasterization",
+    "Clipping at zoom",
+    "Low-opacity labels",
+    "Fallback instability"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "typography-optical-legibility",
+      "modalities": [
+        "multi-scale-screenshots"
+      ]
+    },
+    {
+      "criterion_id": "cross-browser-font-stability",
+      "modalities": [
+        "multi-scale-screenshots",
+        "font-network-trace"
+      ]
+    },
+    {
+      "criterion_id": "fallback-compositional-equivalence",
+      "modalities": [
+        "screenshot",
+        "reduced-motion-capture"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Find the smallest essential text and test whether it remains readable at every required scale.",
+    "Distinguish decorative texture from interface text."
+  ],
+  "veto_conditions": [
+    "Essential text fails optical legibility or reflow in any required state."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "scaled-display-stratum",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 10,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.8,
+    "required_before_pass_evidence": true
+  }
+}

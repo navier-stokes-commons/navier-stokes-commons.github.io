@@ -1,0 +1,103 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "U09",
+  "kind": "synthetic-user-stratum",
+  "role": "Blind multilingual / non-native-English visitor",
+  "mission": "Cold-start the rendered product as a multilingual visitor with no implementation context; test whether language choice, visual hierarchy and essential task cues survive without relying on idiomatic English or tiny metadata.",
+  "competence": {
+    "resume_floor": [
+      "No specialist credential required; this is a task stratum",
+      "Must remain blind to implementation and expected answers"
+    ],
+    "portfolio_evidence": [
+      "Cold-start task transcript",
+      "Language-selection interaction transcript"
+    ],
+    "methods": [
+      "task execution",
+      "plain-language paraphrase"
+    ],
+    "disqualifiers": [
+      "Generic role-play, prestige mimicry, or conclusions not grounded in the authorized evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Directly observable language-selection and task-discovery failures",
+      "Whether visual cues remain understandable with limited English"
+    ],
+    "may_not_establish": [
+      "Real multilingual population frequencies",
+      "Native-speaker lived experience"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Rendered product only and a simple task"
+    ]
+  },
+  "observation_protocol": [
+    "Find and use language selection without being told where it is.",
+    "Explain the page purpose using only immediately visible cues.",
+    "Report clipped, ambiguous or tiny language/navigation elements."
+  ],
+  "failure_sensitivities": [
+    "Language selector looks unfinished",
+    "Critical navigation depends on subtle English copy",
+    "Microtype impairs orientation"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "language-grid-composition",
+      "modalities": [
+        "screenshot",
+        "live-interaction"
+      ]
+    },
+    {
+      "criterion_id": "navigation-task-clarity",
+      "modalities": [
+        "task-transcript",
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "visual-hierarchy-polish",
+      "modalities": [
+        "screenshot"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Try to reach a non-English page without prior navigation knowledge.",
+    "Identify any element whose meaning disappears when prose comprehension is weak."
+  ],
+  "veto_conditions": [
+    "Language selection is visually broken or undiscoverable.",
+    "Primary purpose/action cannot be recovered from the rendered hierarchy."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "blind-multilingual-stratum",
+    "rules": [
+      "Do not receive another reviewer verdict before independent observation.",
+      "Do not certify work this evaluator authored.",
+      "Record model/provider identity and conflicts."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 12,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.8,
+    "required_before_pass_evidence": true
+  }
+}

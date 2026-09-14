@@ -1,0 +1,44 @@
+{
+  "schema": "nsc-terminal-product-loop-v3",
+  "objective": "Ship a Navier-Stokes Commons public experience that is visibly alive, polished, scientifically honest, accessible and coherent under direct observation, with synthetic stakeholders empowered to veto false greens.",
+  "source_base": {
+    "sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+    "version": "0.4.0-beta.8"
+  },
+  "known_incident_regressions": [
+    "perceptually static/broken animation despite machine motion PASS",
+    "page-wide background visually hidden or too weak",
+    "pointer response too weak to perceive",
+    "language-grid perimeter reads clipped/unfinished",
+    "microtype appears pixelated/illegible at small sizes",
+    "possible motion-authority conflict must be runtime-instrumented rather than assumed"
+  ],
+  "required_phases": [
+    "verify-source",
+    "install-review-system",
+    "baseline-blind-review",
+    "runtime-autopsy",
+    "parallel-design-search",
+    "implement-chosen-architecture",
+    "candidate-evidence-capture",
+    "independent-review",
+    "hostile-goodhart-pass",
+    "contradiction-arbitration",
+    "full-machine-suite",
+    "deploy-same-sha",
+    "live-host-review",
+    "release-receipt"
+  ],
+  "stop_rule": "Stop only after live-host evidence for the deployed same SHA satisfies all machine gates and all release-critical synthetic review criteria with no P0/P1, FAIL, ABSTAIN-for-required-evidence, unresolved contradiction, known unresolved defect, or Goodhart counterexample; otherwise continue local repair/redesign. Only a genuine external authorization/service failure may block after all orthogonal work is complete.",
+  "forbidden": [
+    "tuning thresholds to current output",
+    "editing reviewer verdicts",
+    "majority-voting away minority alarms",
+    "using screenshots to certify motion",
+    "calling CI green terminal",
+    "preserving R17 architecture because of sunk cost",
+    "calling an artifact FINAL before release acceptance",
+    "deploying different source SHAs to GitHub and GitLab",
+    "claiming synthetic judgments estimate human population preference"
+  ]
+}

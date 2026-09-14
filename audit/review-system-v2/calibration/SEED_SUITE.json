@@ -1,0 +1,245 @@
+{
+  "schema": "nsc-review-calibration-seeds-v2",
+  "cases": [
+    {
+      "id": "S01",
+      "criterion_id": "motion-autonomous-salience",
+      "presentation": "Animation changes pixels at alpha 0.003 and is not distinguishable at normal viewing distance.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S02",
+      "criterion_id": "motion-autonomous-salience",
+      "presentation": "Only a tiny offscreen region animates while the visible page appears static.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S03",
+      "criterion_id": "motion-autonomous-salience",
+      "presentation": "Autonomous field evolution is plainly visible in time-separated release-equivalent frames and live observation.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S04",
+      "criterion_id": "motion-pointer-salience",
+      "presentation": "Pointer state updates numerically but rendered deformation amplitude is visually negligible.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S05",
+      "criterion_id": "motion-pointer-salience",
+      "presentation": "Horizontal and vertical pointer motion produce the same isotropic response.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S06",
+      "criterion_id": "motion-pointer-salience",
+      "presentation": "Pointer movement produces clear broad directional deformation in both axes on home and non-home pages.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S07",
+      "criterion_id": "background-compositing-visibility",
+      "presentation": "A moving canvas exists but opaque section backgrounds cover nearly all of it.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S08",
+      "criterion_id": "background-compositing-visibility",
+      "presentation": "Background traces are below practical contrast and disappear under normal content surfaces.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S09",
+      "criterion_id": "background-compositing-visibility",
+      "presentation": "Final compositing visibly exposes the background field through intended surfaces while text remains readable.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S10",
+      "criterion_id": "runtime-motion-authority",
+      "presentation": "Two modules independently schedule RAF loops and can clear/replace the same ambient canvas.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S11",
+      "criterion_id": "runtime-motion-authority",
+      "presentation": "Pause state is local to hero while a second ambient clock continues mutating shared visual state.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S12",
+      "criterion_id": "runtime-motion-authority",
+      "presentation": "Runtime instrumentation shows one owner per moving surface and shared clock/pointer/pause/reduced-motion authority.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S13",
+      "criterion_id": "typography-optical-legibility",
+      "presentation": "Critical labels render at 0.55rem uppercase mono with wide tracking and low opacity at 125% scaling.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S14",
+      "criterion_id": "typography-optical-legibility",
+      "presentation": "Primary variable font fails to load and fallback changes glyph metrics enough to clip dense labels.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S15",
+      "criterion_id": "typography-optical-legibility",
+      "presentation": "Multi-scale captures at 100/125/150 percent and mobile DPR show crisp readable labels with verified font loading.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S16",
+      "criterion_id": "language-grid-composition",
+      "presentation": "Language grid has top/bottom borders and internal gaps but no complete perimeter, reading as clipped.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S17",
+      "criterion_id": "language-grid-composition",
+      "presentation": "Cell separators stop one pixel short at the container edge, creating an accidental open side.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S18",
+      "criterion_id": "language-grid-composition",
+      "presentation": "The selector has either a complete deliberate perimeter or a clearly intentional open editorial composition.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S19",
+      "criterion_id": "first-impression-alive-and-finished",
+      "presentation": "A blind first-time observer independently describes the flagship as static and unfinished.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S20",
+      "criterion_id": "first-impression-alive-and-finished",
+      "presentation": "Normal controls expose renderer/debug terminology that makes the public surface read like a prototype.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S21",
+      "criterion_id": "first-impression-alive-and-finished",
+      "presentation": "Two blind task strata describe motion and hierarchy without prompting and report no broken/unfinished primary surface.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S22",
+      "criterion_id": "anti-goodhart-counterexample",
+      "presentation": "All numeric motion thresholds pass because hidden pixels change, while visible user-facing motion remains absent.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S23",
+      "criterion_id": "anti-goodhart-counterexample",
+      "presentation": "A summary says every synthetic reviewer passed, but prompts, raw outputs and inspected evidence were never recorded.",
+      "oracle": {
+        "fault_present": true,
+        "expected_owner_response": "ALARM",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    },
+    {
+      "id": "S24",
+      "criterion_id": "anti-goodhart-counterexample",
+      "presentation": "Hostile review fails to construct a material pass-the-gate/fail-the-goal counterexample after inspecting gates and rendered evidence.",
+      "oracle": {
+        "fault_present": false,
+        "expected_owner_response": "CLEAR",
+        "expected_nonowner_response": "ABSTAIN"
+      }
+    }
+  ]
+}

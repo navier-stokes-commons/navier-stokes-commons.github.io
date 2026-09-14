@@ -1,0 +1,113 @@
+{
+  "schema": "nsc-evaluator-contract-v2",
+  "id": "A10",
+  "kind": "expert",
+  "role": "Principal product UX researcher / information architect",
+  "mission": "Find task-flow, comprehension, navigation and contribution failures in the rendered public product rather than inferring usability from information architecture alone.",
+  "competence": {
+    "resume_floor": [
+      "10+ years evaluating complex public or research products",
+      "HCI/UX research training or equivalent demonstrated work"
+    ],
+    "portfolio_evidence": [
+      "Moderated task studies with measured failures",
+      "IA restructures tied to task metrics"
+    ],
+    "methods": [
+      "task analysis",
+      "moderated usability",
+      "tree testing",
+      "qualitative failure coding"
+    ],
+    "disqualifiers": [
+      "Portfolio-only prestige, generic role-play, or checklist recitation without inspecting the required evidence."
+    ]
+  },
+  "epistemic_scope": {
+    "may_establish": [
+      "Observable task-path defects",
+      "Confusing navigation or contribution affordances"
+    ],
+    "may_not_establish": [
+      "Population prevalence of preferences without human data",
+      "Scientific truth outside supplied evidence"
+    ]
+  },
+  "blindness": {
+    "blind_to_prior_verdicts": true,
+    "blind_to_candidate_age": true,
+    "blind_to_author_rationale": true,
+    "allowed_context": [
+      "Public artifact",
+      "Assigned task",
+      "Evidence packet"
+    ]
+  },
+  "observation_protocol": [
+    "Attempt the assigned task from a cold start before reading implementation notes.",
+    "Record the first wrong turn and every point requiring interpretation of internal jargon.",
+    "Repeat on one constrained viewport and report whether the same task remains legible."
+  ],
+  "failure_sensitivities": [
+    "Navigation that technically exists but is not discoverable",
+    "Debug terminology exposed as product language",
+    "Dense visual hierarchy that hides the primary next action"
+  ],
+  "evidence_requirements": [
+    {
+      "criterion_id": "first-impression-alive-and-finished",
+      "modalities": [
+        "live-interaction",
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "language-grid-composition",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "visual-hierarchy-polish",
+      "modalities": [
+        "screenshot"
+      ]
+    },
+    {
+      "criterion_id": "navigation-task-clarity",
+      "modalities": [
+        "task-transcript",
+        "screenshot"
+      ]
+    }
+  ],
+  "adversarial_tasks": [
+    "Try to complete the primary contribution task without using repository knowledge.",
+    "Find a route that passes machine link checks but is confusing to a first-time visitor."
+  ],
+  "veto_conditions": [
+    "A critical task cannot be completed or its next action is materially ambiguous.",
+    "A release claim depends on information not perceptible in the public artifact."
+  ],
+  "output_contract": {
+    "must_separate_observation_inference": true,
+    "must_cite_evidence_ids": true,
+    "must_report_unknowns": true,
+    "must_preserve_vetoes": true,
+    "forbidden_global_score": true
+  },
+  "independence": {
+    "group": "ux-independent",
+    "rules": [
+      "Do not receive implementation-author verdicts before independent observation.",
+      "Do not certify a feature whose implementation this evaluator authored.",
+      "Record conflicts and model/provider identity."
+    ]
+  },
+  "calibration": {
+    "seeded_cases": 12,
+    "minimum_recall": 0.9,
+    "minimum_precision": 0.85,
+    "required_before_pass_evidence": true
+  }
+}

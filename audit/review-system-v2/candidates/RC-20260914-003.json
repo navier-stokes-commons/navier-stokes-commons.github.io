@@ -1,0 +1,22 @@
+{
+  "schema": "nsc-release-candidate-v2",
+  "candidate_id": "RC-20260914-003",
+  "parent_candidate_id": "RC-20260914-002",
+  "status": "superseded",
+  "created_at_utc": "2026-09-14T04:32:39Z",
+  "base_source_sha": "ff895a28f67380f621cfa616e296bc3e703021da",
+  "product_digest_sha256": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82",
+  "objective": "Compare an advection-dominant architecture with explicit pointer deformation and accessible fallbacks",
+  "material_changes": [
+    "Candidate B: particle-advection-dominant architecture with dedicated hero renderer"
+  ],
+  "known_unresolved": [],
+  "evidence_carried_forward": [],
+  "evidence_invalidated": [],
+  "supersession": {
+    "reason": "Candidate B superseded after comparative review in favor of hybrid candidate C",
+    "trigger_evidence": [
+      "blind-comparative-review-candidate-C"
+    ]
+  }
+}
