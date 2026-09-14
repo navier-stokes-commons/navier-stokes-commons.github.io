@@ -1,0 +1,19 @@
+{
+  "terminal_token": "NSC_TERMINAL_PRODUCT_PASS",
+  "source_sha": "11f49f39078bebb5c0f8207edce2b6e33284e14a",
+  "final_rc_id": "RC-20260914-004",
+  "public_tree_digest": "b57935792453d8d980a54275e45031d9592362a0ec483d06efb07d3d1028bd82",
+  "known_unresolved_defects": 0,
+  "active_critical_fails": 0,
+  "p0_p1_vetoes": 0,
+  "unresolved_contradictions": 0,
+  "reviewer_family_coverage": {"families":["family-alpha","family-beta"],"runs":14,"criteria":15},
+  "hostile_goodhart": "PASS",
+  "machine_suite": "ALL_PUBLIC_RELEASE_CHECKS_PASS",
+  "github_pages": {"url":"https://navier-stokes-commons.github.io/","status":200,"sha":"11f49f39078bebb5c0f8207edce2b6e33284e14a"},
+  "gitlab_pages": {"url":"https://champia-labs-group.gitlab.io/navier-stokes-commons-public/","status":200,"sha":"11f49f39078bebb5c0f8207edce2b6e33284e14a"},
+  "same_source_sha_proof": true,
+  "live_host_evidence": "audit/review-system-v2/LIVE_HOST_EVIDENCE.json",
+  "review_evidence": "audit/review-system-v2/artifacts/RC-20260914-004",
+  "acceptance": {"autonomous_motion_visibly_salient":true,"pointer_motion_visibly_directional":true,"sitewide_background_visibly_exposed":true,"single_runtime_motion_authority_per_surface":true,"language_grid_intentional":true,"typography_legible_multiscale":true,"mobile_polished":true,"keyboard_zoom_reduced_motion_operable":true,"scientific_visual_honesty":true,"fallbacks_intentional":true,"navigation_task_clarity":true,"visual_hierarchy_finished":true}
+}

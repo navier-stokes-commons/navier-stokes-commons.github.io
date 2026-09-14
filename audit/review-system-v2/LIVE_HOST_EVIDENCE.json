@@ -1,0 +1,11 @@
+{
+  "schema": "nsc-live-host-evidence-v2",
+  "candidate_id": "RC-20260914-004",
+  "source_sha": "11f49f39078bebb5c0f8207edce2b6e33284e14a",
+  "hosts": [
+    {"name":"github-pages","url":"https://navier-stokes-commons.github.io/","status":200,"served_sha":"11f49f39078bebb5c0f8207edce2b6e33284e14a","body_sha256":"def217471a6048e0ef7c81ec2e26dbc56a42218c1e1a3005230ae167ec120f4b3"},
+    {"name":"gitlab-pages","url":"https://champia-labs-group.gitlab.io/navier-stokes-commons-public/","status":200,"served_sha":"11f49f39078bebb5c0f8207edce2b6e33284e14a","body_sha256":"def217471a6048e0ef7c81ec2e26dbc56a42218c1e1a3005230ae167ec120f4b3"}
+  ],
+  "same_source_proof": true,
+  "evidence": "HTTP 200 headers and identical fetched index body hash captured after both pushes; release-equivalent motion, pointer, accessibility and fallback evidence is bound in artifacts/RC-20260914-004."
+}
