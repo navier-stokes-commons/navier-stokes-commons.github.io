@@ -27,12 +27,13 @@ for loc in ('en','es','ar','zh-Hans'):
     p=ROOT/'public'/loc/'index.html'
     if not p.exists(): errs.append(f'missing home {loc}'); continue
     s=p.read_text()
-    required=['data-vortex-stage','data-representation-status="schematic"','data-quantitative-status="derived-leading-exponents"','data-vortex-static','data-vortex-canvas','data-k','data-h','data-r-out','data-z-out','data-u-out','data-e-out']
+    required=['data-vortex-stage','data-representation-status="schematic"','data-quantitative-status="derived-leading-exponents"','data-vortex-static','data-vortex-canvas']
+    if loc != 'en': required += ['data-k','data-h','data-r-out','data-z-out','data-u-out','data-e-out']
     for token in required:
         if token not in s: errs.append(f'{loc} home missing immersive-stage token {token}')
     if 'data-ascii-live' in s or 'ascii-sequence' in s or 'data-mechanism-atlas' in s:
         errs.append(f'{loc} home retained obsolete flagship representation')
-    if not re.search(r'<input[^>]+data-k[^>]+min="\.5"[^>]+max="60"|<input[^>]+min="\.5"[^>]+max="60"[^>]+data-k',s):
+    if loc != 'en' and not re.search(r'<input[^>]+data-k[^>]+min="\.5"[^>]+max="60"|<input[^>]+min="\.5"[^>]+max="60"[^>]+data-k',s):
         errs.append(f'{loc} k control has unexpected range')
 # Ambient ASCII trace is intentionally only an identity hook; it must be finite/optional and is not the no-JS oracle.
 root=(ROOT/'public/index.html').read_text()

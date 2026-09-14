@@ -102,7 +102,7 @@
 
     // Defensive route correction for an older generated projection only.
     const firstAction = hero.querySelector('.r14-actions a.button');
-    if (firstAction && /frontier/.test(firstAction.getAttribute('href') || '')) {
+    if (firstAction && (firstAction.getAttribute('href') || '').includes('frontier')) {
       const prefix = location.pathname.includes('/en/') ? '' : 'en/';
       firstAction.setAttribute('href', prefix + 'quests/');
     }

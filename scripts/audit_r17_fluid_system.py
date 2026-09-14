@@ -10,7 +10,7 @@ for s in ['NSC R17 unified fluid interaction system','sessionStorage','pageRawVx
     if s not in r17: errs.append('R17 runtime contract missing: '+s)
 for bad in ['localStorage.setItem(storageKey','derived.open = true','Play sweep']:
     if bad in r17: errs.append('R17 prohibited runtime token: '+bad)
-for s in ['NSC R17 unified fluid visual system','touch-action:pan-y pinch-zoom!important','r17-ambient-field','r17-cursor-fluid','r17-global-pause']:
+for s in ['NSC R17 unified fluid visual system','touch-action:pan-y pinch-zoom','r17-ambient-field','r17-cursor-fluid','r17-global-pause']:
     if s not in css: errs.append('R17 CSS contract missing: '+s)
 for s in ['assets/r17-fluid.js','r17_script','Take an open problem','Put spare compute to work','en/quests/index.html','Interactive exploratory UI field when JavaScript is available']:
     if s not in gen: errs.append('generator integration missing: '+s)

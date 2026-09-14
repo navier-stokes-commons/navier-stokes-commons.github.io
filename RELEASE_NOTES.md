@@ -1,18 +1,4 @@
-# 0.4.0-beta.8 - R17 unified fluid interaction correction
-
-- replaces the failed stacked R16 hero with one R17 authority on the English/root rich surfaces;
-- removes visible legacy Play sweep/debug controls from those surfaces;
-- uses dense coherent particle advection, volume cues, and pointer-velocity wake rather than the wireframe/hourglass renderer;
-- pointer velocity affects both the hero and a subtle page-wide field, with horizontal/vertical response and decaying wake memory;
-- automatic motion is default per browsing session; only explicit Pause or reduced-motion changes running intent;
-- bounds rendering cadence, suspends the offscreen hero, permits vertical touch scrolling, and fails back to the static SVG if Canvas2D initialization fails;
-- preserves R16B onboarding/CMI context, translated legacy surfaces, no-JS fallback, and the plain Mathematics projection;
-- routes Take an open problem directly to bounded research problems.
-- strengthens motion evidence: Resume must restart visible flow while stale pointer-wake velocity remains zero; English public pages are gated against the legacy `Play sweep` label.
-- reconciles deployment SSOT against the canonical singular-mirror forge topology and records both public deployment paths as exercised without claiming turnkey certification.
-- reconciles deployment SSOT: both static host paths are recorded as exercised while stronger turnkey certification remains intentionally unclaimed.
-
-# 0.4.0-beta.7: collaboration beta with systemic assurance
+# 0.4.0-beta.8: collaboration beta with systemic assurance
 
 This release contains 18 seed research missions, 40 bounded quests, a six-rung task ladder, 17 Initial Independent Review Portfolio quests, 5 tracked claim records, and 16 locale surfaces.
 
