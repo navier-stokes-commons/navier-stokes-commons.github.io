@@ -1,7 +1,7 @@
 {
   "schema": "nsc-public-ssot-v2",
   "project_id": "navier-stokes",
-  "release": "public-web-v0.4.0-beta.7",
+  "release": "public-web-v0.4.0-beta.8",
   "release_stage": "open-beta",
   "participation_status": "open",
   "canonical_data": {

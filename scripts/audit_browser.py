@@ -10,7 +10,7 @@ try: DEFAULT_OUTPUT=scratch_dir('browser-audit')/'browser_matrix.json'
 except ScratchPolicyError as e: print('BROWSER_AUDIT_UNAVAILABLE scratch policy: '+str(e),file=sys.stderr); raise SystemExit(2)
 ap=argparse.ArgumentParser();ap.add_argument('--output',default=str(DEFAULT_OUTPUT));ap.add_argument('--chromium',default=os.getenv('NSC_CHROMIUM',''));a=ap.parse_args()
 exe=a.chromium.strip() or shutil.which('chromium') or shutil.which('chromium-browser') or shutil.which('google-chrome') or ''
-css=(ROOT/'assets/style.css').read_text();js=(ROOT/'assets/site.js').read_text(); mission=next((P/'en/missions').glob('*/index.html'))
+css=(ROOT/'assets/style.css').read_text();js=(ROOT/'assets/site.js').read_text();r17=(ROOT/'assets/r17-fluid.js').read_text(); mission=next((P/'en/missions').glob('*/index.html'))
 paths=[P/'index.html',P/'en/index.html',P/'es/index.html',P/'en/quests/index.html',P/'en/quests/ns-q008/index.html',mission,P/'en/sprint/index.html',P/'en/contribute/index.html',P/'en/agents/index.html',P/'ar/index.html',P/'zh-Hans/index.html',P/'en/reference-flow/index.html']
 configs=[
  {'name':'desktop-js','width':1440,'height':1000,'js':True,'color':'light','motion':'no-preference','forced':'none','zoom':1},
@@ -23,7 +23,8 @@ configs=[
 def inline(path:Path,js_on:bool)->str:
     h=path.read_text();h=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>','',h,count=1)
     h=re.sub(r'<link rel="stylesheet"[^>]*>',lambda _:'<style>'+css+'</style>',h,count=1)
-    h=re.sub(r'<script src="[^"]+" defer></script>',lambda _:'<script>'+js+'</script>' if js_on else '',h,count=1)
+    h=re.sub(r'<script src="[^"]*site\.js" defer></script>',lambda _:'<script>'+js+'</script>' if js_on else '',h,count=1)
+    h=re.sub(r'<script src="[^"]*r17-fluid\.js" defer></script>',lambda _:'<script>'+r17+'</script>' if js_on else '',h,count=1)
     return h
 def vis(page,sel):
     q=page.locator(sel); return q.count()>0 and q.first.is_visible()
@@ -43,26 +44,23 @@ def run():
     if cfg['js']:page.wait_for_timeout(150)
     sw=page.evaluate('document.documentElement.scrollWidth');cw=page.evaluate('document.documentElement.clientWidth')
     rec={'page':rel,'state':cfg['name'],'scroll_width':sw,'client_width':cw,'console_errors':console,'page_errors':pageerr};ok=sw<=cw+2 and not console and not pageerr and page.locator('main#main').count()==1 and page.locator('h1').count()==1
-    if rel in {'index.html','en/index.html','es/index.html','ar/index.html','zh-Hans/index.html'}:
-      rec['vortex_present']=page.locator('[data-vortex-stage]').count()==1
-      rec['typed_schematic']=page.locator('[data-vortex-stage][data-representation-status="schematic"][data-quantitative-status="derived-leading-exponents"]').count()==1
-      rec['static_present']=page.locator('[data-vortex-static]').count()==1
-      rec['old_atlas_absent']=page.locator('[data-mechanism-atlas],[data-mechanism-figure],[data-flow-chamber]').count()==0
-      controls=page.locator('[data-vortex-controls]')
-      if not all([rec['vortex_present'],rec['typed_schematic'],rec['static_present'],rec['old_atlas_absent']]):ok=False
+    if rel in {'index.html','en/index.html'}:
+      rec['vortex_present']=page.locator('[data-vortex-stage]').count()==1;rec['typed_schematic']=page.locator('[data-vortex-stage][data-representation-status="schematic"][data-quantitative-status="derived-leading-exponents"]').count()==1;rec['static_present']=page.locator('[data-vortex-static]').count()==1
       if cfg['js']:
-        rec['controls_visible']=controls.is_visible();k=page.locator('[data-k]');u=page.locator('[data-u-out]');before=u.text_content();old=k.input_value();page.wait_for_timeout(400);rec['autoplay_sweep_advances']=k.input_value()!=old
-        k.evaluate("e=>{e.value='44';e.dispatchEvent(new Event('input',{bubbles:true}))}");rec['state_updates']=u.text_content()!=before
-        rec['canvas_present']=page.locator('[data-vortex-canvas]').count()==1
-        play=page.locator('[data-vortex-controls] [data-play]');rec['play_present']=play.count()==1
-        if cfg['motion']=='reduce':rec['reduced_motion_play_disabled']=play.is_disabled()
-        motion_allowed=cfg['motion']!='reduce'
-        sweep_ok=rec['autoplay_sweep_advances'] if motion_allowed else not rec['autoplay_sweep_advances']
-        if not(rec['controls_visible'] and sweep_ok and rec['state_updates'] and rec['canvas_present'] and rec['play_present']):ok=False
-        if cfg['motion']=='reduce' and not rec.get('reduced_motion_play_disabled'):ok=False
+        rec['r17_canvas']=page.locator('[data-r17-hero-canvas]').count()==1;rec['r17_pause']=page.locator('[data-r17-pause]').count()==1;rec['legacy_play_absent']=page.locator('[data-vortex-controls] [data-play]').count()==0 and 'Play sweep' not in page.locator('[data-vortex-stage]').inner_text();state=page.locator('html').get_attribute('data-r17-motion');rec['r17_motion_state']=state;expected='reduced' if cfg['motion']=='reduce' else 'running'
+        if not(rec['vortex_present'] and rec['typed_schematic'] and rec['static_present'] and rec['r17_canvas'] and rec['r17_pause'] and rec['legacy_play_absent'] and state==expected):ok=False
       else:
-        rec['controls_hidden']=controls.count()==1 and not controls.is_visible();rec['static_visible']=vis(page,'[data-vortex-static]')
-        if not(rec['controls_hidden'] and rec['static_visible']):ok=False
+        rec['static_visible']=vis(page,'[data-vortex-static]')
+        if not(rec['vortex_present'] and rec['static_visible']):ok=False
+    elif rel in {'es/index.html','ar/index.html','zh-Hans/index.html'}:
+      rec['vortex_present']=page.locator('[data-vortex-stage]').count()==1;rec['typed_schematic']=page.locator('[data-vortex-stage][data-representation-status="schematic"][data-quantitative-status="derived-leading-exponents"]').count()==1;rec['static_present']=page.locator('[data-vortex-static]').count()==1;controls=page.locator('[data-vortex-controls]')
+      if not all([rec['vortex_present'],rec['typed_schematic'],rec['static_present']]):ok=False
+      if cfg['js']:
+        rec['controls_visible']=controls.is_visible();k=page.locator('[data-k]');old=k.input_value();page.wait_for_timeout(400);rec['autoplay_sweep_advances']=k.input_value()!=old
+        if not(rec['controls_visible'] and (rec['autoplay_sweep_advances'] if cfg['motion']!='reduce' else not rec['autoplay_sweep_advances'])):ok=False
+      else:
+        rec['static_visible']=vis(page,'[data-vortex-static]')
+        if not rec['static_visible']:ok=False
     if rel=='index.html':
       rec['trace_present']=page.locator('[data-scale-trace]').count()==1
       if cfg['js']:

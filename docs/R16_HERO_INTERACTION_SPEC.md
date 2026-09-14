@@ -1,3 +1,5 @@
+> Superseded by `docs/R17_FLUID_SYSTEM.md` after the R16 live visual regression. Retained for history.
+
 # R16 Hero Interaction Specification
 
 The rich homepage recruits underused human and machine effort - mathematical reasoning, local compute, inference subscriptions/API credits, formal methods, numerical work and review - toward bounded open Navier–Stokes research problems.

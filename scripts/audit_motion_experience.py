@@ -1,21 +1,52 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from png_metric import mad_png
 from playwright.sync_api import sync_playwright
-import re,shutil
-R=Path(__file__).resolve().parents[1];P=R/'public';css=(R/'assets/style.css').read_text();js=(R/'assets/site.js').read_text();h=(P/'en/index.html').read_text();h=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>','',h,count=1);h=re.sub(r'<link rel="stylesheet"[^>]*>',lambda _:'<style>'+css+'</style>',h,count=1);h=re.sub(r'<script src="[^"]+" defer></script>',lambda _:'<script>'+js+'</script>',h,count=1)
-exe=shutil.which('chromium') or shutil.which('chromium-browser') or ''
-def mad(a,b):return mad_png(a,b)
+import re,shutil,sys
+R=Path(__file__).resolve().parents[1];P=R/'public';css=(R/'assets/style.css').read_text();site=(R/'assets/site.js').read_text();r17=(R/'assets/r17-fluid.js').read_text()
+exe=shutil.which('chromium') or shutil.which('chromium-browser') or shutil.which('google-chrome') or ''
+
+def inline(path,js=True,ctxfail=False):
+ h=path.read_text();h=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>','',h,count=1);h=re.sub(r'<link rel="stylesheet"[^>]*>',lambda _:'<style>'+css+'</style>',h,count=1)
+ h=re.sub(r'<script src="[^"]*site\.js" defer></script>',lambda _:('<script>'+site+'</script>' if js else ''),h,count=1)
+ patch=''
+ if js and ctxfail:patch="<script>const _gc=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(t,o){if(this.hasAttribute('data-vortex-canvas'))return null;return _gc.call(this,t,o)}</script>"
+ h=re.sub(r'<script src="[^"]*r17-fluid\.js" defer></script>',lambda _:(patch+'<script>'+r17+'</script>' if js else ''),h,count=1)
+ return h
+
+def sample(pg,sel,step=12):
+ return pg.eval_on_selector(sel,f"""c=>{{const x=c.getContext('2d'),d=x.getImageData(0,0,c.width,c.height).data,a=[];for(let y=0;y<c.height;y+={step})for(let z=0;z<c.width;z+={step}){{let i=(y*c.width+z)*4;a.push(d[i],d[i+1],d[i+2])}}return a}}""")
+def mad(a,b):
+ if len(a)!=len(b) or not a:return 1.0
+ return sum(abs(x-y) for x,y in zip(a,b))/(len(a)*255.0)
+def density(a):
+ if not a:return 0.0
+ n=len(a)//3;return sum(1 for i in range(0,len(a),3) if max(a[i:i+3])>25)/max(1,n)
+
+def state(pg):return pg.locator('html').get_attribute('data-r17-motion')
+
 with sync_playwright() as p:
  o={'headless':True,'args':['--no-sandbox','--disable-gpu']};
  if exe:o['executable_path']=exe
  b=p.chromium.launch(**o)
- # Ordinary users: rich surface remains alive after the finite intro, pointer changes it, global pause freezes it.
- c=b.new_context(viewport={'width':1100,'height':760},reduced_motion='no-preference');g=c.new_page();g.set_content(h,wait_until='domcontentloaded');st=g.locator('[data-vortex-stage]');amb=g.locator('[data-ambient-field]');g.wait_for_timeout(4200);a=st.screenshot();aa=amb.screenshot();g.wait_for_timeout(500);bb=st.screenshot();ab=amb.screenshot();vortex_live=mad(a,bb);ambient_live=mad(aa,ab)
- box=amb.bounding_box();g.mouse.move(box['x']+box['width']*.18,box['y']+box['height']*.28);g.wait_for_timeout(160);p0=amb.screenshot();g.mouse.move(box['x']+box['width']*.82,box['y']+box['height']*.68);g.wait_for_timeout(160);p1=amb.screenshot();pointer=mad(p0,p1)
- toggle=g.locator('.r14-global-motion');toggle.click();g.wait_for_timeout(120);s0=st.screenshot();x0=amb.screenshot();g.wait_for_timeout(500);s1=st.screenshot();x1=amb.screenshot();paused=max(mad(s0,s1),mad(x0,x1));c.close()
- # Reduced motion: automatic motion is static while manual scientific control remains usable.
- c=b.new_context(viewport={'width':1100,'height':760},reduced_motion='reduce');g=c.new_page();g.set_content(h,wait_until='domcontentloaded');st=g.locator('[data-vortex-stage]');amb=g.locator('[data-ambient-field]');g.wait_for_timeout(120);r0=st.screenshot();q0=amb.screenshot();g.wait_for_timeout(500);r1=st.screenshot();q1=amb.screenshot();reduced_static=max(mad(r0,r1),mad(q0,q1));kin=g.locator('[data-k]');before=float(kin.input_value());kin.evaluate("e=>{e.value='30';e.dispatchEvent(new Event('input',{bubbles:true}))}");after=float(kin.input_value());global_hidden=g.locator('.r14-global-motion').is_hidden();play_disabled=g.locator('[data-vortex-controls] [data-play]').is_disabled();c.close();b.close()
-print(f'R14_MOTION_METRICS vortex_live={vortex_live:.5f} ambient_live={ambient_live:.5f} pointer={pointer:.5f} paused={paused:.5f} reduced={reduced_static:.5f} manual_delta={after-before:.1f}')
-if vortex_live<.0005 or ambient_live<.0005 or pointer<.0007 or paused>.003 or reduced_static>.003 or after==before or not global_hidden or not play_disabled:raise SystemExit('R14_MOTION_EXPERIENCE_AUDIT_FAILED')
-print('R14_MOTION_EXPERIENCE_AUDIT_PASS ambient_default=true pointer_response=true pause=true reduced_motion_static=true manual_control=true')
+ # Home: autoplay, pointer velocity wake, bounded cadence, explicit pause, no hidden wake accumulation.
+ c=b.new_context(viewport={'width':1200,'height':850},reduced_motion='no-preference');g=c.new_page();g.set_content(inline(P/'en/index.html'),wait_until='domcontentloaded');g.wait_for_timeout(450)
+ assert state(g)=='running';assert g.locator('[data-r17-pause]').inner_text()=='Pause motion'
+ a=sample(g,'[data-r17-hero-canvas]');n0=int(g.locator('[data-vortex-stage]').get_attribute('data-r17-render-count') or 0);g.wait_for_timeout(1200);bb=sample(g,'[data-r17-hero-canvas]');n1=int(g.locator('[data-vortex-stage]').get_attribute('data-r17-render-count') or 0);auto=mad(a,bb);fps=(n1-n0)/1.2
+ box=g.locator('[data-r17-hero-canvas]').bounding_box();g.mouse.move(box['x']+box['width']*.34,box['y']+box['height']*.46);g.wait_for_timeout(80);first=float(g.locator('html').get_attribute('data-r17-page-speed') or 0);g.mouse.move(box['x']+box['width']*.78,box['y']+box['height']*.24,steps=16);g.wait_for_timeout(200);pp=sample(g,'[data-r17-hero-canvas]');pointer=mad(bb,pp);peak=float(g.locator('html').get_attribute('data-r17-page-speed') or 0);g.wait_for_timeout(1200);decay=float(g.locator('html').get_attribute('data-r17-page-speed') or 0)
+ g.locator('[data-r17-mode="viscous"]').click();assert state(g)=='running'
+ g.locator('[data-r17-pause]').click();g.wait_for_timeout(120);s0=sample(g,'[data-r17-hero-canvas]');q0=sample(g,'.r17-ambient-field');g.mouse.move(100,700);g.wait_for_timeout(550);s1=sample(g,'[data-r17-hero-canvas]');q1=sample(g,'.r17-ambient-field');paused=max(mad(s0,s1),mad(q0,q1));paused_speed=float(g.locator('html').get_attribute('data-r17-page-speed') or 0);assert state(g)=='paused'
+ before=sample(g,'[data-r17-hero-canvas]');g.locator('[data-r17-reset]').click();g.wait_for_timeout(60);after=sample(g,'[data-r17-hero-canvas]');reset_delta=mad(before,after);assert state(g)=='paused'
+ # Resume must restart actual field evolution while retaining zero stale pointer-wake velocity.
+ resume0=sample(g,'[data-r17-hero-canvas]');g.locator('[data-r17-pause]').click();g.wait_for_timeout(600);resume1=sample(g,'[data-r17-hero-canvas]');resume_visual=mad(resume0,resume1);resume_wake_speed=float(g.locator('html').get_attribute('data-r17-page-speed') or 0);assert state(g)=='running';c.close()
+ # Fresh browsing context autoplays: pause preference is intentionally session-scoped.
+ c=b.new_context(viewport={'width':1200,'height':850},reduced_motion='no-preference');g=c.new_page();g.set_content(inline(P/'en/index.html'),wait_until='domcontentloaded');g.wait_for_timeout(140);fresh=state(g);c.close()
+ # Reduced motion: stable but visibly populated hero.
+ c=b.new_context(viewport={'width':1200,'height':850},reduced_motion='reduce');g=c.new_page();g.set_content(inline(P/'en/index.html'),wait_until='domcontentloaded');g.wait_for_timeout(220);r0=sample(g,'[data-r17-hero-canvas]');den=density(r0);g.wait_for_timeout(550);r1=sample(g,'[data-r17-hero-canvas]');reduced=mad(r0,r1);reduced_state=state(g);ambient_hidden=g.locator('.r17-ambient-field').is_hidden();c.close()
+ # Non-home English rich page: page-wide field really persists throughout browsing and can be paused.
+ c=b.new_context(viewport={'width':1200,'height':850},reduced_motion='no-preference');g=c.new_page();g.set_content(inline(P/'en/quests/index.html'),wait_until='domcontentloaded');g.wait_for_timeout(350);assert g.locator('[data-r17-hero-canvas]').count()==0;assert state(g)=='running';assert g.locator('.r17-global-pause').is_visible();aa=sample(g,'.r17-ambient-field',16);g.wait_for_timeout(650);ab=sample(g,'.r17-ambient-field',16);page_auto=mad(aa,ab);g.mouse.move(180,260);g.mouse.move(940,560,steps=18);g.wait_for_timeout(160);ac=sample(g,'.r17-ambient-field',16);page_pointer=mad(ab,ac);g.locator('.r17-global-pause').click();g.wait_for_timeout(100);p0=sample(g,'.r17-ambient-field',16);g.wait_for_timeout(500);p1=sample(g,'.r17-ambient-field',16);page_paused=mad(p0,p1);c.close()
+ # Canvas2D hero failure must leave the static fallback instead of a blank panel; ambient may still enhance the page.
+ c=b.new_context(viewport={'width':1200,'height':850});g=c.new_page();g.set_content(inline(P/'en/index.html',True,True),wait_until='domcontentloaded');g.wait_for_timeout(100);ctxfail_static=g.locator('[data-vortex-static]').is_visible();ctxfail_renderer=g.locator('[data-vortex-stage]').get_attribute('data-r17-renderer');c.close();b.close()
+
+print(f'R17_MOTION_METRICS auto={auto:.5f} pointer={pointer:.5f} fps={fps:.1f} first_speed={first:.5f} peak={peak:.5f} decay={decay:.5f} paused={paused:.5f} paused_speed={paused_speed:.5f} resume_visual={resume_visual:.5f} resume_wake_speed={resume_wake_speed:.5f} reset={reset_delta:.5f} reduced={reduced:.5f} density={den:.3f} page_auto={page_auto:.5f} page_pointer={page_pointer:.5f} page_paused={page_paused:.5f} fresh={fresh}')
+if auto<.01 or pointer<.01 or not(12<=fps<=45) or first>.02 or peak<.004 or decay>=peak*.45 or paused>.002 or paused_speed>.002 or resume_visual<.01 or resume_wake_speed>.01 or reset_delta<.002 or reduced>.002 or den<.02 or fresh!='running' or reduced_state!='reduced' or not ambient_hidden or page_auto<.00015 or page_pointer<.00015 or page_paused>.002 or not ctxfail_static or ctxfail_renderer!='static-fallback':raise SystemExit('R17_MOTION_EXPERIENCE_AUDIT_FAILED')
+print('R17_MOTION_EXPERIENCE_AUDIT_PASS auto=true fps_bounded=true no_first_pointer_spike=true pointer_wake=true wake_decays=true pause_static=true pause_no_hidden_accumulation=true resume_visual=true resume_no_stale_wake=true reset_paused=true reduced_static=true fresh_session_autoplay=true pagewide_across_routes=true canvas_fallback=true')

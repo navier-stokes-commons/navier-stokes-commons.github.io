@@ -35,7 +35,19 @@
     "fluid_wake_pointer_velocity": true,
     "dominant_wireframe_hourglass_prohibited": true,
     "advanced_parameters_subordinate": true,
-    "spare_compute_primary_cta": true
+    "spare_compute_primary_cta": true,
+    "interaction_system": "r17-unified-fluid-field",
+    "runtime_delivery": "split-english-rich-pages",
+    "pagewide_pointer_wake": true,
+    "pointer_velocity_response": true,
+    "pointer_velocity_decay": true,
+    "first_pointer_sample_zero_velocity": true,
+    "legacy_vortex_renderer_on_en": false,
+    "debug_controls_first_viewport": false,
+    "pause_storage_scope": "session",
+    "canvas_failure_falls_back_static": true,
+    "mobile_touch_allows_vertical_scroll": true,
+    "hero_offscreen_suspends_hero_renderer": true
   },
   "mathematics_view": {
     "javascript_required": false,
@@ -49,6 +61,7 @@
     "vortex": "source-constrained schematic; not the computed 2026 solution field",
     "ambient_glyph_field": "decorative reference-flow-inspired interface field; pointer perturbation is UI-only",
     "quantitative_readouts": "must remain source-derived or explicitly derived with provenance",
-    "fluid_pointer_response": "UI-only exploratory perturbation using pointer position/velocity; not physical viscosity and not the computed 2026 solution."
+    "fluid_pointer_response": "UI-only exploratory perturbation using pointer position/velocity; not physical viscosity and not the computed 2026 solution.",
+    "r17_pointer_field": "Exploratory UI wake driven by pointer position/velocity; not a physical viscosity model or computed 2026 solution."
   }
 }

@@ -14,9 +14,9 @@ The public site targets **WCAG 2.2 Level AA**, a stronger and more current targe
 - high-contrast light and dark system themes;
 - 44×44 CSS minimum for primary controls;
 - no critical information conveyed only by color;
-- rich-mode visual motion starts automatically only when reduced motion is not requested; one explicit Pause/Resume control governs nonessential rich motion, while ordinary pointer/drag/parameter interaction never silently changes the user's running intent;
-- the R16 pointer wake and Flow response control are explicitly UI-only exploratory effects, not physical viscosity or a computed 2026 solution;
-- reduced-motion keeps the rich view static, and the zero-JavaScript path retains a complete static scientific fallback;
+- the rich English home uses one pausable R17 interaction authority for the exploratory flow field and low-opacity page-wide pointer wake; ordinary sessions start automatically, explicit Pause freezes both fields, a fresh browsing session starts alive again, and reduced-motion starts static;
+- pointer velocity affects only an explicitly labelled UI wake; Light/Balanced/Viscous are interaction-response modes, not physical viscosity, and the visualization is not the computed 2026 solution;
+- the hero permits vertical touch scrolling, hidden/offscreen work is bounded, Canvas2D failure falls back to the static SVG, and the zero-JavaScript path remains complete;
 - reduced-motion handling;
 - responsive layout without required horizontal scrolling at ordinary phone widths;
 - correct language and text-direction declarations;

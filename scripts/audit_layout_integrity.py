@@ -4,12 +4,12 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from scratch import ScratchPolicyError,scratch_dir
 import argparse,json,os,re,shutil,sys
-ROOT=Path(__file__).resolve().parents[1];P=ROOT/'public';CSS=(ROOT/'assets/style.css').read_text();JS=(ROOT/'assets/site.js').read_text()
+ROOT=Path(__file__).resolve().parents[1];P=ROOT/'public';CSS=(ROOT/'assets/style.css').read_text();JS=(ROOT/'assets/site.js').read_text();R17=(ROOT/'assets/r17-fluid.js').read_text()
 try: default_out=scratch_dir('layout-integrity')/'layout_integrity.json'
 except ScratchPolicyError as e: print('LAYOUT_INTEGRITY_UNAVAILABLE '+str(e),file=sys.stderr);raise SystemExit(2)
 ap=argparse.ArgumentParser();ap.add_argument('--output',default=str(default_out));ap.add_argument('--screenshots-dir',default=os.environ.get('NSC_LAYOUT_SCREENSHOTS_DIR',''));a=ap.parse_args();exe=shutil.which('chromium') or shutil.which('chromium-browser') or shutil.which('google-chrome') or ''
 def inline(path,js=True):
- h=path.read_text();h=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>','',h,count=1);h=re.sub(r'<link rel="stylesheet"[^>]*>', lambda _:'<style>'+CSS+'</style>',h,count=1);h=re.sub(r'<script src="[^"]+" defer></script>', lambda _:('<script>'+JS+'</script>' if js else ''),h,count=1);return h
+ h=path.read_text();h=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>','',h,count=1);h=re.sub(r'<link rel="stylesheet"[^>]*>', lambda _:'<style>'+CSS+'</style>',h,count=1);h=re.sub(r'<script src="[^"]*site\.js" defer></script>', lambda _:('<script>'+JS+'</script>' if js else ''),h,count=1);h=re.sub(r'<script src="[^"]*r17-fluid\.js" defer></script>', lambda _:('<script>'+R17+'</script>' if js else ''),h,count=1);return h
 # Geometry oracle targets text/controls and the flagship stage. It deliberately does not call itself an aesthetic pass.
 selectors='h1,h2,h3,p,a,button,label,output,.stage-note,.stage-help,.visual-boundary,.hud-stat,.vortex-stage,.language-grid a,.mission-entry-link,.quest-card'
 def geometry(pg):

@@ -211,7 +211,7 @@ def footer(page,loc):
 
 def shell(page:Path,loc:str,current:str,kind:str,title:str,description:str,body:str,slug=None, extra_head='', overrides_alternates=False):
     L=locales[loc]; direction=L['dir']
-    asset_css=rel(page,'assets/style.css'); asset_js=rel(page,'assets/site.js')
+    asset_css=rel(page,'assets/style.css'); asset_js=rel(page,'assets/site.js'); r17_script=(f"<script src=\"{esc(rel(page,'assets/r17-fluid.js'))}\" defer></script>" if loc=='en' else '')
     alt='' if overrides_alternates else alternates(page,kind,slug)
     canonical=''
     if SITE_URL:
@@ -240,7 +240,7 @@ def shell(page:Path,loc:str,current:str,kind:str,title:str,description:str,body:
 {locale_preview_notice(loc)}
 <main id="main">{body}</main>
 {footer(page,loc)}
-<script src="{esc(asset_js)}" defer></script>
+<script src="{esc(asset_js)}" defer></script>{r17_script}
 </body></html>'''
 
 def write(path:str,text:str):
@@ -462,28 +462,44 @@ def r5_sprint_copy(loc:str):
     return {'button':'View the Initial Review Portfolio','kicker':'INDEPENDENT REVIEW PORTFOLIO','title':'Do not just read it. Pick one bounded quest and make the public record better.','body':'The Commons is open for non-exclusive attempts. Start with source checks, Lean reproduction, mathematics, numerical work, accessibility, browser testing, agent evaluation, or governance review.','all':f'All {len(quests)} quests'},' lang="en" dir="ltr"'
 
 def _r5_static_vortex_svg()->str:
-    def project(x,y,z,yaw=-.28,pitch=.10,zoom=5.8,w=1000,h=650):
-        cy,sy=math.cos(yaw),math.sin(yaw); cp,sp=math.cos(pitch),math.sin(pitch)
-        X=cy*x+sy*z; Z=-sy*x+cy*z; Y=cp*y-sp*Z; Z=sp*y+cp*Z
-        d=zoom-Z; f=min(w,h)*.88/d
-        return w*.5+X*f,h*.47-Y*f
-    paths=[]; k=14.0; H=.005; s=k/60; turns=1.25+19*s**.72; aspect=10**(k*H); axial=1+.78*math.log10(aspect+1)
-    for i in range(32):
-        a=(i*2.3999632297)%(2*math.pi); layer=(i%19)/18; family=i%7; pts=[]
-        for j in range(46):
-            u=j/45; zz=u*2-1; waist=.32+.68*abs(zz)**.70; lay=.32+1.48*(.15+.85*layer); radial=lay*waist*(1-.30*s*math.exp(-zz*zz*3)); handed=1 if family<3 else -1
-            th=a+handed*turns*(zz+.23*math.sin(zz*math.pi))*math.pi
-            x=radial*math.cos(th); z=radial*math.sin(th); y=zz*2.3*axial
-            flare=.15*math.sin(th*.7+math.sin(i*12.9898)*.17*8)*(1-math.exp(-abs(zz)*2)); x*=1+flare; z*=1-flare*.7
-            pts.append(project(x,y,z))
-        d=' '.join(('M' if j==0 else 'L')+f'{x:.1f},{y:.1f}' for j,(x,y) in enumerate(pts))
-        cls='vortex-static-teal' if family<3 else ('vortex-static-orange' if family in (4,5) else 'vortex-static-blue')
-        paths.append(f'<path d="{d}" class="{cls}"/>')
-    return f'''<svg class="vortex-static" data-vortex-static viewBox="0 0 1000 650" role="img" aria-label="Static three-dimensional schematic of inward-spiraling and axially extended guide trajectories"><g>{''.join(paths)}</g><text x="28" y="620">STATIC NO-JAVASCRIPT SCHEMATIC · quantitative scale laws remain available below</text></svg>'''
+    """Static no-JS exploratory flow-field fallback; intentionally not the 2026 solution."""
+    def field(x,y):
+        u=.10+.035*math.sin(y*4*math.pi); v=.025*math.sin(x*3.4*math.pi)
+        for cx,cy,s,r in ((.26,.28,.42,.18),(.68,.34,-.52,.22),(.43,.68,.38,.20),(.78,.72,.26,.16)):
+            dx=x-cx;dy=y-cy;r2=dx*dx+dy*dy+1e-4;g=math.exp(-r2/(r*r));inv=1/math.sqrt(r2)
+            u+=-dy*inv*s*g;v+=dx*inv*s*g
+        u+=.022*math.cos((x-y)*10);v+=.018*math.sin((x+y)*9)
+        return u,v
+    # Seed the full domain rather than one edge only. The resulting streamlines
+    # remain coherent while making the non-JS first viewport visually complete.
+    seeds=[]
+    seeds += [(-.03,(i+.35)/30) for i in range(30)]
+    seeds += [((i+.35)/12,.015) for i in range(12)]
+    seeds += [((i+.65)/8,.985) for i in range(8)]
+    for cx,cy,_,r in ((.26,.28,.42,.18),(.68,.34,-.52,.22),(.43,.68,.38,.20),(.78,.72,.26,.16)):
+        for j in range(4):
+            a=2*math.pi*j/4;seeds.append((cx+math.cos(a)*r*.52,cy+math.sin(a)*r*.52))
+    paths=[]
+    for n,(x,y) in enumerate(seeds):
+        pts=[]
+        for step in range(180):
+            if not (-.08<=x<=1.08 and -.08<=y<=1.08): break
+            if step%5==0: pts.append((x*1000,y*650))
+            u,v=field(x,y);dt=.013;x+=u*dt;y+=v*dt
+        if len(pts)<4: continue
+        d=' '.join(('M' if i==0 else 'L')+f'{px:.1f},{py:.1f}' for i,(px,py) in enumerate(pts))
+        op=.18+.05*(n%4);color='#67e7df' if n%4 else '#4a9ee8'
+        paths.append(f'<path d="{d}" fill="none" stroke="{color}" stroke-opacity="{op:.2f}" stroke-width="1.0" stroke-linecap="round"/>')
+    cores=((.26,.28,.42,.18),(.68,.34,-.52,.22),(.43,.68,.38,.20),(.78,.72,.26,.16))
+    glows=''.join(f'<circle cx="{x*1000:.0f}" cy="{y*650:.0f}" r="{r*520:.0f}" fill="url(#g{i})"/>' for i,(x,y,_,r) in enumerate(cores))
+    defs=''.join(f'<radialGradient id="g{i}"><stop offset="0" stop-color="{("#20bfc5" if s>0 else "#295fc9")}" stop-opacity=".18"/><stop offset="1" stop-color="#001016" stop-opacity="0"/></radialGradient>' for i,(_,_,s,_) in enumerate(cores))
+    return f'''<svg class="vortex-static r17-static-field" data-vortex-static viewBox="0 0 1000 650" role="img" aria-label="Static exploratory flow-field schematic with several coherent vortices; not the computed 2026 solution"><defs>{defs}</defs><rect width="1000" height="650" fill="#020b11"/>{glows}<g>{''.join(paths)}</g><text x="28" y="620" fill="#b5d6d3" opacity=".72" font-size="13" font-family="monospace">STATIC NO-JAVASCRIPT EXPLORATORY FLOW FIELD - NOT THE COMPUTED 2026 SOLUTION</text></svg>'''
 
 def r5_vortex_stage(page:Path,loc:str)->str:
     C,attrs=_r5_copy(loc); h=float(scaling['parameters']['h']['default']); k=14.0
     lr=-.5*k; lz=-(.5-h)*k; speed=(.5+h)*k; energy=-(.5-3*h)*k; aspect=10**(h*k)
+    if loc=='en':
+        return f'''<figure class="vortex-stage" data-vortex-stage data-representation-status="schematic" data-quantitative-status="derived-leading-exponents">{_r5_static_vortex_svg()}<canvas data-vortex-canvas aria-hidden="true"></canvas><figcaption class="vortex-caption">Interactive exploratory UI field when JavaScript is available; static source-constrained fallback otherwise. Neither is the computed 2026 solution.</figcaption></figure>'''
     return f'''<figure class="vortex-stage" data-vortex-stage data-sweep-ms="7000" data-representation-status="schematic" data-quantitative-status="derived-leading-exponents" data-mode-normalized="{esc(C['normalized'])}" data-mode-laboratory="{esc(C['laboratory'])}"{attrs}>{_r5_static_vortex_svg()}<canvas data-vortex-canvas aria-hidden="true"></canvas><div class="flow-probe" data-flow-probe aria-hidden="true"><span class="flow-probe-ring"></span><span class="flow-probe-tag">flow probe</span></div><div class="stage-note">{esc(C['stage'])} · <span data-mode-label>{esc(C['normalized'])}</span></div><div class="stage-help">{esc(C['help'])}</div><div class="visual-boundary">{esc(C['boundary'])}</div><div class="stage-hud"><div class="hud-stats" aria-label="Derived leading-order scale readouts"><div class="hud-stat"><span>τ = 10⁻ᵏ</span><b data-tau-out>10^-14</b></div><div class="hud-stat"><span>ℓr</span><b data-r-out>10^{lr:.1f}</b></div><div class="hud-stat"><span>ℓz</span><b data-z-out>10^{lz:.1f}</b></div><div class="hud-stat"><span>|uθ|</span><b data-u-out>10^{speed:.1f}</b></div><div class="hud-stat"><span>Ecore</span><b data-e-out>10^{energy:.1f}</b></div><div class="hud-stat"><span>ℓz / ℓr</span><b data-aspect-out>10^{math.log10(aspect):.2f}</b></div></div><div class="vortex-controls enhance-only" data-vortex-controls hidden><div class="controls"><label>{esc(C['k'])}<input data-k type="range" min=".5" max="60" value="14" step=".5" aria-label="{esc(C['k'])}"></label><label>{esc(C['h'])}<input data-h type="range" min=".0005" max=".0095" value="{h}" step=".0005" aria-label="{esc(C['h'])}"></label><label>{esc(C['speed'])}<output data-speed-out>1&times;</output><input data-speed type="range" min=".25" max="3" value="1" step=".25" aria-label="{esc(C['speed'])}"></label></div><div class="hud-buttons"><button type="button" data-play data-play-label="{esc(C['play'])}" data-pause-label="{esc(C['pause'])}" aria-pressed="true">{esc(C['pause'])}</button><button type="button" data-frame-toggle data-normalized-label="{esc(C['frame'])}" data-lab-label="{esc(C['frame_lab'])}">{esc(C['frame'])}</button></div></div></div><figcaption class="vortex-caption">{esc(C['sub'])}</figcaption></figure>'''
 
 def r5_claim_strip(page:Path,loc:str)->str:
@@ -570,7 +586,7 @@ def mission_card(page,loc,m,heading=3):
     return f'''<article class="mission-entry" data-mission-card data-category="{esc(m['category'])}" data-search="{esc(search)}" data-reveal><a class="mission-entry-link" href="{esc(href)}"><span class="mission-entry-id">{esc(m['id'])}</span><span class="mission-entry-main"{en_attrs}><span class="mission-entry-title">{esc(t['title'])}</span><span class="mission-entry-summary">{esc(t['summary'])}</span></span><span class="mission-entry-meta"{en_attrs}><span>{esc(cat_label(loc,m['category']))}</span><span>{esc(level_label(loc,m['level']))}</span><span>{esc(people)}</span></span><span class="mission-entry-arrow" aria-hidden="true">↗</span></a></article>'''
 
 def canonical_shell(page:Path,current:str,kind:str,title:str,description:str,body:str):
-    loc='en'; L=locales['en']; asset_css=rel(page,'assets/style.css'); asset_js=rel(page,'assets/site.js')
+    loc='en'; L=locales['en']; asset_css=rel(page,'assets/style.css'); asset_js=rel(page,'assets/site.js'); r17_script=f"<script src=\"{esc(rel(page,'assets/r17-fluid.js'))}\" defer></script>"
     links=[
       ('home','Home','en/index.html'),('missions','Missions','en/missions/index.html'),('quests','Quests','en/quests/index.html'),
       ('sprint','Initial Review Portfolio','en/sprint/index.html'),('activity','Contributions','en/activity/index.html'),
@@ -583,7 +599,7 @@ def canonical_shell(page:Path,current:str,kind:str,title:str,description:str,bod
     if SITE_URL:
         relurl=page.relative_to(PUBLIC).as_posix().replace('index.html','')
         canonical=f'<link rel="canonical" href="{esc(SITE_URL+"/"+relurl)}">'
-    return f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} · Navier-Stokes Commons</title><meta name="description" content="{esc(description)}">{SECURITY_META}<meta name="color-scheme" content="light dark">{canonical}<link rel="describedby" href="{esc(rel(page,"llms.txt"))}" type="text/markdown"><link rel="stylesheet" href="{esc(asset_css)}"></head><body data-page-kind="{esc(kind)}"><a class="skip-link" href="#main">Skip to main content</a>{header}<main id="main">{body}</main>{footer(page,'en')}<script src="{esc(asset_js)}" defer></script></body></html>'''
+    return f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>{esc(title)} · Navier-Stokes Commons</title><meta name="description" content="{esc(description)}">{SECURITY_META}<meta name="color-scheme" content="light dark">{canonical}<link rel="describedby" href="{esc(rel(page,"llms.txt"))}" type="text/markdown"><link rel="stylesheet" href="{esc(asset_css)}"></head><body data-page-kind="{esc(kind)}">{r14_ambient_canvas()}<a class="skip-link" href="#main">Skip to main content</a>{header}<main id="main">{body}</main>{footer(page,'en')}<script src="{esc(asset_js)}" defer></script>{r17_script}</body></html>'''
 
 def quest_issue_url(q):
     return repo_issue('claim_quest.yml',f'[Quest attempt] {q["id"]} {q["title"]}')
@@ -1081,7 +1097,7 @@ def r14_abcd_strip():
     return '<div class="r14-abcd-strip" aria-label="Clay alternatives A, B, C and D">'+''.join(items)+'</div>'
 
 def r14_rich_hero(page):
-    return f'''<section class="r14-hero" data-r14-rich-hero><div class="container r14-hero-grid"><div class="r14-hero-copy"><span class="eyebrow">NAVIER–STOKES · AFTER THE 2026 C/D CONSTRUCTION</span><h1>C/D changed the problem. A/B is still open.</h1><p class="lede">OpenAI claims C and D; independent review continues. A and B remain open. Bring mathematical skill, spare compute, or an inference subscription to the remaining frontier.</p><p class="r14-status-line"><strong>Publication ≠ independent review ≠ CMI recognition.</strong> Formal verification proves the encoded statement; semantic correspondence remains a separate review obligation.</p><div class="r14-actions"><a class="button" href="{esc(rel(page,'en/frontier/index.html'))}">Take an open problem</a><a class="button secondary" href="{esc(rel(page,'en/math/index.html'))}">Mathematics</a><a class="button ghost" href="{esc(rel(page,'en/agents/index.html'))}">Put spare compute to work</a><a class="text-link strong" href="{esc(rel(page,'en/review/index.html'))}">Review C/D ↗</a></div></div><div class="r14-hero-visual"><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div>{r5_vortex_stage(page,'en')}</div></div>{r14_abcd_strip()}<p class="container r14-hero-footnote">The realtime vortex is a source-constrained schematic, not a computed 2026 solution field. Pointer interaction and the ambient glyph wake are interface devices, not simulated physics.</p></section>'''
+    return f'''<section class="r14-hero" data-r14-rich-hero><div class="container r14-hero-grid"><div class="r14-hero-copy"><span class="eyebrow">NAVIER–STOKES · AFTER THE 2026 C/D CONSTRUCTION</span><h1>C/D changed the problem. A/B is still open.</h1><p class="lede">OpenAI claims C and D; independent review continues. A and B remain open. Bring mathematical skill, spare compute, or an inference subscription to the remaining frontier.</p><p class="r14-status-line"><strong>Publication ≠ independent review ≠ CMI recognition.</strong> Formal verification proves the encoded statement; semantic correspondence remains a separate review obligation.</p><div class="r14-actions"><a class="button" href="{esc(rel(page,'en/quests/index.html'))}">Take an open problem</a><a class="button secondary" href="{esc(rel(page,'en/math/index.html'))}">Mathematics</a><a class="button ghost" href="{esc(rel(page,'en/agents/index.html'))}">Put spare compute to work</a><a class="text-link strong" href="{esc(rel(page,'en/review/index.html'))}">Review C/D ↗</a></div></div><div class="r14-hero-visual"><div class="r5-equation-anchor"><span class="micro">CANONICAL EQUATION OBJECT</span>{equation_block()}</div>{r5_vortex_stage(page,'en')}</div></div>{r14_abcd_strip()}<p class="container r14-hero-footnote">The interactive flow field is an exploratory interface schematic, not the computed 2026 solution. Pointer and page-wide wake effects are UI devices, not simulated physics.</p></section>'''
 
 def r14_intake_list(page):
     items=intake_doc.get('items',[])[:80]
@@ -1110,7 +1126,7 @@ def root_page():
     page=PUBLIC/'index.html'; R=locales['en']['root']; thesis=clay_problem_status['landing_thesis']
     langs=''.join(f'<a lang="{esc(loc)}" dir="{esc(locales[loc]["dir"])}" href="{esc(rel(page,logical_target(loc,"home")))}"><span>{esc(locales[loc]["name"])}</span><small>{esc(project.get("locale_status",{}).get(loc,"preview").replace("-"," "))}</small><span aria-hidden="true">↗</span></a>' for loc in project['locales'])
     body=f'''<main id="main" class="global-landing">{r14_rich_hero(page)}{scale_trace('en')}<p class="container"><a class="text-link strong" href="{esc(rel(page,'en/context/index.html'))}">Context / credit ↗</a></p><section class="language-zone" aria-labelledby="language-title"><div class="language-zone-head"><span class="eyebrow">MULTILINGUAL ACCESS</span><h2 id="language-title">{esc(R['enter'])}</h2><p>English is the canonical research surface. Translation status remains explicit; mathematical claim scope does not change by locale.</p></div><div class="language-grid">{langs}</div></section></main>'''
-    write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons</title><meta name="description" content="{esc(thesis['body'])}">{SECURITY_META}<meta name="color-scheme" content="light dark">{r5_font_preloads(page)}<link rel="describedby" href="{esc(rel(page,'llms.txt'))}" type="text/markdown"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{r14_ambient_canvas()}{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script></body></html>''')
+    write('index.html',f'''<!doctype html><html lang="en" dir="ltr" data-theme="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Navier–Stokes Commons</title><meta name="description" content="{esc(thesis['body'])}">{SECURITY_META}<meta name="color-scheme" content="light dark">{r5_font_preloads(page)}<link rel="describedby" href="{esc(rel(page,'llms.txt'))}" type="text/markdown"><link rel="stylesheet" href="{esc(rel(page,'assets/style.css'))}">{''.join(f'<link rel="alternate" hreflang="{esc(loc)}" href="{esc(rel(page,logical_target(loc,'home')))}">' for loc in project['locales'])}<link rel="alternate" hreflang="x-default" href="index.html"></head><body>{r14_ambient_canvas()}{body}<script src="{esc(rel(page,'assets/site.js'))}" defer></script><script src="{esc(rel(page,'assets/r17-fluid.js'))}" defer></script></body></html>''')
 
 def benchmarks_page():
     page=PUBLIC/'en/benchmarks/index.html'
